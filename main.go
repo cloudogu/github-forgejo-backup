@@ -32,7 +32,7 @@ func main() {
 		fmt.Printf("%s\t%s\n", repo.GetName(), repo.GetCloneURL())
 	}
 
-	forgejoClient, err := forgejo.NewClient("https://forgejo.cloudogu.com/",
+	forgejoClient, err := forgejo.NewClient(config.ForgejoBaseUrl,
 		forgejo.SetToken(config.ForgejoToken),
 		forgejo.SetUserAgent("github-forgejo-backup/0.1.0"),
 	)

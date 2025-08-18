@@ -2,7 +2,7 @@
   "github_base_url": "https://api.github.com/",
   "github_orga": "cloudogu",
   "github_token": "SECRET",
-  "forgejo_base_url": "https://codeberg.org/api/v1",
+  "forgejo_base_url": "https://forgejo.cloudogu.com/",
   "forgejo_orga": "cloudogu",
   # curl -H "Content-Type: application/json" \
   # -d '{"name":"test","scopes":["read:user","read:organization","write:issue","write:repository"]}' \
