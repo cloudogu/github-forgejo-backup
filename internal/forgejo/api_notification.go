@@ -25,7 +25,7 @@ import (
 // NotificationAPIService NotificationAPI service
 type NotificationAPIService service
 
-type ApiNotifyGetListRequest struct {
+type NotificationAPINotifyGetListRequest struct {
 	ctx context.Context
 	ApiService *NotificationAPIService
 	all *bool
@@ -38,48 +38,48 @@ type ApiNotifyGetListRequest struct {
 }
 
 // If true, show notifications marked as read. Default value is false
-func (r ApiNotifyGetListRequest) All(all bool) ApiNotifyGetListRequest {
+func (r NotificationAPINotifyGetListRequest) All(all bool) NotificationAPINotifyGetListRequest {
 	r.all = &all
 	return r
 }
 
 // Show notifications with the provided status types. Options are: unread, read and/or pinned. Defaults to unread &amp; pinned.
-func (r ApiNotifyGetListRequest) StatusTypes(statusTypes []string) ApiNotifyGetListRequest {
+func (r NotificationAPINotifyGetListRequest) StatusTypes(statusTypes []string) NotificationAPINotifyGetListRequest {
 	r.statusTypes = &statusTypes
 	return r
 }
 
 // filter notifications by subject type
-func (r ApiNotifyGetListRequest) SubjectType(subjectType []string) ApiNotifyGetListRequest {
+func (r NotificationAPINotifyGetListRequest) SubjectType(subjectType []string) NotificationAPINotifyGetListRequest {
 	r.subjectType = &subjectType
 	return r
 }
 
 // Only show notifications updated after the given time. This is a timestamp in RFC 3339 format
-func (r ApiNotifyGetListRequest) Since(since time.Time) ApiNotifyGetListRequest {
+func (r NotificationAPINotifyGetListRequest) Since(since time.Time) NotificationAPINotifyGetListRequest {
 	r.since = &since
 	return r
 }
 
 // Only show notifications updated before the given time. This is a timestamp in RFC 3339 format
-func (r ApiNotifyGetListRequest) Before(before time.Time) ApiNotifyGetListRequest {
+func (r NotificationAPINotifyGetListRequest) Before(before time.Time) NotificationAPINotifyGetListRequest {
 	r.before = &before
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiNotifyGetListRequest) Page(page int32) ApiNotifyGetListRequest {
+func (r NotificationAPINotifyGetListRequest) Page(page int32) NotificationAPINotifyGetListRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiNotifyGetListRequest) Limit(limit int32) ApiNotifyGetListRequest {
+func (r NotificationAPINotifyGetListRequest) Limit(limit int32) NotificationAPINotifyGetListRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiNotifyGetListRequest) Execute() ([]NotificationThread, *http.Response, error) {
+func (r NotificationAPINotifyGetListRequest) Execute() ([]NotificationThread, *http.Response, error) {
 	return r.ApiService.NotifyGetListExecute(r)
 }
 
@@ -87,10 +87,10 @@ func (r ApiNotifyGetListRequest) Execute() ([]NotificationThread, *http.Response
 NotifyGetList List users's notification threads
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiNotifyGetListRequest
+ @return NotificationAPINotifyGetListRequest
 */
-func (a *NotificationAPIService) NotifyGetList(ctx context.Context) ApiNotifyGetListRequest {
-	return ApiNotifyGetListRequest{
+func (a *NotificationAPIService) NotifyGetList(ctx context.Context) NotificationAPINotifyGetListRequest {
+	return NotificationAPINotifyGetListRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -98,7 +98,7 @@ func (a *NotificationAPIService) NotifyGetList(ctx context.Context) ApiNotifyGet
 
 // Execute executes the request
 //  @return []NotificationThread
-func (a *NotificationAPIService) NotifyGetListExecute(r ApiNotifyGetListRequest) ([]NotificationThread, *http.Response, error) {
+func (a *NotificationAPIService) NotifyGetListExecute(r NotificationAPINotifyGetListRequest) ([]NotificationThread, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -292,7 +292,7 @@ func (a *NotificationAPIService) NotifyGetListExecute(r ApiNotifyGetListRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiNotifyGetRepoListRequest struct {
+type NotificationAPINotifyGetRepoListRequest struct {
 	ctx context.Context
 	ApiService *NotificationAPIService
 	owner string
@@ -307,48 +307,48 @@ type ApiNotifyGetRepoListRequest struct {
 }
 
 // If true, show notifications marked as read. Default value is false
-func (r ApiNotifyGetRepoListRequest) All(all bool) ApiNotifyGetRepoListRequest {
+func (r NotificationAPINotifyGetRepoListRequest) All(all bool) NotificationAPINotifyGetRepoListRequest {
 	r.all = &all
 	return r
 }
 
 // Show notifications with the provided status types. Options are: unread, read and/or pinned. Defaults to unread &amp; pinned
-func (r ApiNotifyGetRepoListRequest) StatusTypes(statusTypes []string) ApiNotifyGetRepoListRequest {
+func (r NotificationAPINotifyGetRepoListRequest) StatusTypes(statusTypes []string) NotificationAPINotifyGetRepoListRequest {
 	r.statusTypes = &statusTypes
 	return r
 }
 
 // filter notifications by subject type
-func (r ApiNotifyGetRepoListRequest) SubjectType(subjectType []string) ApiNotifyGetRepoListRequest {
+func (r NotificationAPINotifyGetRepoListRequest) SubjectType(subjectType []string) NotificationAPINotifyGetRepoListRequest {
 	r.subjectType = &subjectType
 	return r
 }
 
 // Only show notifications updated after the given time. This is a timestamp in RFC 3339 format
-func (r ApiNotifyGetRepoListRequest) Since(since time.Time) ApiNotifyGetRepoListRequest {
+func (r NotificationAPINotifyGetRepoListRequest) Since(since time.Time) NotificationAPINotifyGetRepoListRequest {
 	r.since = &since
 	return r
 }
 
 // Only show notifications updated before the given time. This is a timestamp in RFC 3339 format
-func (r ApiNotifyGetRepoListRequest) Before(before time.Time) ApiNotifyGetRepoListRequest {
+func (r NotificationAPINotifyGetRepoListRequest) Before(before time.Time) NotificationAPINotifyGetRepoListRequest {
 	r.before = &before
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiNotifyGetRepoListRequest) Page(page int32) ApiNotifyGetRepoListRequest {
+func (r NotificationAPINotifyGetRepoListRequest) Page(page int32) NotificationAPINotifyGetRepoListRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiNotifyGetRepoListRequest) Limit(limit int32) ApiNotifyGetRepoListRequest {
+func (r NotificationAPINotifyGetRepoListRequest) Limit(limit int32) NotificationAPINotifyGetRepoListRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiNotifyGetRepoListRequest) Execute() ([]NotificationThread, *http.Response, error) {
+func (r NotificationAPINotifyGetRepoListRequest) Execute() ([]NotificationThread, *http.Response, error) {
 	return r.ApiService.NotifyGetRepoListExecute(r)
 }
 
@@ -358,10 +358,10 @@ NotifyGetRepoList List users's notification threads on a specific repo
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiNotifyGetRepoListRequest
+ @return NotificationAPINotifyGetRepoListRequest
 */
-func (a *NotificationAPIService) NotifyGetRepoList(ctx context.Context, owner string, repo string) ApiNotifyGetRepoListRequest {
-	return ApiNotifyGetRepoListRequest{
+func (a *NotificationAPIService) NotifyGetRepoList(ctx context.Context, owner string, repo string) NotificationAPINotifyGetRepoListRequest {
+	return NotificationAPINotifyGetRepoListRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -371,7 +371,7 @@ func (a *NotificationAPIService) NotifyGetRepoList(ctx context.Context, owner st
 
 // Execute executes the request
 //  @return []NotificationThread
-func (a *NotificationAPIService) NotifyGetRepoListExecute(r ApiNotifyGetRepoListRequest) ([]NotificationThread, *http.Response, error) {
+func (a *NotificationAPIService) NotifyGetRepoListExecute(r NotificationAPINotifyGetRepoListRequest) ([]NotificationThread, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -567,13 +567,13 @@ func (a *NotificationAPIService) NotifyGetRepoListExecute(r ApiNotifyGetRepoList
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiNotifyGetThreadRequest struct {
+type NotificationAPINotifyGetThreadRequest struct {
 	ctx context.Context
 	ApiService *NotificationAPIService
 	id string
 }
 
-func (r ApiNotifyGetThreadRequest) Execute() (*NotificationThread, *http.Response, error) {
+func (r NotificationAPINotifyGetThreadRequest) Execute() (*NotificationThread, *http.Response, error) {
 	return r.ApiService.NotifyGetThreadExecute(r)
 }
 
@@ -582,10 +582,10 @@ NotifyGetThread Get notification thread by ID
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of notification thread
- @return ApiNotifyGetThreadRequest
+ @return NotificationAPINotifyGetThreadRequest
 */
-func (a *NotificationAPIService) NotifyGetThread(ctx context.Context, id string) ApiNotifyGetThreadRequest {
-	return ApiNotifyGetThreadRequest{
+func (a *NotificationAPIService) NotifyGetThread(ctx context.Context, id string) NotificationAPINotifyGetThreadRequest {
+	return NotificationAPINotifyGetThreadRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -594,7 +594,7 @@ func (a *NotificationAPIService) NotifyGetThread(ctx context.Context, id string)
 
 // Execute executes the request
 //  @return NotificationThread
-func (a *NotificationAPIService) NotifyGetThreadExecute(r ApiNotifyGetThreadRequest) (*NotificationThread, *http.Response, error) {
+func (a *NotificationAPIService) NotifyGetThreadExecute(r NotificationAPINotifyGetThreadRequest) (*NotificationThread, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -773,12 +773,12 @@ func (a *NotificationAPIService) NotifyGetThreadExecute(r ApiNotifyGetThreadRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiNotifyNewAvailableRequest struct {
+type NotificationAPINotifyNewAvailableRequest struct {
 	ctx context.Context
 	ApiService *NotificationAPIService
 }
 
-func (r ApiNotifyNewAvailableRequest) Execute() (*NotificationCount, *http.Response, error) {
+func (r NotificationAPINotifyNewAvailableRequest) Execute() (*NotificationCount, *http.Response, error) {
 	return r.ApiService.NotifyNewAvailableExecute(r)
 }
 
@@ -786,10 +786,10 @@ func (r ApiNotifyNewAvailableRequest) Execute() (*NotificationCount, *http.Respo
 NotifyNewAvailable Check if unread notifications exist
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiNotifyNewAvailableRequest
+ @return NotificationAPINotifyNewAvailableRequest
 */
-func (a *NotificationAPIService) NotifyNewAvailable(ctx context.Context) ApiNotifyNewAvailableRequest {
-	return ApiNotifyNewAvailableRequest{
+func (a *NotificationAPIService) NotifyNewAvailable(ctx context.Context) NotificationAPINotifyNewAvailableRequest {
+	return NotificationAPINotifyNewAvailableRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -797,7 +797,7 @@ func (a *NotificationAPIService) NotifyNewAvailable(ctx context.Context) ApiNoti
 
 // Execute executes the request
 //  @return NotificationCount
-func (a *NotificationAPIService) NotifyNewAvailableExecute(r ApiNotifyNewAvailableRequest) (*NotificationCount, *http.Response, error) {
+func (a *NotificationAPIService) NotifyNewAvailableExecute(r NotificationAPINotifyNewAvailableRequest) (*NotificationCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -954,7 +954,7 @@ func (a *NotificationAPIService) NotifyNewAvailableExecute(r ApiNotifyNewAvailab
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiNotifyReadListRequest struct {
+type NotificationAPINotifyReadListRequest struct {
 	ctx context.Context
 	ApiService *NotificationAPIService
 	lastReadAt *time.Time
@@ -964,30 +964,30 @@ type ApiNotifyReadListRequest struct {
 }
 
 // Describes the last point that notifications were checked. Anything updated since this time will not be updated.
-func (r ApiNotifyReadListRequest) LastReadAt(lastReadAt time.Time) ApiNotifyReadListRequest {
+func (r NotificationAPINotifyReadListRequest) LastReadAt(lastReadAt time.Time) NotificationAPINotifyReadListRequest {
 	r.lastReadAt = &lastReadAt
 	return r
 }
 
 // If true, mark all notifications on this repo. Default value is false
-func (r ApiNotifyReadListRequest) All(all string) ApiNotifyReadListRequest {
+func (r NotificationAPINotifyReadListRequest) All(all string) NotificationAPINotifyReadListRequest {
 	r.all = &all
 	return r
 }
 
 // Mark notifications with the provided status types. Options are: unread, read and/or pinned. Defaults to unread.
-func (r ApiNotifyReadListRequest) StatusTypes(statusTypes []string) ApiNotifyReadListRequest {
+func (r NotificationAPINotifyReadListRequest) StatusTypes(statusTypes []string) NotificationAPINotifyReadListRequest {
 	r.statusTypes = &statusTypes
 	return r
 }
 
 // Status to mark notifications as, Defaults to read.
-func (r ApiNotifyReadListRequest) ToStatus(toStatus string) ApiNotifyReadListRequest {
+func (r NotificationAPINotifyReadListRequest) ToStatus(toStatus string) NotificationAPINotifyReadListRequest {
 	r.toStatus = &toStatus
 	return r
 }
 
-func (r ApiNotifyReadListRequest) Execute() ([]NotificationThread, *http.Response, error) {
+func (r NotificationAPINotifyReadListRequest) Execute() ([]NotificationThread, *http.Response, error) {
 	return r.ApiService.NotifyReadListExecute(r)
 }
 
@@ -995,10 +995,10 @@ func (r ApiNotifyReadListRequest) Execute() ([]NotificationThread, *http.Respons
 NotifyReadList Mark notification threads as read, pinned or unread
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiNotifyReadListRequest
+ @return NotificationAPINotifyReadListRequest
 */
-func (a *NotificationAPIService) NotifyReadList(ctx context.Context) ApiNotifyReadListRequest {
-	return ApiNotifyReadListRequest{
+func (a *NotificationAPIService) NotifyReadList(ctx context.Context) NotificationAPINotifyReadListRequest {
+	return NotificationAPINotifyReadListRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1006,7 +1006,7 @@ func (a *NotificationAPIService) NotifyReadList(ctx context.Context) ApiNotifyRe
 
 // Execute executes the request
 //  @return []NotificationThread
-func (a *NotificationAPIService) NotifyReadListExecute(r ApiNotifyReadListRequest) ([]NotificationThread, *http.Response, error) {
+func (a *NotificationAPIService) NotifyReadListExecute(r NotificationAPINotifyReadListRequest) ([]NotificationThread, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1183,7 +1183,7 @@ func (a *NotificationAPIService) NotifyReadListExecute(r ApiNotifyReadListReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiNotifyReadRepoListRequest struct {
+type NotificationAPINotifyReadRepoListRequest struct {
 	ctx context.Context
 	ApiService *NotificationAPIService
 	owner string
@@ -1195,30 +1195,30 @@ type ApiNotifyReadRepoListRequest struct {
 }
 
 // If true, mark all notifications on this repo. Default value is false
-func (r ApiNotifyReadRepoListRequest) All(all string) ApiNotifyReadRepoListRequest {
+func (r NotificationAPINotifyReadRepoListRequest) All(all string) NotificationAPINotifyReadRepoListRequest {
 	r.all = &all
 	return r
 }
 
 // Mark notifications with the provided status types. Options are: unread, read and/or pinned. Defaults to unread.
-func (r ApiNotifyReadRepoListRequest) StatusTypes(statusTypes []string) ApiNotifyReadRepoListRequest {
+func (r NotificationAPINotifyReadRepoListRequest) StatusTypes(statusTypes []string) NotificationAPINotifyReadRepoListRequest {
 	r.statusTypes = &statusTypes
 	return r
 }
 
 // Status to mark notifications as. Defaults to read.
-func (r ApiNotifyReadRepoListRequest) ToStatus(toStatus string) ApiNotifyReadRepoListRequest {
+func (r NotificationAPINotifyReadRepoListRequest) ToStatus(toStatus string) NotificationAPINotifyReadRepoListRequest {
 	r.toStatus = &toStatus
 	return r
 }
 
 // Describes the last point that notifications were checked. Anything updated since this time will not be updated.
-func (r ApiNotifyReadRepoListRequest) LastReadAt(lastReadAt time.Time) ApiNotifyReadRepoListRequest {
+func (r NotificationAPINotifyReadRepoListRequest) LastReadAt(lastReadAt time.Time) NotificationAPINotifyReadRepoListRequest {
 	r.lastReadAt = &lastReadAt
 	return r
 }
 
-func (r ApiNotifyReadRepoListRequest) Execute() ([]NotificationThread, *http.Response, error) {
+func (r NotificationAPINotifyReadRepoListRequest) Execute() ([]NotificationThread, *http.Response, error) {
 	return r.ApiService.NotifyReadRepoListExecute(r)
 }
 
@@ -1228,10 +1228,10 @@ NotifyReadRepoList Mark notification threads as read, pinned or unread on a spec
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiNotifyReadRepoListRequest
+ @return NotificationAPINotifyReadRepoListRequest
 */
-func (a *NotificationAPIService) NotifyReadRepoList(ctx context.Context, owner string, repo string) ApiNotifyReadRepoListRequest {
-	return ApiNotifyReadRepoListRequest{
+func (a *NotificationAPIService) NotifyReadRepoList(ctx context.Context, owner string, repo string) NotificationAPINotifyReadRepoListRequest {
+	return NotificationAPINotifyReadRepoListRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -1241,7 +1241,7 @@ func (a *NotificationAPIService) NotifyReadRepoList(ctx context.Context, owner s
 
 // Execute executes the request
 //  @return []NotificationThread
-func (a *NotificationAPIService) NotifyReadRepoListExecute(r ApiNotifyReadRepoListRequest) ([]NotificationThread, *http.Response, error) {
+func (a *NotificationAPIService) NotifyReadRepoListExecute(r NotificationAPINotifyReadRepoListRequest) ([]NotificationThread, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1420,7 +1420,7 @@ func (a *NotificationAPIService) NotifyReadRepoListExecute(r ApiNotifyReadRepoLi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiNotifyReadThreadRequest struct {
+type NotificationAPINotifyReadThreadRequest struct {
 	ctx context.Context
 	ApiService *NotificationAPIService
 	id string
@@ -1428,12 +1428,12 @@ type ApiNotifyReadThreadRequest struct {
 }
 
 // Status to mark notifications as
-func (r ApiNotifyReadThreadRequest) ToStatus(toStatus string) ApiNotifyReadThreadRequest {
+func (r NotificationAPINotifyReadThreadRequest) ToStatus(toStatus string) NotificationAPINotifyReadThreadRequest {
 	r.toStatus = &toStatus
 	return r
 }
 
-func (r ApiNotifyReadThreadRequest) Execute() (*NotificationThread, *http.Response, error) {
+func (r NotificationAPINotifyReadThreadRequest) Execute() (*NotificationThread, *http.Response, error) {
 	return r.ApiService.NotifyReadThreadExecute(r)
 }
 
@@ -1442,10 +1442,10 @@ NotifyReadThread Mark notification thread as read by ID
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of notification thread
- @return ApiNotifyReadThreadRequest
+ @return NotificationAPINotifyReadThreadRequest
 */
-func (a *NotificationAPIService) NotifyReadThread(ctx context.Context, id string) ApiNotifyReadThreadRequest {
-	return ApiNotifyReadThreadRequest{
+func (a *NotificationAPIService) NotifyReadThread(ctx context.Context, id string) NotificationAPINotifyReadThreadRequest {
+	return NotificationAPINotifyReadThreadRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1454,7 +1454,7 @@ func (a *NotificationAPIService) NotifyReadThread(ctx context.Context, id string
 
 // Execute executes the request
 //  @return NotificationThread
-func (a *NotificationAPIService) NotifyReadThreadExecute(r ApiNotifyReadThreadRequest) (*NotificationThread, *http.Response, error) {
+func (a *NotificationAPIService) NotifyReadThreadExecute(r NotificationAPINotifyReadThreadRequest) (*NotificationThread, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}

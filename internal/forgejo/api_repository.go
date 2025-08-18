@@ -26,14 +26,14 @@ import (
 // RepositoryAPIService RepositoryAPI service
 type RepositoryAPIService service
 
-type ApiAcceptRepoTransferRequest struct {
+type RepositoryAPIAcceptRepoTransferRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiAcceptRepoTransferRequest) Execute() (*Repository, *http.Response, error) {
+func (r RepositoryAPIAcceptRepoTransferRequest) Execute() (*Repository, *http.Response, error) {
 	return r.ApiService.AcceptRepoTransferExecute(r)
 }
 
@@ -43,10 +43,10 @@ AcceptRepoTransfer Accept a repo transfer
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo to transfer
  @param repo name of the repo to transfer
- @return ApiAcceptRepoTransferRequest
+ @return RepositoryAPIAcceptRepoTransferRequest
 */
-func (a *RepositoryAPIService) AcceptRepoTransfer(ctx context.Context, owner string, repo string) ApiAcceptRepoTransferRequest {
-	return ApiAcceptRepoTransferRequest{
+func (a *RepositoryAPIService) AcceptRepoTransfer(ctx context.Context, owner string, repo string) RepositoryAPIAcceptRepoTransferRequest {
+	return RepositoryAPIAcceptRepoTransferRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -56,7 +56,7 @@ func (a *RepositoryAPIService) AcceptRepoTransfer(ctx context.Context, owner str
 
 // Execute executes the request
 //  @return Repository
-func (a *RepositoryAPIService) AcceptRepoTransferExecute(r ApiAcceptRepoTransferRequest) (*Repository, *http.Response, error) {
+func (a *RepositoryAPIService) AcceptRepoTransferExecute(r RepositoryAPIAcceptRepoTransferRequest) (*Repository, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -237,7 +237,7 @@ func (a *RepositoryAPIService) AcceptRepoTransferExecute(r ApiAcceptRepoTransfer
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiActionRunRequest struct {
+type RepositoryAPIActionRunRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -245,7 +245,7 @@ type ApiActionRunRequest struct {
 	runId int64
 }
 
-func (r ApiActionRunRequest) Execute() (*ActionRun, *http.Response, error) {
+func (r RepositoryAPIActionRunRequest) Execute() (*ActionRun, *http.Response, error) {
 	return r.ApiService.ActionRunExecute(r)
 }
 
@@ -256,10 +256,10 @@ ActionRun Get an action run
  @param owner owner of the repo
  @param repo name of the repo
  @param runId id of the action run
- @return ApiActionRunRequest
+ @return RepositoryAPIActionRunRequest
 */
-func (a *RepositoryAPIService) ActionRun(ctx context.Context, owner string, repo string, runId int64) ApiActionRunRequest {
-	return ApiActionRunRequest{
+func (a *RepositoryAPIService) ActionRun(ctx context.Context, owner string, repo string, runId int64) RepositoryAPIActionRunRequest {
+	return RepositoryAPIActionRunRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -270,7 +270,7 @@ func (a *RepositoryAPIService) ActionRun(ctx context.Context, owner string, repo
 
 // Execute executes the request
 //  @return ActionRun
-func (a *RepositoryAPIService) ActionRunExecute(r ApiActionRunRequest) (*ActionRun, *http.Response, error) {
+func (a *RepositoryAPIService) ActionRunExecute(r RepositoryAPIActionRunRequest) (*ActionRun, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -462,18 +462,18 @@ func (a *RepositoryAPIService) ActionRunExecute(r ApiActionRunRequest) (*ActionR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateCurrentUserRepoRequest struct {
+type RepositoryAPICreateCurrentUserRepoRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	body *CreateRepoOption
 }
 
-func (r ApiCreateCurrentUserRepoRequest) Body(body CreateRepoOption) ApiCreateCurrentUserRepoRequest {
+func (r RepositoryAPICreateCurrentUserRepoRequest) Body(body CreateRepoOption) RepositoryAPICreateCurrentUserRepoRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCreateCurrentUserRepoRequest) Execute() (*Repository, *http.Response, error) {
+func (r RepositoryAPICreateCurrentUserRepoRequest) Execute() (*Repository, *http.Response, error) {
 	return r.ApiService.CreateCurrentUserRepoExecute(r)
 }
 
@@ -481,10 +481,10 @@ func (r ApiCreateCurrentUserRepoRequest) Execute() (*Repository, *http.Response,
 CreateCurrentUserRepo Create a repository
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateCurrentUserRepoRequest
+ @return RepositoryAPICreateCurrentUserRepoRequest
 */
-func (a *RepositoryAPIService) CreateCurrentUserRepo(ctx context.Context) ApiCreateCurrentUserRepoRequest {
-	return ApiCreateCurrentUserRepoRequest{
+func (a *RepositoryAPIService) CreateCurrentUserRepo(ctx context.Context) RepositoryAPICreateCurrentUserRepoRequest {
+	return RepositoryAPICreateCurrentUserRepoRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -492,7 +492,7 @@ func (a *RepositoryAPIService) CreateCurrentUserRepo(ctx context.Context) ApiCre
 
 // Execute executes the request
 //  @return Repository
-func (a *RepositoryAPIService) CreateCurrentUserRepoExecute(r ApiCreateCurrentUserRepoRequest) (*Repository, *http.Response, error) {
+func (a *RepositoryAPIService) CreateCurrentUserRepoExecute(r RepositoryAPICreateCurrentUserRepoRequest) (*Repository, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -694,7 +694,7 @@ func (a *RepositoryAPIService) CreateCurrentUserRepoExecute(r ApiCreateCurrentUs
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateForkRequest struct {
+type RepositoryAPICreateForkRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -702,12 +702,12 @@ type ApiCreateForkRequest struct {
 	body *CreateForkOption
 }
 
-func (r ApiCreateForkRequest) Body(body CreateForkOption) ApiCreateForkRequest {
+func (r RepositoryAPICreateForkRequest) Body(body CreateForkOption) RepositoryAPICreateForkRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCreateForkRequest) Execute() (*Repository, *http.Response, error) {
+func (r RepositoryAPICreateForkRequest) Execute() (*Repository, *http.Response, error) {
 	return r.ApiService.CreateForkExecute(r)
 }
 
@@ -717,10 +717,10 @@ CreateFork Fork a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo to fork
  @param repo name of the repo to fork
- @return ApiCreateForkRequest
+ @return RepositoryAPICreateForkRequest
 */
-func (a *RepositoryAPIService) CreateFork(ctx context.Context, owner string, repo string) ApiCreateForkRequest {
-	return ApiCreateForkRequest{
+func (a *RepositoryAPIService) CreateFork(ctx context.Context, owner string, repo string) RepositoryAPICreateForkRequest {
+	return RepositoryAPICreateForkRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -730,7 +730,7 @@ func (a *RepositoryAPIService) CreateFork(ctx context.Context, owner string, rep
 
 // Execute executes the request
 //  @return Repository
-func (a *RepositoryAPIService) CreateForkExecute(r ApiCreateForkRequest) (*Repository, *http.Response, error) {
+func (a *RepositoryAPIService) CreateForkExecute(r RepositoryAPICreateForkRequest) (*Repository, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -923,7 +923,7 @@ func (a *RepositoryAPIService) CreateForkExecute(r ApiCreateForkRequest) (*Repos
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateRepoVariableRequest struct {
+type RepositoryAPICreateRepoVariableRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -932,12 +932,12 @@ type ApiCreateRepoVariableRequest struct {
 	body *CreateVariableOption
 }
 
-func (r ApiCreateRepoVariableRequest) Body(body CreateVariableOption) ApiCreateRepoVariableRequest {
+func (r RepositoryAPICreateRepoVariableRequest) Body(body CreateVariableOption) RepositoryAPICreateRepoVariableRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCreateRepoVariableRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPICreateRepoVariableRequest) Execute() (*http.Response, error) {
 	return r.ApiService.CreateRepoVariableExecute(r)
 }
 
@@ -948,10 +948,10 @@ CreateRepoVariable Create a repo-level variable
  @param owner name of the owner
  @param repo name of the repository
  @param variablename name of the variable
- @return ApiCreateRepoVariableRequest
+ @return RepositoryAPICreateRepoVariableRequest
 */
-func (a *RepositoryAPIService) CreateRepoVariable(ctx context.Context, owner string, repo string, variablename string) ApiCreateRepoVariableRequest {
-	return ApiCreateRepoVariableRequest{
+func (a *RepositoryAPIService) CreateRepoVariable(ctx context.Context, owner string, repo string, variablename string) RepositoryAPICreateRepoVariableRequest {
+	return RepositoryAPICreateRepoVariableRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -961,7 +961,7 @@ func (a *RepositoryAPIService) CreateRepoVariable(ctx context.Context, owner str
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) CreateRepoVariableExecute(r ApiCreateRepoVariableRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) CreateRepoVariableExecute(r RepositoryAPICreateRepoVariableRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1134,7 +1134,7 @@ func (a *RepositoryAPIService) CreateRepoVariableExecute(r ApiCreateRepoVariable
 	return localVarHTTPResponse, nil
 }
 
-type ApiDeleteRepoSecretRequest struct {
+type RepositoryAPIDeleteRepoSecretRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -1142,7 +1142,7 @@ type ApiDeleteRepoSecretRequest struct {
 	secretname string
 }
 
-func (r ApiDeleteRepoSecretRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIDeleteRepoSecretRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteRepoSecretExecute(r)
 }
 
@@ -1153,10 +1153,10 @@ DeleteRepoSecret Delete a secret in a repository
  @param owner owner of the repository
  @param repo name of the repository
  @param secretname name of the secret
- @return ApiDeleteRepoSecretRequest
+ @return RepositoryAPIDeleteRepoSecretRequest
 */
-func (a *RepositoryAPIService) DeleteRepoSecret(ctx context.Context, owner string, repo string, secretname string) ApiDeleteRepoSecretRequest {
-	return ApiDeleteRepoSecretRequest{
+func (a *RepositoryAPIService) DeleteRepoSecret(ctx context.Context, owner string, repo string, secretname string) RepositoryAPIDeleteRepoSecretRequest {
+	return RepositoryAPIDeleteRepoSecretRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -1166,7 +1166,7 @@ func (a *RepositoryAPIService) DeleteRepoSecret(ctx context.Context, owner strin
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) DeleteRepoSecretExecute(r ApiDeleteRepoSecretRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) DeleteRepoSecretExecute(r RepositoryAPIDeleteRepoSecretRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -1337,7 +1337,7 @@ func (a *RepositoryAPIService) DeleteRepoSecretExecute(r ApiDeleteRepoSecretRequ
 	return localVarHTTPResponse, nil
 }
 
-type ApiDeleteRepoVariableRequest struct {
+type RepositoryAPIDeleteRepoVariableRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -1345,7 +1345,7 @@ type ApiDeleteRepoVariableRequest struct {
 	variablename string
 }
 
-func (r ApiDeleteRepoVariableRequest) Execute() (*ActionVariable, *http.Response, error) {
+func (r RepositoryAPIDeleteRepoVariableRequest) Execute() (*ActionVariable, *http.Response, error) {
 	return r.ApiService.DeleteRepoVariableExecute(r)
 }
 
@@ -1356,10 +1356,10 @@ DeleteRepoVariable Delete a repo-level variable
  @param owner name of the owner
  @param repo name of the repository
  @param variablename name of the variable
- @return ApiDeleteRepoVariableRequest
+ @return RepositoryAPIDeleteRepoVariableRequest
 */
-func (a *RepositoryAPIService) DeleteRepoVariable(ctx context.Context, owner string, repo string, variablename string) ApiDeleteRepoVariableRequest {
-	return ApiDeleteRepoVariableRequest{
+func (a *RepositoryAPIService) DeleteRepoVariable(ctx context.Context, owner string, repo string, variablename string) RepositoryAPIDeleteRepoVariableRequest {
+	return RepositoryAPIDeleteRepoVariableRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -1370,7 +1370,7 @@ func (a *RepositoryAPIService) DeleteRepoVariable(ctx context.Context, owner str
 
 // Execute executes the request
 //  @return ActionVariable
-func (a *RepositoryAPIService) DeleteRepoVariableExecute(r ApiDeleteRepoVariableRequest) (*ActionVariable, *http.Response, error) {
+func (a *RepositoryAPIService) DeleteRepoVariableExecute(r RepositoryAPIDeleteRepoVariableRequest) (*ActionVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -1551,7 +1551,7 @@ func (a *RepositoryAPIService) DeleteRepoVariableExecute(r ApiDeleteRepoVariable
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDispatchWorkflowRequest struct {
+type RepositoryAPIDispatchWorkflowRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -1560,12 +1560,12 @@ type ApiDispatchWorkflowRequest struct {
 	body *DispatchWorkflowOption
 }
 
-func (r ApiDispatchWorkflowRequest) Body(body DispatchWorkflowOption) ApiDispatchWorkflowRequest {
+func (r RepositoryAPIDispatchWorkflowRequest) Body(body DispatchWorkflowOption) RepositoryAPIDispatchWorkflowRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiDispatchWorkflowRequest) Execute() (*DispatchWorkflowRun, *http.Response, error) {
+func (r RepositoryAPIDispatchWorkflowRequest) Execute() (*DispatchWorkflowRun, *http.Response, error) {
 	return r.ApiService.DispatchWorkflowExecute(r)
 }
 
@@ -1576,10 +1576,10 @@ DispatchWorkflow Dispatches a workflow
  @param owner owner of the repo
  @param repo name of the repo
  @param workflowname name of the workflow
- @return ApiDispatchWorkflowRequest
+ @return RepositoryAPIDispatchWorkflowRequest
 */
-func (a *RepositoryAPIService) DispatchWorkflow(ctx context.Context, owner string, repo string, workflowname string) ApiDispatchWorkflowRequest {
-	return ApiDispatchWorkflowRequest{
+func (a *RepositoryAPIService) DispatchWorkflow(ctx context.Context, owner string, repo string, workflowname string) RepositoryAPIDispatchWorkflowRequest {
+	return RepositoryAPIDispatchWorkflowRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -1590,7 +1590,7 @@ func (a *RepositoryAPIService) DispatchWorkflow(ctx context.Context, owner strin
 
 // Execute executes the request
 //  @return DispatchWorkflowRun
-func (a *RepositoryAPIService) DispatchWorkflowExecute(r ApiDispatchWorkflowRequest) (*DispatchWorkflowRun, *http.Response, error) {
+func (a *RepositoryAPIService) DispatchWorkflowExecute(r RepositoryAPIDispatchWorkflowRequest) (*DispatchWorkflowRun, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1762,7 +1762,7 @@ func (a *RepositoryAPIService) DispatchWorkflowExecute(r ApiDispatchWorkflowRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGenerateRepoRequest struct {
+type RepositoryAPIGenerateRepoRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	templateOwner string
@@ -1770,12 +1770,12 @@ type ApiGenerateRepoRequest struct {
 	body *GenerateRepoOption
 }
 
-func (r ApiGenerateRepoRequest) Body(body GenerateRepoOption) ApiGenerateRepoRequest {
+func (r RepositoryAPIGenerateRepoRequest) Body(body GenerateRepoOption) RepositoryAPIGenerateRepoRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiGenerateRepoRequest) Execute() (*Repository, *http.Response, error) {
+func (r RepositoryAPIGenerateRepoRequest) Execute() (*Repository, *http.Response, error) {
 	return r.ApiService.GenerateRepoExecute(r)
 }
 
@@ -1785,10 +1785,10 @@ GenerateRepo Create a repository using a template
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param templateOwner name of the template repository owner
  @param templateRepo name of the template repository
- @return ApiGenerateRepoRequest
+ @return RepositoryAPIGenerateRepoRequest
 */
-func (a *RepositoryAPIService) GenerateRepo(ctx context.Context, templateOwner string, templateRepo string) ApiGenerateRepoRequest {
-	return ApiGenerateRepoRequest{
+func (a *RepositoryAPIService) GenerateRepo(ctx context.Context, templateOwner string, templateRepo string) RepositoryAPIGenerateRepoRequest {
+	return RepositoryAPIGenerateRepoRequest{
 		ApiService: a,
 		ctx: ctx,
 		templateOwner: templateOwner,
@@ -1798,7 +1798,7 @@ func (a *RepositoryAPIService) GenerateRepo(ctx context.Context, templateOwner s
 
 // Execute executes the request
 //  @return Repository
-func (a *RepositoryAPIService) GenerateRepoExecute(r ApiGenerateRepoRequest) (*Repository, *http.Response, error) {
+func (a *RepositoryAPIService) GenerateRepoExecute(r RepositoryAPIGenerateRepoRequest) (*Repository, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1991,7 +1991,7 @@ func (a *RepositoryAPIService) GenerateRepoExecute(r ApiGenerateRepoRequest) (*R
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetAnnotatedTagRequest struct {
+type RepositoryAPIGetAnnotatedTagRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -1999,7 +1999,7 @@ type ApiGetAnnotatedTagRequest struct {
 	sha string
 }
 
-func (r ApiGetAnnotatedTagRequest) Execute() (*AnnotatedTag, *http.Response, error) {
+func (r RepositoryAPIGetAnnotatedTagRequest) Execute() (*AnnotatedTag, *http.Response, error) {
 	return r.ApiService.GetAnnotatedTagExecute(r)
 }
 
@@ -2010,10 +2010,10 @@ GetAnnotatedTag Gets the tag object of an annotated tag (not lightweight tags)
  @param owner owner of the repo
  @param repo name of the repo
  @param sha sha of the tag. The Git tags API only supports annotated tag objects, not lightweight tags.
- @return ApiGetAnnotatedTagRequest
+ @return RepositoryAPIGetAnnotatedTagRequest
 */
-func (a *RepositoryAPIService) GetAnnotatedTag(ctx context.Context, owner string, repo string, sha string) ApiGetAnnotatedTagRequest {
-	return ApiGetAnnotatedTagRequest{
+func (a *RepositoryAPIService) GetAnnotatedTag(ctx context.Context, owner string, repo string, sha string) RepositoryAPIGetAnnotatedTagRequest {
+	return RepositoryAPIGetAnnotatedTagRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -2024,7 +2024,7 @@ func (a *RepositoryAPIService) GetAnnotatedTag(ctx context.Context, owner string
 
 // Execute executes the request
 //  @return AnnotatedTag
-func (a *RepositoryAPIService) GetAnnotatedTagExecute(r ApiGetAnnotatedTagRequest) (*AnnotatedTag, *http.Response, error) {
+func (a *RepositoryAPIService) GetAnnotatedTagExecute(r RepositoryAPIGetAnnotatedTagRequest) (*AnnotatedTag, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2205,7 +2205,7 @@ func (a *RepositoryAPIService) GetAnnotatedTagExecute(r ApiGetAnnotatedTagReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetBlobRequest struct {
+type RepositoryAPIGetBlobRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -2213,7 +2213,7 @@ type ApiGetBlobRequest struct {
 	sha string
 }
 
-func (r ApiGetBlobRequest) Execute() (*GitBlob, *http.Response, error) {
+func (r RepositoryAPIGetBlobRequest) Execute() (*GitBlob, *http.Response, error) {
 	return r.ApiService.GetBlobExecute(r)
 }
 
@@ -2224,10 +2224,10 @@ GetBlob Gets the blob of a repository.
  @param owner owner of the repo
  @param repo name of the repo
  @param sha sha of the blob to retrieve
- @return ApiGetBlobRequest
+ @return RepositoryAPIGetBlobRequest
 */
-func (a *RepositoryAPIService) GetBlob(ctx context.Context, owner string, repo string, sha string) ApiGetBlobRequest {
-	return ApiGetBlobRequest{
+func (a *RepositoryAPIService) GetBlob(ctx context.Context, owner string, repo string, sha string) RepositoryAPIGetBlobRequest {
+	return RepositoryAPIGetBlobRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -2238,7 +2238,7 @@ func (a *RepositoryAPIService) GetBlob(ctx context.Context, owner string, repo s
 
 // Execute executes the request
 //  @return GitBlob
-func (a *RepositoryAPIService) GetBlobExecute(r ApiGetBlobRequest) (*GitBlob, *http.Response, error) {
+func (a *RepositoryAPIService) GetBlobExecute(r RepositoryAPIGetBlobRequest) (*GitBlob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2419,7 +2419,7 @@ func (a *RepositoryAPIService) GetBlobExecute(r ApiGetBlobRequest) (*GitBlob, *h
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetBlobsRequest struct {
+type RepositoryAPIGetBlobsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -2428,12 +2428,12 @@ type ApiGetBlobsRequest struct {
 }
 
 // a comma separated list of blob-sha (mind the overall URL-length limit of ~2,083 chars)
-func (r ApiGetBlobsRequest) Shas(shas string) ApiGetBlobsRequest {
+func (r RepositoryAPIGetBlobsRequest) Shas(shas string) RepositoryAPIGetBlobsRequest {
 	r.shas = &shas
 	return r
 }
 
-func (r ApiGetBlobsRequest) Execute() ([]GitBlob, *http.Response, error) {
+func (r RepositoryAPIGetBlobsRequest) Execute() ([]GitBlob, *http.Response, error) {
 	return r.ApiService.GetBlobsExecute(r)
 }
 
@@ -2443,10 +2443,10 @@ GetBlobs Gets multiplbe blobs of a repository.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiGetBlobsRequest
+ @return RepositoryAPIGetBlobsRequest
 */
-func (a *RepositoryAPIService) GetBlobs(ctx context.Context, owner string, repo string) ApiGetBlobsRequest {
-	return ApiGetBlobsRequest{
+func (a *RepositoryAPIService) GetBlobs(ctx context.Context, owner string, repo string) RepositoryAPIGetBlobsRequest {
+	return RepositoryAPIGetBlobsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -2456,7 +2456,7 @@ func (a *RepositoryAPIService) GetBlobs(ctx context.Context, owner string, repo 
 
 // Execute executes the request
 //  @return []GitBlob
-func (a *RepositoryAPIService) GetBlobsExecute(r ApiGetBlobsRequest) ([]GitBlob, *http.Response, error) {
+func (a *RepositoryAPIService) GetBlobsExecute(r RepositoryAPIGetBlobsRequest) ([]GitBlob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2629,7 +2629,7 @@ func (a *RepositoryAPIService) GetBlobsExecute(r ApiGetBlobsRequest) ([]GitBlob,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetRepoVariableRequest struct {
+type RepositoryAPIGetRepoVariableRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -2637,7 +2637,7 @@ type ApiGetRepoVariableRequest struct {
 	variablename string
 }
 
-func (r ApiGetRepoVariableRequest) Execute() (*ActionVariable, *http.Response, error) {
+func (r RepositoryAPIGetRepoVariableRequest) Execute() (*ActionVariable, *http.Response, error) {
 	return r.ApiService.GetRepoVariableExecute(r)
 }
 
@@ -2648,10 +2648,10 @@ GetRepoVariable Get a repo-level variable
  @param owner name of the owner
  @param repo name of the repository
  @param variablename name of the variable
- @return ApiGetRepoVariableRequest
+ @return RepositoryAPIGetRepoVariableRequest
 */
-func (a *RepositoryAPIService) GetRepoVariable(ctx context.Context, owner string, repo string, variablename string) ApiGetRepoVariableRequest {
-	return ApiGetRepoVariableRequest{
+func (a *RepositoryAPIService) GetRepoVariable(ctx context.Context, owner string, repo string, variablename string) RepositoryAPIGetRepoVariableRequest {
+	return RepositoryAPIGetRepoVariableRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -2662,7 +2662,7 @@ func (a *RepositoryAPIService) GetRepoVariable(ctx context.Context, owner string
 
 // Execute executes the request
 //  @return ActionVariable
-func (a *RepositoryAPIService) GetRepoVariableExecute(r ApiGetRepoVariableRequest) (*ActionVariable, *http.Response, error) {
+func (a *RepositoryAPIService) GetRepoVariableExecute(r RepositoryAPIGetRepoVariableRequest) (*ActionVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2843,7 +2843,7 @@ func (a *RepositoryAPIService) GetRepoVariableExecute(r ApiGetRepoVariableReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetRepoVariablesListRequest struct {
+type RepositoryAPIGetRepoVariablesListRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -2853,18 +2853,18 @@ type ApiGetRepoVariablesListRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiGetRepoVariablesListRequest) Page(page int32) ApiGetRepoVariablesListRequest {
+func (r RepositoryAPIGetRepoVariablesListRequest) Page(page int32) RepositoryAPIGetRepoVariablesListRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiGetRepoVariablesListRequest) Limit(limit int32) ApiGetRepoVariablesListRequest {
+func (r RepositoryAPIGetRepoVariablesListRequest) Limit(limit int32) RepositoryAPIGetRepoVariablesListRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiGetRepoVariablesListRequest) Execute() ([]ActionVariable, *http.Response, error) {
+func (r RepositoryAPIGetRepoVariablesListRequest) Execute() ([]ActionVariable, *http.Response, error) {
 	return r.ApiService.GetRepoVariablesListExecute(r)
 }
 
@@ -2874,10 +2874,10 @@ GetRepoVariablesList Get repo-level variables list
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner name of the owner
  @param repo name of the repository
- @return ApiGetRepoVariablesListRequest
+ @return RepositoryAPIGetRepoVariablesListRequest
 */
-func (a *RepositoryAPIService) GetRepoVariablesList(ctx context.Context, owner string, repo string) ApiGetRepoVariablesListRequest {
-	return ApiGetRepoVariablesListRequest{
+func (a *RepositoryAPIService) GetRepoVariablesList(ctx context.Context, owner string, repo string) RepositoryAPIGetRepoVariablesListRequest {
+	return RepositoryAPIGetRepoVariablesListRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -2887,7 +2887,7 @@ func (a *RepositoryAPIService) GetRepoVariablesList(ctx context.Context, owner s
 
 // Execute executes the request
 //  @return []ActionVariable
-func (a *RepositoryAPIService) GetRepoVariablesListExecute(r ApiGetRepoVariablesListRequest) ([]ActionVariable, *http.Response, error) {
+func (a *RepositoryAPIService) GetRepoVariablesListExecute(r RepositoryAPIGetRepoVariablesListRequest) ([]ActionVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3073,7 +3073,7 @@ func (a *RepositoryAPIService) GetRepoVariablesListExecute(r ApiGetRepoVariables
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetTreeRequest struct {
+type RepositoryAPIGetTreeRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -3085,24 +3085,24 @@ type ApiGetTreeRequest struct {
 }
 
 // show all directories and files
-func (r ApiGetTreeRequest) Recursive(recursive bool) ApiGetTreeRequest {
+func (r RepositoryAPIGetTreeRequest) Recursive(recursive bool) RepositoryAPIGetTreeRequest {
 	r.recursive = &recursive
 	return r
 }
 
 // page number; the &#39;truncated&#39; field in the response will be true if there are still more items after this page, false if the last page
-func (r ApiGetTreeRequest) Page(page int32) ApiGetTreeRequest {
+func (r RepositoryAPIGetTreeRequest) Page(page int32) RepositoryAPIGetTreeRequest {
 	r.page = &page
 	return r
 }
 
 // number of items per page
-func (r ApiGetTreeRequest) PerPage(perPage int32) ApiGetTreeRequest {
+func (r RepositoryAPIGetTreeRequest) PerPage(perPage int32) RepositoryAPIGetTreeRequest {
 	r.perPage = &perPage
 	return r
 }
 
-func (r ApiGetTreeRequest) Execute() (*GitTreeResponse, *http.Response, error) {
+func (r RepositoryAPIGetTreeRequest) Execute() (*GitTreeResponse, *http.Response, error) {
 	return r.ApiService.GetTreeExecute(r)
 }
 
@@ -3113,10 +3113,10 @@ GetTree Gets the tree of a repository.
  @param owner owner of the repo
  @param repo name of the repo
  @param sha sha of the commit
- @return ApiGetTreeRequest
+ @return RepositoryAPIGetTreeRequest
 */
-func (a *RepositoryAPIService) GetTree(ctx context.Context, owner string, repo string, sha string) ApiGetTreeRequest {
-	return ApiGetTreeRequest{
+func (a *RepositoryAPIService) GetTree(ctx context.Context, owner string, repo string, sha string) RepositoryAPIGetTreeRequest {
+	return RepositoryAPIGetTreeRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -3127,7 +3127,7 @@ func (a *RepositoryAPIService) GetTree(ctx context.Context, owner string, repo s
 
 // Execute executes the request
 //  @return GitTreeResponse
-func (a *RepositoryAPIService) GetTreeExecute(r ApiGetTreeRequest) (*GitTreeResponse, *http.Response, error) {
+func (a *RepositoryAPIService) GetTreeExecute(r RepositoryAPIGetTreeRequest) (*GitTreeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3317,7 +3317,7 @@ func (a *RepositoryAPIService) GetTreeExecute(r ApiGetTreeRequest) (*GitTreeResp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListActionRunsRequest struct {
+type RepositoryAPIListActionRunsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -3331,42 +3331,42 @@ type ApiListActionRunsRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiListActionRunsRequest) Page(page int32) ApiListActionRunsRequest {
+func (r RepositoryAPIListActionRunsRequest) Page(page int32) RepositoryAPIListActionRunsRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results, default maximum page size is 50
-func (r ApiListActionRunsRequest) Limit(limit int32) ApiListActionRunsRequest {
+func (r RepositoryAPIListActionRunsRequest) Limit(limit int32) RepositoryAPIListActionRunsRequest {
 	r.limit = &limit
 	return r
 }
 
 // Returns workflow run triggered by the specified events. For example, &#x60;push&#x60;, &#x60;pull_request&#x60; or &#x60;workflow_dispatch&#x60;.
-func (r ApiListActionRunsRequest) Event(event []string) ApiListActionRunsRequest {
+func (r RepositoryAPIListActionRunsRequest) Event(event []string) RepositoryAPIListActionRunsRequest {
 	r.event = &event
 	return r
 }
 
 // Returns workflow runs with the check run status or conclusion that is specified. For example, a conclusion can be success or a status can be in_progress. Only Forgejo Actions can set a status of waiting, pending, or requested. 
-func (r ApiListActionRunsRequest) Status(status []string) ApiListActionRunsRequest {
+func (r RepositoryAPIListActionRunsRequest) Status(status []string) RepositoryAPIListActionRunsRequest {
 	r.status = &status
 	return r
 }
 
 // Returns the workflow run associated with the run number. 
-func (r ApiListActionRunsRequest) RunNumber(runNumber int64) ApiListActionRunsRequest {
+func (r RepositoryAPIListActionRunsRequest) RunNumber(runNumber int64) RepositoryAPIListActionRunsRequest {
 	r.runNumber = &runNumber
 	return r
 }
 
 // Only returns workflow runs that are associated with the specified head_sha.
-func (r ApiListActionRunsRequest) HeadSha(headSha string) ApiListActionRunsRequest {
+func (r RepositoryAPIListActionRunsRequest) HeadSha(headSha string) RepositoryAPIListActionRunsRequest {
 	r.headSha = &headSha
 	return r
 }
 
-func (r ApiListActionRunsRequest) Execute() (*ListActionRunResponse, *http.Response, error) {
+func (r RepositoryAPIListActionRunsRequest) Execute() (*ListActionRunResponse, *http.Response, error) {
 	return r.ApiService.ListActionRunsExecute(r)
 }
 
@@ -3376,10 +3376,10 @@ ListActionRuns List a repository's action runs
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiListActionRunsRequest
+ @return RepositoryAPIListActionRunsRequest
 */
-func (a *RepositoryAPIService) ListActionRuns(ctx context.Context, owner string, repo string) ApiListActionRunsRequest {
-	return ApiListActionRunsRequest{
+func (a *RepositoryAPIService) ListActionRuns(ctx context.Context, owner string, repo string) RepositoryAPIListActionRunsRequest {
+	return RepositoryAPIListActionRunsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -3389,7 +3389,7 @@ func (a *RepositoryAPIService) ListActionRuns(ctx context.Context, owner string,
 
 // Execute executes the request
 //  @return ListActionRunResponse
-func (a *RepositoryAPIService) ListActionRunsExecute(r ApiListActionRunsRequest) (*ListActionRunResponse, *http.Response, error) {
+func (a *RepositoryAPIService) ListActionRunsExecute(r RepositoryAPIListActionRunsRequest) (*ListActionRunResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3587,7 +3587,7 @@ func (a *RepositoryAPIService) ListActionRunsExecute(r ApiListActionRunsRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListActionTasksRequest struct {
+type RepositoryAPIListActionTasksRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -3597,18 +3597,18 @@ type ApiListActionTasksRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiListActionTasksRequest) Page(page int32) ApiListActionTasksRequest {
+func (r RepositoryAPIListActionTasksRequest) Page(page int32) RepositoryAPIListActionTasksRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results, default maximum page size is 50
-func (r ApiListActionTasksRequest) Limit(limit int32) ApiListActionTasksRequest {
+func (r RepositoryAPIListActionTasksRequest) Limit(limit int32) RepositoryAPIListActionTasksRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiListActionTasksRequest) Execute() (*ActionTaskResponse, *http.Response, error) {
+func (r RepositoryAPIListActionTasksRequest) Execute() (*ActionTaskResponse, *http.Response, error) {
 	return r.ApiService.ListActionTasksExecute(r)
 }
 
@@ -3618,10 +3618,10 @@ ListActionTasks List a repository's action tasks
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiListActionTasksRequest
+ @return RepositoryAPIListActionTasksRequest
 */
-func (a *RepositoryAPIService) ListActionTasks(ctx context.Context, owner string, repo string) ApiListActionTasksRequest {
-	return ApiListActionTasksRequest{
+func (a *RepositoryAPIService) ListActionTasks(ctx context.Context, owner string, repo string) RepositoryAPIListActionTasksRequest {
+	return RepositoryAPIListActionTasksRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -3631,7 +3631,7 @@ func (a *RepositoryAPIService) ListActionTasks(ctx context.Context, owner string
 
 // Execute executes the request
 //  @return ActionTaskResponse
-func (a *RepositoryAPIService) ListActionTasksExecute(r ApiListActionTasksRequest) (*ActionTaskResponse, *http.Response, error) {
+func (a *RepositoryAPIService) ListActionTasksExecute(r RepositoryAPIListActionTasksRequest) (*ActionTaskResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3839,7 +3839,7 @@ func (a *RepositoryAPIService) ListActionTasksExecute(r ApiListActionTasksReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListForksRequest struct {
+type RepositoryAPIListForksRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -3849,18 +3849,18 @@ type ApiListForksRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiListForksRequest) Page(page int32) ApiListForksRequest {
+func (r RepositoryAPIListForksRequest) Page(page int32) RepositoryAPIListForksRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiListForksRequest) Limit(limit int32) ApiListForksRequest {
+func (r RepositoryAPIListForksRequest) Limit(limit int32) RepositoryAPIListForksRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiListForksRequest) Execute() ([]Repository, *http.Response, error) {
+func (r RepositoryAPIListForksRequest) Execute() ([]Repository, *http.Response, error) {
 	return r.ApiService.ListForksExecute(r)
 }
 
@@ -3870,10 +3870,10 @@ ListForks List a repository's forks
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiListForksRequest
+ @return RepositoryAPIListForksRequest
 */
-func (a *RepositoryAPIService) ListForks(ctx context.Context, owner string, repo string) ApiListForksRequest {
-	return ApiListForksRequest{
+func (a *RepositoryAPIService) ListForks(ctx context.Context, owner string, repo string) RepositoryAPIListForksRequest {
+	return RepositoryAPIListForksRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -3883,7 +3883,7 @@ func (a *RepositoryAPIService) ListForks(ctx context.Context, owner string, repo
 
 // Execute executes the request
 //  @return []Repository
-func (a *RepositoryAPIService) ListForksExecute(r ApiListForksRequest) ([]Repository, *http.Response, error) {
+func (a *RepositoryAPIService) ListForksExecute(r RepositoryAPIListForksRequest) ([]Repository, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -4058,14 +4058,14 @@ func (a *RepositoryAPIService) ListForksExecute(r ApiListForksRequest) ([]Reposi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRejectRepoTransferRequest struct {
+type RepositoryAPIRejectRepoTransferRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRejectRepoTransferRequest) Execute() (*Repository, *http.Response, error) {
+func (r RepositoryAPIRejectRepoTransferRequest) Execute() (*Repository, *http.Response, error) {
 	return r.ApiService.RejectRepoTransferExecute(r)
 }
 
@@ -4075,10 +4075,10 @@ RejectRepoTransfer Reject a repo transfer
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo to transfer
  @param repo name of the repo to transfer
- @return ApiRejectRepoTransferRequest
+ @return RepositoryAPIRejectRepoTransferRequest
 */
-func (a *RepositoryAPIService) RejectRepoTransfer(ctx context.Context, owner string, repo string) ApiRejectRepoTransferRequest {
-	return ApiRejectRepoTransferRequest{
+func (a *RepositoryAPIService) RejectRepoTransfer(ctx context.Context, owner string, repo string) RepositoryAPIRejectRepoTransferRequest {
+	return RepositoryAPIRejectRepoTransferRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -4088,7 +4088,7 @@ func (a *RepositoryAPIService) RejectRepoTransfer(ctx context.Context, owner str
 
 // Execute executes the request
 //  @return Repository
-func (a *RepositoryAPIService) RejectRepoTransferExecute(r ApiRejectRepoTransferRequest) (*Repository, *http.Response, error) {
+func (a *RepositoryAPIService) RejectRepoTransferExecute(r RepositoryAPIRejectRepoTransferRequest) (*Repository, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4268,7 +4268,7 @@ func (a *RepositoryAPIService) RejectRepoTransferExecute(r ApiRejectRepoTransfer
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoAddCollaboratorRequest struct {
+type RepositoryAPIRepoAddCollaboratorRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -4277,12 +4277,12 @@ type ApiRepoAddCollaboratorRequest struct {
 	body *AddCollaboratorOption
 }
 
-func (r ApiRepoAddCollaboratorRequest) Body(body AddCollaboratorOption) ApiRepoAddCollaboratorRequest {
+func (r RepositoryAPIRepoAddCollaboratorRequest) Body(body AddCollaboratorOption) RepositoryAPIRepoAddCollaboratorRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoAddCollaboratorRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoAddCollaboratorRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoAddCollaboratorExecute(r)
 }
 
@@ -4293,10 +4293,10 @@ RepoAddCollaborator Add a collaborator to a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param collaborator username of the collaborator to add
- @return ApiRepoAddCollaboratorRequest
+ @return RepositoryAPIRepoAddCollaboratorRequest
 */
-func (a *RepositoryAPIService) RepoAddCollaborator(ctx context.Context, owner string, repo string, collaborator string) ApiRepoAddCollaboratorRequest {
-	return ApiRepoAddCollaboratorRequest{
+func (a *RepositoryAPIService) RepoAddCollaborator(ctx context.Context, owner string, repo string, collaborator string) RepositoryAPIRepoAddCollaboratorRequest {
+	return RepositoryAPIRepoAddCollaboratorRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -4306,7 +4306,7 @@ func (a *RepositoryAPIService) RepoAddCollaborator(ctx context.Context, owner st
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoAddCollaboratorExecute(r ApiRepoAddCollaboratorRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoAddCollaboratorExecute(r RepositoryAPIRepoAddCollaboratorRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -4490,7 +4490,7 @@ func (a *RepositoryAPIService) RepoAddCollaboratorExecute(r ApiRepoAddCollaborat
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoAddFlagRequest struct {
+type RepositoryAPIRepoAddFlagRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -4498,7 +4498,7 @@ type ApiRepoAddFlagRequest struct {
 	flag string
 }
 
-func (r ApiRepoAddFlagRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoAddFlagRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoAddFlagExecute(r)
 }
 
@@ -4509,10 +4509,10 @@ RepoAddFlag Add a flag to a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param flag name of the flag
- @return ApiRepoAddFlagRequest
+ @return RepositoryAPIRepoAddFlagRequest
 */
-func (a *RepositoryAPIService) RepoAddFlag(ctx context.Context, owner string, repo string, flag string) ApiRepoAddFlagRequest {
-	return ApiRepoAddFlagRequest{
+func (a *RepositoryAPIService) RepoAddFlag(ctx context.Context, owner string, repo string, flag string) RepositoryAPIRepoAddFlagRequest {
+	return RepositoryAPIRepoAddFlagRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -4522,7 +4522,7 @@ func (a *RepositoryAPIService) RepoAddFlag(ctx context.Context, owner string, re
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoAddFlagExecute(r ApiRepoAddFlagRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoAddFlagExecute(r RepositoryAPIRepoAddFlagRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -4693,7 +4693,7 @@ func (a *RepositoryAPIService) RepoAddFlagExecute(r ApiRepoAddFlagRequest) (*htt
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoAddPushMirrorRequest struct {
+type RepositoryAPIRepoAddPushMirrorRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -4701,12 +4701,12 @@ type ApiRepoAddPushMirrorRequest struct {
 	body *CreatePushMirrorOption
 }
 
-func (r ApiRepoAddPushMirrorRequest) Body(body CreatePushMirrorOption) ApiRepoAddPushMirrorRequest {
+func (r RepositoryAPIRepoAddPushMirrorRequest) Body(body CreatePushMirrorOption) RepositoryAPIRepoAddPushMirrorRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoAddPushMirrorRequest) Execute() (*PushMirror, *http.Response, error) {
+func (r RepositoryAPIRepoAddPushMirrorRequest) Execute() (*PushMirror, *http.Response, error) {
 	return r.ApiService.RepoAddPushMirrorExecute(r)
 }
 
@@ -4716,10 +4716,10 @@ RepoAddPushMirror add a push mirror to the repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoAddPushMirrorRequest
+ @return RepositoryAPIRepoAddPushMirrorRequest
 */
-func (a *RepositoryAPIService) RepoAddPushMirror(ctx context.Context, owner string, repo string) ApiRepoAddPushMirrorRequest {
-	return ApiRepoAddPushMirrorRequest{
+func (a *RepositoryAPIService) RepoAddPushMirror(ctx context.Context, owner string, repo string) RepositoryAPIRepoAddPushMirrorRequest {
+	return RepositoryAPIRepoAddPushMirrorRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -4729,7 +4729,7 @@ func (a *RepositoryAPIService) RepoAddPushMirror(ctx context.Context, owner stri
 
 // Execute executes the request
 //  @return PushMirror
-func (a *RepositoryAPIService) RepoAddPushMirrorExecute(r ApiRepoAddPushMirrorRequest) (*PushMirror, *http.Response, error) {
+func (a *RepositoryAPIService) RepoAddPushMirrorExecute(r RepositoryAPIRepoAddPushMirrorRequest) (*PushMirror, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4923,7 +4923,7 @@ func (a *RepositoryAPIService) RepoAddPushMirrorExecute(r ApiRepoAddPushMirrorRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoAddTeamRequest struct {
+type RepositoryAPIRepoAddTeamRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -4931,7 +4931,7 @@ type ApiRepoAddTeamRequest struct {
 	team string
 }
 
-func (r ApiRepoAddTeamRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoAddTeamRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoAddTeamExecute(r)
 }
 
@@ -4942,10 +4942,10 @@ RepoAddTeam Add a team to a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param team team name
- @return ApiRepoAddTeamRequest
+ @return RepositoryAPIRepoAddTeamRequest
 */
-func (a *RepositoryAPIService) RepoAddTeam(ctx context.Context, owner string, repo string, team string) ApiRepoAddTeamRequest {
-	return ApiRepoAddTeamRequest{
+func (a *RepositoryAPIService) RepoAddTeam(ctx context.Context, owner string, repo string, team string) RepositoryAPIRepoAddTeamRequest {
+	return RepositoryAPIRepoAddTeamRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -4955,7 +4955,7 @@ func (a *RepositoryAPIService) RepoAddTeam(ctx context.Context, owner string, re
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoAddTeamExecute(r ApiRepoAddTeamRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoAddTeamExecute(r RepositoryAPIRepoAddTeamRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -5137,7 +5137,7 @@ func (a *RepositoryAPIService) RepoAddTeamExecute(r ApiRepoAddTeamRequest) (*htt
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoAddTopicRequest struct {
+type RepositoryAPIRepoAddTopicRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -5145,7 +5145,7 @@ type ApiRepoAddTopicRequest struct {
 	topic string
 }
 
-func (r ApiRepoAddTopicRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoAddTopicRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoAddTopicExecute(r)
 }
 
@@ -5156,10 +5156,10 @@ RepoAddTopic Add a topic to a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param topic name of the topic to add
- @return ApiRepoAddTopicRequest
+ @return RepositoryAPIRepoAddTopicRequest
 */
-func (a *RepositoryAPIService) RepoAddTopic(ctx context.Context, owner string, repo string, topic string) ApiRepoAddTopicRequest {
-	return ApiRepoAddTopicRequest{
+func (a *RepositoryAPIService) RepoAddTopic(ctx context.Context, owner string, repo string, topic string) RepositoryAPIRepoAddTopicRequest {
+	return RepositoryAPIRepoAddTopicRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -5169,7 +5169,7 @@ func (a *RepositoryAPIService) RepoAddTopic(ctx context.Context, owner string, r
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoAddTopicExecute(r ApiRepoAddTopicRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoAddTopicExecute(r RepositoryAPIRepoAddTopicRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -5340,7 +5340,7 @@ func (a *RepositoryAPIService) RepoAddTopicExecute(r ApiRepoAddTopicRequest) (*h
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoApplyDiffPatchRequest struct {
+type RepositoryAPIRepoApplyDiffPatchRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -5348,12 +5348,12 @@ type ApiRepoApplyDiffPatchRequest struct {
 	body *UpdateFileOptions
 }
 
-func (r ApiRepoApplyDiffPatchRequest) Body(body UpdateFileOptions) ApiRepoApplyDiffPatchRequest {
+func (r RepositoryAPIRepoApplyDiffPatchRequest) Body(body UpdateFileOptions) RepositoryAPIRepoApplyDiffPatchRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoApplyDiffPatchRequest) Execute() (*FileResponse, *http.Response, error) {
+func (r RepositoryAPIRepoApplyDiffPatchRequest) Execute() (*FileResponse, *http.Response, error) {
 	return r.ApiService.RepoApplyDiffPatchExecute(r)
 }
 
@@ -5363,10 +5363,10 @@ RepoApplyDiffPatch Apply diff patch to repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoApplyDiffPatchRequest
+ @return RepositoryAPIRepoApplyDiffPatchRequest
 */
-func (a *RepositoryAPIService) RepoApplyDiffPatch(ctx context.Context, owner string, repo string) ApiRepoApplyDiffPatchRequest {
-	return ApiRepoApplyDiffPatchRequest{
+func (a *RepositoryAPIService) RepoApplyDiffPatch(ctx context.Context, owner string, repo string) RepositoryAPIRepoApplyDiffPatchRequest {
+	return RepositoryAPIRepoApplyDiffPatchRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -5376,7 +5376,7 @@ func (a *RepositoryAPIService) RepoApplyDiffPatch(ctx context.Context, owner str
 
 // Execute executes the request
 //  @return FileResponse
-func (a *RepositoryAPIService) RepoApplyDiffPatchExecute(r ApiRepoApplyDiffPatchRequest) (*FileResponse, *http.Response, error) {
+func (a *RepositoryAPIService) RepoApplyDiffPatchExecute(r RepositoryAPIRepoApplyDiffPatchRequest) (*FileResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -5561,7 +5561,7 @@ func (a *RepositoryAPIService) RepoApplyDiffPatchExecute(r ApiRepoApplyDiffPatch
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoCancelScheduledAutoMergeRequest struct {
+type RepositoryAPIRepoCancelScheduledAutoMergeRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -5569,7 +5569,7 @@ type ApiRepoCancelScheduledAutoMergeRequest struct {
 	index int64
 }
 
-func (r ApiRepoCancelScheduledAutoMergeRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoCancelScheduledAutoMergeRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoCancelScheduledAutoMergeExecute(r)
 }
 
@@ -5580,10 +5580,10 @@ RepoCancelScheduledAutoMerge Cancel the scheduled auto merge for the given pull 
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the pull request to merge
- @return ApiRepoCancelScheduledAutoMergeRequest
+ @return RepositoryAPIRepoCancelScheduledAutoMergeRequest
 */
-func (a *RepositoryAPIService) RepoCancelScheduledAutoMerge(ctx context.Context, owner string, repo string, index int64) ApiRepoCancelScheduledAutoMergeRequest {
-	return ApiRepoCancelScheduledAutoMergeRequest{
+func (a *RepositoryAPIService) RepoCancelScheduledAutoMerge(ctx context.Context, owner string, repo string, index int64) RepositoryAPIRepoCancelScheduledAutoMergeRequest {
+	return RepositoryAPIRepoCancelScheduledAutoMergeRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -5593,7 +5593,7 @@ func (a *RepositoryAPIService) RepoCancelScheduledAutoMerge(ctx context.Context,
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoCancelScheduledAutoMergeExecute(r ApiRepoCancelScheduledAutoMergeRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoCancelScheduledAutoMergeExecute(r RepositoryAPIRepoCancelScheduledAutoMergeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -5775,7 +5775,7 @@ func (a *RepositoryAPIService) RepoCancelScheduledAutoMergeExecute(r ApiRepoCanc
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoChangeFilesRequest struct {
+type RepositoryAPIRepoChangeFilesRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -5783,12 +5783,12 @@ type ApiRepoChangeFilesRequest struct {
 	body *ChangeFilesOptions
 }
 
-func (r ApiRepoChangeFilesRequest) Body(body ChangeFilesOptions) ApiRepoChangeFilesRequest {
+func (r RepositoryAPIRepoChangeFilesRequest) Body(body ChangeFilesOptions) RepositoryAPIRepoChangeFilesRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoChangeFilesRequest) Execute() (*FilesResponse, *http.Response, error) {
+func (r RepositoryAPIRepoChangeFilesRequest) Execute() (*FilesResponse, *http.Response, error) {
 	return r.ApiService.RepoChangeFilesExecute(r)
 }
 
@@ -5798,10 +5798,10 @@ RepoChangeFiles Modify multiple files in a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoChangeFilesRequest
+ @return RepositoryAPIRepoChangeFilesRequest
 */
-func (a *RepositoryAPIService) RepoChangeFiles(ctx context.Context, owner string, repo string) ApiRepoChangeFilesRequest {
-	return ApiRepoChangeFilesRequest{
+func (a *RepositoryAPIService) RepoChangeFiles(ctx context.Context, owner string, repo string) RepositoryAPIRepoChangeFilesRequest {
+	return RepositoryAPIRepoChangeFilesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -5811,7 +5811,7 @@ func (a *RepositoryAPIService) RepoChangeFiles(ctx context.Context, owner string
 
 // Execute executes the request
 //  @return FilesResponse
-func (a *RepositoryAPIService) RepoChangeFilesExecute(r ApiRepoChangeFilesRequest) (*FilesResponse, *http.Response, error) {
+func (a *RepositoryAPIService) RepoChangeFilesExecute(r RepositoryAPIRepoChangeFilesRequest) (*FilesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -6018,7 +6018,7 @@ func (a *RepositoryAPIService) RepoChangeFilesExecute(r ApiRepoChangeFilesReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoCheckCollaboratorRequest struct {
+type RepositoryAPIRepoCheckCollaboratorRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -6026,7 +6026,7 @@ type ApiRepoCheckCollaboratorRequest struct {
 	collaborator string
 }
 
-func (r ApiRepoCheckCollaboratorRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoCheckCollaboratorRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoCheckCollaboratorExecute(r)
 }
 
@@ -6039,10 +6039,10 @@ If the user is a collaborator, return 204. If the user is not a collaborator, re
  @param owner owner of the repo
  @param repo name of the repo
  @param collaborator username of the collaborator
- @return ApiRepoCheckCollaboratorRequest
+ @return RepositoryAPIRepoCheckCollaboratorRequest
 */
-func (a *RepositoryAPIService) RepoCheckCollaborator(ctx context.Context, owner string, repo string, collaborator string) ApiRepoCheckCollaboratorRequest {
-	return ApiRepoCheckCollaboratorRequest{
+func (a *RepositoryAPIService) RepoCheckCollaborator(ctx context.Context, owner string, repo string, collaborator string) RepositoryAPIRepoCheckCollaboratorRequest {
+	return RepositoryAPIRepoCheckCollaboratorRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -6052,7 +6052,7 @@ func (a *RepositoryAPIService) RepoCheckCollaborator(ctx context.Context, owner 
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoCheckCollaboratorExecute(r ApiRepoCheckCollaboratorRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoCheckCollaboratorExecute(r RepositoryAPIRepoCheckCollaboratorRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -6223,7 +6223,7 @@ func (a *RepositoryAPIService) RepoCheckCollaboratorExecute(r ApiRepoCheckCollab
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoCheckFlagRequest struct {
+type RepositoryAPIRepoCheckFlagRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -6231,7 +6231,7 @@ type ApiRepoCheckFlagRequest struct {
 	flag string
 }
 
-func (r ApiRepoCheckFlagRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoCheckFlagRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoCheckFlagExecute(r)
 }
 
@@ -6242,10 +6242,10 @@ RepoCheckFlag Check if a repository has a given flag
  @param owner owner of the repo
  @param repo name of the repo
  @param flag name of the flag
- @return ApiRepoCheckFlagRequest
+ @return RepositoryAPIRepoCheckFlagRequest
 */
-func (a *RepositoryAPIService) RepoCheckFlag(ctx context.Context, owner string, repo string, flag string) ApiRepoCheckFlagRequest {
-	return ApiRepoCheckFlagRequest{
+func (a *RepositoryAPIService) RepoCheckFlag(ctx context.Context, owner string, repo string, flag string) RepositoryAPIRepoCheckFlagRequest {
+	return RepositoryAPIRepoCheckFlagRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -6255,7 +6255,7 @@ func (a *RepositoryAPIService) RepoCheckFlag(ctx context.Context, owner string, 
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoCheckFlagExecute(r ApiRepoCheckFlagRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoCheckFlagExecute(r RepositoryAPIRepoCheckFlagRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -6426,7 +6426,7 @@ func (a *RepositoryAPIService) RepoCheckFlagExecute(r ApiRepoCheckFlagRequest) (
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoCheckTeamRequest struct {
+type RepositoryAPIRepoCheckTeamRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -6434,7 +6434,7 @@ type ApiRepoCheckTeamRequest struct {
 	team string
 }
 
-func (r ApiRepoCheckTeamRequest) Execute() (*Team, *http.Response, error) {
+func (r RepositoryAPIRepoCheckTeamRequest) Execute() (*Team, *http.Response, error) {
 	return r.ApiService.RepoCheckTeamExecute(r)
 }
 
@@ -6445,10 +6445,10 @@ RepoCheckTeam Check if a team is assigned to a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param team team name
- @return ApiRepoCheckTeamRequest
+ @return RepositoryAPIRepoCheckTeamRequest
 */
-func (a *RepositoryAPIService) RepoCheckTeam(ctx context.Context, owner string, repo string, team string) ApiRepoCheckTeamRequest {
-	return ApiRepoCheckTeamRequest{
+func (a *RepositoryAPIService) RepoCheckTeam(ctx context.Context, owner string, repo string, team string) RepositoryAPIRepoCheckTeamRequest {
+	return RepositoryAPIRepoCheckTeamRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -6459,7 +6459,7 @@ func (a *RepositoryAPIService) RepoCheckTeam(ctx context.Context, owner string, 
 
 // Execute executes the request
 //  @return Team
-func (a *RepositoryAPIService) RepoCheckTeamExecute(r ApiRepoCheckTeamRequest) (*Team, *http.Response, error) {
+func (a *RepositoryAPIService) RepoCheckTeamExecute(r RepositoryAPIRepoCheckTeamRequest) (*Team, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -6640,7 +6640,7 @@ func (a *RepositoryAPIService) RepoCheckTeamExecute(r ApiRepoCheckTeamRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoCompareDiffRequest struct {
+type RepositoryAPIRepoCompareDiffRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -6648,7 +6648,7 @@ type ApiRepoCompareDiffRequest struct {
 	basehead string
 }
 
-func (r ApiRepoCompareDiffRequest) Execute() (*Compare, *http.Response, error) {
+func (r RepositoryAPIRepoCompareDiffRequest) Execute() (*Compare, *http.Response, error) {
 	return r.ApiService.RepoCompareDiffExecute(r)
 }
 
@@ -6659,10 +6659,10 @@ RepoCompareDiff Get commit comparison information
  @param owner owner of the repo
  @param repo name of the repo
  @param basehead compare two branches or commits
- @return ApiRepoCompareDiffRequest
+ @return RepositoryAPIRepoCompareDiffRequest
 */
-func (a *RepositoryAPIService) RepoCompareDiff(ctx context.Context, owner string, repo string, basehead string) ApiRepoCompareDiffRequest {
-	return ApiRepoCompareDiffRequest{
+func (a *RepositoryAPIService) RepoCompareDiff(ctx context.Context, owner string, repo string, basehead string) RepositoryAPIRepoCompareDiffRequest {
+	return RepositoryAPIRepoCompareDiffRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -6673,7 +6673,7 @@ func (a *RepositoryAPIService) RepoCompareDiff(ctx context.Context, owner string
 
 // Execute executes the request
 //  @return Compare
-func (a *RepositoryAPIService) RepoCompareDiffExecute(r ApiRepoCompareDiffRequest) (*Compare, *http.Response, error) {
+func (a *RepositoryAPIService) RepoCompareDiffExecute(r RepositoryAPIRepoCompareDiffRequest) (*Compare, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -6843,7 +6843,7 @@ func (a *RepositoryAPIService) RepoCompareDiffExecute(r ApiRepoCompareDiffReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoCreateBranchRequest struct {
+type RepositoryAPIRepoCreateBranchRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -6851,12 +6851,12 @@ type ApiRepoCreateBranchRequest struct {
 	body *CreateBranchRepoOption
 }
 
-func (r ApiRepoCreateBranchRequest) Body(body CreateBranchRepoOption) ApiRepoCreateBranchRequest {
+func (r RepositoryAPIRepoCreateBranchRequest) Body(body CreateBranchRepoOption) RepositoryAPIRepoCreateBranchRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoCreateBranchRequest) Execute() (*Branch, *http.Response, error) {
+func (r RepositoryAPIRepoCreateBranchRequest) Execute() (*Branch, *http.Response, error) {
 	return r.ApiService.RepoCreateBranchExecute(r)
 }
 
@@ -6866,10 +6866,10 @@ RepoCreateBranch Create a branch
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoCreateBranchRequest
+ @return RepositoryAPIRepoCreateBranchRequest
 */
-func (a *RepositoryAPIService) RepoCreateBranch(ctx context.Context, owner string, repo string) ApiRepoCreateBranchRequest {
-	return ApiRepoCreateBranchRequest{
+func (a *RepositoryAPIService) RepoCreateBranch(ctx context.Context, owner string, repo string) RepositoryAPIRepoCreateBranchRequest {
+	return RepositoryAPIRepoCreateBranchRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -6879,7 +6879,7 @@ func (a *RepositoryAPIService) RepoCreateBranch(ctx context.Context, owner strin
 
 // Execute executes the request
 //  @return Branch
-func (a *RepositoryAPIService) RepoCreateBranchExecute(r ApiRepoCreateBranchRequest) (*Branch, *http.Response, error) {
+func (a *RepositoryAPIService) RepoCreateBranchExecute(r RepositoryAPIRepoCreateBranchRequest) (*Branch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -7050,7 +7050,7 @@ func (a *RepositoryAPIService) RepoCreateBranchExecute(r ApiRepoCreateBranchRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoCreateBranchProtectionRequest struct {
+type RepositoryAPIRepoCreateBranchProtectionRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -7058,12 +7058,12 @@ type ApiRepoCreateBranchProtectionRequest struct {
 	body *CreateBranchProtectionOption
 }
 
-func (r ApiRepoCreateBranchProtectionRequest) Body(body CreateBranchProtectionOption) ApiRepoCreateBranchProtectionRequest {
+func (r RepositoryAPIRepoCreateBranchProtectionRequest) Body(body CreateBranchProtectionOption) RepositoryAPIRepoCreateBranchProtectionRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoCreateBranchProtectionRequest) Execute() (*BranchProtection, *http.Response, error) {
+func (r RepositoryAPIRepoCreateBranchProtectionRequest) Execute() (*BranchProtection, *http.Response, error) {
 	return r.ApiService.RepoCreateBranchProtectionExecute(r)
 }
 
@@ -7073,10 +7073,10 @@ RepoCreateBranchProtection Create a branch protections for a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoCreateBranchProtectionRequest
+ @return RepositoryAPIRepoCreateBranchProtectionRequest
 */
-func (a *RepositoryAPIService) RepoCreateBranchProtection(ctx context.Context, owner string, repo string) ApiRepoCreateBranchProtectionRequest {
-	return ApiRepoCreateBranchProtectionRequest{
+func (a *RepositoryAPIService) RepoCreateBranchProtection(ctx context.Context, owner string, repo string) RepositoryAPIRepoCreateBranchProtectionRequest {
+	return RepositoryAPIRepoCreateBranchProtectionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -7086,7 +7086,7 @@ func (a *RepositoryAPIService) RepoCreateBranchProtection(ctx context.Context, o
 
 // Execute executes the request
 //  @return BranchProtection
-func (a *RepositoryAPIService) RepoCreateBranchProtectionExecute(r ApiRepoCreateBranchProtectionRequest) (*BranchProtection, *http.Response, error) {
+func (a *RepositoryAPIService) RepoCreateBranchProtectionExecute(r RepositoryAPIRepoCreateBranchProtectionRequest) (*BranchProtection, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -7290,7 +7290,7 @@ func (a *RepositoryAPIService) RepoCreateBranchProtectionExecute(r ApiRepoCreate
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoCreateFileRequest struct {
+type RepositoryAPIRepoCreateFileRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -7299,12 +7299,12 @@ type ApiRepoCreateFileRequest struct {
 	body *CreateFileOptions
 }
 
-func (r ApiRepoCreateFileRequest) Body(body CreateFileOptions) ApiRepoCreateFileRequest {
+func (r RepositoryAPIRepoCreateFileRequest) Body(body CreateFileOptions) RepositoryAPIRepoCreateFileRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoCreateFileRequest) Execute() (*FileResponse, *http.Response, error) {
+func (r RepositoryAPIRepoCreateFileRequest) Execute() (*FileResponse, *http.Response, error) {
 	return r.ApiService.RepoCreateFileExecute(r)
 }
 
@@ -7315,10 +7315,10 @@ RepoCreateFile Create a file in a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param filepath path of the file to create
- @return ApiRepoCreateFileRequest
+ @return RepositoryAPIRepoCreateFileRequest
 */
-func (a *RepositoryAPIService) RepoCreateFile(ctx context.Context, owner string, repo string, filepath string) ApiRepoCreateFileRequest {
-	return ApiRepoCreateFileRequest{
+func (a *RepositoryAPIService) RepoCreateFile(ctx context.Context, owner string, repo string, filepath string) RepositoryAPIRepoCreateFileRequest {
+	return RepositoryAPIRepoCreateFileRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -7329,7 +7329,7 @@ func (a *RepositoryAPIService) RepoCreateFile(ctx context.Context, owner string,
 
 // Execute executes the request
 //  @return FileResponse
-func (a *RepositoryAPIService) RepoCreateFileExecute(r ApiRepoCreateFileRequest) (*FileResponse, *http.Response, error) {
+func (a *RepositoryAPIService) RepoCreateFileExecute(r RepositoryAPIRepoCreateFileRequest) (*FileResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -7537,7 +7537,7 @@ func (a *RepositoryAPIService) RepoCreateFileExecute(r ApiRepoCreateFileRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoCreateHookRequest struct {
+type RepositoryAPIRepoCreateHookRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -7545,12 +7545,12 @@ type ApiRepoCreateHookRequest struct {
 	body *CreateHookOption
 }
 
-func (r ApiRepoCreateHookRequest) Body(body CreateHookOption) ApiRepoCreateHookRequest {
+func (r RepositoryAPIRepoCreateHookRequest) Body(body CreateHookOption) RepositoryAPIRepoCreateHookRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoCreateHookRequest) Execute() (*Hook, *http.Response, error) {
+func (r RepositoryAPIRepoCreateHookRequest) Execute() (*Hook, *http.Response, error) {
 	return r.ApiService.RepoCreateHookExecute(r)
 }
 
@@ -7560,10 +7560,10 @@ RepoCreateHook Create a hook
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoCreateHookRequest
+ @return RepositoryAPIRepoCreateHookRequest
 */
-func (a *RepositoryAPIService) RepoCreateHook(ctx context.Context, owner string, repo string) ApiRepoCreateHookRequest {
-	return ApiRepoCreateHookRequest{
+func (a *RepositoryAPIService) RepoCreateHook(ctx context.Context, owner string, repo string) RepositoryAPIRepoCreateHookRequest {
+	return RepositoryAPIRepoCreateHookRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -7573,7 +7573,7 @@ func (a *RepositoryAPIService) RepoCreateHook(ctx context.Context, owner string,
 
 // Execute executes the request
 //  @return Hook
-func (a *RepositoryAPIService) RepoCreateHookExecute(r ApiRepoCreateHookRequest) (*Hook, *http.Response, error) {
+func (a *RepositoryAPIService) RepoCreateHookExecute(r RepositoryAPIRepoCreateHookRequest) (*Hook, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -7744,7 +7744,7 @@ func (a *RepositoryAPIService) RepoCreateHookExecute(r ApiRepoCreateHookRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoCreateKeyRequest struct {
+type RepositoryAPIRepoCreateKeyRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -7752,12 +7752,12 @@ type ApiRepoCreateKeyRequest struct {
 	body *CreateKeyOption
 }
 
-func (r ApiRepoCreateKeyRequest) Body(body CreateKeyOption) ApiRepoCreateKeyRequest {
+func (r RepositoryAPIRepoCreateKeyRequest) Body(body CreateKeyOption) RepositoryAPIRepoCreateKeyRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoCreateKeyRequest) Execute() (*DeployKey, *http.Response, error) {
+func (r RepositoryAPIRepoCreateKeyRequest) Execute() (*DeployKey, *http.Response, error) {
 	return r.ApiService.RepoCreateKeyExecute(r)
 }
 
@@ -7767,10 +7767,10 @@ RepoCreateKey Add a key to a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoCreateKeyRequest
+ @return RepositoryAPIRepoCreateKeyRequest
 */
-func (a *RepositoryAPIService) RepoCreateKey(ctx context.Context, owner string, repo string) ApiRepoCreateKeyRequest {
-	return ApiRepoCreateKeyRequest{
+func (a *RepositoryAPIService) RepoCreateKey(ctx context.Context, owner string, repo string) RepositoryAPIRepoCreateKeyRequest {
+	return RepositoryAPIRepoCreateKeyRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -7780,7 +7780,7 @@ func (a *RepositoryAPIService) RepoCreateKey(ctx context.Context, owner string, 
 
 // Execute executes the request
 //  @return DeployKey
-func (a *RepositoryAPIService) RepoCreateKeyExecute(r ApiRepoCreateKeyRequest) (*DeployKey, *http.Response, error) {
+func (a *RepositoryAPIService) RepoCreateKeyExecute(r RepositoryAPIRepoCreateKeyRequest) (*DeployKey, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -7962,7 +7962,7 @@ func (a *RepositoryAPIService) RepoCreateKeyExecute(r ApiRepoCreateKeyRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoCreatePullRequestRequest struct {
+type RepositoryAPIRepoCreatePullRequestRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -7970,12 +7970,12 @@ type ApiRepoCreatePullRequestRequest struct {
 	body *CreatePullRequestOption
 }
 
-func (r ApiRepoCreatePullRequestRequest) Body(body CreatePullRequestOption) ApiRepoCreatePullRequestRequest {
+func (r RepositoryAPIRepoCreatePullRequestRequest) Body(body CreatePullRequestOption) RepositoryAPIRepoCreatePullRequestRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoCreatePullRequestRequest) Execute() (*PullRequest, *http.Response, error) {
+func (r RepositoryAPIRepoCreatePullRequestRequest) Execute() (*PullRequest, *http.Response, error) {
 	return r.ApiService.RepoCreatePullRequestExecute(r)
 }
 
@@ -7985,10 +7985,10 @@ RepoCreatePullRequest Create a pull request
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoCreatePullRequestRequest
+ @return RepositoryAPIRepoCreatePullRequestRequest
 */
-func (a *RepositoryAPIService) RepoCreatePullRequest(ctx context.Context, owner string, repo string) ApiRepoCreatePullRequestRequest {
-	return ApiRepoCreatePullRequestRequest{
+func (a *RepositoryAPIService) RepoCreatePullRequest(ctx context.Context, owner string, repo string) RepositoryAPIRepoCreatePullRequestRequest {
+	return RepositoryAPIRepoCreatePullRequestRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -7998,7 +7998,7 @@ func (a *RepositoryAPIService) RepoCreatePullRequest(ctx context.Context, owner 
 
 // Execute executes the request
 //  @return PullRequest
-func (a *RepositoryAPIService) RepoCreatePullRequestExecute(r ApiRepoCreatePullRequestRequest) (*PullRequest, *http.Response, error) {
+func (a *RepositoryAPIService) RepoCreatePullRequestExecute(r RepositoryAPIRepoCreatePullRequestRequest) (*PullRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -8202,7 +8202,7 @@ func (a *RepositoryAPIService) RepoCreatePullRequestExecute(r ApiRepoCreatePullR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoCreatePullReviewRequest struct {
+type RepositoryAPIRepoCreatePullReviewRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -8211,12 +8211,12 @@ type ApiRepoCreatePullReviewRequest struct {
 	body *CreatePullReviewOptions
 }
 
-func (r ApiRepoCreatePullReviewRequest) Body(body CreatePullReviewOptions) ApiRepoCreatePullReviewRequest {
+func (r RepositoryAPIRepoCreatePullReviewRequest) Body(body CreatePullReviewOptions) RepositoryAPIRepoCreatePullReviewRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoCreatePullReviewRequest) Execute() (*PullReview, *http.Response, error) {
+func (r RepositoryAPIRepoCreatePullReviewRequest) Execute() (*PullReview, *http.Response, error) {
 	return r.ApiService.RepoCreatePullReviewExecute(r)
 }
 
@@ -8227,10 +8227,10 @@ RepoCreatePullReview Create a review to an pull request
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the pull request
- @return ApiRepoCreatePullReviewRequest
+ @return RepositoryAPIRepoCreatePullReviewRequest
 */
-func (a *RepositoryAPIService) RepoCreatePullReview(ctx context.Context, owner string, repo string, index int64) ApiRepoCreatePullReviewRequest {
-	return ApiRepoCreatePullReviewRequest{
+func (a *RepositoryAPIService) RepoCreatePullReview(ctx context.Context, owner string, repo string, index int64) RepositoryAPIRepoCreatePullReviewRequest {
+	return RepositoryAPIRepoCreatePullReviewRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -8241,7 +8241,7 @@ func (a *RepositoryAPIService) RepoCreatePullReview(ctx context.Context, owner s
 
 // Execute executes the request
 //  @return PullReview
-func (a *RepositoryAPIService) RepoCreatePullReviewExecute(r ApiRepoCreatePullReviewRequest) (*PullReview, *http.Response, error) {
+func (a *RepositoryAPIService) RepoCreatePullReviewExecute(r RepositoryAPIRepoCreatePullReviewRequest) (*PullReview, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -8427,7 +8427,7 @@ func (a *RepositoryAPIService) RepoCreatePullReviewExecute(r ApiRepoCreatePullRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoCreatePullReviewCommentRequest struct {
+type RepositoryAPIRepoCreatePullReviewCommentRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -8437,12 +8437,12 @@ type ApiRepoCreatePullReviewCommentRequest struct {
 	body *CreatePullReviewComment
 }
 
-func (r ApiRepoCreatePullReviewCommentRequest) Body(body CreatePullReviewComment) ApiRepoCreatePullReviewCommentRequest {
+func (r RepositoryAPIRepoCreatePullReviewCommentRequest) Body(body CreatePullReviewComment) RepositoryAPIRepoCreatePullReviewCommentRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoCreatePullReviewCommentRequest) Execute() (*PullReviewComment, *http.Response, error) {
+func (r RepositoryAPIRepoCreatePullReviewCommentRequest) Execute() (*PullReviewComment, *http.Response, error) {
 	return r.ApiService.RepoCreatePullReviewCommentExecute(r)
 }
 
@@ -8454,10 +8454,10 @@ RepoCreatePullReviewComment Add a new comment to a pull request review
  @param repo name of the repo
  @param index index of the pull request
  @param id id of the review
- @return ApiRepoCreatePullReviewCommentRequest
+ @return RepositoryAPIRepoCreatePullReviewCommentRequest
 */
-func (a *RepositoryAPIService) RepoCreatePullReviewComment(ctx context.Context, owner string, repo string, index int64, id int64) ApiRepoCreatePullReviewCommentRequest {
-	return ApiRepoCreatePullReviewCommentRequest{
+func (a *RepositoryAPIService) RepoCreatePullReviewComment(ctx context.Context, owner string, repo string, index int64, id int64) RepositoryAPIRepoCreatePullReviewCommentRequest {
+	return RepositoryAPIRepoCreatePullReviewCommentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -8469,7 +8469,7 @@ func (a *RepositoryAPIService) RepoCreatePullReviewComment(ctx context.Context, 
 
 // Execute executes the request
 //  @return PullReviewComment
-func (a *RepositoryAPIService) RepoCreatePullReviewCommentExecute(r ApiRepoCreatePullReviewCommentRequest) (*PullReviewComment, *http.Response, error) {
+func (a *RepositoryAPIService) RepoCreatePullReviewCommentExecute(r RepositoryAPIRepoCreatePullReviewCommentRequest) (*PullReviewComment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -8656,7 +8656,7 @@ func (a *RepositoryAPIService) RepoCreatePullReviewCommentExecute(r ApiRepoCreat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoCreatePullReviewRequestsRequest struct {
+type RepositoryAPIRepoCreatePullReviewRequestsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -8665,12 +8665,12 @@ type ApiRepoCreatePullReviewRequestsRequest struct {
 	body *PullReviewRequestOptions
 }
 
-func (r ApiRepoCreatePullReviewRequestsRequest) Body(body PullReviewRequestOptions) ApiRepoCreatePullReviewRequestsRequest {
+func (r RepositoryAPIRepoCreatePullReviewRequestsRequest) Body(body PullReviewRequestOptions) RepositoryAPIRepoCreatePullReviewRequestsRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoCreatePullReviewRequestsRequest) Execute() ([]PullReview, *http.Response, error) {
+func (r RepositoryAPIRepoCreatePullReviewRequestsRequest) Execute() ([]PullReview, *http.Response, error) {
 	return r.ApiService.RepoCreatePullReviewRequestsExecute(r)
 }
 
@@ -8681,10 +8681,10 @@ RepoCreatePullReviewRequests create review requests for a pull request
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the pull request
- @return ApiRepoCreatePullReviewRequestsRequest
+ @return RepositoryAPIRepoCreatePullReviewRequestsRequest
 */
-func (a *RepositoryAPIService) RepoCreatePullReviewRequests(ctx context.Context, owner string, repo string, index int64) ApiRepoCreatePullReviewRequestsRequest {
-	return ApiRepoCreatePullReviewRequestsRequest{
+func (a *RepositoryAPIService) RepoCreatePullReviewRequests(ctx context.Context, owner string, repo string, index int64) RepositoryAPIRepoCreatePullReviewRequestsRequest {
+	return RepositoryAPIRepoCreatePullReviewRequestsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -8695,7 +8695,7 @@ func (a *RepositoryAPIService) RepoCreatePullReviewRequests(ctx context.Context,
 
 // Execute executes the request
 //  @return []PullReview
-func (a *RepositoryAPIService) RepoCreatePullReviewRequestsExecute(r ApiRepoCreatePullReviewRequestsRequest) ([]PullReview, *http.Response, error) {
+func (a *RepositoryAPIService) RepoCreatePullReviewRequestsExecute(r RepositoryAPIRepoCreatePullReviewRequestsRequest) ([]PullReview, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -8881,7 +8881,7 @@ func (a *RepositoryAPIService) RepoCreatePullReviewRequestsExecute(r ApiRepoCrea
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoCreateReleaseRequest struct {
+type RepositoryAPIRepoCreateReleaseRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -8889,12 +8889,12 @@ type ApiRepoCreateReleaseRequest struct {
 	body *CreateReleaseOption
 }
 
-func (r ApiRepoCreateReleaseRequest) Body(body CreateReleaseOption) ApiRepoCreateReleaseRequest {
+func (r RepositoryAPIRepoCreateReleaseRequest) Body(body CreateReleaseOption) RepositoryAPIRepoCreateReleaseRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoCreateReleaseRequest) Execute() (*Release, *http.Response, error) {
+func (r RepositoryAPIRepoCreateReleaseRequest) Execute() (*Release, *http.Response, error) {
 	return r.ApiService.RepoCreateReleaseExecute(r)
 }
 
@@ -8904,10 +8904,10 @@ RepoCreateRelease Create a release
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoCreateReleaseRequest
+ @return RepositoryAPIRepoCreateReleaseRequest
 */
-func (a *RepositoryAPIService) RepoCreateRelease(ctx context.Context, owner string, repo string) ApiRepoCreateReleaseRequest {
-	return ApiRepoCreateReleaseRequest{
+func (a *RepositoryAPIService) RepoCreateRelease(ctx context.Context, owner string, repo string) RepositoryAPIRepoCreateReleaseRequest {
+	return RepositoryAPIRepoCreateReleaseRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -8917,7 +8917,7 @@ func (a *RepositoryAPIService) RepoCreateRelease(ctx context.Context, owner stri
 
 // Execute executes the request
 //  @return Release
-func (a *RepositoryAPIService) RepoCreateReleaseExecute(r ApiRepoCreateReleaseRequest) (*Release, *http.Response, error) {
+func (a *RepositoryAPIService) RepoCreateReleaseExecute(r RepositoryAPIRepoCreateReleaseRequest) (*Release, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -9110,7 +9110,7 @@ func (a *RepositoryAPIService) RepoCreateReleaseExecute(r ApiRepoCreateReleaseRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoCreateReleaseAttachmentRequest struct {
+type RepositoryAPIRepoCreateReleaseAttachmentRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -9122,24 +9122,24 @@ type ApiRepoCreateReleaseAttachmentRequest struct {
 }
 
 // name of the attachment
-func (r ApiRepoCreateReleaseAttachmentRequest) Name(name string) ApiRepoCreateReleaseAttachmentRequest {
+func (r RepositoryAPIRepoCreateReleaseAttachmentRequest) Name(name string) RepositoryAPIRepoCreateReleaseAttachmentRequest {
 	r.name = &name
 	return r
 }
 
 // attachment to upload (this parameter is incompatible with &#x60;external_url&#x60;)
-func (r ApiRepoCreateReleaseAttachmentRequest) Attachment(attachment *os.File) ApiRepoCreateReleaseAttachmentRequest {
+func (r RepositoryAPIRepoCreateReleaseAttachmentRequest) Attachment(attachment *os.File) RepositoryAPIRepoCreateReleaseAttachmentRequest {
 	r.attachment = attachment
 	return r
 }
 
 // url to external asset (this parameter is incompatible with &#x60;attachment&#x60;)
-func (r ApiRepoCreateReleaseAttachmentRequest) ExternalUrl(externalUrl string) ApiRepoCreateReleaseAttachmentRequest {
+func (r RepositoryAPIRepoCreateReleaseAttachmentRequest) ExternalUrl(externalUrl string) RepositoryAPIRepoCreateReleaseAttachmentRequest {
 	r.externalUrl = &externalUrl
 	return r
 }
 
-func (r ApiRepoCreateReleaseAttachmentRequest) Execute() (*Attachment, *http.Response, error) {
+func (r RepositoryAPIRepoCreateReleaseAttachmentRequest) Execute() (*Attachment, *http.Response, error) {
 	return r.ApiService.RepoCreateReleaseAttachmentExecute(r)
 }
 
@@ -9150,10 +9150,10 @@ RepoCreateReleaseAttachment Create a release attachment
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the release
- @return ApiRepoCreateReleaseAttachmentRequest
+ @return RepositoryAPIRepoCreateReleaseAttachmentRequest
 */
-func (a *RepositoryAPIService) RepoCreateReleaseAttachment(ctx context.Context, owner string, repo string, id int64) ApiRepoCreateReleaseAttachmentRequest {
-	return ApiRepoCreateReleaseAttachmentRequest{
+func (a *RepositoryAPIService) RepoCreateReleaseAttachment(ctx context.Context, owner string, repo string, id int64) RepositoryAPIRepoCreateReleaseAttachmentRequest {
+	return RepositoryAPIRepoCreateReleaseAttachmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -9164,7 +9164,7 @@ func (a *RepositoryAPIService) RepoCreateReleaseAttachment(ctx context.Context, 
 
 // Execute executes the request
 //  @return Attachment
-func (a *RepositoryAPIService) RepoCreateReleaseAttachmentExecute(r ApiRepoCreateReleaseAttachmentRequest) (*Attachment, *http.Response, error) {
+func (a *RepositoryAPIService) RepoCreateReleaseAttachmentExecute(r RepositoryAPIRepoCreateReleaseAttachmentRequest) (*Attachment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -9367,7 +9367,7 @@ func (a *RepositoryAPIService) RepoCreateReleaseAttachmentExecute(r ApiRepoCreat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoCreateStatusRequest struct {
+type RepositoryAPIRepoCreateStatusRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -9376,12 +9376,12 @@ type ApiRepoCreateStatusRequest struct {
 	body *CreateStatusOption
 }
 
-func (r ApiRepoCreateStatusRequest) Body(body CreateStatusOption) ApiRepoCreateStatusRequest {
+func (r RepositoryAPIRepoCreateStatusRequest) Body(body CreateStatusOption) RepositoryAPIRepoCreateStatusRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoCreateStatusRequest) Execute() (*CommitStatus, *http.Response, error) {
+func (r RepositoryAPIRepoCreateStatusRequest) Execute() (*CommitStatus, *http.Response, error) {
 	return r.ApiService.RepoCreateStatusExecute(r)
 }
 
@@ -9392,10 +9392,10 @@ RepoCreateStatus Create a commit status
  @param owner owner of the repo
  @param repo name of the repo
  @param sha sha of the commit
- @return ApiRepoCreateStatusRequest
+ @return RepositoryAPIRepoCreateStatusRequest
 */
-func (a *RepositoryAPIService) RepoCreateStatus(ctx context.Context, owner string, repo string, sha string) ApiRepoCreateStatusRequest {
-	return ApiRepoCreateStatusRequest{
+func (a *RepositoryAPIService) RepoCreateStatus(ctx context.Context, owner string, repo string, sha string) RepositoryAPIRepoCreateStatusRequest {
+	return RepositoryAPIRepoCreateStatusRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -9406,7 +9406,7 @@ func (a *RepositoryAPIService) RepoCreateStatus(ctx context.Context, owner strin
 
 // Execute executes the request
 //  @return CommitStatus
-func (a *RepositoryAPIService) RepoCreateStatusExecute(r ApiRepoCreateStatusRequest) (*CommitStatus, *http.Response, error) {
+func (a *RepositoryAPIService) RepoCreateStatusExecute(r RepositoryAPIRepoCreateStatusRequest) (*CommitStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -9589,7 +9589,7 @@ func (a *RepositoryAPIService) RepoCreateStatusExecute(r ApiRepoCreateStatusRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoCreateTagRequest struct {
+type RepositoryAPIRepoCreateTagRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -9597,12 +9597,12 @@ type ApiRepoCreateTagRequest struct {
 	body *CreateTagOption
 }
 
-func (r ApiRepoCreateTagRequest) Body(body CreateTagOption) ApiRepoCreateTagRequest {
+func (r RepositoryAPIRepoCreateTagRequest) Body(body CreateTagOption) RepositoryAPIRepoCreateTagRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoCreateTagRequest) Execute() (*Tag, *http.Response, error) {
+func (r RepositoryAPIRepoCreateTagRequest) Execute() (*Tag, *http.Response, error) {
 	return r.ApiService.RepoCreateTagExecute(r)
 }
 
@@ -9612,10 +9612,10 @@ RepoCreateTag Create a new git tag in a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoCreateTagRequest
+ @return RepositoryAPIRepoCreateTagRequest
 */
-func (a *RepositoryAPIService) RepoCreateTag(ctx context.Context, owner string, repo string) ApiRepoCreateTagRequest {
-	return ApiRepoCreateTagRequest{
+func (a *RepositoryAPIService) RepoCreateTag(ctx context.Context, owner string, repo string) RepositoryAPIRepoCreateTagRequest {
+	return RepositoryAPIRepoCreateTagRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -9625,7 +9625,7 @@ func (a *RepositoryAPIService) RepoCreateTag(ctx context.Context, owner string, 
 
 // Execute executes the request
 //  @return Tag
-func (a *RepositoryAPIService) RepoCreateTagExecute(r ApiRepoCreateTagRequest) (*Tag, *http.Response, error) {
+func (a *RepositoryAPIService) RepoCreateTagExecute(r RepositoryAPIRepoCreateTagRequest) (*Tag, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -9818,7 +9818,7 @@ func (a *RepositoryAPIService) RepoCreateTagExecute(r ApiRepoCreateTagRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoCreateTagProtectionRequest struct {
+type RepositoryAPIRepoCreateTagProtectionRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -9826,12 +9826,12 @@ type ApiRepoCreateTagProtectionRequest struct {
 	body *CreateTagProtectionOption
 }
 
-func (r ApiRepoCreateTagProtectionRequest) Body(body CreateTagProtectionOption) ApiRepoCreateTagProtectionRequest {
+func (r RepositoryAPIRepoCreateTagProtectionRequest) Body(body CreateTagProtectionOption) RepositoryAPIRepoCreateTagProtectionRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoCreateTagProtectionRequest) Execute() (*TagProtection, *http.Response, error) {
+func (r RepositoryAPIRepoCreateTagProtectionRequest) Execute() (*TagProtection, *http.Response, error) {
 	return r.ApiService.RepoCreateTagProtectionExecute(r)
 }
 
@@ -9841,10 +9841,10 @@ RepoCreateTagProtection Create a tag protections for a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoCreateTagProtectionRequest
+ @return RepositoryAPIRepoCreateTagProtectionRequest
 */
-func (a *RepositoryAPIService) RepoCreateTagProtection(ctx context.Context, owner string, repo string) ApiRepoCreateTagProtectionRequest {
-	return ApiRepoCreateTagProtectionRequest{
+func (a *RepositoryAPIService) RepoCreateTagProtection(ctx context.Context, owner string, repo string) RepositoryAPIRepoCreateTagProtectionRequest {
+	return RepositoryAPIRepoCreateTagProtectionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -9854,7 +9854,7 @@ func (a *RepositoryAPIService) RepoCreateTagProtection(ctx context.Context, owne
 
 // Execute executes the request
 //  @return TagProtection
-func (a *RepositoryAPIService) RepoCreateTagProtectionExecute(r ApiRepoCreateTagProtectionRequest) (*TagProtection, *http.Response, error) {
+func (a *RepositoryAPIService) RepoCreateTagProtectionExecute(r RepositoryAPIRepoCreateTagProtectionRequest) (*TagProtection, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -10058,7 +10058,7 @@ func (a *RepositoryAPIService) RepoCreateTagProtectionExecute(r ApiRepoCreateTag
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoCreateWikiPageRequest struct {
+type RepositoryAPIRepoCreateWikiPageRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -10066,12 +10066,12 @@ type ApiRepoCreateWikiPageRequest struct {
 	body *CreateWikiPageOptions
 }
 
-func (r ApiRepoCreateWikiPageRequest) Body(body CreateWikiPageOptions) ApiRepoCreateWikiPageRequest {
+func (r RepositoryAPIRepoCreateWikiPageRequest) Body(body CreateWikiPageOptions) RepositoryAPIRepoCreateWikiPageRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoCreateWikiPageRequest) Execute() (*WikiPage, *http.Response, error) {
+func (r RepositoryAPIRepoCreateWikiPageRequest) Execute() (*WikiPage, *http.Response, error) {
 	return r.ApiService.RepoCreateWikiPageExecute(r)
 }
 
@@ -10081,10 +10081,10 @@ RepoCreateWikiPage Create a wiki page
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoCreateWikiPageRequest
+ @return RepositoryAPIRepoCreateWikiPageRequest
 */
-func (a *RepositoryAPIService) RepoCreateWikiPage(ctx context.Context, owner string, repo string) ApiRepoCreateWikiPageRequest {
-	return ApiRepoCreateWikiPageRequest{
+func (a *RepositoryAPIService) RepoCreateWikiPage(ctx context.Context, owner string, repo string) RepositoryAPIRepoCreateWikiPageRequest {
+	return RepositoryAPIRepoCreateWikiPageRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -10094,7 +10094,7 @@ func (a *RepositoryAPIService) RepoCreateWikiPage(ctx context.Context, owner str
 
 // Execute executes the request
 //  @return WikiPage
-func (a *RepositoryAPIService) RepoCreateWikiPageExecute(r ApiRepoCreateWikiPageRequest) (*WikiPage, *http.Response, error) {
+func (a *RepositoryAPIService) RepoCreateWikiPageExecute(r RepositoryAPIRepoCreateWikiPageRequest) (*WikiPage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -10298,14 +10298,14 @@ func (a *RepositoryAPIService) RepoCreateWikiPageExecute(r ApiRepoCreateWikiPage
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteRequest struct {
+type RepositoryAPIRepoDeleteRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoDeleteRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeleteExecute(r)
 }
 
@@ -10315,10 +10315,10 @@ RepoDelete Delete a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo to delete
  @param repo name of the repo to delete
- @return ApiRepoDeleteRequest
+ @return RepositoryAPIRepoDeleteRequest
 */
-func (a *RepositoryAPIService) RepoDelete(ctx context.Context, owner string, repo string) ApiRepoDeleteRequest {
-	return ApiRepoDeleteRequest{
+func (a *RepositoryAPIService) RepoDelete(ctx context.Context, owner string, repo string) RepositoryAPIRepoDeleteRequest {
+	return RepositoryAPIRepoDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -10327,7 +10327,7 @@ func (a *RepositoryAPIService) RepoDelete(ctx context.Context, owner string, rep
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeleteExecute(r ApiRepoDeleteRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteExecute(r RepositoryAPIRepoDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -10497,14 +10497,14 @@ func (a *RepositoryAPIService) RepoDeleteExecute(r ApiRepoDeleteRequest) (*http.
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteAllFlagsRequest struct {
+type RepositoryAPIRepoDeleteAllFlagsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoDeleteAllFlagsRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeleteAllFlagsRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeleteAllFlagsExecute(r)
 }
 
@@ -10514,10 +10514,10 @@ RepoDeleteAllFlags Remove all flags from a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoDeleteAllFlagsRequest
+ @return RepositoryAPIRepoDeleteAllFlagsRequest
 */
-func (a *RepositoryAPIService) RepoDeleteAllFlags(ctx context.Context, owner string, repo string) ApiRepoDeleteAllFlagsRequest {
-	return ApiRepoDeleteAllFlagsRequest{
+func (a *RepositoryAPIService) RepoDeleteAllFlags(ctx context.Context, owner string, repo string) RepositoryAPIRepoDeleteAllFlagsRequest {
+	return RepositoryAPIRepoDeleteAllFlagsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -10526,7 +10526,7 @@ func (a *RepositoryAPIService) RepoDeleteAllFlags(ctx context.Context, owner str
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeleteAllFlagsExecute(r ApiRepoDeleteAllFlagsRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteAllFlagsExecute(r RepositoryAPIRepoDeleteAllFlagsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -10696,14 +10696,14 @@ func (a *RepositoryAPIService) RepoDeleteAllFlagsExecute(r ApiRepoDeleteAllFlags
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteAvatarRequest struct {
+type RepositoryAPIRepoDeleteAvatarRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoDeleteAvatarRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeleteAvatarRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeleteAvatarExecute(r)
 }
 
@@ -10713,10 +10713,10 @@ RepoDeleteAvatar Delete avatar
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoDeleteAvatarRequest
+ @return RepositoryAPIRepoDeleteAvatarRequest
 */
-func (a *RepositoryAPIService) RepoDeleteAvatar(ctx context.Context, owner string, repo string) ApiRepoDeleteAvatarRequest {
-	return ApiRepoDeleteAvatarRequest{
+func (a *RepositoryAPIService) RepoDeleteAvatar(ctx context.Context, owner string, repo string) RepositoryAPIRepoDeleteAvatarRequest {
+	return RepositoryAPIRepoDeleteAvatarRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -10725,7 +10725,7 @@ func (a *RepositoryAPIService) RepoDeleteAvatar(ctx context.Context, owner strin
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeleteAvatarExecute(r ApiRepoDeleteAvatarRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteAvatarExecute(r RepositoryAPIRepoDeleteAvatarRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -10884,7 +10884,7 @@ func (a *RepositoryAPIService) RepoDeleteAvatarExecute(r ApiRepoDeleteAvatarRequ
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteBranchRequest struct {
+type RepositoryAPIRepoDeleteBranchRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -10892,7 +10892,7 @@ type ApiRepoDeleteBranchRequest struct {
 	branch string
 }
 
-func (r ApiRepoDeleteBranchRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeleteBranchRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeleteBranchExecute(r)
 }
 
@@ -10903,10 +10903,10 @@ RepoDeleteBranch Delete a specific branch from a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param branch branch to delete
- @return ApiRepoDeleteBranchRequest
+ @return RepositoryAPIRepoDeleteBranchRequest
 */
-func (a *RepositoryAPIService) RepoDeleteBranch(ctx context.Context, owner string, repo string, branch string) ApiRepoDeleteBranchRequest {
-	return ApiRepoDeleteBranchRequest{
+func (a *RepositoryAPIService) RepoDeleteBranch(ctx context.Context, owner string, repo string, branch string) RepositoryAPIRepoDeleteBranchRequest {
+	return RepositoryAPIRepoDeleteBranchRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -10916,7 +10916,7 @@ func (a *RepositoryAPIService) RepoDeleteBranch(ctx context.Context, owner strin
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeleteBranchExecute(r ApiRepoDeleteBranchRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteBranchExecute(r RepositoryAPIRepoDeleteBranchRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -11098,7 +11098,7 @@ func (a *RepositoryAPIService) RepoDeleteBranchExecute(r ApiRepoDeleteBranchRequ
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteBranchProtectionRequest struct {
+type RepositoryAPIRepoDeleteBranchProtectionRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -11106,7 +11106,7 @@ type ApiRepoDeleteBranchProtectionRequest struct {
 	name string
 }
 
-func (r ApiRepoDeleteBranchProtectionRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeleteBranchProtectionRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeleteBranchProtectionExecute(r)
 }
 
@@ -11117,10 +11117,10 @@ RepoDeleteBranchProtection Delete a specific branch protection for the repositor
  @param owner owner of the repo
  @param repo name of the repo
  @param name name of protected branch
- @return ApiRepoDeleteBranchProtectionRequest
+ @return RepositoryAPIRepoDeleteBranchProtectionRequest
 */
-func (a *RepositoryAPIService) RepoDeleteBranchProtection(ctx context.Context, owner string, repo string, name string) ApiRepoDeleteBranchProtectionRequest {
-	return ApiRepoDeleteBranchProtectionRequest{
+func (a *RepositoryAPIService) RepoDeleteBranchProtection(ctx context.Context, owner string, repo string, name string) RepositoryAPIRepoDeleteBranchProtectionRequest {
+	return RepositoryAPIRepoDeleteBranchProtectionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -11130,7 +11130,7 @@ func (a *RepositoryAPIService) RepoDeleteBranchProtection(ctx context.Context, o
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeleteBranchProtectionExecute(r ApiRepoDeleteBranchProtectionRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteBranchProtectionExecute(r RepositoryAPIRepoDeleteBranchProtectionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -11290,7 +11290,7 @@ func (a *RepositoryAPIService) RepoDeleteBranchProtectionExecute(r ApiRepoDelete
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteCollaboratorRequest struct {
+type RepositoryAPIRepoDeleteCollaboratorRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -11298,7 +11298,7 @@ type ApiRepoDeleteCollaboratorRequest struct {
 	collaborator string
 }
 
-func (r ApiRepoDeleteCollaboratorRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeleteCollaboratorRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeleteCollaboratorExecute(r)
 }
 
@@ -11309,10 +11309,10 @@ RepoDeleteCollaborator Delete a collaborator from a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param collaborator username of the collaborator to delete
- @return ApiRepoDeleteCollaboratorRequest
+ @return RepositoryAPIRepoDeleteCollaboratorRequest
 */
-func (a *RepositoryAPIService) RepoDeleteCollaborator(ctx context.Context, owner string, repo string, collaborator string) ApiRepoDeleteCollaboratorRequest {
-	return ApiRepoDeleteCollaboratorRequest{
+func (a *RepositoryAPIService) RepoDeleteCollaborator(ctx context.Context, owner string, repo string, collaborator string) RepositoryAPIRepoDeleteCollaboratorRequest {
+	return RepositoryAPIRepoDeleteCollaboratorRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -11322,7 +11322,7 @@ func (a *RepositoryAPIService) RepoDeleteCollaborator(ctx context.Context, owner
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeleteCollaboratorExecute(r ApiRepoDeleteCollaboratorRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteCollaboratorExecute(r RepositoryAPIRepoDeleteCollaboratorRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -11493,7 +11493,7 @@ func (a *RepositoryAPIService) RepoDeleteCollaboratorExecute(r ApiRepoDeleteColl
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteFileRequest struct {
+type RepositoryAPIRepoDeleteFileRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -11502,12 +11502,12 @@ type ApiRepoDeleteFileRequest struct {
 	body *DeleteFileOptions
 }
 
-func (r ApiRepoDeleteFileRequest) Body(body DeleteFileOptions) ApiRepoDeleteFileRequest {
+func (r RepositoryAPIRepoDeleteFileRequest) Body(body DeleteFileOptions) RepositoryAPIRepoDeleteFileRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoDeleteFileRequest) Execute() (*FileDeleteResponse, *http.Response, error) {
+func (r RepositoryAPIRepoDeleteFileRequest) Execute() (*FileDeleteResponse, *http.Response, error) {
 	return r.ApiService.RepoDeleteFileExecute(r)
 }
 
@@ -11518,10 +11518,10 @@ RepoDeleteFile Delete a file in a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param filepath path of the file to delete
- @return ApiRepoDeleteFileRequest
+ @return RepositoryAPIRepoDeleteFileRequest
 */
-func (a *RepositoryAPIService) RepoDeleteFile(ctx context.Context, owner string, repo string, filepath string) ApiRepoDeleteFileRequest {
-	return ApiRepoDeleteFileRequest{
+func (a *RepositoryAPIService) RepoDeleteFile(ctx context.Context, owner string, repo string, filepath string) RepositoryAPIRepoDeleteFileRequest {
+	return RepositoryAPIRepoDeleteFileRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -11532,7 +11532,7 @@ func (a *RepositoryAPIService) RepoDeleteFile(ctx context.Context, owner string,
 
 // Execute executes the request
 //  @return FileDeleteResponse
-func (a *RepositoryAPIService) RepoDeleteFileExecute(r ApiRepoDeleteFileRequest) (*FileDeleteResponse, *http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteFileExecute(r RepositoryAPIRepoDeleteFileRequest) (*FileDeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -11740,7 +11740,7 @@ func (a *RepositoryAPIService) RepoDeleteFileExecute(r ApiRepoDeleteFileRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteFlagRequest struct {
+type RepositoryAPIRepoDeleteFlagRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -11748,7 +11748,7 @@ type ApiRepoDeleteFlagRequest struct {
 	flag string
 }
 
-func (r ApiRepoDeleteFlagRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeleteFlagRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeleteFlagExecute(r)
 }
 
@@ -11759,10 +11759,10 @@ RepoDeleteFlag Remove a flag from a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param flag name of the flag
- @return ApiRepoDeleteFlagRequest
+ @return RepositoryAPIRepoDeleteFlagRequest
 */
-func (a *RepositoryAPIService) RepoDeleteFlag(ctx context.Context, owner string, repo string, flag string) ApiRepoDeleteFlagRequest {
-	return ApiRepoDeleteFlagRequest{
+func (a *RepositoryAPIService) RepoDeleteFlag(ctx context.Context, owner string, repo string, flag string) RepositoryAPIRepoDeleteFlagRequest {
+	return RepositoryAPIRepoDeleteFlagRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -11772,7 +11772,7 @@ func (a *RepositoryAPIService) RepoDeleteFlag(ctx context.Context, owner string,
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeleteFlagExecute(r ApiRepoDeleteFlagRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteFlagExecute(r RepositoryAPIRepoDeleteFlagRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -11943,7 +11943,7 @@ func (a *RepositoryAPIService) RepoDeleteFlagExecute(r ApiRepoDeleteFlagRequest)
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteGitHookRequest struct {
+type RepositoryAPIRepoDeleteGitHookRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -11951,7 +11951,7 @@ type ApiRepoDeleteGitHookRequest struct {
 	id string
 }
 
-func (r ApiRepoDeleteGitHookRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeleteGitHookRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeleteGitHookExecute(r)
 }
 
@@ -11962,10 +11962,10 @@ RepoDeleteGitHook Delete a Git hook in a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the hook to get
- @return ApiRepoDeleteGitHookRequest
+ @return RepositoryAPIRepoDeleteGitHookRequest
 */
-func (a *RepositoryAPIService) RepoDeleteGitHook(ctx context.Context, owner string, repo string, id string) ApiRepoDeleteGitHookRequest {
-	return ApiRepoDeleteGitHookRequest{
+func (a *RepositoryAPIService) RepoDeleteGitHook(ctx context.Context, owner string, repo string, id string) RepositoryAPIRepoDeleteGitHookRequest {
+	return RepositoryAPIRepoDeleteGitHookRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -11975,7 +11975,7 @@ func (a *RepositoryAPIService) RepoDeleteGitHook(ctx context.Context, owner stri
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeleteGitHookExecute(r ApiRepoDeleteGitHookRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteGitHookExecute(r RepositoryAPIRepoDeleteGitHookRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -12135,7 +12135,7 @@ func (a *RepositoryAPIService) RepoDeleteGitHookExecute(r ApiRepoDeleteGitHookRe
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteHookRequest struct {
+type RepositoryAPIRepoDeleteHookRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -12143,7 +12143,7 @@ type ApiRepoDeleteHookRequest struct {
 	id int64
 }
 
-func (r ApiRepoDeleteHookRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeleteHookRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeleteHookExecute(r)
 }
 
@@ -12154,10 +12154,10 @@ RepoDeleteHook Delete a hook in a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the hook to delete
- @return ApiRepoDeleteHookRequest
+ @return RepositoryAPIRepoDeleteHookRequest
 */
-func (a *RepositoryAPIService) RepoDeleteHook(ctx context.Context, owner string, repo string, id int64) ApiRepoDeleteHookRequest {
-	return ApiRepoDeleteHookRequest{
+func (a *RepositoryAPIService) RepoDeleteHook(ctx context.Context, owner string, repo string, id int64) RepositoryAPIRepoDeleteHookRequest {
+	return RepositoryAPIRepoDeleteHookRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -12167,7 +12167,7 @@ func (a *RepositoryAPIService) RepoDeleteHook(ctx context.Context, owner string,
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeleteHookExecute(r ApiRepoDeleteHookRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteHookExecute(r RepositoryAPIRepoDeleteHookRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -12327,7 +12327,7 @@ func (a *RepositoryAPIService) RepoDeleteHookExecute(r ApiRepoDeleteHookRequest)
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteKeyRequest struct {
+type RepositoryAPIRepoDeleteKeyRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -12335,7 +12335,7 @@ type ApiRepoDeleteKeyRequest struct {
 	id int64
 }
 
-func (r ApiRepoDeleteKeyRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeleteKeyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeleteKeyExecute(r)
 }
 
@@ -12346,10 +12346,10 @@ RepoDeleteKey Delete a key from a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the key to delete
- @return ApiRepoDeleteKeyRequest
+ @return RepositoryAPIRepoDeleteKeyRequest
 */
-func (a *RepositoryAPIService) RepoDeleteKey(ctx context.Context, owner string, repo string, id int64) ApiRepoDeleteKeyRequest {
-	return ApiRepoDeleteKeyRequest{
+func (a *RepositoryAPIService) RepoDeleteKey(ctx context.Context, owner string, repo string, id int64) RepositoryAPIRepoDeleteKeyRequest {
+	return RepositoryAPIRepoDeleteKeyRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -12359,7 +12359,7 @@ func (a *RepositoryAPIService) RepoDeleteKey(ctx context.Context, owner string, 
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeleteKeyExecute(r ApiRepoDeleteKeyRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteKeyExecute(r RepositoryAPIRepoDeleteKeyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -12530,7 +12530,7 @@ func (a *RepositoryAPIService) RepoDeleteKeyExecute(r ApiRepoDeleteKeyRequest) (
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeletePullReviewRequest struct {
+type RepositoryAPIRepoDeletePullReviewRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -12539,7 +12539,7 @@ type ApiRepoDeletePullReviewRequest struct {
 	id int64
 }
 
-func (r ApiRepoDeletePullReviewRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeletePullReviewRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeletePullReviewExecute(r)
 }
 
@@ -12551,10 +12551,10 @@ RepoDeletePullReview Delete a specific review from a pull request
  @param repo name of the repo
  @param index index of the pull request
  @param id id of the review
- @return ApiRepoDeletePullReviewRequest
+ @return RepositoryAPIRepoDeletePullReviewRequest
 */
-func (a *RepositoryAPIService) RepoDeletePullReview(ctx context.Context, owner string, repo string, index int64, id int64) ApiRepoDeletePullReviewRequest {
-	return ApiRepoDeletePullReviewRequest{
+func (a *RepositoryAPIService) RepoDeletePullReview(ctx context.Context, owner string, repo string, index int64, id int64) RepositoryAPIRepoDeletePullReviewRequest {
+	return RepositoryAPIRepoDeletePullReviewRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -12565,7 +12565,7 @@ func (a *RepositoryAPIService) RepoDeletePullReview(ctx context.Context, owner s
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeletePullReviewExecute(r ApiRepoDeletePullReviewRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeletePullReviewExecute(r RepositoryAPIRepoDeletePullReviewRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -12737,7 +12737,7 @@ func (a *RepositoryAPIService) RepoDeletePullReviewExecute(r ApiRepoDeletePullRe
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeletePullReviewCommentRequest struct {
+type RepositoryAPIRepoDeletePullReviewCommentRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -12747,7 +12747,7 @@ type ApiRepoDeletePullReviewCommentRequest struct {
 	comment int64
 }
 
-func (r ApiRepoDeletePullReviewCommentRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeletePullReviewCommentRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeletePullReviewCommentExecute(r)
 }
 
@@ -12760,10 +12760,10 @@ RepoDeletePullReviewComment Delete a pull review comment
  @param index index of the pull request
  @param id id of the review
  @param comment id of the comment
- @return ApiRepoDeletePullReviewCommentRequest
+ @return RepositoryAPIRepoDeletePullReviewCommentRequest
 */
-func (a *RepositoryAPIService) RepoDeletePullReviewComment(ctx context.Context, owner string, repo string, index int64, id int64, comment int64) ApiRepoDeletePullReviewCommentRequest {
-	return ApiRepoDeletePullReviewCommentRequest{
+func (a *RepositoryAPIService) RepoDeletePullReviewComment(ctx context.Context, owner string, repo string, index int64, id int64, comment int64) RepositoryAPIRepoDeletePullReviewCommentRequest {
+	return RepositoryAPIRepoDeletePullReviewCommentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -12775,7 +12775,7 @@ func (a *RepositoryAPIService) RepoDeletePullReviewComment(ctx context.Context, 
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeletePullReviewCommentExecute(r ApiRepoDeletePullReviewCommentRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeletePullReviewCommentExecute(r RepositoryAPIRepoDeletePullReviewCommentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -12948,7 +12948,7 @@ func (a *RepositoryAPIService) RepoDeletePullReviewCommentExecute(r ApiRepoDelet
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeletePullReviewRequestsRequest struct {
+type RepositoryAPIRepoDeletePullReviewRequestsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -12957,12 +12957,12 @@ type ApiRepoDeletePullReviewRequestsRequest struct {
 	body *PullReviewRequestOptions
 }
 
-func (r ApiRepoDeletePullReviewRequestsRequest) Body(body PullReviewRequestOptions) ApiRepoDeletePullReviewRequestsRequest {
+func (r RepositoryAPIRepoDeletePullReviewRequestsRequest) Body(body PullReviewRequestOptions) RepositoryAPIRepoDeletePullReviewRequestsRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoDeletePullReviewRequestsRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeletePullReviewRequestsRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeletePullReviewRequestsExecute(r)
 }
 
@@ -12973,10 +12973,10 @@ RepoDeletePullReviewRequests cancel review requests for a pull request
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the pull request
- @return ApiRepoDeletePullReviewRequestsRequest
+ @return RepositoryAPIRepoDeletePullReviewRequestsRequest
 */
-func (a *RepositoryAPIService) RepoDeletePullReviewRequests(ctx context.Context, owner string, repo string, index int64) ApiRepoDeletePullReviewRequestsRequest {
-	return ApiRepoDeletePullReviewRequestsRequest{
+func (a *RepositoryAPIService) RepoDeletePullReviewRequests(ctx context.Context, owner string, repo string, index int64) RepositoryAPIRepoDeletePullReviewRequestsRequest {
+	return RepositoryAPIRepoDeletePullReviewRequestsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -12986,7 +12986,7 @@ func (a *RepositoryAPIService) RepoDeletePullReviewRequests(ctx context.Context,
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeletePullReviewRequestsExecute(r ApiRepoDeletePullReviewRequestsRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeletePullReviewRequestsExecute(r RepositoryAPIRepoDeletePullReviewRequestsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -13173,7 +13173,7 @@ func (a *RepositoryAPIService) RepoDeletePullReviewRequestsExecute(r ApiRepoDele
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeletePushMirrorRequest struct {
+type RepositoryAPIRepoDeletePushMirrorRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -13181,7 +13181,7 @@ type ApiRepoDeletePushMirrorRequest struct {
 	name string
 }
 
-func (r ApiRepoDeletePushMirrorRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeletePushMirrorRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeletePushMirrorExecute(r)
 }
 
@@ -13192,10 +13192,10 @@ RepoDeletePushMirror deletes a push mirror from a repository by remoteName
  @param owner owner of the repo
  @param repo name of the repo
  @param name remote name of the pushMirror
- @return ApiRepoDeletePushMirrorRequest
+ @return RepositoryAPIRepoDeletePushMirrorRequest
 */
-func (a *RepositoryAPIService) RepoDeletePushMirror(ctx context.Context, owner string, repo string, name string) ApiRepoDeletePushMirrorRequest {
-	return ApiRepoDeletePushMirrorRequest{
+func (a *RepositoryAPIService) RepoDeletePushMirror(ctx context.Context, owner string, repo string, name string) RepositoryAPIRepoDeletePushMirrorRequest {
+	return RepositoryAPIRepoDeletePushMirrorRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -13205,7 +13205,7 @@ func (a *RepositoryAPIService) RepoDeletePushMirror(ctx context.Context, owner s
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeletePushMirrorExecute(r ApiRepoDeletePushMirrorRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeletePushMirrorExecute(r RepositoryAPIRepoDeletePushMirrorRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -13376,7 +13376,7 @@ func (a *RepositoryAPIService) RepoDeletePushMirrorExecute(r ApiRepoDeletePushMi
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteReleaseRequest struct {
+type RepositoryAPIRepoDeleteReleaseRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -13384,7 +13384,7 @@ type ApiRepoDeleteReleaseRequest struct {
 	id int64
 }
 
-func (r ApiRepoDeleteReleaseRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeleteReleaseRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeleteReleaseExecute(r)
 }
 
@@ -13395,10 +13395,10 @@ RepoDeleteRelease Delete a release
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the release to delete
- @return ApiRepoDeleteReleaseRequest
+ @return RepositoryAPIRepoDeleteReleaseRequest
 */
-func (a *RepositoryAPIService) RepoDeleteRelease(ctx context.Context, owner string, repo string, id int64) ApiRepoDeleteReleaseRequest {
-	return ApiRepoDeleteReleaseRequest{
+func (a *RepositoryAPIService) RepoDeleteRelease(ctx context.Context, owner string, repo string, id int64) RepositoryAPIRepoDeleteReleaseRequest {
+	return RepositoryAPIRepoDeleteReleaseRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -13408,7 +13408,7 @@ func (a *RepositoryAPIService) RepoDeleteRelease(ctx context.Context, owner stri
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeleteReleaseExecute(r ApiRepoDeleteReleaseRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteReleaseExecute(r RepositoryAPIRepoDeleteReleaseRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -13579,7 +13579,7 @@ func (a *RepositoryAPIService) RepoDeleteReleaseExecute(r ApiRepoDeleteReleaseRe
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteReleaseAttachmentRequest struct {
+type RepositoryAPIRepoDeleteReleaseAttachmentRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -13588,7 +13588,7 @@ type ApiRepoDeleteReleaseAttachmentRequest struct {
 	attachmentId int64
 }
 
-func (r ApiRepoDeleteReleaseAttachmentRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeleteReleaseAttachmentRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeleteReleaseAttachmentExecute(r)
 }
 
@@ -13600,10 +13600,10 @@ RepoDeleteReleaseAttachment Delete a release attachment
  @param repo name of the repo
  @param id id of the release
  @param attachmentId id of the attachment to delete
- @return ApiRepoDeleteReleaseAttachmentRequest
+ @return RepositoryAPIRepoDeleteReleaseAttachmentRequest
 */
-func (a *RepositoryAPIService) RepoDeleteReleaseAttachment(ctx context.Context, owner string, repo string, id int64, attachmentId int64) ApiRepoDeleteReleaseAttachmentRequest {
-	return ApiRepoDeleteReleaseAttachmentRequest{
+func (a *RepositoryAPIService) RepoDeleteReleaseAttachment(ctx context.Context, owner string, repo string, id int64, attachmentId int64) RepositoryAPIRepoDeleteReleaseAttachmentRequest {
+	return RepositoryAPIRepoDeleteReleaseAttachmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -13614,7 +13614,7 @@ func (a *RepositoryAPIService) RepoDeleteReleaseAttachment(ctx context.Context, 
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeleteReleaseAttachmentExecute(r ApiRepoDeleteReleaseAttachmentRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteReleaseAttachmentExecute(r RepositoryAPIRepoDeleteReleaseAttachmentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -13775,7 +13775,7 @@ func (a *RepositoryAPIService) RepoDeleteReleaseAttachmentExecute(r ApiRepoDelet
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteReleaseByTagRequest struct {
+type RepositoryAPIRepoDeleteReleaseByTagRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -13783,7 +13783,7 @@ type ApiRepoDeleteReleaseByTagRequest struct {
 	tag string
 }
 
-func (r ApiRepoDeleteReleaseByTagRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeleteReleaseByTagRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeleteReleaseByTagExecute(r)
 }
 
@@ -13794,10 +13794,10 @@ RepoDeleteReleaseByTag Delete a release by tag name
  @param owner owner of the repo
  @param repo name of the repo
  @param tag tag name of the release to delete
- @return ApiRepoDeleteReleaseByTagRequest
+ @return RepositoryAPIRepoDeleteReleaseByTagRequest
 */
-func (a *RepositoryAPIService) RepoDeleteReleaseByTag(ctx context.Context, owner string, repo string, tag string) ApiRepoDeleteReleaseByTagRequest {
-	return ApiRepoDeleteReleaseByTagRequest{
+func (a *RepositoryAPIService) RepoDeleteReleaseByTag(ctx context.Context, owner string, repo string, tag string) RepositoryAPIRepoDeleteReleaseByTagRequest {
+	return RepositoryAPIRepoDeleteReleaseByTagRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -13807,7 +13807,7 @@ func (a *RepositoryAPIService) RepoDeleteReleaseByTag(ctx context.Context, owner
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeleteReleaseByTagExecute(r ApiRepoDeleteReleaseByTagRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteReleaseByTagExecute(r RepositoryAPIRepoDeleteReleaseByTagRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -13978,7 +13978,7 @@ func (a *RepositoryAPIService) RepoDeleteReleaseByTagExecute(r ApiRepoDeleteRele
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteTagRequest struct {
+type RepositoryAPIRepoDeleteTagRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -13986,7 +13986,7 @@ type ApiRepoDeleteTagRequest struct {
 	tag string
 }
 
-func (r ApiRepoDeleteTagRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeleteTagRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeleteTagExecute(r)
 }
 
@@ -13997,10 +13997,10 @@ RepoDeleteTag Delete a repository's tag by name
  @param owner owner of the repo
  @param repo name of the repo
  @param tag name of tag to delete
- @return ApiRepoDeleteTagRequest
+ @return RepositoryAPIRepoDeleteTagRequest
 */
-func (a *RepositoryAPIService) RepoDeleteTag(ctx context.Context, owner string, repo string, tag string) ApiRepoDeleteTagRequest {
-	return ApiRepoDeleteTagRequest{
+func (a *RepositoryAPIService) RepoDeleteTag(ctx context.Context, owner string, repo string, tag string) RepositoryAPIRepoDeleteTagRequest {
+	return RepositoryAPIRepoDeleteTagRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -14010,7 +14010,7 @@ func (a *RepositoryAPIService) RepoDeleteTag(ctx context.Context, owner string, 
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeleteTagExecute(r ApiRepoDeleteTagRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteTagExecute(r RepositoryAPIRepoDeleteTagRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -14192,7 +14192,7 @@ func (a *RepositoryAPIService) RepoDeleteTagExecute(r ApiRepoDeleteTagRequest) (
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteTagProtectionRequest struct {
+type RepositoryAPIRepoDeleteTagProtectionRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -14200,7 +14200,7 @@ type ApiRepoDeleteTagProtectionRequest struct {
 	id int32
 }
 
-func (r ApiRepoDeleteTagProtectionRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeleteTagProtectionRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeleteTagProtectionExecute(r)
 }
 
@@ -14211,10 +14211,10 @@ RepoDeleteTagProtection Delete a specific tag protection for the repository
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of protected tag
- @return ApiRepoDeleteTagProtectionRequest
+ @return RepositoryAPIRepoDeleteTagProtectionRequest
 */
-func (a *RepositoryAPIService) RepoDeleteTagProtection(ctx context.Context, owner string, repo string, id int32) ApiRepoDeleteTagProtectionRequest {
-	return ApiRepoDeleteTagProtectionRequest{
+func (a *RepositoryAPIService) RepoDeleteTagProtection(ctx context.Context, owner string, repo string, id int32) RepositoryAPIRepoDeleteTagProtectionRequest {
+	return RepositoryAPIRepoDeleteTagProtectionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -14224,7 +14224,7 @@ func (a *RepositoryAPIService) RepoDeleteTagProtection(ctx context.Context, owne
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeleteTagProtectionExecute(r ApiRepoDeleteTagProtectionRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteTagProtectionExecute(r RepositoryAPIRepoDeleteTagProtectionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -14384,7 +14384,7 @@ func (a *RepositoryAPIService) RepoDeleteTagProtectionExecute(r ApiRepoDeleteTag
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteTeamRequest struct {
+type RepositoryAPIRepoDeleteTeamRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -14392,7 +14392,7 @@ type ApiRepoDeleteTeamRequest struct {
 	team string
 }
 
-func (r ApiRepoDeleteTeamRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeleteTeamRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeleteTeamExecute(r)
 }
 
@@ -14403,10 +14403,10 @@ RepoDeleteTeam Delete a team from a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param team team name
- @return ApiRepoDeleteTeamRequest
+ @return RepositoryAPIRepoDeleteTeamRequest
 */
-func (a *RepositoryAPIService) RepoDeleteTeam(ctx context.Context, owner string, repo string, team string) ApiRepoDeleteTeamRequest {
-	return ApiRepoDeleteTeamRequest{
+func (a *RepositoryAPIService) RepoDeleteTeam(ctx context.Context, owner string, repo string, team string) RepositoryAPIRepoDeleteTeamRequest {
+	return RepositoryAPIRepoDeleteTeamRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -14416,7 +14416,7 @@ func (a *RepositoryAPIService) RepoDeleteTeam(ctx context.Context, owner string,
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeleteTeamExecute(r ApiRepoDeleteTeamRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteTeamExecute(r RepositoryAPIRepoDeleteTeamRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -14598,7 +14598,7 @@ func (a *RepositoryAPIService) RepoDeleteTeamExecute(r ApiRepoDeleteTeamRequest)
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteTopicRequest struct {
+type RepositoryAPIRepoDeleteTopicRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -14606,7 +14606,7 @@ type ApiRepoDeleteTopicRequest struct {
 	topic string
 }
 
-func (r ApiRepoDeleteTopicRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeleteTopicRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeleteTopicExecute(r)
 }
 
@@ -14617,10 +14617,10 @@ RepoDeleteTopic Delete a topic from a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param topic name of the topic to delete
- @return ApiRepoDeleteTopicRequest
+ @return RepositoryAPIRepoDeleteTopicRequest
 */
-func (a *RepositoryAPIService) RepoDeleteTopic(ctx context.Context, owner string, repo string, topic string) ApiRepoDeleteTopicRequest {
-	return ApiRepoDeleteTopicRequest{
+func (a *RepositoryAPIService) RepoDeleteTopic(ctx context.Context, owner string, repo string, topic string) RepositoryAPIRepoDeleteTopicRequest {
+	return RepositoryAPIRepoDeleteTopicRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -14630,7 +14630,7 @@ func (a *RepositoryAPIService) RepoDeleteTopic(ctx context.Context, owner string
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeleteTopicExecute(r ApiRepoDeleteTopicRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteTopicExecute(r RepositoryAPIRepoDeleteTopicRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -14801,7 +14801,7 @@ func (a *RepositoryAPIService) RepoDeleteTopicExecute(r ApiRepoDeleteTopicReques
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDeleteWikiPageRequest struct {
+type RepositoryAPIRepoDeleteWikiPageRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -14809,7 +14809,7 @@ type ApiRepoDeleteWikiPageRequest struct {
 	pageName string
 }
 
-func (r ApiRepoDeleteWikiPageRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoDeleteWikiPageRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoDeleteWikiPageExecute(r)
 }
 
@@ -14820,10 +14820,10 @@ RepoDeleteWikiPage Delete a wiki page
  @param owner owner of the repo
  @param repo name of the repo
  @param pageName name of the page
- @return ApiRepoDeleteWikiPageRequest
+ @return RepositoryAPIRepoDeleteWikiPageRequest
 */
-func (a *RepositoryAPIService) RepoDeleteWikiPage(ctx context.Context, owner string, repo string, pageName string) ApiRepoDeleteWikiPageRequest {
-	return ApiRepoDeleteWikiPageRequest{
+func (a *RepositoryAPIService) RepoDeleteWikiPage(ctx context.Context, owner string, repo string, pageName string) RepositoryAPIRepoDeleteWikiPageRequest {
+	return RepositoryAPIRepoDeleteWikiPageRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -14833,7 +14833,7 @@ func (a *RepositoryAPIService) RepoDeleteWikiPage(ctx context.Context, owner str
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoDeleteWikiPageExecute(r ApiRepoDeleteWikiPageRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoDeleteWikiPageExecute(r RepositoryAPIRepoDeleteWikiPageRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -15015,7 +15015,7 @@ func (a *RepositoryAPIService) RepoDeleteWikiPageExecute(r ApiRepoDeleteWikiPage
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoDismissPullReviewRequest struct {
+type RepositoryAPIRepoDismissPullReviewRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -15025,12 +15025,12 @@ type ApiRepoDismissPullReviewRequest struct {
 	body *DismissPullReviewOptions
 }
 
-func (r ApiRepoDismissPullReviewRequest) Body(body DismissPullReviewOptions) ApiRepoDismissPullReviewRequest {
+func (r RepositoryAPIRepoDismissPullReviewRequest) Body(body DismissPullReviewOptions) RepositoryAPIRepoDismissPullReviewRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoDismissPullReviewRequest) Execute() (*PullReview, *http.Response, error) {
+func (r RepositoryAPIRepoDismissPullReviewRequest) Execute() (*PullReview, *http.Response, error) {
 	return r.ApiService.RepoDismissPullReviewExecute(r)
 }
 
@@ -15042,10 +15042,10 @@ RepoDismissPullReview Dismiss a review for a pull request
  @param repo name of the repo
  @param index index of the pull request
  @param id id of the review
- @return ApiRepoDismissPullReviewRequest
+ @return RepositoryAPIRepoDismissPullReviewRequest
 */
-func (a *RepositoryAPIService) RepoDismissPullReview(ctx context.Context, owner string, repo string, index int64, id int64) ApiRepoDismissPullReviewRequest {
-	return ApiRepoDismissPullReviewRequest{
+func (a *RepositoryAPIService) RepoDismissPullReview(ctx context.Context, owner string, repo string, index int64, id int64) RepositoryAPIRepoDismissPullReviewRequest {
+	return RepositoryAPIRepoDismissPullReviewRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -15057,7 +15057,7 @@ func (a *RepositoryAPIService) RepoDismissPullReview(ctx context.Context, owner 
 
 // Execute executes the request
 //  @return PullReview
-func (a *RepositoryAPIService) RepoDismissPullReviewExecute(r ApiRepoDismissPullReviewRequest) (*PullReview, *http.Response, error) {
+func (a *RepositoryAPIService) RepoDismissPullReviewExecute(r RepositoryAPIRepoDismissPullReviewRequest) (*PullReview, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -15255,7 +15255,7 @@ func (a *RepositoryAPIService) RepoDismissPullReviewExecute(r ApiRepoDismissPull
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoDownloadCommitDiffOrPatchRequest struct {
+type RepositoryAPIRepoDownloadCommitDiffOrPatchRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -15264,7 +15264,7 @@ type ApiRepoDownloadCommitDiffOrPatchRequest struct {
 	diffType string
 }
 
-func (r ApiRepoDownloadCommitDiffOrPatchRequest) Execute() (string, *http.Response, error) {
+func (r RepositoryAPIRepoDownloadCommitDiffOrPatchRequest) Execute() (string, *http.Response, error) {
 	return r.ApiService.RepoDownloadCommitDiffOrPatchExecute(r)
 }
 
@@ -15276,10 +15276,10 @@ RepoDownloadCommitDiffOrPatch Get a commit's diff or patch
  @param repo name of the repo
  @param sha SHA of the commit to get
  @param diffType whether the output is diff or patch
- @return ApiRepoDownloadCommitDiffOrPatchRequest
+ @return RepositoryAPIRepoDownloadCommitDiffOrPatchRequest
 */
-func (a *RepositoryAPIService) RepoDownloadCommitDiffOrPatch(ctx context.Context, owner string, repo string, sha string, diffType string) ApiRepoDownloadCommitDiffOrPatchRequest {
-	return ApiRepoDownloadCommitDiffOrPatchRequest{
+func (a *RepositoryAPIService) RepoDownloadCommitDiffOrPatch(ctx context.Context, owner string, repo string, sha string, diffType string) RepositoryAPIRepoDownloadCommitDiffOrPatchRequest {
+	return RepositoryAPIRepoDownloadCommitDiffOrPatchRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -15291,7 +15291,7 @@ func (a *RepositoryAPIService) RepoDownloadCommitDiffOrPatch(ctx context.Context
 
 // Execute executes the request
 //  @return string
-func (a *RepositoryAPIService) RepoDownloadCommitDiffOrPatchExecute(r ApiRepoDownloadCommitDiffOrPatchRequest) (string, *http.Response, error) {
+func (a *RepositoryAPIService) RepoDownloadCommitDiffOrPatchExecute(r RepositoryAPIRepoDownloadCommitDiffOrPatchRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -15462,7 +15462,7 @@ func (a *RepositoryAPIService) RepoDownloadCommitDiffOrPatchExecute(r ApiRepoDow
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoDownloadPullDiffOrPatchRequest struct {
+type RepositoryAPIRepoDownloadPullDiffOrPatchRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -15473,12 +15473,12 @@ type ApiRepoDownloadPullDiffOrPatchRequest struct {
 }
 
 // whether to include binary file changes. if true, the diff is applicable with &#x60;git apply&#x60;
-func (r ApiRepoDownloadPullDiffOrPatchRequest) Binary(binary bool) ApiRepoDownloadPullDiffOrPatchRequest {
+func (r RepositoryAPIRepoDownloadPullDiffOrPatchRequest) Binary(binary bool) RepositoryAPIRepoDownloadPullDiffOrPatchRequest {
 	r.binary = &binary
 	return r
 }
 
-func (r ApiRepoDownloadPullDiffOrPatchRequest) Execute() (string, *http.Response, error) {
+func (r RepositoryAPIRepoDownloadPullDiffOrPatchRequest) Execute() (string, *http.Response, error) {
 	return r.ApiService.RepoDownloadPullDiffOrPatchExecute(r)
 }
 
@@ -15490,10 +15490,10 @@ RepoDownloadPullDiffOrPatch Get a pull request diff or patch
  @param repo name of the repo
  @param index index of the pull request to get
  @param diffType whether the output is diff or patch
- @return ApiRepoDownloadPullDiffOrPatchRequest
+ @return RepositoryAPIRepoDownloadPullDiffOrPatchRequest
 */
-func (a *RepositoryAPIService) RepoDownloadPullDiffOrPatch(ctx context.Context, owner string, repo string, index int64, diffType string) ApiRepoDownloadPullDiffOrPatchRequest {
-	return ApiRepoDownloadPullDiffOrPatchRequest{
+func (a *RepositoryAPIService) RepoDownloadPullDiffOrPatch(ctx context.Context, owner string, repo string, index int64, diffType string) RepositoryAPIRepoDownloadPullDiffOrPatchRequest {
+	return RepositoryAPIRepoDownloadPullDiffOrPatchRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -15505,7 +15505,7 @@ func (a *RepositoryAPIService) RepoDownloadPullDiffOrPatch(ctx context.Context, 
 
 // Execute executes the request
 //  @return string
-func (a *RepositoryAPIService) RepoDownloadPullDiffOrPatchExecute(r ApiRepoDownloadPullDiffOrPatchRequest) (string, *http.Response, error) {
+func (a *RepositoryAPIService) RepoDownloadPullDiffOrPatchExecute(r RepositoryAPIRepoDownloadPullDiffOrPatchRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -15679,7 +15679,7 @@ func (a *RepositoryAPIService) RepoDownloadPullDiffOrPatchExecute(r ApiRepoDownl
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoEditRequest struct {
+type RepositoryAPIRepoEditRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -15688,12 +15688,12 @@ type ApiRepoEditRequest struct {
 }
 
 // Properties of a repo that you can edit
-func (r ApiRepoEditRequest) Body(body EditRepoOption) ApiRepoEditRequest {
+func (r RepositoryAPIRepoEditRequest) Body(body EditRepoOption) RepositoryAPIRepoEditRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoEditRequest) Execute() (*Repository, *http.Response, error) {
+func (r RepositoryAPIRepoEditRequest) Execute() (*Repository, *http.Response, error) {
 	return r.ApiService.RepoEditExecute(r)
 }
 
@@ -15703,10 +15703,10 @@ RepoEdit Edit a repository's properties. Only fields that are set will be change
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo to edit
  @param repo name of the repo to edit
- @return ApiRepoEditRequest
+ @return RepositoryAPIRepoEditRequest
 */
-func (a *RepositoryAPIService) RepoEdit(ctx context.Context, owner string, repo string) ApiRepoEditRequest {
-	return ApiRepoEditRequest{
+func (a *RepositoryAPIService) RepoEdit(ctx context.Context, owner string, repo string) RepositoryAPIRepoEditRequest {
+	return RepositoryAPIRepoEditRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -15716,7 +15716,7 @@ func (a *RepositoryAPIService) RepoEdit(ctx context.Context, owner string, repo 
 
 // Execute executes the request
 //  @return Repository
-func (a *RepositoryAPIService) RepoEditExecute(r ApiRepoEditRequest) (*Repository, *http.Response, error) {
+func (a *RepositoryAPIService) RepoEditExecute(r RepositoryAPIRepoEditRequest) (*Repository, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -15909,7 +15909,7 @@ func (a *RepositoryAPIService) RepoEditExecute(r ApiRepoEditRequest) (*Repositor
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoEditBranchProtectionRequest struct {
+type RepositoryAPIRepoEditBranchProtectionRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -15918,12 +15918,12 @@ type ApiRepoEditBranchProtectionRequest struct {
 	body *EditBranchProtectionOption
 }
 
-func (r ApiRepoEditBranchProtectionRequest) Body(body EditBranchProtectionOption) ApiRepoEditBranchProtectionRequest {
+func (r RepositoryAPIRepoEditBranchProtectionRequest) Body(body EditBranchProtectionOption) RepositoryAPIRepoEditBranchProtectionRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoEditBranchProtectionRequest) Execute() (*BranchProtection, *http.Response, error) {
+func (r RepositoryAPIRepoEditBranchProtectionRequest) Execute() (*BranchProtection, *http.Response, error) {
 	return r.ApiService.RepoEditBranchProtectionExecute(r)
 }
 
@@ -15934,10 +15934,10 @@ RepoEditBranchProtection Edit a branch protections for a repository. Only fields
  @param owner owner of the repo
  @param repo name of the repo
  @param name name of protected branch
- @return ApiRepoEditBranchProtectionRequest
+ @return RepositoryAPIRepoEditBranchProtectionRequest
 */
-func (a *RepositoryAPIService) RepoEditBranchProtection(ctx context.Context, owner string, repo string, name string) ApiRepoEditBranchProtectionRequest {
-	return ApiRepoEditBranchProtectionRequest{
+func (a *RepositoryAPIService) RepoEditBranchProtection(ctx context.Context, owner string, repo string, name string) RepositoryAPIRepoEditBranchProtectionRequest {
+	return RepositoryAPIRepoEditBranchProtectionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -15948,7 +15948,7 @@ func (a *RepositoryAPIService) RepoEditBranchProtection(ctx context.Context, own
 
 // Execute executes the request
 //  @return BranchProtection
-func (a *RepositoryAPIService) RepoEditBranchProtectionExecute(r ApiRepoEditBranchProtectionRequest) (*BranchProtection, *http.Response, error) {
+func (a *RepositoryAPIService) RepoEditBranchProtectionExecute(r RepositoryAPIRepoEditBranchProtectionRequest) (*BranchProtection, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -16142,7 +16142,7 @@ func (a *RepositoryAPIService) RepoEditBranchProtectionExecute(r ApiRepoEditBran
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoEditGitHookRequest struct {
+type RepositoryAPIRepoEditGitHookRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -16151,12 +16151,12 @@ type ApiRepoEditGitHookRequest struct {
 	body *EditGitHookOption
 }
 
-func (r ApiRepoEditGitHookRequest) Body(body EditGitHookOption) ApiRepoEditGitHookRequest {
+func (r RepositoryAPIRepoEditGitHookRequest) Body(body EditGitHookOption) RepositoryAPIRepoEditGitHookRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoEditGitHookRequest) Execute() (*GitHook, *http.Response, error) {
+func (r RepositoryAPIRepoEditGitHookRequest) Execute() (*GitHook, *http.Response, error) {
 	return r.ApiService.RepoEditGitHookExecute(r)
 }
 
@@ -16167,10 +16167,10 @@ RepoEditGitHook Edit a Git hook in a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the hook to get
- @return ApiRepoEditGitHookRequest
+ @return RepositoryAPIRepoEditGitHookRequest
 */
-func (a *RepositoryAPIService) RepoEditGitHook(ctx context.Context, owner string, repo string, id string) ApiRepoEditGitHookRequest {
-	return ApiRepoEditGitHookRequest{
+func (a *RepositoryAPIService) RepoEditGitHook(ctx context.Context, owner string, repo string, id string) RepositoryAPIRepoEditGitHookRequest {
+	return RepositoryAPIRepoEditGitHookRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -16181,7 +16181,7 @@ func (a *RepositoryAPIService) RepoEditGitHook(ctx context.Context, owner string
 
 // Execute executes the request
 //  @return GitHook
-func (a *RepositoryAPIService) RepoEditGitHookExecute(r ApiRepoEditGitHookRequest) (*GitHook, *http.Response, error) {
+func (a *RepositoryAPIService) RepoEditGitHookExecute(r RepositoryAPIRepoEditGitHookRequest) (*GitHook, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -16353,7 +16353,7 @@ func (a *RepositoryAPIService) RepoEditGitHookExecute(r ApiRepoEditGitHookReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoEditHookRequest struct {
+type RepositoryAPIRepoEditHookRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -16362,12 +16362,12 @@ type ApiRepoEditHookRequest struct {
 	body *EditHookOption
 }
 
-func (r ApiRepoEditHookRequest) Body(body EditHookOption) ApiRepoEditHookRequest {
+func (r RepositoryAPIRepoEditHookRequest) Body(body EditHookOption) RepositoryAPIRepoEditHookRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoEditHookRequest) Execute() (*Hook, *http.Response, error) {
+func (r RepositoryAPIRepoEditHookRequest) Execute() (*Hook, *http.Response, error) {
 	return r.ApiService.RepoEditHookExecute(r)
 }
 
@@ -16378,10 +16378,10 @@ RepoEditHook Edit a hook in a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param id index of the hook
- @return ApiRepoEditHookRequest
+ @return RepositoryAPIRepoEditHookRequest
 */
-func (a *RepositoryAPIService) RepoEditHook(ctx context.Context, owner string, repo string, id int64) ApiRepoEditHookRequest {
-	return ApiRepoEditHookRequest{
+func (a *RepositoryAPIService) RepoEditHook(ctx context.Context, owner string, repo string, id int64) RepositoryAPIRepoEditHookRequest {
+	return RepositoryAPIRepoEditHookRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -16392,7 +16392,7 @@ func (a *RepositoryAPIService) RepoEditHook(ctx context.Context, owner string, r
 
 // Execute executes the request
 //  @return Hook
-func (a *RepositoryAPIService) RepoEditHookExecute(r ApiRepoEditHookRequest) (*Hook, *http.Response, error) {
+func (a *RepositoryAPIService) RepoEditHookExecute(r RepositoryAPIRepoEditHookRequest) (*Hook, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -16564,7 +16564,7 @@ func (a *RepositoryAPIService) RepoEditHookExecute(r ApiRepoEditHookRequest) (*H
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoEditPullRequestRequest struct {
+type RepositoryAPIRepoEditPullRequestRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -16573,12 +16573,12 @@ type ApiRepoEditPullRequestRequest struct {
 	body *EditPullRequestOption
 }
 
-func (r ApiRepoEditPullRequestRequest) Body(body EditPullRequestOption) ApiRepoEditPullRequestRequest {
+func (r RepositoryAPIRepoEditPullRequestRequest) Body(body EditPullRequestOption) RepositoryAPIRepoEditPullRequestRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoEditPullRequestRequest) Execute() (*PullRequest, *http.Response, error) {
+func (r RepositoryAPIRepoEditPullRequestRequest) Execute() (*PullRequest, *http.Response, error) {
 	return r.ApiService.RepoEditPullRequestExecute(r)
 }
 
@@ -16589,10 +16589,10 @@ RepoEditPullRequest Update a pull request. If using deadline only the date will 
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the pull request to edit
- @return ApiRepoEditPullRequestRequest
+ @return RepositoryAPIRepoEditPullRequestRequest
 */
-func (a *RepositoryAPIService) RepoEditPullRequest(ctx context.Context, owner string, repo string, index int64) ApiRepoEditPullRequestRequest {
-	return ApiRepoEditPullRequestRequest{
+func (a *RepositoryAPIService) RepoEditPullRequest(ctx context.Context, owner string, repo string, index int64) RepositoryAPIRepoEditPullRequestRequest {
+	return RepositoryAPIRepoEditPullRequestRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -16603,7 +16603,7 @@ func (a *RepositoryAPIService) RepoEditPullRequest(ctx context.Context, owner st
 
 // Execute executes the request
 //  @return PullRequest
-func (a *RepositoryAPIService) RepoEditPullRequestExecute(r ApiRepoEditPullRequestRequest) (*PullRequest, *http.Response, error) {
+func (a *RepositoryAPIService) RepoEditPullRequestExecute(r RepositoryAPIRepoEditPullRequestRequest) (*PullRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -16819,7 +16819,7 @@ func (a *RepositoryAPIService) RepoEditPullRequestExecute(r ApiRepoEditPullReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoEditReleaseRequest struct {
+type RepositoryAPIRepoEditReleaseRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -16828,12 +16828,12 @@ type ApiRepoEditReleaseRequest struct {
 	body *EditReleaseOption
 }
 
-func (r ApiRepoEditReleaseRequest) Body(body EditReleaseOption) ApiRepoEditReleaseRequest {
+func (r RepositoryAPIRepoEditReleaseRequest) Body(body EditReleaseOption) RepositoryAPIRepoEditReleaseRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoEditReleaseRequest) Execute() (*Release, *http.Response, error) {
+func (r RepositoryAPIRepoEditReleaseRequest) Execute() (*Release, *http.Response, error) {
 	return r.ApiService.RepoEditReleaseExecute(r)
 }
 
@@ -16844,10 +16844,10 @@ RepoEditRelease Update a release
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the release to edit
- @return ApiRepoEditReleaseRequest
+ @return RepositoryAPIRepoEditReleaseRequest
 */
-func (a *RepositoryAPIService) RepoEditRelease(ctx context.Context, owner string, repo string, id int64) ApiRepoEditReleaseRequest {
-	return ApiRepoEditReleaseRequest{
+func (a *RepositoryAPIService) RepoEditRelease(ctx context.Context, owner string, repo string, id int64) RepositoryAPIRepoEditReleaseRequest {
+	return RepositoryAPIRepoEditReleaseRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -16858,7 +16858,7 @@ func (a *RepositoryAPIService) RepoEditRelease(ctx context.Context, owner string
 
 // Execute executes the request
 //  @return Release
-func (a *RepositoryAPIService) RepoEditReleaseExecute(r ApiRepoEditReleaseRequest) (*Release, *http.Response, error) {
+func (a *RepositoryAPIService) RepoEditReleaseExecute(r RepositoryAPIRepoEditReleaseRequest) (*Release, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -17030,7 +17030,7 @@ func (a *RepositoryAPIService) RepoEditReleaseExecute(r ApiRepoEditReleaseReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoEditReleaseAttachmentRequest struct {
+type RepositoryAPIRepoEditReleaseAttachmentRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -17040,12 +17040,12 @@ type ApiRepoEditReleaseAttachmentRequest struct {
 	body *EditAttachmentOptions
 }
 
-func (r ApiRepoEditReleaseAttachmentRequest) Body(body EditAttachmentOptions) ApiRepoEditReleaseAttachmentRequest {
+func (r RepositoryAPIRepoEditReleaseAttachmentRequest) Body(body EditAttachmentOptions) RepositoryAPIRepoEditReleaseAttachmentRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoEditReleaseAttachmentRequest) Execute() (*Attachment, *http.Response, error) {
+func (r RepositoryAPIRepoEditReleaseAttachmentRequest) Execute() (*Attachment, *http.Response, error) {
 	return r.ApiService.RepoEditReleaseAttachmentExecute(r)
 }
 
@@ -17057,10 +17057,10 @@ RepoEditReleaseAttachment Edit a release attachment
  @param repo name of the repo
  @param id id of the release
  @param attachmentId id of the attachment to edit
- @return ApiRepoEditReleaseAttachmentRequest
+ @return RepositoryAPIRepoEditReleaseAttachmentRequest
 */
-func (a *RepositoryAPIService) RepoEditReleaseAttachment(ctx context.Context, owner string, repo string, id int64, attachmentId int64) ApiRepoEditReleaseAttachmentRequest {
-	return ApiRepoEditReleaseAttachmentRequest{
+func (a *RepositoryAPIService) RepoEditReleaseAttachment(ctx context.Context, owner string, repo string, id int64, attachmentId int64) RepositoryAPIRepoEditReleaseAttachmentRequest {
+	return RepositoryAPIRepoEditReleaseAttachmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -17072,7 +17072,7 @@ func (a *RepositoryAPIService) RepoEditReleaseAttachment(ctx context.Context, ow
 
 // Execute executes the request
 //  @return Attachment
-func (a *RepositoryAPIService) RepoEditReleaseAttachmentExecute(r ApiRepoEditReleaseAttachmentRequest) (*Attachment, *http.Response, error) {
+func (a *RepositoryAPIService) RepoEditReleaseAttachmentExecute(r RepositoryAPIRepoEditReleaseAttachmentRequest) (*Attachment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -17246,7 +17246,7 @@ func (a *RepositoryAPIService) RepoEditReleaseAttachmentExecute(r ApiRepoEditRel
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoEditTagProtectionRequest struct {
+type RepositoryAPIRepoEditTagProtectionRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -17255,12 +17255,12 @@ type ApiRepoEditTagProtectionRequest struct {
 	body *EditTagProtectionOption
 }
 
-func (r ApiRepoEditTagProtectionRequest) Body(body EditTagProtectionOption) ApiRepoEditTagProtectionRequest {
+func (r RepositoryAPIRepoEditTagProtectionRequest) Body(body EditTagProtectionOption) RepositoryAPIRepoEditTagProtectionRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoEditTagProtectionRequest) Execute() (*TagProtection, *http.Response, error) {
+func (r RepositoryAPIRepoEditTagProtectionRequest) Execute() (*TagProtection, *http.Response, error) {
 	return r.ApiService.RepoEditTagProtectionExecute(r)
 }
 
@@ -17271,10 +17271,10 @@ RepoEditTagProtection Edit a tag protections for a repository. Only fields that 
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of protected tag
- @return ApiRepoEditTagProtectionRequest
+ @return RepositoryAPIRepoEditTagProtectionRequest
 */
-func (a *RepositoryAPIService) RepoEditTagProtection(ctx context.Context, owner string, repo string, id int32) ApiRepoEditTagProtectionRequest {
-	return ApiRepoEditTagProtectionRequest{
+func (a *RepositoryAPIService) RepoEditTagProtection(ctx context.Context, owner string, repo string, id int32) RepositoryAPIRepoEditTagProtectionRequest {
+	return RepositoryAPIRepoEditTagProtectionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -17285,7 +17285,7 @@ func (a *RepositoryAPIService) RepoEditTagProtection(ctx context.Context, owner 
 
 // Execute executes the request
 //  @return TagProtection
-func (a *RepositoryAPIService) RepoEditTagProtectionExecute(r ApiRepoEditTagProtectionRequest) (*TagProtection, *http.Response, error) {
+func (a *RepositoryAPIService) RepoEditTagProtectionExecute(r RepositoryAPIRepoEditTagProtectionRequest) (*TagProtection, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -17479,7 +17479,7 @@ func (a *RepositoryAPIService) RepoEditTagProtectionExecute(r ApiRepoEditTagProt
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoEditWikiPageRequest struct {
+type RepositoryAPIRepoEditWikiPageRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -17488,12 +17488,12 @@ type ApiRepoEditWikiPageRequest struct {
 	body *CreateWikiPageOptions
 }
 
-func (r ApiRepoEditWikiPageRequest) Body(body CreateWikiPageOptions) ApiRepoEditWikiPageRequest {
+func (r RepositoryAPIRepoEditWikiPageRequest) Body(body CreateWikiPageOptions) RepositoryAPIRepoEditWikiPageRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoEditWikiPageRequest) Execute() (*WikiPage, *http.Response, error) {
+func (r RepositoryAPIRepoEditWikiPageRequest) Execute() (*WikiPage, *http.Response, error) {
 	return r.ApiService.RepoEditWikiPageExecute(r)
 }
 
@@ -17504,10 +17504,10 @@ RepoEditWikiPage Edit a wiki page
  @param owner owner of the repo
  @param repo name of the repo
  @param pageName name of the page
- @return ApiRepoEditWikiPageRequest
+ @return RepositoryAPIRepoEditWikiPageRequest
 */
-func (a *RepositoryAPIService) RepoEditWikiPage(ctx context.Context, owner string, repo string, pageName string) ApiRepoEditWikiPageRequest {
-	return ApiRepoEditWikiPageRequest{
+func (a *RepositoryAPIService) RepoEditWikiPage(ctx context.Context, owner string, repo string, pageName string) RepositoryAPIRepoEditWikiPageRequest {
+	return RepositoryAPIRepoEditWikiPageRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -17518,7 +17518,7 @@ func (a *RepositoryAPIService) RepoEditWikiPage(ctx context.Context, owner strin
 
 // Execute executes the request
 //  @return WikiPage
-func (a *RepositoryAPIService) RepoEditWikiPageExecute(r ApiRepoEditWikiPageRequest) (*WikiPage, *http.Response, error) {
+func (a *RepositoryAPIService) RepoEditWikiPageExecute(r RepositoryAPIRepoEditWikiPageRequest) (*WikiPage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -17723,14 +17723,14 @@ func (a *RepositoryAPIService) RepoEditWikiPageExecute(r ApiRepoEditWikiPageRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetRequest struct {
+type RepositoryAPIRepoGetRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoGetRequest) Execute() (*Repository, *http.Response, error) {
+func (r RepositoryAPIRepoGetRequest) Execute() (*Repository, *http.Response, error) {
 	return r.ApiService.RepoGetExecute(r)
 }
 
@@ -17740,10 +17740,10 @@ RepoGet Get a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoGetRequest
+ @return RepositoryAPIRepoGetRequest
 */
-func (a *RepositoryAPIService) RepoGet(ctx context.Context, owner string, repo string) ApiRepoGetRequest {
-	return ApiRepoGetRequest{
+func (a *RepositoryAPIService) RepoGet(ctx context.Context, owner string, repo string) RepositoryAPIRepoGetRequest {
+	return RepositoryAPIRepoGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -17753,7 +17753,7 @@ func (a *RepositoryAPIService) RepoGet(ctx context.Context, owner string, repo s
 
 // Execute executes the request
 //  @return Repository
-func (a *RepositoryAPIService) RepoGetExecute(r ApiRepoGetRequest) (*Repository, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetExecute(r RepositoryAPIRepoGetRequest) (*Repository, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -17922,7 +17922,7 @@ func (a *RepositoryAPIService) RepoGetExecute(r ApiRepoGetRequest) (*Repository,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetAllCommitsRequest struct {
+type RepositoryAPIRepoGetAllCommitsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -17938,54 +17938,54 @@ type ApiRepoGetAllCommitsRequest struct {
 }
 
 // SHA or branch to start listing commits from (usually &#39;master&#39;)
-func (r ApiRepoGetAllCommitsRequest) Sha(sha string) ApiRepoGetAllCommitsRequest {
+func (r RepositoryAPIRepoGetAllCommitsRequest) Sha(sha string) RepositoryAPIRepoGetAllCommitsRequest {
 	r.sha = &sha
 	return r
 }
 
 // filepath of a file/dir
-func (r ApiRepoGetAllCommitsRequest) Path(path string) ApiRepoGetAllCommitsRequest {
+func (r RepositoryAPIRepoGetAllCommitsRequest) Path(path string) RepositoryAPIRepoGetAllCommitsRequest {
 	r.path = &path
 	return r
 }
 
 // include diff stats for every commit (disable for speedup, default &#39;true&#39;)
-func (r ApiRepoGetAllCommitsRequest) Stat(stat bool) ApiRepoGetAllCommitsRequest {
+func (r RepositoryAPIRepoGetAllCommitsRequest) Stat(stat bool) RepositoryAPIRepoGetAllCommitsRequest {
 	r.stat = &stat
 	return r
 }
 
 // include verification for every commit (disable for speedup, default &#39;true&#39;)
-func (r ApiRepoGetAllCommitsRequest) Verification(verification bool) ApiRepoGetAllCommitsRequest {
+func (r RepositoryAPIRepoGetAllCommitsRequest) Verification(verification bool) RepositoryAPIRepoGetAllCommitsRequest {
 	r.verification = &verification
 	return r
 }
 
 // include a list of affected files for every commit (disable for speedup, default &#39;true&#39;)
-func (r ApiRepoGetAllCommitsRequest) Files(files bool) ApiRepoGetAllCommitsRequest {
+func (r RepositoryAPIRepoGetAllCommitsRequest) Files(files bool) RepositoryAPIRepoGetAllCommitsRequest {
 	r.files = &files
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoGetAllCommitsRequest) Page(page int32) ApiRepoGetAllCommitsRequest {
+func (r RepositoryAPIRepoGetAllCommitsRequest) Page(page int32) RepositoryAPIRepoGetAllCommitsRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results (ignored if used with &#39;path&#39;)
-func (r ApiRepoGetAllCommitsRequest) Limit(limit int32) ApiRepoGetAllCommitsRequest {
+func (r RepositoryAPIRepoGetAllCommitsRequest) Limit(limit int32) RepositoryAPIRepoGetAllCommitsRequest {
 	r.limit = &limit
 	return r
 }
 
 // commits that match the given specifier will not be listed.
-func (r ApiRepoGetAllCommitsRequest) Not(not string) ApiRepoGetAllCommitsRequest {
+func (r RepositoryAPIRepoGetAllCommitsRequest) Not(not string) RepositoryAPIRepoGetAllCommitsRequest {
 	r.not = &not
 	return r
 }
 
-func (r ApiRepoGetAllCommitsRequest) Execute() ([]Commit, *http.Response, error) {
+func (r RepositoryAPIRepoGetAllCommitsRequest) Execute() ([]Commit, *http.Response, error) {
 	return r.ApiService.RepoGetAllCommitsExecute(r)
 }
 
@@ -17995,10 +17995,10 @@ RepoGetAllCommits Get a list of all commits from a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoGetAllCommitsRequest
+ @return RepositoryAPIRepoGetAllCommitsRequest
 */
-func (a *RepositoryAPIService) RepoGetAllCommits(ctx context.Context, owner string, repo string) ApiRepoGetAllCommitsRequest {
-	return ApiRepoGetAllCommitsRequest{
+func (a *RepositoryAPIService) RepoGetAllCommits(ctx context.Context, owner string, repo string) RepositoryAPIRepoGetAllCommitsRequest {
+	return RepositoryAPIRepoGetAllCommitsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -18008,7 +18008,7 @@ func (a *RepositoryAPIService) RepoGetAllCommits(ctx context.Context, owner stri
 
 // Execute executes the request
 //  @return []Commit
-func (a *RepositoryAPIService) RepoGetAllCommitsExecute(r ApiRepoGetAllCommitsRequest) ([]Commit, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetAllCommitsExecute(r RepositoryAPIRepoGetAllCommitsRequest) ([]Commit, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -18212,7 +18212,7 @@ func (a *RepositoryAPIService) RepoGetAllCommitsExecute(r ApiRepoGetAllCommitsRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetArchiveRequest struct {
+type RepositoryAPIRepoGetArchiveRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -18220,7 +18220,7 @@ type ApiRepoGetArchiveRequest struct {
 	archive string
 }
 
-func (r ApiRepoGetArchiveRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoGetArchiveRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoGetArchiveExecute(r)
 }
 
@@ -18231,10 +18231,10 @@ RepoGetArchive Get an archive of a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param archive the git reference for download with attached archive format (e.g. master.zip)
- @return ApiRepoGetArchiveRequest
+ @return RepositoryAPIRepoGetArchiveRequest
 */
-func (a *RepositoryAPIService) RepoGetArchive(ctx context.Context, owner string, repo string, archive string) ApiRepoGetArchiveRequest {
-	return ApiRepoGetArchiveRequest{
+func (a *RepositoryAPIService) RepoGetArchive(ctx context.Context, owner string, repo string, archive string) RepositoryAPIRepoGetArchiveRequest {
+	return RepositoryAPIRepoGetArchiveRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -18244,7 +18244,7 @@ func (a *RepositoryAPIService) RepoGetArchive(ctx context.Context, owner string,
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoGetArchiveExecute(r ApiRepoGetArchiveRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoGetArchiveExecute(r RepositoryAPIRepoGetArchiveRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -18404,14 +18404,14 @@ func (a *RepositoryAPIService) RepoGetArchiveExecute(r ApiRepoGetArchiveRequest)
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoGetAssigneesRequest struct {
+type RepositoryAPIRepoGetAssigneesRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoGetAssigneesRequest) Execute() ([]User, *http.Response, error) {
+func (r RepositoryAPIRepoGetAssigneesRequest) Execute() ([]User, *http.Response, error) {
 	return r.ApiService.RepoGetAssigneesExecute(r)
 }
 
@@ -18421,10 +18421,10 @@ RepoGetAssignees Return all users that have write access and can be assigned to 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoGetAssigneesRequest
+ @return RepositoryAPIRepoGetAssigneesRequest
 */
-func (a *RepositoryAPIService) RepoGetAssignees(ctx context.Context, owner string, repo string) ApiRepoGetAssigneesRequest {
-	return ApiRepoGetAssigneesRequest{
+func (a *RepositoryAPIService) RepoGetAssignees(ctx context.Context, owner string, repo string) RepositoryAPIRepoGetAssigneesRequest {
+	return RepositoryAPIRepoGetAssigneesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -18434,7 +18434,7 @@ func (a *RepositoryAPIService) RepoGetAssignees(ctx context.Context, owner strin
 
 // Execute executes the request
 //  @return []User
-func (a *RepositoryAPIService) RepoGetAssigneesExecute(r ApiRepoGetAssigneesRequest) ([]User, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetAssigneesExecute(r RepositoryAPIRepoGetAssigneesRequest) ([]User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -18603,7 +18603,7 @@ func (a *RepositoryAPIService) RepoGetAssigneesExecute(r ApiRepoGetAssigneesRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetBranchRequest struct {
+type RepositoryAPIRepoGetBranchRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -18611,7 +18611,7 @@ type ApiRepoGetBranchRequest struct {
 	branch string
 }
 
-func (r ApiRepoGetBranchRequest) Execute() (*Branch, *http.Response, error) {
+func (r RepositoryAPIRepoGetBranchRequest) Execute() (*Branch, *http.Response, error) {
 	return r.ApiService.RepoGetBranchExecute(r)
 }
 
@@ -18622,10 +18622,10 @@ RepoGetBranch Retrieve a specific branch from a repository, including its effect
  @param owner owner of the repo
  @param repo name of the repo
  @param branch branch to get
- @return ApiRepoGetBranchRequest
+ @return RepositoryAPIRepoGetBranchRequest
 */
-func (a *RepositoryAPIService) RepoGetBranch(ctx context.Context, owner string, repo string, branch string) ApiRepoGetBranchRequest {
-	return ApiRepoGetBranchRequest{
+func (a *RepositoryAPIService) RepoGetBranch(ctx context.Context, owner string, repo string, branch string) RepositoryAPIRepoGetBranchRequest {
+	return RepositoryAPIRepoGetBranchRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -18636,7 +18636,7 @@ func (a *RepositoryAPIService) RepoGetBranch(ctx context.Context, owner string, 
 
 // Execute executes the request
 //  @return Branch
-func (a *RepositoryAPIService) RepoGetBranchExecute(r ApiRepoGetBranchRequest) (*Branch, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetBranchExecute(r RepositoryAPIRepoGetBranchRequest) (*Branch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -18806,7 +18806,7 @@ func (a *RepositoryAPIService) RepoGetBranchExecute(r ApiRepoGetBranchRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetBranchProtectionRequest struct {
+type RepositoryAPIRepoGetBranchProtectionRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -18814,7 +18814,7 @@ type ApiRepoGetBranchProtectionRequest struct {
 	name string
 }
 
-func (r ApiRepoGetBranchProtectionRequest) Execute() (*BranchProtection, *http.Response, error) {
+func (r RepositoryAPIRepoGetBranchProtectionRequest) Execute() (*BranchProtection, *http.Response, error) {
 	return r.ApiService.RepoGetBranchProtectionExecute(r)
 }
 
@@ -18825,10 +18825,10 @@ RepoGetBranchProtection Get a specific branch protection for the repository
  @param owner owner of the repo
  @param repo name of the repo
  @param name name of protected branch
- @return ApiRepoGetBranchProtectionRequest
+ @return RepositoryAPIRepoGetBranchProtectionRequest
 */
-func (a *RepositoryAPIService) RepoGetBranchProtection(ctx context.Context, owner string, repo string, name string) ApiRepoGetBranchProtectionRequest {
-	return ApiRepoGetBranchProtectionRequest{
+func (a *RepositoryAPIService) RepoGetBranchProtection(ctx context.Context, owner string, repo string, name string) RepositoryAPIRepoGetBranchProtectionRequest {
+	return RepositoryAPIRepoGetBranchProtectionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -18839,7 +18839,7 @@ func (a *RepositoryAPIService) RepoGetBranchProtection(ctx context.Context, owne
 
 // Execute executes the request
 //  @return BranchProtection
-func (a *RepositoryAPIService) RepoGetBranchProtectionExecute(r ApiRepoGetBranchProtectionRequest) (*BranchProtection, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetBranchProtectionExecute(r RepositoryAPIRepoGetBranchProtectionRequest) (*BranchProtection, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -19009,13 +19009,13 @@ func (a *RepositoryAPIService) RepoGetBranchProtectionExecute(r ApiRepoGetBranch
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetByIDRequest struct {
+type RepositoryAPIRepoGetByIDRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	id int64
 }
 
-func (r ApiRepoGetByIDRequest) Execute() (*Repository, *http.Response, error) {
+func (r RepositoryAPIRepoGetByIDRequest) Execute() (*Repository, *http.Response, error) {
 	return r.ApiService.RepoGetByIDExecute(r)
 }
 
@@ -19024,10 +19024,10 @@ RepoGetByID Get a repository by id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of the repo to get
- @return ApiRepoGetByIDRequest
+ @return RepositoryAPIRepoGetByIDRequest
 */
-func (a *RepositoryAPIService) RepoGetByID(ctx context.Context, id int64) ApiRepoGetByIDRequest {
-	return ApiRepoGetByIDRequest{
+func (a *RepositoryAPIService) RepoGetByID(ctx context.Context, id int64) RepositoryAPIRepoGetByIDRequest {
+	return RepositoryAPIRepoGetByIDRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -19036,7 +19036,7 @@ func (a *RepositoryAPIService) RepoGetByID(ctx context.Context, id int64) ApiRep
 
 // Execute executes the request
 //  @return Repository
-func (a *RepositoryAPIService) RepoGetByIDExecute(r ApiRepoGetByIDRequest) (*Repository, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetByIDExecute(r RepositoryAPIRepoGetByIDRequest) (*Repository, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -19204,7 +19204,7 @@ func (a *RepositoryAPIService) RepoGetByIDExecute(r ApiRepoGetByIDRequest) (*Rep
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetCombinedStatusByRefRequest struct {
+type RepositoryAPIRepoGetCombinedStatusByRefRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -19215,18 +19215,18 @@ type ApiRepoGetCombinedStatusByRefRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoGetCombinedStatusByRefRequest) Page(page int32) ApiRepoGetCombinedStatusByRefRequest {
+func (r RepositoryAPIRepoGetCombinedStatusByRefRequest) Page(page int32) RepositoryAPIRepoGetCombinedStatusByRefRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoGetCombinedStatusByRefRequest) Limit(limit int32) ApiRepoGetCombinedStatusByRefRequest {
+func (r RepositoryAPIRepoGetCombinedStatusByRefRequest) Limit(limit int32) RepositoryAPIRepoGetCombinedStatusByRefRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoGetCombinedStatusByRefRequest) Execute() (*CombinedStatus, *http.Response, error) {
+func (r RepositoryAPIRepoGetCombinedStatusByRefRequest) Execute() (*CombinedStatus, *http.Response, error) {
 	return r.ApiService.RepoGetCombinedStatusByRefExecute(r)
 }
 
@@ -19237,10 +19237,10 @@ RepoGetCombinedStatusByRef Get a commit's combined status, by branch/tag/commit 
  @param owner owner of the repo
  @param repo name of the repo
  @param ref name of branch/tag/commit
- @return ApiRepoGetCombinedStatusByRefRequest
+ @return RepositoryAPIRepoGetCombinedStatusByRefRequest
 */
-func (a *RepositoryAPIService) RepoGetCombinedStatusByRef(ctx context.Context, owner string, repo string, ref string) ApiRepoGetCombinedStatusByRefRequest {
-	return ApiRepoGetCombinedStatusByRefRequest{
+func (a *RepositoryAPIService) RepoGetCombinedStatusByRef(ctx context.Context, owner string, repo string, ref string) RepositoryAPIRepoGetCombinedStatusByRefRequest {
+	return RepositoryAPIRepoGetCombinedStatusByRefRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -19251,7 +19251,7 @@ func (a *RepositoryAPIService) RepoGetCombinedStatusByRef(ctx context.Context, o
 
 // Execute executes the request
 //  @return CombinedStatus
-func (a *RepositoryAPIService) RepoGetCombinedStatusByRefExecute(r ApiRepoGetCombinedStatusByRefRequest) (*CombinedStatus, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetCombinedStatusByRefExecute(r RepositoryAPIRepoGetCombinedStatusByRefRequest) (*CombinedStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -19438,7 +19438,7 @@ func (a *RepositoryAPIService) RepoGetCombinedStatusByRefExecute(r ApiRepoGetCom
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetCommitPullRequestRequest struct {
+type RepositoryAPIRepoGetCommitPullRequestRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -19446,7 +19446,7 @@ type ApiRepoGetCommitPullRequestRequest struct {
 	sha string
 }
 
-func (r ApiRepoGetCommitPullRequestRequest) Execute() (*PullRequest, *http.Response, error) {
+func (r RepositoryAPIRepoGetCommitPullRequestRequest) Execute() (*PullRequest, *http.Response, error) {
 	return r.ApiService.RepoGetCommitPullRequestExecute(r)
 }
 
@@ -19457,10 +19457,10 @@ RepoGetCommitPullRequest Get the pull request of the commit
  @param owner owner of the repo
  @param repo name of the repo
  @param sha SHA of the commit to get
- @return ApiRepoGetCommitPullRequestRequest
+ @return RepositoryAPIRepoGetCommitPullRequestRequest
 */
-func (a *RepositoryAPIService) RepoGetCommitPullRequest(ctx context.Context, owner string, repo string, sha string) ApiRepoGetCommitPullRequestRequest {
-	return ApiRepoGetCommitPullRequestRequest{
+func (a *RepositoryAPIService) RepoGetCommitPullRequest(ctx context.Context, owner string, repo string, sha string) RepositoryAPIRepoGetCommitPullRequestRequest {
+	return RepositoryAPIRepoGetCommitPullRequestRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -19471,7 +19471,7 @@ func (a *RepositoryAPIService) RepoGetCommitPullRequest(ctx context.Context, own
 
 // Execute executes the request
 //  @return PullRequest
-func (a *RepositoryAPIService) RepoGetCommitPullRequestExecute(r ApiRepoGetCommitPullRequestRequest) (*PullRequest, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetCommitPullRequestExecute(r RepositoryAPIRepoGetCommitPullRequestRequest) (*PullRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -19641,7 +19641,7 @@ func (a *RepositoryAPIService) RepoGetCommitPullRequestExecute(r ApiRepoGetCommi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetContentsRequest struct {
+type RepositoryAPIRepoGetContentsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -19651,12 +19651,12 @@ type ApiRepoGetContentsRequest struct {
 }
 
 // The name of the commit/branch/tag. Default the repository’s default branch (usually master)
-func (r ApiRepoGetContentsRequest) Ref(ref string) ApiRepoGetContentsRequest {
+func (r RepositoryAPIRepoGetContentsRequest) Ref(ref string) RepositoryAPIRepoGetContentsRequest {
 	r.ref = &ref
 	return r
 }
 
-func (r ApiRepoGetContentsRequest) Execute() (*ContentsResponse, *http.Response, error) {
+func (r RepositoryAPIRepoGetContentsRequest) Execute() (*ContentsResponse, *http.Response, error) {
 	return r.ApiService.RepoGetContentsExecute(r)
 }
 
@@ -19667,10 +19667,10 @@ RepoGetContents Gets the metadata and contents (if a file) of an entry in a repo
  @param owner owner of the repo
  @param repo name of the repo
  @param filepath path of the dir, file, symlink or submodule in the repo
- @return ApiRepoGetContentsRequest
+ @return RepositoryAPIRepoGetContentsRequest
 */
-func (a *RepositoryAPIService) RepoGetContents(ctx context.Context, owner string, repo string, filepath string) ApiRepoGetContentsRequest {
-	return ApiRepoGetContentsRequest{
+func (a *RepositoryAPIService) RepoGetContents(ctx context.Context, owner string, repo string, filepath string) RepositoryAPIRepoGetContentsRequest {
+	return RepositoryAPIRepoGetContentsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -19681,7 +19681,7 @@ func (a *RepositoryAPIService) RepoGetContents(ctx context.Context, owner string
 
 // Execute executes the request
 //  @return ContentsResponse
-func (a *RepositoryAPIService) RepoGetContentsExecute(r ApiRepoGetContentsRequest) (*ContentsResponse, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetContentsExecute(r RepositoryAPIRepoGetContentsRequest) (*ContentsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -19854,7 +19854,7 @@ func (a *RepositoryAPIService) RepoGetContentsExecute(r ApiRepoGetContentsReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetContentsListRequest struct {
+type RepositoryAPIRepoGetContentsListRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -19863,12 +19863,12 @@ type ApiRepoGetContentsListRequest struct {
 }
 
 // The name of the commit/branch/tag. Default the repository’s default branch (usually master)
-func (r ApiRepoGetContentsListRequest) Ref(ref string) ApiRepoGetContentsListRequest {
+func (r RepositoryAPIRepoGetContentsListRequest) Ref(ref string) RepositoryAPIRepoGetContentsListRequest {
 	r.ref = &ref
 	return r
 }
 
-func (r ApiRepoGetContentsListRequest) Execute() ([]ContentsResponse, *http.Response, error) {
+func (r RepositoryAPIRepoGetContentsListRequest) Execute() ([]ContentsResponse, *http.Response, error) {
 	return r.ApiService.RepoGetContentsListExecute(r)
 }
 
@@ -19878,10 +19878,10 @@ RepoGetContentsList Gets the metadata of all the entries of the root dir
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoGetContentsListRequest
+ @return RepositoryAPIRepoGetContentsListRequest
 */
-func (a *RepositoryAPIService) RepoGetContentsList(ctx context.Context, owner string, repo string) ApiRepoGetContentsListRequest {
-	return ApiRepoGetContentsListRequest{
+func (a *RepositoryAPIService) RepoGetContentsList(ctx context.Context, owner string, repo string) RepositoryAPIRepoGetContentsListRequest {
+	return RepositoryAPIRepoGetContentsListRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -19891,7 +19891,7 @@ func (a *RepositoryAPIService) RepoGetContentsList(ctx context.Context, owner st
 
 // Execute executes the request
 //  @return []ContentsResponse
-func (a *RepositoryAPIService) RepoGetContentsListExecute(r ApiRepoGetContentsListRequest) ([]ContentsResponse, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetContentsListExecute(r RepositoryAPIRepoGetContentsListRequest) ([]ContentsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -20063,7 +20063,7 @@ func (a *RepositoryAPIService) RepoGetContentsListExecute(r ApiRepoGetContentsLi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetEditorConfigRequest struct {
+type RepositoryAPIRepoGetEditorConfigRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -20073,12 +20073,12 @@ type ApiRepoGetEditorConfigRequest struct {
 }
 
 // The name of the commit/branch/tag. Default the repository’s default branch (usually master)
-func (r ApiRepoGetEditorConfigRequest) Ref(ref string) ApiRepoGetEditorConfigRequest {
+func (r RepositoryAPIRepoGetEditorConfigRequest) Ref(ref string) RepositoryAPIRepoGetEditorConfigRequest {
 	r.ref = &ref
 	return r
 }
 
-func (r ApiRepoGetEditorConfigRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoGetEditorConfigRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoGetEditorConfigExecute(r)
 }
 
@@ -20089,10 +20089,10 @@ RepoGetEditorConfig Get the EditorConfig definitions of a file in a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param filepath filepath of file to get
- @return ApiRepoGetEditorConfigRequest
+ @return RepositoryAPIRepoGetEditorConfigRequest
 */
-func (a *RepositoryAPIService) RepoGetEditorConfig(ctx context.Context, owner string, repo string, filepath string) ApiRepoGetEditorConfigRequest {
-	return ApiRepoGetEditorConfigRequest{
+func (a *RepositoryAPIService) RepoGetEditorConfig(ctx context.Context, owner string, repo string, filepath string) RepositoryAPIRepoGetEditorConfigRequest {
+	return RepositoryAPIRepoGetEditorConfigRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -20102,7 +20102,7 @@ func (a *RepositoryAPIService) RepoGetEditorConfig(ctx context.Context, owner st
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoGetEditorConfigExecute(r ApiRepoGetEditorConfigRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoGetEditorConfigExecute(r RepositoryAPIRepoGetEditorConfigRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -20265,7 +20265,7 @@ func (a *RepositoryAPIService) RepoGetEditorConfigExecute(r ApiRepoGetEditorConf
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoGetGitHookRequest struct {
+type RepositoryAPIRepoGetGitHookRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -20273,7 +20273,7 @@ type ApiRepoGetGitHookRequest struct {
 	id string
 }
 
-func (r ApiRepoGetGitHookRequest) Execute() (*GitHook, *http.Response, error) {
+func (r RepositoryAPIRepoGetGitHookRequest) Execute() (*GitHook, *http.Response, error) {
 	return r.ApiService.RepoGetGitHookExecute(r)
 }
 
@@ -20284,10 +20284,10 @@ RepoGetGitHook Get a Git hook
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the hook to get
- @return ApiRepoGetGitHookRequest
+ @return RepositoryAPIRepoGetGitHookRequest
 */
-func (a *RepositoryAPIService) RepoGetGitHook(ctx context.Context, owner string, repo string, id string) ApiRepoGetGitHookRequest {
-	return ApiRepoGetGitHookRequest{
+func (a *RepositoryAPIService) RepoGetGitHook(ctx context.Context, owner string, repo string, id string) RepositoryAPIRepoGetGitHookRequest {
+	return RepositoryAPIRepoGetGitHookRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -20298,7 +20298,7 @@ func (a *RepositoryAPIService) RepoGetGitHook(ctx context.Context, owner string,
 
 // Execute executes the request
 //  @return GitHook
-func (a *RepositoryAPIService) RepoGetGitHookExecute(r ApiRepoGetGitHookRequest) (*GitHook, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetGitHookExecute(r RepositoryAPIRepoGetGitHookRequest) (*GitHook, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -20468,7 +20468,7 @@ func (a *RepositoryAPIService) RepoGetGitHookExecute(r ApiRepoGetGitHookRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetHookRequest struct {
+type RepositoryAPIRepoGetHookRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -20476,7 +20476,7 @@ type ApiRepoGetHookRequest struct {
 	id int64
 }
 
-func (r ApiRepoGetHookRequest) Execute() (*Hook, *http.Response, error) {
+func (r RepositoryAPIRepoGetHookRequest) Execute() (*Hook, *http.Response, error) {
 	return r.ApiService.RepoGetHookExecute(r)
 }
 
@@ -20487,10 +20487,10 @@ RepoGetHook Get a hook
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the hook to get
- @return ApiRepoGetHookRequest
+ @return RepositoryAPIRepoGetHookRequest
 */
-func (a *RepositoryAPIService) RepoGetHook(ctx context.Context, owner string, repo string, id int64) ApiRepoGetHookRequest {
-	return ApiRepoGetHookRequest{
+func (a *RepositoryAPIService) RepoGetHook(ctx context.Context, owner string, repo string, id int64) RepositoryAPIRepoGetHookRequest {
+	return RepositoryAPIRepoGetHookRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -20501,7 +20501,7 @@ func (a *RepositoryAPIService) RepoGetHook(ctx context.Context, owner string, re
 
 // Execute executes the request
 //  @return Hook
-func (a *RepositoryAPIService) RepoGetHookExecute(r ApiRepoGetHookRequest) (*Hook, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetHookExecute(r RepositoryAPIRepoGetHookRequest) (*Hook, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -20671,14 +20671,14 @@ func (a *RepositoryAPIService) RepoGetHookExecute(r ApiRepoGetHookRequest) (*Hoo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetIssueConfigRequest struct {
+type RepositoryAPIRepoGetIssueConfigRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoGetIssueConfigRequest) Execute() (*IssueConfig, *http.Response, error) {
+func (r RepositoryAPIRepoGetIssueConfigRequest) Execute() (*IssueConfig, *http.Response, error) {
 	return r.ApiService.RepoGetIssueConfigExecute(r)
 }
 
@@ -20688,10 +20688,10 @@ RepoGetIssueConfig Returns the issue config for a repo
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoGetIssueConfigRequest
+ @return RepositoryAPIRepoGetIssueConfigRequest
 */
-func (a *RepositoryAPIService) RepoGetIssueConfig(ctx context.Context, owner string, repo string) ApiRepoGetIssueConfigRequest {
-	return ApiRepoGetIssueConfigRequest{
+func (a *RepositoryAPIService) RepoGetIssueConfig(ctx context.Context, owner string, repo string) RepositoryAPIRepoGetIssueConfigRequest {
+	return RepositoryAPIRepoGetIssueConfigRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -20701,7 +20701,7 @@ func (a *RepositoryAPIService) RepoGetIssueConfig(ctx context.Context, owner str
 
 // Execute executes the request
 //  @return IssueConfig
-func (a *RepositoryAPIService) RepoGetIssueConfigExecute(r ApiRepoGetIssueConfigRequest) (*IssueConfig, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetIssueConfigExecute(r RepositoryAPIRepoGetIssueConfigRequest) (*IssueConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -20870,14 +20870,14 @@ func (a *RepositoryAPIService) RepoGetIssueConfigExecute(r ApiRepoGetIssueConfig
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetIssueTemplatesRequest struct {
+type RepositoryAPIRepoGetIssueTemplatesRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoGetIssueTemplatesRequest) Execute() ([]IssueTemplate, *http.Response, error) {
+func (r RepositoryAPIRepoGetIssueTemplatesRequest) Execute() ([]IssueTemplate, *http.Response, error) {
 	return r.ApiService.RepoGetIssueTemplatesExecute(r)
 }
 
@@ -20887,10 +20887,10 @@ RepoGetIssueTemplates Get available issue templates for a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoGetIssueTemplatesRequest
+ @return RepositoryAPIRepoGetIssueTemplatesRequest
 */
-func (a *RepositoryAPIService) RepoGetIssueTemplates(ctx context.Context, owner string, repo string) ApiRepoGetIssueTemplatesRequest {
-	return ApiRepoGetIssueTemplatesRequest{
+func (a *RepositoryAPIService) RepoGetIssueTemplates(ctx context.Context, owner string, repo string) RepositoryAPIRepoGetIssueTemplatesRequest {
+	return RepositoryAPIRepoGetIssueTemplatesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -20900,7 +20900,7 @@ func (a *RepositoryAPIService) RepoGetIssueTemplates(ctx context.Context, owner 
 
 // Execute executes the request
 //  @return []IssueTemplate
-func (a *RepositoryAPIService) RepoGetIssueTemplatesExecute(r ApiRepoGetIssueTemplatesRequest) ([]IssueTemplate, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetIssueTemplatesExecute(r RepositoryAPIRepoGetIssueTemplatesRequest) ([]IssueTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -21069,7 +21069,7 @@ func (a *RepositoryAPIService) RepoGetIssueTemplatesExecute(r ApiRepoGetIssueTem
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetKeyRequest struct {
+type RepositoryAPIRepoGetKeyRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -21077,7 +21077,7 @@ type ApiRepoGetKeyRequest struct {
 	id int64
 }
 
-func (r ApiRepoGetKeyRequest) Execute() (*DeployKey, *http.Response, error) {
+func (r RepositoryAPIRepoGetKeyRequest) Execute() (*DeployKey, *http.Response, error) {
 	return r.ApiService.RepoGetKeyExecute(r)
 }
 
@@ -21088,10 +21088,10 @@ RepoGetKey Get a repository's key by id
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the key to get
- @return ApiRepoGetKeyRequest
+ @return RepositoryAPIRepoGetKeyRequest
 */
-func (a *RepositoryAPIService) RepoGetKey(ctx context.Context, owner string, repo string, id int64) ApiRepoGetKeyRequest {
-	return ApiRepoGetKeyRequest{
+func (a *RepositoryAPIService) RepoGetKey(ctx context.Context, owner string, repo string, id int64) RepositoryAPIRepoGetKeyRequest {
+	return RepositoryAPIRepoGetKeyRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -21102,7 +21102,7 @@ func (a *RepositoryAPIService) RepoGetKey(ctx context.Context, owner string, rep
 
 // Execute executes the request
 //  @return DeployKey
-func (a *RepositoryAPIService) RepoGetKeyExecute(r ApiRepoGetKeyRequest) (*DeployKey, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetKeyExecute(r RepositoryAPIRepoGetKeyRequest) (*DeployKey, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -21272,14 +21272,14 @@ func (a *RepositoryAPIService) RepoGetKeyExecute(r ApiRepoGetKeyRequest) (*Deplo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetLanguagesRequest struct {
+type RepositoryAPIRepoGetLanguagesRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoGetLanguagesRequest) Execute() (map[string]int64, *http.Response, error) {
+func (r RepositoryAPIRepoGetLanguagesRequest) Execute() (map[string]int64, *http.Response, error) {
 	return r.ApiService.RepoGetLanguagesExecute(r)
 }
 
@@ -21289,10 +21289,10 @@ RepoGetLanguages Get languages and number of bytes of code written
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoGetLanguagesRequest
+ @return RepositoryAPIRepoGetLanguagesRequest
 */
-func (a *RepositoryAPIService) RepoGetLanguages(ctx context.Context, owner string, repo string) ApiRepoGetLanguagesRequest {
-	return ApiRepoGetLanguagesRequest{
+func (a *RepositoryAPIService) RepoGetLanguages(ctx context.Context, owner string, repo string) RepositoryAPIRepoGetLanguagesRequest {
+	return RepositoryAPIRepoGetLanguagesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -21302,7 +21302,7 @@ func (a *RepositoryAPIService) RepoGetLanguages(ctx context.Context, owner strin
 
 // Execute executes the request
 //  @return map[string]int64
-func (a *RepositoryAPIService) RepoGetLanguagesExecute(r ApiRepoGetLanguagesRequest) (map[string]int64, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetLanguagesExecute(r RepositoryAPIRepoGetLanguagesRequest) (map[string]int64, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -21471,14 +21471,14 @@ func (a *RepositoryAPIService) RepoGetLanguagesExecute(r ApiRepoGetLanguagesRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetLatestReleaseRequest struct {
+type RepositoryAPIRepoGetLatestReleaseRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoGetLatestReleaseRequest) Execute() (*Release, *http.Response, error) {
+func (r RepositoryAPIRepoGetLatestReleaseRequest) Execute() (*Release, *http.Response, error) {
 	return r.ApiService.RepoGetLatestReleaseExecute(r)
 }
 
@@ -21488,10 +21488,10 @@ RepoGetLatestRelease Gets the most recent non-prerelease, non-draft release of a
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoGetLatestReleaseRequest
+ @return RepositoryAPIRepoGetLatestReleaseRequest
 */
-func (a *RepositoryAPIService) RepoGetLatestRelease(ctx context.Context, owner string, repo string) ApiRepoGetLatestReleaseRequest {
-	return ApiRepoGetLatestReleaseRequest{
+func (a *RepositoryAPIService) RepoGetLatestRelease(ctx context.Context, owner string, repo string) RepositoryAPIRepoGetLatestReleaseRequest {
+	return RepositoryAPIRepoGetLatestReleaseRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -21501,7 +21501,7 @@ func (a *RepositoryAPIService) RepoGetLatestRelease(ctx context.Context, owner s
 
 // Execute executes the request
 //  @return Release
-func (a *RepositoryAPIService) RepoGetLatestReleaseExecute(r ApiRepoGetLatestReleaseRequest) (*Release, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetLatestReleaseExecute(r RepositoryAPIRepoGetLatestReleaseRequest) (*Release, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -21670,7 +21670,7 @@ func (a *RepositoryAPIService) RepoGetLatestReleaseExecute(r ApiRepoGetLatestRel
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetNoteRequest struct {
+type RepositoryAPIRepoGetNoteRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -21681,18 +21681,18 @@ type ApiRepoGetNoteRequest struct {
 }
 
 // include verification for every commit (disable for speedup, default &#39;true&#39;)
-func (r ApiRepoGetNoteRequest) Verification(verification bool) ApiRepoGetNoteRequest {
+func (r RepositoryAPIRepoGetNoteRequest) Verification(verification bool) RepositoryAPIRepoGetNoteRequest {
 	r.verification = &verification
 	return r
 }
 
 // include a list of affected files for every commit (disable for speedup, default &#39;true&#39;)
-func (r ApiRepoGetNoteRequest) Files(files bool) ApiRepoGetNoteRequest {
+func (r RepositoryAPIRepoGetNoteRequest) Files(files bool) RepositoryAPIRepoGetNoteRequest {
 	r.files = &files
 	return r
 }
 
-func (r ApiRepoGetNoteRequest) Execute() (*Note, *http.Response, error) {
+func (r RepositoryAPIRepoGetNoteRequest) Execute() (*Note, *http.Response, error) {
 	return r.ApiService.RepoGetNoteExecute(r)
 }
 
@@ -21703,10 +21703,10 @@ RepoGetNote Get a note corresponding to a single commit from a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param sha a git ref or commit sha
- @return ApiRepoGetNoteRequest
+ @return RepositoryAPIRepoGetNoteRequest
 */
-func (a *RepositoryAPIService) RepoGetNote(ctx context.Context, owner string, repo string, sha string) ApiRepoGetNoteRequest {
-	return ApiRepoGetNoteRequest{
+func (a *RepositoryAPIService) RepoGetNote(ctx context.Context, owner string, repo string, sha string) RepositoryAPIRepoGetNoteRequest {
+	return RepositoryAPIRepoGetNoteRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -21717,7 +21717,7 @@ func (a *RepositoryAPIService) RepoGetNote(ctx context.Context, owner string, re
 
 // Execute executes the request
 //  @return Note
-func (a *RepositoryAPIService) RepoGetNoteExecute(r ApiRepoGetNoteRequest) (*Note, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetNoteExecute(r RepositoryAPIRepoGetNoteRequest) (*Note, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -21904,7 +21904,7 @@ func (a *RepositoryAPIService) RepoGetNoteExecute(r ApiRepoGetNoteRequest) (*Not
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetPullRequestRequest struct {
+type RepositoryAPIRepoGetPullRequestRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -21912,7 +21912,7 @@ type ApiRepoGetPullRequestRequest struct {
 	index int64
 }
 
-func (r ApiRepoGetPullRequestRequest) Execute() (*PullRequest, *http.Response, error) {
+func (r RepositoryAPIRepoGetPullRequestRequest) Execute() (*PullRequest, *http.Response, error) {
 	return r.ApiService.RepoGetPullRequestExecute(r)
 }
 
@@ -21923,10 +21923,10 @@ RepoGetPullRequest Get a pull request
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the pull request to get
- @return ApiRepoGetPullRequestRequest
+ @return RepositoryAPIRepoGetPullRequestRequest
 */
-func (a *RepositoryAPIService) RepoGetPullRequest(ctx context.Context, owner string, repo string, index int64) ApiRepoGetPullRequestRequest {
-	return ApiRepoGetPullRequestRequest{
+func (a *RepositoryAPIService) RepoGetPullRequest(ctx context.Context, owner string, repo string, index int64) RepositoryAPIRepoGetPullRequestRequest {
+	return RepositoryAPIRepoGetPullRequestRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -21937,7 +21937,7 @@ func (a *RepositoryAPIService) RepoGetPullRequest(ctx context.Context, owner str
 
 // Execute executes the request
 //  @return PullRequest
-func (a *RepositoryAPIService) RepoGetPullRequestExecute(r ApiRepoGetPullRequestRequest) (*PullRequest, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetPullRequestExecute(r RepositoryAPIRepoGetPullRequestRequest) (*PullRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -22107,7 +22107,7 @@ func (a *RepositoryAPIService) RepoGetPullRequestExecute(r ApiRepoGetPullRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetPullRequestByBaseHeadRequest struct {
+type RepositoryAPIRepoGetPullRequestByBaseHeadRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -22116,7 +22116,7 @@ type ApiRepoGetPullRequestByBaseHeadRequest struct {
 	head string
 }
 
-func (r ApiRepoGetPullRequestByBaseHeadRequest) Execute() (*PullRequest, *http.Response, error) {
+func (r RepositoryAPIRepoGetPullRequestByBaseHeadRequest) Execute() (*PullRequest, *http.Response, error) {
 	return r.ApiService.RepoGetPullRequestByBaseHeadExecute(r)
 }
 
@@ -22128,10 +22128,10 @@ RepoGetPullRequestByBaseHead Get a pull request by base and head
  @param repo name of the repo
  @param base base of the pull request to get
  @param head head of the pull request to get
- @return ApiRepoGetPullRequestByBaseHeadRequest
+ @return RepositoryAPIRepoGetPullRequestByBaseHeadRequest
 */
-func (a *RepositoryAPIService) RepoGetPullRequestByBaseHead(ctx context.Context, owner string, repo string, base string, head string) ApiRepoGetPullRequestByBaseHeadRequest {
-	return ApiRepoGetPullRequestByBaseHeadRequest{
+func (a *RepositoryAPIService) RepoGetPullRequestByBaseHead(ctx context.Context, owner string, repo string, base string, head string) RepositoryAPIRepoGetPullRequestByBaseHeadRequest {
+	return RepositoryAPIRepoGetPullRequestByBaseHeadRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -22143,7 +22143,7 @@ func (a *RepositoryAPIService) RepoGetPullRequestByBaseHead(ctx context.Context,
 
 // Execute executes the request
 //  @return PullRequest
-func (a *RepositoryAPIService) RepoGetPullRequestByBaseHeadExecute(r ApiRepoGetPullRequestByBaseHeadRequest) (*PullRequest, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetPullRequestByBaseHeadExecute(r RepositoryAPIRepoGetPullRequestByBaseHeadRequest) (*PullRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -22314,7 +22314,7 @@ func (a *RepositoryAPIService) RepoGetPullRequestByBaseHeadExecute(r ApiRepoGetP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetPullRequestCommitsRequest struct {
+type RepositoryAPIRepoGetPullRequestCommitsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -22327,30 +22327,30 @@ type ApiRepoGetPullRequestCommitsRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoGetPullRequestCommitsRequest) Page(page int32) ApiRepoGetPullRequestCommitsRequest {
+func (r RepositoryAPIRepoGetPullRequestCommitsRequest) Page(page int32) RepositoryAPIRepoGetPullRequestCommitsRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoGetPullRequestCommitsRequest) Limit(limit int32) ApiRepoGetPullRequestCommitsRequest {
+func (r RepositoryAPIRepoGetPullRequestCommitsRequest) Limit(limit int32) RepositoryAPIRepoGetPullRequestCommitsRequest {
 	r.limit = &limit
 	return r
 }
 
 // include verification for every commit (disable for speedup, default &#39;true&#39;)
-func (r ApiRepoGetPullRequestCommitsRequest) Verification(verification bool) ApiRepoGetPullRequestCommitsRequest {
+func (r RepositoryAPIRepoGetPullRequestCommitsRequest) Verification(verification bool) RepositoryAPIRepoGetPullRequestCommitsRequest {
 	r.verification = &verification
 	return r
 }
 
 // include a list of affected files for every commit (disable for speedup, default &#39;true&#39;)
-func (r ApiRepoGetPullRequestCommitsRequest) Files(files bool) ApiRepoGetPullRequestCommitsRequest {
+func (r RepositoryAPIRepoGetPullRequestCommitsRequest) Files(files bool) RepositoryAPIRepoGetPullRequestCommitsRequest {
 	r.files = &files
 	return r
 }
 
-func (r ApiRepoGetPullRequestCommitsRequest) Execute() ([]Commit, *http.Response, error) {
+func (r RepositoryAPIRepoGetPullRequestCommitsRequest) Execute() ([]Commit, *http.Response, error) {
 	return r.ApiService.RepoGetPullRequestCommitsExecute(r)
 }
 
@@ -22361,10 +22361,10 @@ RepoGetPullRequestCommits Get commits for a pull request
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the pull request to get
- @return ApiRepoGetPullRequestCommitsRequest
+ @return RepositoryAPIRepoGetPullRequestCommitsRequest
 */
-func (a *RepositoryAPIService) RepoGetPullRequestCommits(ctx context.Context, owner string, repo string, index int64) ApiRepoGetPullRequestCommitsRequest {
-	return ApiRepoGetPullRequestCommitsRequest{
+func (a *RepositoryAPIService) RepoGetPullRequestCommits(ctx context.Context, owner string, repo string, index int64) RepositoryAPIRepoGetPullRequestCommitsRequest {
+	return RepositoryAPIRepoGetPullRequestCommitsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -22375,7 +22375,7 @@ func (a *RepositoryAPIService) RepoGetPullRequestCommits(ctx context.Context, ow
 
 // Execute executes the request
 //  @return []Commit
-func (a *RepositoryAPIService) RepoGetPullRequestCommitsExecute(r ApiRepoGetPullRequestCommitsRequest) ([]Commit, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetPullRequestCommitsExecute(r RepositoryAPIRepoGetPullRequestCommitsRequest) ([]Commit, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -22557,7 +22557,7 @@ func (a *RepositoryAPIService) RepoGetPullRequestCommitsExecute(r ApiRepoGetPull
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetPullRequestFilesRequest struct {
+type RepositoryAPIRepoGetPullRequestFilesRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -22570,30 +22570,30 @@ type ApiRepoGetPullRequestFilesRequest struct {
 }
 
 // skip to given file
-func (r ApiRepoGetPullRequestFilesRequest) SkipTo(skipTo string) ApiRepoGetPullRequestFilesRequest {
+func (r RepositoryAPIRepoGetPullRequestFilesRequest) SkipTo(skipTo string) RepositoryAPIRepoGetPullRequestFilesRequest {
 	r.skipTo = &skipTo
 	return r
 }
 
 // whitespace behavior
-func (r ApiRepoGetPullRequestFilesRequest) Whitespace(whitespace string) ApiRepoGetPullRequestFilesRequest {
+func (r RepositoryAPIRepoGetPullRequestFilesRequest) Whitespace(whitespace string) RepositoryAPIRepoGetPullRequestFilesRequest {
 	r.whitespace = &whitespace
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoGetPullRequestFilesRequest) Page(page int32) ApiRepoGetPullRequestFilesRequest {
+func (r RepositoryAPIRepoGetPullRequestFilesRequest) Page(page int32) RepositoryAPIRepoGetPullRequestFilesRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoGetPullRequestFilesRequest) Limit(limit int32) ApiRepoGetPullRequestFilesRequest {
+func (r RepositoryAPIRepoGetPullRequestFilesRequest) Limit(limit int32) RepositoryAPIRepoGetPullRequestFilesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoGetPullRequestFilesRequest) Execute() ([]ChangedFile, *http.Response, error) {
+func (r RepositoryAPIRepoGetPullRequestFilesRequest) Execute() ([]ChangedFile, *http.Response, error) {
 	return r.ApiService.RepoGetPullRequestFilesExecute(r)
 }
 
@@ -22604,10 +22604,10 @@ RepoGetPullRequestFiles Get changed files for a pull request
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the pull request to get
- @return ApiRepoGetPullRequestFilesRequest
+ @return RepositoryAPIRepoGetPullRequestFilesRequest
 */
-func (a *RepositoryAPIService) RepoGetPullRequestFiles(ctx context.Context, owner string, repo string, index int64) ApiRepoGetPullRequestFilesRequest {
-	return ApiRepoGetPullRequestFilesRequest{
+func (a *RepositoryAPIService) RepoGetPullRequestFiles(ctx context.Context, owner string, repo string, index int64) RepositoryAPIRepoGetPullRequestFilesRequest {
+	return RepositoryAPIRepoGetPullRequestFilesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -22618,7 +22618,7 @@ func (a *RepositoryAPIService) RepoGetPullRequestFiles(ctx context.Context, owne
 
 // Execute executes the request
 //  @return []ChangedFile
-func (a *RepositoryAPIService) RepoGetPullRequestFilesExecute(r ApiRepoGetPullRequestFilesRequest) ([]ChangedFile, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetPullRequestFilesExecute(r RepositoryAPIRepoGetPullRequestFilesRequest) ([]ChangedFile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -22800,7 +22800,7 @@ func (a *RepositoryAPIService) RepoGetPullRequestFilesExecute(r ApiRepoGetPullRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetPullReviewRequest struct {
+type RepositoryAPIRepoGetPullReviewRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -22809,7 +22809,7 @@ type ApiRepoGetPullReviewRequest struct {
 	id int64
 }
 
-func (r ApiRepoGetPullReviewRequest) Execute() (*PullReview, *http.Response, error) {
+func (r RepositoryAPIRepoGetPullReviewRequest) Execute() (*PullReview, *http.Response, error) {
 	return r.ApiService.RepoGetPullReviewExecute(r)
 }
 
@@ -22821,10 +22821,10 @@ RepoGetPullReview Get a specific review for a pull request
  @param repo name of the repo
  @param index index of the pull request
  @param id id of the review
- @return ApiRepoGetPullReviewRequest
+ @return RepositoryAPIRepoGetPullReviewRequest
 */
-func (a *RepositoryAPIService) RepoGetPullReview(ctx context.Context, owner string, repo string, index int64, id int64) ApiRepoGetPullReviewRequest {
-	return ApiRepoGetPullReviewRequest{
+func (a *RepositoryAPIService) RepoGetPullReview(ctx context.Context, owner string, repo string, index int64, id int64) RepositoryAPIRepoGetPullReviewRequest {
+	return RepositoryAPIRepoGetPullReviewRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -22836,7 +22836,7 @@ func (a *RepositoryAPIService) RepoGetPullReview(ctx context.Context, owner stri
 
 // Execute executes the request
 //  @return PullReview
-func (a *RepositoryAPIService) RepoGetPullReviewExecute(r ApiRepoGetPullReviewRequest) (*PullReview, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetPullReviewExecute(r RepositoryAPIRepoGetPullReviewRequest) (*PullReview, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -23007,7 +23007,7 @@ func (a *RepositoryAPIService) RepoGetPullReviewExecute(r ApiRepoGetPullReviewRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetPullReviewCommentRequest struct {
+type RepositoryAPIRepoGetPullReviewCommentRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -23017,7 +23017,7 @@ type ApiRepoGetPullReviewCommentRequest struct {
 	comment int64
 }
 
-func (r ApiRepoGetPullReviewCommentRequest) Execute() (*PullReviewComment, *http.Response, error) {
+func (r RepositoryAPIRepoGetPullReviewCommentRequest) Execute() (*PullReviewComment, *http.Response, error) {
 	return r.ApiService.RepoGetPullReviewCommentExecute(r)
 }
 
@@ -23030,10 +23030,10 @@ RepoGetPullReviewComment Get a pull review comment
  @param index index of the pull request
  @param id id of the review
  @param comment id of the comment
- @return ApiRepoGetPullReviewCommentRequest
+ @return RepositoryAPIRepoGetPullReviewCommentRequest
 */
-func (a *RepositoryAPIService) RepoGetPullReviewComment(ctx context.Context, owner string, repo string, index int64, id int64, comment int64) ApiRepoGetPullReviewCommentRequest {
-	return ApiRepoGetPullReviewCommentRequest{
+func (a *RepositoryAPIService) RepoGetPullReviewComment(ctx context.Context, owner string, repo string, index int64, id int64, comment int64) RepositoryAPIRepoGetPullReviewCommentRequest {
+	return RepositoryAPIRepoGetPullReviewCommentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -23046,7 +23046,7 @@ func (a *RepositoryAPIService) RepoGetPullReviewComment(ctx context.Context, own
 
 // Execute executes the request
 //  @return PullReviewComment
-func (a *RepositoryAPIService) RepoGetPullReviewCommentExecute(r ApiRepoGetPullReviewCommentRequest) (*PullReviewComment, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetPullReviewCommentExecute(r RepositoryAPIRepoGetPullReviewCommentRequest) (*PullReviewComment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -23229,7 +23229,7 @@ func (a *RepositoryAPIService) RepoGetPullReviewCommentExecute(r ApiRepoGetPullR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetPullReviewCommentsRequest struct {
+type RepositoryAPIRepoGetPullReviewCommentsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -23238,7 +23238,7 @@ type ApiRepoGetPullReviewCommentsRequest struct {
 	id int64
 }
 
-func (r ApiRepoGetPullReviewCommentsRequest) Execute() ([]PullReviewComment, *http.Response, error) {
+func (r RepositoryAPIRepoGetPullReviewCommentsRequest) Execute() ([]PullReviewComment, *http.Response, error) {
 	return r.ApiService.RepoGetPullReviewCommentsExecute(r)
 }
 
@@ -23250,10 +23250,10 @@ RepoGetPullReviewComments Get a specific review for a pull request
  @param repo name of the repo
  @param index index of the pull request
  @param id id of the review
- @return ApiRepoGetPullReviewCommentsRequest
+ @return RepositoryAPIRepoGetPullReviewCommentsRequest
 */
-func (a *RepositoryAPIService) RepoGetPullReviewComments(ctx context.Context, owner string, repo string, index int64, id int64) ApiRepoGetPullReviewCommentsRequest {
-	return ApiRepoGetPullReviewCommentsRequest{
+func (a *RepositoryAPIService) RepoGetPullReviewComments(ctx context.Context, owner string, repo string, index int64, id int64) RepositoryAPIRepoGetPullReviewCommentsRequest {
+	return RepositoryAPIRepoGetPullReviewCommentsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -23265,7 +23265,7 @@ func (a *RepositoryAPIService) RepoGetPullReviewComments(ctx context.Context, ow
 
 // Execute executes the request
 //  @return []PullReviewComment
-func (a *RepositoryAPIService) RepoGetPullReviewCommentsExecute(r ApiRepoGetPullReviewCommentsRequest) ([]PullReviewComment, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetPullReviewCommentsExecute(r RepositoryAPIRepoGetPullReviewCommentsRequest) ([]PullReviewComment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -23436,7 +23436,7 @@ func (a *RepositoryAPIService) RepoGetPullReviewCommentsExecute(r ApiRepoGetPull
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetPushMirrorByRemoteNameRequest struct {
+type RepositoryAPIRepoGetPushMirrorByRemoteNameRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -23444,7 +23444,7 @@ type ApiRepoGetPushMirrorByRemoteNameRequest struct {
 	name string
 }
 
-func (r ApiRepoGetPushMirrorByRemoteNameRequest) Execute() (*PushMirror, *http.Response, error) {
+func (r RepositoryAPIRepoGetPushMirrorByRemoteNameRequest) Execute() (*PushMirror, *http.Response, error) {
 	return r.ApiService.RepoGetPushMirrorByRemoteNameExecute(r)
 }
 
@@ -23455,10 +23455,10 @@ RepoGetPushMirrorByRemoteName Get push mirror of the repository by remoteName
  @param owner owner of the repo
  @param repo name of the repo
  @param name remote name of push mirror
- @return ApiRepoGetPushMirrorByRemoteNameRequest
+ @return RepositoryAPIRepoGetPushMirrorByRemoteNameRequest
 */
-func (a *RepositoryAPIService) RepoGetPushMirrorByRemoteName(ctx context.Context, owner string, repo string, name string) ApiRepoGetPushMirrorByRemoteNameRequest {
-	return ApiRepoGetPushMirrorByRemoteNameRequest{
+func (a *RepositoryAPIService) RepoGetPushMirrorByRemoteName(ctx context.Context, owner string, repo string, name string) RepositoryAPIRepoGetPushMirrorByRemoteNameRequest {
+	return RepositoryAPIRepoGetPushMirrorByRemoteNameRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -23469,7 +23469,7 @@ func (a *RepositoryAPIService) RepoGetPushMirrorByRemoteName(ctx context.Context
 
 // Execute executes the request
 //  @return PushMirror
-func (a *RepositoryAPIService) RepoGetPushMirrorByRemoteNameExecute(r ApiRepoGetPushMirrorByRemoteNameRequest) (*PushMirror, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetPushMirrorByRemoteNameExecute(r RepositoryAPIRepoGetPushMirrorByRemoteNameRequest) (*PushMirror, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -23661,7 +23661,7 @@ func (a *RepositoryAPIService) RepoGetPushMirrorByRemoteNameExecute(r ApiRepoGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetRawFileRequest struct {
+type RepositoryAPIRepoGetRawFileRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -23671,12 +23671,12 @@ type ApiRepoGetRawFileRequest struct {
 }
 
 // The name of the commit/branch/tag. Default the repository’s default branch (usually master)
-func (r ApiRepoGetRawFileRequest) Ref(ref string) ApiRepoGetRawFileRequest {
+func (r RepositoryAPIRepoGetRawFileRequest) Ref(ref string) RepositoryAPIRepoGetRawFileRequest {
 	r.ref = &ref
 	return r
 }
 
-func (r ApiRepoGetRawFileRequest) Execute() (*os.File, *http.Response, error) {
+func (r RepositoryAPIRepoGetRawFileRequest) Execute() (*os.File, *http.Response, error) {
 	return r.ApiService.RepoGetRawFileExecute(r)
 }
 
@@ -23687,10 +23687,10 @@ RepoGetRawFile Get a file from a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param filepath filepath of the file to get
- @return ApiRepoGetRawFileRequest
+ @return RepositoryAPIRepoGetRawFileRequest
 */
-func (a *RepositoryAPIService) RepoGetRawFile(ctx context.Context, owner string, repo string, filepath string) ApiRepoGetRawFileRequest {
-	return ApiRepoGetRawFileRequest{
+func (a *RepositoryAPIService) RepoGetRawFile(ctx context.Context, owner string, repo string, filepath string) RepositoryAPIRepoGetRawFileRequest {
+	return RepositoryAPIRepoGetRawFileRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -23701,7 +23701,7 @@ func (a *RepositoryAPIService) RepoGetRawFile(ctx context.Context, owner string,
 
 // Execute executes the request
 //  @return *os.File
-func (a *RepositoryAPIService) RepoGetRawFileExecute(r ApiRepoGetRawFileRequest) (*os.File, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetRawFileExecute(r RepositoryAPIRepoGetRawFileRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -23874,7 +23874,7 @@ func (a *RepositoryAPIService) RepoGetRawFileExecute(r ApiRepoGetRawFileRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetRawFileOrLFSRequest struct {
+type RepositoryAPIRepoGetRawFileOrLFSRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -23884,12 +23884,12 @@ type ApiRepoGetRawFileOrLFSRequest struct {
 }
 
 // The name of the commit/branch/tag. Default the repository’s default branch (usually master)
-func (r ApiRepoGetRawFileOrLFSRequest) Ref(ref string) ApiRepoGetRawFileOrLFSRequest {
+func (r RepositoryAPIRepoGetRawFileOrLFSRequest) Ref(ref string) RepositoryAPIRepoGetRawFileOrLFSRequest {
 	r.ref = &ref
 	return r
 }
 
-func (r ApiRepoGetRawFileOrLFSRequest) Execute() (*os.File, *http.Response, error) {
+func (r RepositoryAPIRepoGetRawFileOrLFSRequest) Execute() (*os.File, *http.Response, error) {
 	return r.ApiService.RepoGetRawFileOrLFSExecute(r)
 }
 
@@ -23900,10 +23900,10 @@ RepoGetRawFileOrLFS Get a file or it's LFS object from a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param filepath filepath of the file to get
- @return ApiRepoGetRawFileOrLFSRequest
+ @return RepositoryAPIRepoGetRawFileOrLFSRequest
 */
-func (a *RepositoryAPIService) RepoGetRawFileOrLFS(ctx context.Context, owner string, repo string, filepath string) ApiRepoGetRawFileOrLFSRequest {
-	return ApiRepoGetRawFileOrLFSRequest{
+func (a *RepositoryAPIService) RepoGetRawFileOrLFS(ctx context.Context, owner string, repo string, filepath string) RepositoryAPIRepoGetRawFileOrLFSRequest {
+	return RepositoryAPIRepoGetRawFileOrLFSRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -23914,7 +23914,7 @@ func (a *RepositoryAPIService) RepoGetRawFileOrLFS(ctx context.Context, owner st
 
 // Execute executes the request
 //  @return *os.File
-func (a *RepositoryAPIService) RepoGetRawFileOrLFSExecute(r ApiRepoGetRawFileOrLFSRequest) (*os.File, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetRawFileOrLFSExecute(r RepositoryAPIRepoGetRawFileOrLFSRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -24087,7 +24087,7 @@ func (a *RepositoryAPIService) RepoGetRawFileOrLFSExecute(r ApiRepoGetRawFileOrL
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetReleaseRequest struct {
+type RepositoryAPIRepoGetReleaseRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -24095,7 +24095,7 @@ type ApiRepoGetReleaseRequest struct {
 	id int64
 }
 
-func (r ApiRepoGetReleaseRequest) Execute() (*Release, *http.Response, error) {
+func (r RepositoryAPIRepoGetReleaseRequest) Execute() (*Release, *http.Response, error) {
 	return r.ApiService.RepoGetReleaseExecute(r)
 }
 
@@ -24106,10 +24106,10 @@ RepoGetRelease Get a release
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the release to get
- @return ApiRepoGetReleaseRequest
+ @return RepositoryAPIRepoGetReleaseRequest
 */
-func (a *RepositoryAPIService) RepoGetRelease(ctx context.Context, owner string, repo string, id int64) ApiRepoGetReleaseRequest {
-	return ApiRepoGetReleaseRequest{
+func (a *RepositoryAPIService) RepoGetRelease(ctx context.Context, owner string, repo string, id int64) RepositoryAPIRepoGetReleaseRequest {
+	return RepositoryAPIRepoGetReleaseRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -24120,7 +24120,7 @@ func (a *RepositoryAPIService) RepoGetRelease(ctx context.Context, owner string,
 
 // Execute executes the request
 //  @return Release
-func (a *RepositoryAPIService) RepoGetReleaseExecute(r ApiRepoGetReleaseRequest) (*Release, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetReleaseExecute(r RepositoryAPIRepoGetReleaseRequest) (*Release, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -24290,7 +24290,7 @@ func (a *RepositoryAPIService) RepoGetReleaseExecute(r ApiRepoGetReleaseRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetReleaseAttachmentRequest struct {
+type RepositoryAPIRepoGetReleaseAttachmentRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -24299,7 +24299,7 @@ type ApiRepoGetReleaseAttachmentRequest struct {
 	attachmentId int64
 }
 
-func (r ApiRepoGetReleaseAttachmentRequest) Execute() (*Attachment, *http.Response, error) {
+func (r RepositoryAPIRepoGetReleaseAttachmentRequest) Execute() (*Attachment, *http.Response, error) {
 	return r.ApiService.RepoGetReleaseAttachmentExecute(r)
 }
 
@@ -24311,10 +24311,10 @@ RepoGetReleaseAttachment Get a release attachment
  @param repo name of the repo
  @param id id of the release
  @param attachmentId id of the attachment to get
- @return ApiRepoGetReleaseAttachmentRequest
+ @return RepositoryAPIRepoGetReleaseAttachmentRequest
 */
-func (a *RepositoryAPIService) RepoGetReleaseAttachment(ctx context.Context, owner string, repo string, id int64, attachmentId int64) ApiRepoGetReleaseAttachmentRequest {
-	return ApiRepoGetReleaseAttachmentRequest{
+func (a *RepositoryAPIService) RepoGetReleaseAttachment(ctx context.Context, owner string, repo string, id int64, attachmentId int64) RepositoryAPIRepoGetReleaseAttachmentRequest {
+	return RepositoryAPIRepoGetReleaseAttachmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -24326,7 +24326,7 @@ func (a *RepositoryAPIService) RepoGetReleaseAttachment(ctx context.Context, own
 
 // Execute executes the request
 //  @return Attachment
-func (a *RepositoryAPIService) RepoGetReleaseAttachmentExecute(r ApiRepoGetReleaseAttachmentRequest) (*Attachment, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetReleaseAttachmentExecute(r RepositoryAPIRepoGetReleaseAttachmentRequest) (*Attachment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -24497,7 +24497,7 @@ func (a *RepositoryAPIService) RepoGetReleaseAttachmentExecute(r ApiRepoGetRelea
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetReleaseByTagRequest struct {
+type RepositoryAPIRepoGetReleaseByTagRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -24505,7 +24505,7 @@ type ApiRepoGetReleaseByTagRequest struct {
 	tag string
 }
 
-func (r ApiRepoGetReleaseByTagRequest) Execute() (*Release, *http.Response, error) {
+func (r RepositoryAPIRepoGetReleaseByTagRequest) Execute() (*Release, *http.Response, error) {
 	return r.ApiService.RepoGetReleaseByTagExecute(r)
 }
 
@@ -24516,10 +24516,10 @@ RepoGetReleaseByTag Get a release by tag name
  @param owner owner of the repo
  @param repo name of the repo
  @param tag tag name of the release to get
- @return ApiRepoGetReleaseByTagRequest
+ @return RepositoryAPIRepoGetReleaseByTagRequest
 */
-func (a *RepositoryAPIService) RepoGetReleaseByTag(ctx context.Context, owner string, repo string, tag string) ApiRepoGetReleaseByTagRequest {
-	return ApiRepoGetReleaseByTagRequest{
+func (a *RepositoryAPIService) RepoGetReleaseByTag(ctx context.Context, owner string, repo string, tag string) RepositoryAPIRepoGetReleaseByTagRequest {
+	return RepositoryAPIRepoGetReleaseByTagRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -24530,7 +24530,7 @@ func (a *RepositoryAPIService) RepoGetReleaseByTag(ctx context.Context, owner st
 
 // Execute executes the request
 //  @return Release
-func (a *RepositoryAPIService) RepoGetReleaseByTagExecute(r ApiRepoGetReleaseByTagRequest) (*Release, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetReleaseByTagExecute(r RepositoryAPIRepoGetReleaseByTagRequest) (*Release, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -24700,7 +24700,7 @@ func (a *RepositoryAPIService) RepoGetReleaseByTagExecute(r ApiRepoGetReleaseByT
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetRepoPermissionsRequest struct {
+type RepositoryAPIRepoGetRepoPermissionsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -24708,7 +24708,7 @@ type ApiRepoGetRepoPermissionsRequest struct {
 	collaborator string
 }
 
-func (r ApiRepoGetRepoPermissionsRequest) Execute() (*RepoCollaboratorPermission, *http.Response, error) {
+func (r RepositoryAPIRepoGetRepoPermissionsRequest) Execute() (*RepoCollaboratorPermission, *http.Response, error) {
 	return r.ApiService.RepoGetRepoPermissionsExecute(r)
 }
 
@@ -24719,10 +24719,10 @@ RepoGetRepoPermissions Get repository permissions for a user
  @param owner owner of the repo
  @param repo name of the repo
  @param collaborator username of the collaborator
- @return ApiRepoGetRepoPermissionsRequest
+ @return RepositoryAPIRepoGetRepoPermissionsRequest
 */
-func (a *RepositoryAPIService) RepoGetRepoPermissions(ctx context.Context, owner string, repo string, collaborator string) ApiRepoGetRepoPermissionsRequest {
-	return ApiRepoGetRepoPermissionsRequest{
+func (a *RepositoryAPIService) RepoGetRepoPermissions(ctx context.Context, owner string, repo string, collaborator string) RepositoryAPIRepoGetRepoPermissionsRequest {
+	return RepositoryAPIRepoGetRepoPermissionsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -24733,7 +24733,7 @@ func (a *RepositoryAPIService) RepoGetRepoPermissions(ctx context.Context, owner
 
 // Execute executes the request
 //  @return RepoCollaboratorPermission
-func (a *RepositoryAPIService) RepoGetRepoPermissionsExecute(r ApiRepoGetRepoPermissionsRequest) (*RepoCollaboratorPermission, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetRepoPermissionsExecute(r RepositoryAPIRepoGetRepoPermissionsRequest) (*RepoCollaboratorPermission, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -24914,14 +24914,14 @@ func (a *RepositoryAPIService) RepoGetRepoPermissionsExecute(r ApiRepoGetRepoPer
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetReviewersRequest struct {
+type RepositoryAPIRepoGetReviewersRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoGetReviewersRequest) Execute() ([]User, *http.Response, error) {
+func (r RepositoryAPIRepoGetReviewersRequest) Execute() ([]User, *http.Response, error) {
 	return r.ApiService.RepoGetReviewersExecute(r)
 }
 
@@ -24931,10 +24931,10 @@ RepoGetReviewers Return all users that can be requested to review in this repo
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoGetReviewersRequest
+ @return RepositoryAPIRepoGetReviewersRequest
 */
-func (a *RepositoryAPIService) RepoGetReviewers(ctx context.Context, owner string, repo string) ApiRepoGetReviewersRequest {
-	return ApiRepoGetReviewersRequest{
+func (a *RepositoryAPIService) RepoGetReviewers(ctx context.Context, owner string, repo string) RepositoryAPIRepoGetReviewersRequest {
+	return RepositoryAPIRepoGetReviewersRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -24944,7 +24944,7 @@ func (a *RepositoryAPIService) RepoGetReviewers(ctx context.Context, owner strin
 
 // Execute executes the request
 //  @return []User
-func (a *RepositoryAPIService) RepoGetReviewersExecute(r ApiRepoGetReviewersRequest) ([]User, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetReviewersExecute(r RepositoryAPIRepoGetReviewersRequest) ([]User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -25113,14 +25113,14 @@ func (a *RepositoryAPIService) RepoGetReviewersExecute(r ApiRepoGetReviewersRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetRunnerRegistrationTokenRequest struct {
+type RepositoryAPIRepoGetRunnerRegistrationTokenRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoGetRunnerRegistrationTokenRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoGetRunnerRegistrationTokenRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoGetRunnerRegistrationTokenExecute(r)
 }
 
@@ -25130,10 +25130,10 @@ RepoGetRunnerRegistrationToken Get a repository's actions runner registration to
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoGetRunnerRegistrationTokenRequest
+ @return RepositoryAPIRepoGetRunnerRegistrationTokenRequest
 */
-func (a *RepositoryAPIService) RepoGetRunnerRegistrationToken(ctx context.Context, owner string, repo string) ApiRepoGetRunnerRegistrationTokenRequest {
-	return ApiRepoGetRunnerRegistrationTokenRequest{
+func (a *RepositoryAPIService) RepoGetRunnerRegistrationToken(ctx context.Context, owner string, repo string) RepositoryAPIRepoGetRunnerRegistrationTokenRequest {
+	return RepositoryAPIRepoGetRunnerRegistrationTokenRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -25142,7 +25142,7 @@ func (a *RepositoryAPIService) RepoGetRunnerRegistrationToken(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoGetRunnerRegistrationTokenExecute(r ApiRepoGetRunnerRegistrationTokenRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoGetRunnerRegistrationTokenExecute(r RepositoryAPIRepoGetRunnerRegistrationTokenRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -25291,7 +25291,7 @@ func (a *RepositoryAPIService) RepoGetRunnerRegistrationTokenExecute(r ApiRepoGe
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoGetSingleCommitRequest struct {
+type RepositoryAPIRepoGetSingleCommitRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -25303,24 +25303,24 @@ type ApiRepoGetSingleCommitRequest struct {
 }
 
 // include diff stats for every commit (disable for speedup, default &#39;true&#39;)
-func (r ApiRepoGetSingleCommitRequest) Stat(stat bool) ApiRepoGetSingleCommitRequest {
+func (r RepositoryAPIRepoGetSingleCommitRequest) Stat(stat bool) RepositoryAPIRepoGetSingleCommitRequest {
 	r.stat = &stat
 	return r
 }
 
 // include verification for every commit (disable for speedup, default &#39;true&#39;)
-func (r ApiRepoGetSingleCommitRequest) Verification(verification bool) ApiRepoGetSingleCommitRequest {
+func (r RepositoryAPIRepoGetSingleCommitRequest) Verification(verification bool) RepositoryAPIRepoGetSingleCommitRequest {
 	r.verification = &verification
 	return r
 }
 
 // include a list of affected files for every commit (disable for speedup, default &#39;true&#39;)
-func (r ApiRepoGetSingleCommitRequest) Files(files bool) ApiRepoGetSingleCommitRequest {
+func (r RepositoryAPIRepoGetSingleCommitRequest) Files(files bool) RepositoryAPIRepoGetSingleCommitRequest {
 	r.files = &files
 	return r
 }
 
-func (r ApiRepoGetSingleCommitRequest) Execute() (*Commit, *http.Response, error) {
+func (r RepositoryAPIRepoGetSingleCommitRequest) Execute() (*Commit, *http.Response, error) {
 	return r.ApiService.RepoGetSingleCommitExecute(r)
 }
 
@@ -25331,10 +25331,10 @@ RepoGetSingleCommit Get a single commit from a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param sha a git ref or commit sha
- @return ApiRepoGetSingleCommitRequest
+ @return RepositoryAPIRepoGetSingleCommitRequest
 */
-func (a *RepositoryAPIService) RepoGetSingleCommit(ctx context.Context, owner string, repo string, sha string) ApiRepoGetSingleCommitRequest {
-	return ApiRepoGetSingleCommitRequest{
+func (a *RepositoryAPIService) RepoGetSingleCommit(ctx context.Context, owner string, repo string, sha string) RepositoryAPIRepoGetSingleCommitRequest {
+	return RepositoryAPIRepoGetSingleCommitRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -25345,7 +25345,7 @@ func (a *RepositoryAPIService) RepoGetSingleCommit(ctx context.Context, owner st
 
 // Execute executes the request
 //  @return Commit
-func (a *RepositoryAPIService) RepoGetSingleCommitExecute(r ApiRepoGetSingleCommitRequest) (*Commit, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetSingleCommitExecute(r RepositoryAPIRepoGetSingleCommitRequest) (*Commit, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -25535,7 +25535,7 @@ func (a *RepositoryAPIService) RepoGetSingleCommitExecute(r ApiRepoGetSingleComm
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetTagRequest struct {
+type RepositoryAPIRepoGetTagRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -25543,7 +25543,7 @@ type ApiRepoGetTagRequest struct {
 	tag string
 }
 
-func (r ApiRepoGetTagRequest) Execute() (*Tag, *http.Response, error) {
+func (r RepositoryAPIRepoGetTagRequest) Execute() (*Tag, *http.Response, error) {
 	return r.ApiService.RepoGetTagExecute(r)
 }
 
@@ -25554,10 +25554,10 @@ RepoGetTag Get the tag of a repository by tag name
  @param owner owner of the repo
  @param repo name of the repo
  @param tag name of tag
- @return ApiRepoGetTagRequest
+ @return RepositoryAPIRepoGetTagRequest
 */
-func (a *RepositoryAPIService) RepoGetTag(ctx context.Context, owner string, repo string, tag string) ApiRepoGetTagRequest {
-	return ApiRepoGetTagRequest{
+func (a *RepositoryAPIService) RepoGetTag(ctx context.Context, owner string, repo string, tag string) RepositoryAPIRepoGetTagRequest {
+	return RepositoryAPIRepoGetTagRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -25568,7 +25568,7 @@ func (a *RepositoryAPIService) RepoGetTag(ctx context.Context, owner string, rep
 
 // Execute executes the request
 //  @return Tag
-func (a *RepositoryAPIService) RepoGetTagExecute(r ApiRepoGetTagRequest) (*Tag, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetTagExecute(r RepositoryAPIRepoGetTagRequest) (*Tag, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -25738,7 +25738,7 @@ func (a *RepositoryAPIService) RepoGetTagExecute(r ApiRepoGetTagRequest) (*Tag, 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetTagProtectionRequest struct {
+type RepositoryAPIRepoGetTagProtectionRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -25746,7 +25746,7 @@ type ApiRepoGetTagProtectionRequest struct {
 	id int32
 }
 
-func (r ApiRepoGetTagProtectionRequest) Execute() (*TagProtection, *http.Response, error) {
+func (r RepositoryAPIRepoGetTagProtectionRequest) Execute() (*TagProtection, *http.Response, error) {
 	return r.ApiService.RepoGetTagProtectionExecute(r)
 }
 
@@ -25757,10 +25757,10 @@ RepoGetTagProtection Get a specific tag protection for the repository
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the tag protect to get
- @return ApiRepoGetTagProtectionRequest
+ @return RepositoryAPIRepoGetTagProtectionRequest
 */
-func (a *RepositoryAPIService) RepoGetTagProtection(ctx context.Context, owner string, repo string, id int32) ApiRepoGetTagProtectionRequest {
-	return ApiRepoGetTagProtectionRequest{
+func (a *RepositoryAPIService) RepoGetTagProtection(ctx context.Context, owner string, repo string, id int32) RepositoryAPIRepoGetTagProtectionRequest {
+	return RepositoryAPIRepoGetTagProtectionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -25771,7 +25771,7 @@ func (a *RepositoryAPIService) RepoGetTagProtection(ctx context.Context, owner s
 
 // Execute executes the request
 //  @return TagProtection
-func (a *RepositoryAPIService) RepoGetTagProtectionExecute(r ApiRepoGetTagProtectionRequest) (*TagProtection, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetTagProtectionExecute(r RepositoryAPIRepoGetTagProtectionRequest) (*TagProtection, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -25941,7 +25941,7 @@ func (a *RepositoryAPIService) RepoGetTagProtectionExecute(r ApiRepoGetTagProtec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetWikiPageRequest struct {
+type RepositoryAPIRepoGetWikiPageRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -25949,7 +25949,7 @@ type ApiRepoGetWikiPageRequest struct {
 	pageName string
 }
 
-func (r ApiRepoGetWikiPageRequest) Execute() (*WikiPage, *http.Response, error) {
+func (r RepositoryAPIRepoGetWikiPageRequest) Execute() (*WikiPage, *http.Response, error) {
 	return r.ApiService.RepoGetWikiPageExecute(r)
 }
 
@@ -25960,10 +25960,10 @@ RepoGetWikiPage Get a wiki page
  @param owner owner of the repo
  @param repo name of the repo
  @param pageName name of the page
- @return ApiRepoGetWikiPageRequest
+ @return RepositoryAPIRepoGetWikiPageRequest
 */
-func (a *RepositoryAPIService) RepoGetWikiPage(ctx context.Context, owner string, repo string, pageName string) ApiRepoGetWikiPageRequest {
-	return ApiRepoGetWikiPageRequest{
+func (a *RepositoryAPIService) RepoGetWikiPage(ctx context.Context, owner string, repo string, pageName string) RepositoryAPIRepoGetWikiPageRequest {
+	return RepositoryAPIRepoGetWikiPageRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -25974,7 +25974,7 @@ func (a *RepositoryAPIService) RepoGetWikiPage(ctx context.Context, owner string
 
 // Execute executes the request
 //  @return WikiPage
-func (a *RepositoryAPIService) RepoGetWikiPageExecute(r ApiRepoGetWikiPageRequest) (*WikiPage, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetWikiPageExecute(r RepositoryAPIRepoGetWikiPageRequest) (*WikiPage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -26144,7 +26144,7 @@ func (a *RepositoryAPIService) RepoGetWikiPageExecute(r ApiRepoGetWikiPageReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetWikiPageRevisionsRequest struct {
+type RepositoryAPIRepoGetWikiPageRevisionsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -26154,12 +26154,12 @@ type ApiRepoGetWikiPageRevisionsRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoGetWikiPageRevisionsRequest) Page(page int32) ApiRepoGetWikiPageRevisionsRequest {
+func (r RepositoryAPIRepoGetWikiPageRevisionsRequest) Page(page int32) RepositoryAPIRepoGetWikiPageRevisionsRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiRepoGetWikiPageRevisionsRequest) Execute() (*WikiCommitList, *http.Response, error) {
+func (r RepositoryAPIRepoGetWikiPageRevisionsRequest) Execute() (*WikiCommitList, *http.Response, error) {
 	return r.ApiService.RepoGetWikiPageRevisionsExecute(r)
 }
 
@@ -26170,10 +26170,10 @@ RepoGetWikiPageRevisions Get revisions of a wiki page
  @param owner owner of the repo
  @param repo name of the repo
  @param pageName name of the page
- @return ApiRepoGetWikiPageRevisionsRequest
+ @return RepositoryAPIRepoGetWikiPageRevisionsRequest
 */
-func (a *RepositoryAPIService) RepoGetWikiPageRevisions(ctx context.Context, owner string, repo string, pageName string) ApiRepoGetWikiPageRevisionsRequest {
-	return ApiRepoGetWikiPageRevisionsRequest{
+func (a *RepositoryAPIService) RepoGetWikiPageRevisions(ctx context.Context, owner string, repo string, pageName string) RepositoryAPIRepoGetWikiPageRevisionsRequest {
+	return RepositoryAPIRepoGetWikiPageRevisionsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -26184,7 +26184,7 @@ func (a *RepositoryAPIService) RepoGetWikiPageRevisions(ctx context.Context, own
 
 // Execute executes the request
 //  @return WikiCommitList
-func (a *RepositoryAPIService) RepoGetWikiPageRevisionsExecute(r ApiRepoGetWikiPageRevisionsRequest) (*WikiCommitList, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetWikiPageRevisionsExecute(r RepositoryAPIRepoGetWikiPageRevisionsRequest) (*WikiCommitList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -26357,7 +26357,7 @@ func (a *RepositoryAPIService) RepoGetWikiPageRevisionsExecute(r ApiRepoGetWikiP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoGetWikiPagesRequest struct {
+type RepositoryAPIRepoGetWikiPagesRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -26367,18 +26367,18 @@ type ApiRepoGetWikiPagesRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoGetWikiPagesRequest) Page(page int32) ApiRepoGetWikiPagesRequest {
+func (r RepositoryAPIRepoGetWikiPagesRequest) Page(page int32) RepositoryAPIRepoGetWikiPagesRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoGetWikiPagesRequest) Limit(limit int32) ApiRepoGetWikiPagesRequest {
+func (r RepositoryAPIRepoGetWikiPagesRequest) Limit(limit int32) RepositoryAPIRepoGetWikiPagesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoGetWikiPagesRequest) Execute() ([]WikiPageMetaData, *http.Response, error) {
+func (r RepositoryAPIRepoGetWikiPagesRequest) Execute() ([]WikiPageMetaData, *http.Response, error) {
 	return r.ApiService.RepoGetWikiPagesExecute(r)
 }
 
@@ -26388,10 +26388,10 @@ RepoGetWikiPages Get all wiki pages
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoGetWikiPagesRequest
+ @return RepositoryAPIRepoGetWikiPagesRequest
 */
-func (a *RepositoryAPIService) RepoGetWikiPages(ctx context.Context, owner string, repo string) ApiRepoGetWikiPagesRequest {
-	return ApiRepoGetWikiPagesRequest{
+func (a *RepositoryAPIService) RepoGetWikiPages(ctx context.Context, owner string, repo string) RepositoryAPIRepoGetWikiPagesRequest {
+	return RepositoryAPIRepoGetWikiPagesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -26401,7 +26401,7 @@ func (a *RepositoryAPIService) RepoGetWikiPages(ctx context.Context, owner strin
 
 // Execute executes the request
 //  @return []WikiPageMetaData
-func (a *RepositoryAPIService) RepoGetWikiPagesExecute(r ApiRepoGetWikiPagesRequest) ([]WikiPageMetaData, *http.Response, error) {
+func (a *RepositoryAPIService) RepoGetWikiPagesExecute(r RepositoryAPIRepoGetWikiPagesRequest) ([]WikiPageMetaData, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -26576,7 +26576,7 @@ func (a *RepositoryAPIService) RepoGetWikiPagesExecute(r ApiRepoGetWikiPagesRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListActionsSecretsRequest struct {
+type RepositoryAPIRepoListActionsSecretsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -26586,18 +26586,18 @@ type ApiRepoListActionsSecretsRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoListActionsSecretsRequest) Page(page int32) ApiRepoListActionsSecretsRequest {
+func (r RepositoryAPIRepoListActionsSecretsRequest) Page(page int32) RepositoryAPIRepoListActionsSecretsRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoListActionsSecretsRequest) Limit(limit int32) ApiRepoListActionsSecretsRequest {
+func (r RepositoryAPIRepoListActionsSecretsRequest) Limit(limit int32) RepositoryAPIRepoListActionsSecretsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoListActionsSecretsRequest) Execute() ([]Secret, *http.Response, error) {
+func (r RepositoryAPIRepoListActionsSecretsRequest) Execute() ([]Secret, *http.Response, error) {
 	return r.ApiService.RepoListActionsSecretsExecute(r)
 }
 
@@ -26607,10 +26607,10 @@ RepoListActionsSecrets List an repo's actions secrets
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repository
  @param repo name of the repository
- @return ApiRepoListActionsSecretsRequest
+ @return RepositoryAPIRepoListActionsSecretsRequest
 */
-func (a *RepositoryAPIService) RepoListActionsSecrets(ctx context.Context, owner string, repo string) ApiRepoListActionsSecretsRequest {
-	return ApiRepoListActionsSecretsRequest{
+func (a *RepositoryAPIService) RepoListActionsSecrets(ctx context.Context, owner string, repo string) RepositoryAPIRepoListActionsSecretsRequest {
+	return RepositoryAPIRepoListActionsSecretsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -26620,7 +26620,7 @@ func (a *RepositoryAPIService) RepoListActionsSecrets(ctx context.Context, owner
 
 // Execute executes the request
 //  @return []Secret
-func (a *RepositoryAPIService) RepoListActionsSecretsExecute(r ApiRepoListActionsSecretsRequest) ([]Secret, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListActionsSecretsExecute(r RepositoryAPIRepoListActionsSecretsRequest) ([]Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -26795,7 +26795,7 @@ func (a *RepositoryAPIService) RepoListActionsSecretsExecute(r ApiRepoListAction
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListActivityFeedsRequest struct {
+type RepositoryAPIRepoListActivityFeedsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -26806,24 +26806,24 @@ type ApiRepoListActivityFeedsRequest struct {
 }
 
 // the date of the activities to be found
-func (r ApiRepoListActivityFeedsRequest) Date(date string) ApiRepoListActivityFeedsRequest {
+func (r RepositoryAPIRepoListActivityFeedsRequest) Date(date string) RepositoryAPIRepoListActivityFeedsRequest {
 	r.date = &date
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoListActivityFeedsRequest) Page(page int32) ApiRepoListActivityFeedsRequest {
+func (r RepositoryAPIRepoListActivityFeedsRequest) Page(page int32) RepositoryAPIRepoListActivityFeedsRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoListActivityFeedsRequest) Limit(limit int32) ApiRepoListActivityFeedsRequest {
+func (r RepositoryAPIRepoListActivityFeedsRequest) Limit(limit int32) RepositoryAPIRepoListActivityFeedsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoListActivityFeedsRequest) Execute() ([]Activity, *http.Response, error) {
+func (r RepositoryAPIRepoListActivityFeedsRequest) Execute() ([]Activity, *http.Response, error) {
 	return r.ApiService.RepoListActivityFeedsExecute(r)
 }
 
@@ -26833,10 +26833,10 @@ RepoListActivityFeeds List a repository's activity feeds
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListActivityFeedsRequest
+ @return RepositoryAPIRepoListActivityFeedsRequest
 */
-func (a *RepositoryAPIService) RepoListActivityFeeds(ctx context.Context, owner string, repo string) ApiRepoListActivityFeedsRequest {
-	return ApiRepoListActivityFeedsRequest{
+func (a *RepositoryAPIService) RepoListActivityFeeds(ctx context.Context, owner string, repo string) RepositoryAPIRepoListActivityFeedsRequest {
+	return RepositoryAPIRepoListActivityFeedsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -26846,7 +26846,7 @@ func (a *RepositoryAPIService) RepoListActivityFeeds(ctx context.Context, owner 
 
 // Execute executes the request
 //  @return []Activity
-func (a *RepositoryAPIService) RepoListActivityFeedsExecute(r ApiRepoListActivityFeedsRequest) ([]Activity, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListActivityFeedsExecute(r RepositoryAPIRepoListActivityFeedsRequest) ([]Activity, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -27024,14 +27024,14 @@ func (a *RepositoryAPIService) RepoListActivityFeedsExecute(r ApiRepoListActivit
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListAllGitRefsRequest struct {
+type RepositoryAPIRepoListAllGitRefsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoListAllGitRefsRequest) Execute() ([]Reference, *http.Response, error) {
+func (r RepositoryAPIRepoListAllGitRefsRequest) Execute() ([]Reference, *http.Response, error) {
 	return r.ApiService.RepoListAllGitRefsExecute(r)
 }
 
@@ -27041,10 +27041,10 @@ RepoListAllGitRefs Get specified ref or filtered repository's refs
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListAllGitRefsRequest
+ @return RepositoryAPIRepoListAllGitRefsRequest
 */
-func (a *RepositoryAPIService) RepoListAllGitRefs(ctx context.Context, owner string, repo string) ApiRepoListAllGitRefsRequest {
-	return ApiRepoListAllGitRefsRequest{
+func (a *RepositoryAPIService) RepoListAllGitRefs(ctx context.Context, owner string, repo string) RepositoryAPIRepoListAllGitRefsRequest {
+	return RepositoryAPIRepoListAllGitRefsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -27054,7 +27054,7 @@ func (a *RepositoryAPIService) RepoListAllGitRefs(ctx context.Context, owner str
 
 // Execute executes the request
 //  @return []Reference
-func (a *RepositoryAPIService) RepoListAllGitRefsExecute(r ApiRepoListAllGitRefsRequest) ([]Reference, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListAllGitRefsExecute(r RepositoryAPIRepoListAllGitRefsRequest) ([]Reference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -27223,14 +27223,14 @@ func (a *RepositoryAPIService) RepoListAllGitRefsExecute(r ApiRepoListAllGitRefs
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListBranchProtectionRequest struct {
+type RepositoryAPIRepoListBranchProtectionRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoListBranchProtectionRequest) Execute() ([]BranchProtection, *http.Response, error) {
+func (r RepositoryAPIRepoListBranchProtectionRequest) Execute() ([]BranchProtection, *http.Response, error) {
 	return r.ApiService.RepoListBranchProtectionExecute(r)
 }
 
@@ -27240,10 +27240,10 @@ RepoListBranchProtection List branch protections for a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListBranchProtectionRequest
+ @return RepositoryAPIRepoListBranchProtectionRequest
 */
-func (a *RepositoryAPIService) RepoListBranchProtection(ctx context.Context, owner string, repo string) ApiRepoListBranchProtectionRequest {
-	return ApiRepoListBranchProtectionRequest{
+func (a *RepositoryAPIService) RepoListBranchProtection(ctx context.Context, owner string, repo string) RepositoryAPIRepoListBranchProtectionRequest {
+	return RepositoryAPIRepoListBranchProtectionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -27253,7 +27253,7 @@ func (a *RepositoryAPIService) RepoListBranchProtection(ctx context.Context, own
 
 // Execute executes the request
 //  @return []BranchProtection
-func (a *RepositoryAPIService) RepoListBranchProtectionExecute(r ApiRepoListBranchProtectionRequest) ([]BranchProtection, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListBranchProtectionExecute(r RepositoryAPIRepoListBranchProtectionRequest) ([]BranchProtection, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -27412,7 +27412,7 @@ func (a *RepositoryAPIService) RepoListBranchProtectionExecute(r ApiRepoListBran
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListBranchesRequest struct {
+type RepositoryAPIRepoListBranchesRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -27422,18 +27422,18 @@ type ApiRepoListBranchesRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoListBranchesRequest) Page(page int32) ApiRepoListBranchesRequest {
+func (r RepositoryAPIRepoListBranchesRequest) Page(page int32) RepositoryAPIRepoListBranchesRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoListBranchesRequest) Limit(limit int32) ApiRepoListBranchesRequest {
+func (r RepositoryAPIRepoListBranchesRequest) Limit(limit int32) RepositoryAPIRepoListBranchesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoListBranchesRequest) Execute() ([]Branch, *http.Response, error) {
+func (r RepositoryAPIRepoListBranchesRequest) Execute() ([]Branch, *http.Response, error) {
 	return r.ApiService.RepoListBranchesExecute(r)
 }
 
@@ -27443,10 +27443,10 @@ RepoListBranches List a repository's branches
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListBranchesRequest
+ @return RepositoryAPIRepoListBranchesRequest
 */
-func (a *RepositoryAPIService) RepoListBranches(ctx context.Context, owner string, repo string) ApiRepoListBranchesRequest {
-	return ApiRepoListBranchesRequest{
+func (a *RepositoryAPIService) RepoListBranches(ctx context.Context, owner string, repo string) RepositoryAPIRepoListBranchesRequest {
+	return RepositoryAPIRepoListBranchesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -27456,7 +27456,7 @@ func (a *RepositoryAPIService) RepoListBranches(ctx context.Context, owner strin
 
 // Execute executes the request
 //  @return []Branch
-func (a *RepositoryAPIService) RepoListBranchesExecute(r ApiRepoListBranchesRequest) ([]Branch, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListBranchesExecute(r RepositoryAPIRepoListBranchesRequest) ([]Branch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -27621,7 +27621,7 @@ func (a *RepositoryAPIService) RepoListBranchesExecute(r ApiRepoListBranchesRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListCollaboratorsRequest struct {
+type RepositoryAPIRepoListCollaboratorsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -27631,18 +27631,18 @@ type ApiRepoListCollaboratorsRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoListCollaboratorsRequest) Page(page int32) ApiRepoListCollaboratorsRequest {
+func (r RepositoryAPIRepoListCollaboratorsRequest) Page(page int32) RepositoryAPIRepoListCollaboratorsRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoListCollaboratorsRequest) Limit(limit int32) ApiRepoListCollaboratorsRequest {
+func (r RepositoryAPIRepoListCollaboratorsRequest) Limit(limit int32) RepositoryAPIRepoListCollaboratorsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoListCollaboratorsRequest) Execute() ([]User, *http.Response, error) {
+func (r RepositoryAPIRepoListCollaboratorsRequest) Execute() ([]User, *http.Response, error) {
 	return r.ApiService.RepoListCollaboratorsExecute(r)
 }
 
@@ -27652,10 +27652,10 @@ RepoListCollaborators List a repository's collaborators
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListCollaboratorsRequest
+ @return RepositoryAPIRepoListCollaboratorsRequest
 */
-func (a *RepositoryAPIService) RepoListCollaborators(ctx context.Context, owner string, repo string) ApiRepoListCollaboratorsRequest {
-	return ApiRepoListCollaboratorsRequest{
+func (a *RepositoryAPIService) RepoListCollaborators(ctx context.Context, owner string, repo string) RepositoryAPIRepoListCollaboratorsRequest {
+	return RepositoryAPIRepoListCollaboratorsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -27665,7 +27665,7 @@ func (a *RepositoryAPIService) RepoListCollaborators(ctx context.Context, owner 
 
 // Execute executes the request
 //  @return []User
-func (a *RepositoryAPIService) RepoListCollaboratorsExecute(r ApiRepoListCollaboratorsRequest) ([]User, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListCollaboratorsExecute(r RepositoryAPIRepoListCollaboratorsRequest) ([]User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -27840,14 +27840,14 @@ func (a *RepositoryAPIService) RepoListCollaboratorsExecute(r ApiRepoListCollabo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListFlagsRequest struct {
+type RepositoryAPIRepoListFlagsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoListFlagsRequest) Execute() ([]string, *http.Response, error) {
+func (r RepositoryAPIRepoListFlagsRequest) Execute() ([]string, *http.Response, error) {
 	return r.ApiService.RepoListFlagsExecute(r)
 }
 
@@ -27857,10 +27857,10 @@ RepoListFlags List a repository's flags
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListFlagsRequest
+ @return RepositoryAPIRepoListFlagsRequest
 */
-func (a *RepositoryAPIService) RepoListFlags(ctx context.Context, owner string, repo string) ApiRepoListFlagsRequest {
-	return ApiRepoListFlagsRequest{
+func (a *RepositoryAPIService) RepoListFlags(ctx context.Context, owner string, repo string) RepositoryAPIRepoListFlagsRequest {
+	return RepositoryAPIRepoListFlagsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -27870,7 +27870,7 @@ func (a *RepositoryAPIService) RepoListFlags(ctx context.Context, owner string, 
 
 // Execute executes the request
 //  @return []string
-func (a *RepositoryAPIService) RepoListFlagsExecute(r ApiRepoListFlagsRequest) ([]string, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListFlagsExecute(r RepositoryAPIRepoListFlagsRequest) ([]string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -28050,14 +28050,14 @@ func (a *RepositoryAPIService) RepoListFlagsExecute(r ApiRepoListFlagsRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListGitHooksRequest struct {
+type RepositoryAPIRepoListGitHooksRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoListGitHooksRequest) Execute() ([]GitHook, *http.Response, error) {
+func (r RepositoryAPIRepoListGitHooksRequest) Execute() ([]GitHook, *http.Response, error) {
 	return r.ApiService.RepoListGitHooksExecute(r)
 }
 
@@ -28067,10 +28067,10 @@ RepoListGitHooks List the Git hooks in a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListGitHooksRequest
+ @return RepositoryAPIRepoListGitHooksRequest
 */
-func (a *RepositoryAPIService) RepoListGitHooks(ctx context.Context, owner string, repo string) ApiRepoListGitHooksRequest {
-	return ApiRepoListGitHooksRequest{
+func (a *RepositoryAPIService) RepoListGitHooks(ctx context.Context, owner string, repo string) RepositoryAPIRepoListGitHooksRequest {
+	return RepositoryAPIRepoListGitHooksRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -28080,7 +28080,7 @@ func (a *RepositoryAPIService) RepoListGitHooks(ctx context.Context, owner strin
 
 // Execute executes the request
 //  @return []GitHook
-func (a *RepositoryAPIService) RepoListGitHooksExecute(r ApiRepoListGitHooksRequest) ([]GitHook, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListGitHooksExecute(r RepositoryAPIRepoListGitHooksRequest) ([]GitHook, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -28249,7 +28249,7 @@ func (a *RepositoryAPIService) RepoListGitHooksExecute(r ApiRepoListGitHooksRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListGitRefsRequest struct {
+type RepositoryAPIRepoListGitRefsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -28257,7 +28257,7 @@ type ApiRepoListGitRefsRequest struct {
 	ref string
 }
 
-func (r ApiRepoListGitRefsRequest) Execute() ([]Reference, *http.Response, error) {
+func (r RepositoryAPIRepoListGitRefsRequest) Execute() ([]Reference, *http.Response, error) {
 	return r.ApiService.RepoListGitRefsExecute(r)
 }
 
@@ -28268,10 +28268,10 @@ RepoListGitRefs Get specified ref or filtered repository's refs
  @param owner owner of the repo
  @param repo name of the repo
  @param ref part or full name of the ref
- @return ApiRepoListGitRefsRequest
+ @return RepositoryAPIRepoListGitRefsRequest
 */
-func (a *RepositoryAPIService) RepoListGitRefs(ctx context.Context, owner string, repo string, ref string) ApiRepoListGitRefsRequest {
-	return ApiRepoListGitRefsRequest{
+func (a *RepositoryAPIService) RepoListGitRefs(ctx context.Context, owner string, repo string, ref string) RepositoryAPIRepoListGitRefsRequest {
+	return RepositoryAPIRepoListGitRefsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -28282,7 +28282,7 @@ func (a *RepositoryAPIService) RepoListGitRefs(ctx context.Context, owner string
 
 // Execute executes the request
 //  @return []Reference
-func (a *RepositoryAPIService) RepoListGitRefsExecute(r ApiRepoListGitRefsRequest) ([]Reference, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListGitRefsExecute(r RepositoryAPIRepoListGitRefsRequest) ([]Reference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -28452,7 +28452,7 @@ func (a *RepositoryAPIService) RepoListGitRefsExecute(r ApiRepoListGitRefsReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListHooksRequest struct {
+type RepositoryAPIRepoListHooksRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -28462,18 +28462,18 @@ type ApiRepoListHooksRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoListHooksRequest) Page(page int32) ApiRepoListHooksRequest {
+func (r RepositoryAPIRepoListHooksRequest) Page(page int32) RepositoryAPIRepoListHooksRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoListHooksRequest) Limit(limit int32) ApiRepoListHooksRequest {
+func (r RepositoryAPIRepoListHooksRequest) Limit(limit int32) RepositoryAPIRepoListHooksRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoListHooksRequest) Execute() ([]Hook, *http.Response, error) {
+func (r RepositoryAPIRepoListHooksRequest) Execute() ([]Hook, *http.Response, error) {
 	return r.ApiService.RepoListHooksExecute(r)
 }
 
@@ -28483,10 +28483,10 @@ RepoListHooks List the hooks in a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListHooksRequest
+ @return RepositoryAPIRepoListHooksRequest
 */
-func (a *RepositoryAPIService) RepoListHooks(ctx context.Context, owner string, repo string) ApiRepoListHooksRequest {
-	return ApiRepoListHooksRequest{
+func (a *RepositoryAPIService) RepoListHooks(ctx context.Context, owner string, repo string) RepositoryAPIRepoListHooksRequest {
+	return RepositoryAPIRepoListHooksRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -28496,7 +28496,7 @@ func (a *RepositoryAPIService) RepoListHooks(ctx context.Context, owner string, 
 
 // Execute executes the request
 //  @return []Hook
-func (a *RepositoryAPIService) RepoListHooksExecute(r ApiRepoListHooksRequest) ([]Hook, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListHooksExecute(r RepositoryAPIRepoListHooksRequest) ([]Hook, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -28671,7 +28671,7 @@ func (a *RepositoryAPIService) RepoListHooksExecute(r ApiRepoListHooksRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListKeysRequest struct {
+type RepositoryAPIRepoListKeysRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -28683,30 +28683,30 @@ type ApiRepoListKeysRequest struct {
 }
 
 // the key_id to search for
-func (r ApiRepoListKeysRequest) KeyId(keyId int32) ApiRepoListKeysRequest {
+func (r RepositoryAPIRepoListKeysRequest) KeyId(keyId int32) RepositoryAPIRepoListKeysRequest {
 	r.keyId = &keyId
 	return r
 }
 
 // fingerprint of the key
-func (r ApiRepoListKeysRequest) Fingerprint(fingerprint string) ApiRepoListKeysRequest {
+func (r RepositoryAPIRepoListKeysRequest) Fingerprint(fingerprint string) RepositoryAPIRepoListKeysRequest {
 	r.fingerprint = &fingerprint
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoListKeysRequest) Page(page int32) ApiRepoListKeysRequest {
+func (r RepositoryAPIRepoListKeysRequest) Page(page int32) RepositoryAPIRepoListKeysRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoListKeysRequest) Limit(limit int32) ApiRepoListKeysRequest {
+func (r RepositoryAPIRepoListKeysRequest) Limit(limit int32) RepositoryAPIRepoListKeysRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoListKeysRequest) Execute() ([]DeployKey, *http.Response, error) {
+func (r RepositoryAPIRepoListKeysRequest) Execute() ([]DeployKey, *http.Response, error) {
 	return r.ApiService.RepoListKeysExecute(r)
 }
 
@@ -28716,10 +28716,10 @@ RepoListKeys List a repository's keys
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListKeysRequest
+ @return RepositoryAPIRepoListKeysRequest
 */
-func (a *RepositoryAPIService) RepoListKeys(ctx context.Context, owner string, repo string) ApiRepoListKeysRequest {
-	return ApiRepoListKeysRequest{
+func (a *RepositoryAPIService) RepoListKeys(ctx context.Context, owner string, repo string) RepositoryAPIRepoListKeysRequest {
+	return RepositoryAPIRepoListKeysRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -28729,7 +28729,7 @@ func (a *RepositoryAPIService) RepoListKeys(ctx context.Context, owner string, r
 
 // Execute executes the request
 //  @return []DeployKey
-func (a *RepositoryAPIService) RepoListKeysExecute(r ApiRepoListKeysRequest) ([]DeployKey, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListKeysExecute(r RepositoryAPIRepoListKeysRequest) ([]DeployKey, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -28910,14 +28910,14 @@ func (a *RepositoryAPIService) RepoListKeysExecute(r ApiRepoListKeysRequest) ([]
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListPinnedIssuesRequest struct {
+type RepositoryAPIRepoListPinnedIssuesRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoListPinnedIssuesRequest) Execute() ([]Issue, *http.Response, error) {
+func (r RepositoryAPIRepoListPinnedIssuesRequest) Execute() ([]Issue, *http.Response, error) {
 	return r.ApiService.RepoListPinnedIssuesExecute(r)
 }
 
@@ -28927,10 +28927,10 @@ RepoListPinnedIssues List a repo's pinned issues
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListPinnedIssuesRequest
+ @return RepositoryAPIRepoListPinnedIssuesRequest
 */
-func (a *RepositoryAPIService) RepoListPinnedIssues(ctx context.Context, owner string, repo string) ApiRepoListPinnedIssuesRequest {
-	return ApiRepoListPinnedIssuesRequest{
+func (a *RepositoryAPIService) RepoListPinnedIssues(ctx context.Context, owner string, repo string) RepositoryAPIRepoListPinnedIssuesRequest {
+	return RepositoryAPIRepoListPinnedIssuesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -28940,7 +28940,7 @@ func (a *RepositoryAPIService) RepoListPinnedIssues(ctx context.Context, owner s
 
 // Execute executes the request
 //  @return []Issue
-func (a *RepositoryAPIService) RepoListPinnedIssuesExecute(r ApiRepoListPinnedIssuesRequest) ([]Issue, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListPinnedIssuesExecute(r RepositoryAPIRepoListPinnedIssuesRequest) ([]Issue, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -29109,14 +29109,14 @@ func (a *RepositoryAPIService) RepoListPinnedIssuesExecute(r ApiRepoListPinnedIs
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListPinnedPullRequestsRequest struct {
+type RepositoryAPIRepoListPinnedPullRequestsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoListPinnedPullRequestsRequest) Execute() ([]PullRequest, *http.Response, error) {
+func (r RepositoryAPIRepoListPinnedPullRequestsRequest) Execute() ([]PullRequest, *http.Response, error) {
 	return r.ApiService.RepoListPinnedPullRequestsExecute(r)
 }
 
@@ -29126,10 +29126,10 @@ RepoListPinnedPullRequests List a repo's pinned pull requests
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListPinnedPullRequestsRequest
+ @return RepositoryAPIRepoListPinnedPullRequestsRequest
 */
-func (a *RepositoryAPIService) RepoListPinnedPullRequests(ctx context.Context, owner string, repo string) ApiRepoListPinnedPullRequestsRequest {
-	return ApiRepoListPinnedPullRequestsRequest{
+func (a *RepositoryAPIService) RepoListPinnedPullRequests(ctx context.Context, owner string, repo string) RepositoryAPIRepoListPinnedPullRequestsRequest {
+	return RepositoryAPIRepoListPinnedPullRequestsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -29139,7 +29139,7 @@ func (a *RepositoryAPIService) RepoListPinnedPullRequests(ctx context.Context, o
 
 // Execute executes the request
 //  @return []PullRequest
-func (a *RepositoryAPIService) RepoListPinnedPullRequestsExecute(r ApiRepoListPinnedPullRequestsRequest) ([]PullRequest, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListPinnedPullRequestsExecute(r RepositoryAPIRepoListPinnedPullRequestsRequest) ([]PullRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -29308,7 +29308,7 @@ func (a *RepositoryAPIService) RepoListPinnedPullRequestsExecute(r ApiRepoListPi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListPullRequestsRequest struct {
+type RepositoryAPIRepoListPullRequestsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -29323,48 +29323,48 @@ type ApiRepoListPullRequestsRequest struct {
 }
 
 // State of pull request
-func (r ApiRepoListPullRequestsRequest) State(state string) ApiRepoListPullRequestsRequest {
+func (r RepositoryAPIRepoListPullRequestsRequest) State(state string) RepositoryAPIRepoListPullRequestsRequest {
 	r.state = &state
 	return r
 }
 
 // Type of sort
-func (r ApiRepoListPullRequestsRequest) Sort(sort string) ApiRepoListPullRequestsRequest {
+func (r RepositoryAPIRepoListPullRequestsRequest) Sort(sort string) RepositoryAPIRepoListPullRequestsRequest {
 	r.sort = &sort
 	return r
 }
 
 // ID of the milestone
-func (r ApiRepoListPullRequestsRequest) Milestone(milestone int64) ApiRepoListPullRequestsRequest {
+func (r RepositoryAPIRepoListPullRequestsRequest) Milestone(milestone int64) RepositoryAPIRepoListPullRequestsRequest {
 	r.milestone = &milestone
 	return r
 }
 
 // Label IDs
-func (r ApiRepoListPullRequestsRequest) Labels(labels []int64) ApiRepoListPullRequestsRequest {
+func (r RepositoryAPIRepoListPullRequestsRequest) Labels(labels []int64) RepositoryAPIRepoListPullRequestsRequest {
 	r.labels = &labels
 	return r
 }
 
 // Filter by pull request author
-func (r ApiRepoListPullRequestsRequest) Poster(poster string) ApiRepoListPullRequestsRequest {
+func (r RepositoryAPIRepoListPullRequestsRequest) Poster(poster string) RepositoryAPIRepoListPullRequestsRequest {
 	r.poster = &poster
 	return r
 }
 
 // Page number of results to return (1-based)
-func (r ApiRepoListPullRequestsRequest) Page(page int32) ApiRepoListPullRequestsRequest {
+func (r RepositoryAPIRepoListPullRequestsRequest) Page(page int32) RepositoryAPIRepoListPullRequestsRequest {
 	r.page = &page
 	return r
 }
 
 // Page size of results
-func (r ApiRepoListPullRequestsRequest) Limit(limit int32) ApiRepoListPullRequestsRequest {
+func (r RepositoryAPIRepoListPullRequestsRequest) Limit(limit int32) RepositoryAPIRepoListPullRequestsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoListPullRequestsRequest) Execute() ([]PullRequest, *http.Response, error) {
+func (r RepositoryAPIRepoListPullRequestsRequest) Execute() ([]PullRequest, *http.Response, error) {
 	return r.ApiService.RepoListPullRequestsExecute(r)
 }
 
@@ -29374,10 +29374,10 @@ RepoListPullRequests List a repo's pull requests. If a pull request is selected 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner Owner of the repo
  @param repo Name of the repo
- @return ApiRepoListPullRequestsRequest
+ @return RepositoryAPIRepoListPullRequestsRequest
 */
-func (a *RepositoryAPIService) RepoListPullRequests(ctx context.Context, owner string, repo string) ApiRepoListPullRequestsRequest {
-	return ApiRepoListPullRequestsRequest{
+func (a *RepositoryAPIService) RepoListPullRequests(ctx context.Context, owner string, repo string) RepositoryAPIRepoListPullRequestsRequest {
+	return RepositoryAPIRepoListPullRequestsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -29387,7 +29387,7 @@ func (a *RepositoryAPIService) RepoListPullRequests(ctx context.Context, owner s
 
 // Execute executes the request
 //  @return []PullRequest
-func (a *RepositoryAPIService) RepoListPullRequestsExecute(r ApiRepoListPullRequestsRequest) ([]PullRequest, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListPullRequestsExecute(r RepositoryAPIRepoListPullRequestsRequest) ([]PullRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -29602,7 +29602,7 @@ func (a *RepositoryAPIService) RepoListPullRequestsExecute(r ApiRepoListPullRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListPullReviewsRequest struct {
+type RepositoryAPIRepoListPullReviewsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -29613,18 +29613,18 @@ type ApiRepoListPullReviewsRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoListPullReviewsRequest) Page(page int32) ApiRepoListPullReviewsRequest {
+func (r RepositoryAPIRepoListPullReviewsRequest) Page(page int32) RepositoryAPIRepoListPullReviewsRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoListPullReviewsRequest) Limit(limit int32) ApiRepoListPullReviewsRequest {
+func (r RepositoryAPIRepoListPullReviewsRequest) Limit(limit int32) RepositoryAPIRepoListPullReviewsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoListPullReviewsRequest) Execute() ([]PullReview, *http.Response, error) {
+func (r RepositoryAPIRepoListPullReviewsRequest) Execute() ([]PullReview, *http.Response, error) {
 	return r.ApiService.RepoListPullReviewsExecute(r)
 }
 
@@ -29635,10 +29635,10 @@ RepoListPullReviews List all reviews for a pull request
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the pull request
- @return ApiRepoListPullReviewsRequest
+ @return RepositoryAPIRepoListPullReviewsRequest
 */
-func (a *RepositoryAPIService) RepoListPullReviews(ctx context.Context, owner string, repo string, index int64) ApiRepoListPullReviewsRequest {
-	return ApiRepoListPullReviewsRequest{
+func (a *RepositoryAPIService) RepoListPullReviews(ctx context.Context, owner string, repo string, index int64) RepositoryAPIRepoListPullReviewsRequest {
+	return RepositoryAPIRepoListPullReviewsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -29649,7 +29649,7 @@ func (a *RepositoryAPIService) RepoListPullReviews(ctx context.Context, owner st
 
 // Execute executes the request
 //  @return []PullReview
-func (a *RepositoryAPIService) RepoListPullReviewsExecute(r ApiRepoListPullReviewsRequest) ([]PullReview, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListPullReviewsExecute(r RepositoryAPIRepoListPullReviewsRequest) ([]PullReview, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -29825,7 +29825,7 @@ func (a *RepositoryAPIService) RepoListPullReviewsExecute(r ApiRepoListPullRevie
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListPushMirrorsRequest struct {
+type RepositoryAPIRepoListPushMirrorsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -29835,18 +29835,18 @@ type ApiRepoListPushMirrorsRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoListPushMirrorsRequest) Page(page int32) ApiRepoListPushMirrorsRequest {
+func (r RepositoryAPIRepoListPushMirrorsRequest) Page(page int32) RepositoryAPIRepoListPushMirrorsRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoListPushMirrorsRequest) Limit(limit int32) ApiRepoListPushMirrorsRequest {
+func (r RepositoryAPIRepoListPushMirrorsRequest) Limit(limit int32) RepositoryAPIRepoListPushMirrorsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoListPushMirrorsRequest) Execute() ([]PushMirror, *http.Response, error) {
+func (r RepositoryAPIRepoListPushMirrorsRequest) Execute() ([]PushMirror, *http.Response, error) {
 	return r.ApiService.RepoListPushMirrorsExecute(r)
 }
 
@@ -29856,10 +29856,10 @@ RepoListPushMirrors Get all push mirrors of the repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListPushMirrorsRequest
+ @return RepositoryAPIRepoListPushMirrorsRequest
 */
-func (a *RepositoryAPIService) RepoListPushMirrors(ctx context.Context, owner string, repo string) ApiRepoListPushMirrorsRequest {
-	return ApiRepoListPushMirrorsRequest{
+func (a *RepositoryAPIService) RepoListPushMirrors(ctx context.Context, owner string, repo string) RepositoryAPIRepoListPushMirrorsRequest {
+	return RepositoryAPIRepoListPushMirrorsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -29869,7 +29869,7 @@ func (a *RepositoryAPIService) RepoListPushMirrors(ctx context.Context, owner st
 
 // Execute executes the request
 //  @return []PushMirror
-func (a *RepositoryAPIService) RepoListPushMirrorsExecute(r ApiRepoListPushMirrorsRequest) ([]PushMirror, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListPushMirrorsExecute(r RepositoryAPIRepoListPushMirrorsRequest) ([]PushMirror, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -30066,7 +30066,7 @@ func (a *RepositoryAPIService) RepoListPushMirrorsExecute(r ApiRepoListPushMirro
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListReleaseAttachmentsRequest struct {
+type RepositoryAPIRepoListReleaseAttachmentsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -30074,7 +30074,7 @@ type ApiRepoListReleaseAttachmentsRequest struct {
 	id int64
 }
 
-func (r ApiRepoListReleaseAttachmentsRequest) Execute() ([]Attachment, *http.Response, error) {
+func (r RepositoryAPIRepoListReleaseAttachmentsRequest) Execute() ([]Attachment, *http.Response, error) {
 	return r.ApiService.RepoListReleaseAttachmentsExecute(r)
 }
 
@@ -30085,10 +30085,10 @@ RepoListReleaseAttachments List release's attachments
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the release
- @return ApiRepoListReleaseAttachmentsRequest
+ @return RepositoryAPIRepoListReleaseAttachmentsRequest
 */
-func (a *RepositoryAPIService) RepoListReleaseAttachments(ctx context.Context, owner string, repo string, id int64) ApiRepoListReleaseAttachmentsRequest {
-	return ApiRepoListReleaseAttachmentsRequest{
+func (a *RepositoryAPIService) RepoListReleaseAttachments(ctx context.Context, owner string, repo string, id int64) RepositoryAPIRepoListReleaseAttachmentsRequest {
+	return RepositoryAPIRepoListReleaseAttachmentsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -30099,7 +30099,7 @@ func (a *RepositoryAPIService) RepoListReleaseAttachments(ctx context.Context, o
 
 // Execute executes the request
 //  @return []Attachment
-func (a *RepositoryAPIService) RepoListReleaseAttachmentsExecute(r ApiRepoListReleaseAttachmentsRequest) ([]Attachment, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListReleaseAttachmentsExecute(r RepositoryAPIRepoListReleaseAttachmentsRequest) ([]Attachment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -30269,7 +30269,7 @@ func (a *RepositoryAPIService) RepoListReleaseAttachmentsExecute(r ApiRepoListRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListReleasesRequest struct {
+type RepositoryAPIRepoListReleasesRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -30282,36 +30282,36 @@ type ApiRepoListReleasesRequest struct {
 }
 
 // filter (exclude / include) drafts, if you dont have repo write access none will show
-func (r ApiRepoListReleasesRequest) Draft(draft bool) ApiRepoListReleasesRequest {
+func (r RepositoryAPIRepoListReleasesRequest) Draft(draft bool) RepositoryAPIRepoListReleasesRequest {
 	r.draft = &draft
 	return r
 }
 
 // filter (exclude / include) pre-releases
-func (r ApiRepoListReleasesRequest) PreRelease(preRelease bool) ApiRepoListReleasesRequest {
+func (r RepositoryAPIRepoListReleasesRequest) PreRelease(preRelease bool) RepositoryAPIRepoListReleasesRequest {
 	r.preRelease = &preRelease
 	return r
 }
 
 // Search string
-func (r ApiRepoListReleasesRequest) Q(q string) ApiRepoListReleasesRequest {
+func (r RepositoryAPIRepoListReleasesRequest) Q(q string) RepositoryAPIRepoListReleasesRequest {
 	r.q = &q
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoListReleasesRequest) Page(page int32) ApiRepoListReleasesRequest {
+func (r RepositoryAPIRepoListReleasesRequest) Page(page int32) RepositoryAPIRepoListReleasesRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoListReleasesRequest) Limit(limit int32) ApiRepoListReleasesRequest {
+func (r RepositoryAPIRepoListReleasesRequest) Limit(limit int32) RepositoryAPIRepoListReleasesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoListReleasesRequest) Execute() ([]Release, *http.Response, error) {
+func (r RepositoryAPIRepoListReleasesRequest) Execute() ([]Release, *http.Response, error) {
 	return r.ApiService.RepoListReleasesExecute(r)
 }
 
@@ -30321,10 +30321,10 @@ RepoListReleases List a repo's releases
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListReleasesRequest
+ @return RepositoryAPIRepoListReleasesRequest
 */
-func (a *RepositoryAPIService) RepoListReleases(ctx context.Context, owner string, repo string) ApiRepoListReleasesRequest {
-	return ApiRepoListReleasesRequest{
+func (a *RepositoryAPIService) RepoListReleases(ctx context.Context, owner string, repo string) RepositoryAPIRepoListReleasesRequest {
+	return RepositoryAPIRepoListReleasesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -30334,7 +30334,7 @@ func (a *RepositoryAPIService) RepoListReleases(ctx context.Context, owner strin
 
 // Execute executes the request
 //  @return []Release
-func (a *RepositoryAPIService) RepoListReleasesExecute(r ApiRepoListReleasesRequest) ([]Release, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListReleasesExecute(r RepositoryAPIRepoListReleasesRequest) ([]Release, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -30518,7 +30518,7 @@ func (a *RepositoryAPIService) RepoListReleasesExecute(r ApiRepoListReleasesRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListStargazersRequest struct {
+type RepositoryAPIRepoListStargazersRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -30528,18 +30528,18 @@ type ApiRepoListStargazersRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoListStargazersRequest) Page(page int32) ApiRepoListStargazersRequest {
+func (r RepositoryAPIRepoListStargazersRequest) Page(page int32) RepositoryAPIRepoListStargazersRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoListStargazersRequest) Limit(limit int32) ApiRepoListStargazersRequest {
+func (r RepositoryAPIRepoListStargazersRequest) Limit(limit int32) RepositoryAPIRepoListStargazersRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoListStargazersRequest) Execute() ([]User, *http.Response, error) {
+func (r RepositoryAPIRepoListStargazersRequest) Execute() ([]User, *http.Response, error) {
 	return r.ApiService.RepoListStargazersExecute(r)
 }
 
@@ -30549,10 +30549,10 @@ RepoListStargazers List a repo's stargazers
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListStargazersRequest
+ @return RepositoryAPIRepoListStargazersRequest
 */
-func (a *RepositoryAPIService) RepoListStargazers(ctx context.Context, owner string, repo string) ApiRepoListStargazersRequest {
-	return ApiRepoListStargazersRequest{
+func (a *RepositoryAPIService) RepoListStargazers(ctx context.Context, owner string, repo string) RepositoryAPIRepoListStargazersRequest {
+	return RepositoryAPIRepoListStargazersRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -30562,7 +30562,7 @@ func (a *RepositoryAPIService) RepoListStargazers(ctx context.Context, owner str
 
 // Execute executes the request
 //  @return []User
-func (a *RepositoryAPIService) RepoListStargazersExecute(r ApiRepoListStargazersRequest) ([]User, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListStargazersExecute(r RepositoryAPIRepoListStargazersRequest) ([]User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -30737,7 +30737,7 @@ func (a *RepositoryAPIService) RepoListStargazersExecute(r ApiRepoListStargazers
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListStatusesRequest struct {
+type RepositoryAPIRepoListStatusesRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -30750,30 +30750,30 @@ type ApiRepoListStatusesRequest struct {
 }
 
 // type of sort
-func (r ApiRepoListStatusesRequest) Sort(sort string) ApiRepoListStatusesRequest {
+func (r RepositoryAPIRepoListStatusesRequest) Sort(sort string) RepositoryAPIRepoListStatusesRequest {
 	r.sort = &sort
 	return r
 }
 
 // type of state
-func (r ApiRepoListStatusesRequest) State(state string) ApiRepoListStatusesRequest {
+func (r RepositoryAPIRepoListStatusesRequest) State(state string) RepositoryAPIRepoListStatusesRequest {
 	r.state = &state
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoListStatusesRequest) Page(page int32) ApiRepoListStatusesRequest {
+func (r RepositoryAPIRepoListStatusesRequest) Page(page int32) RepositoryAPIRepoListStatusesRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoListStatusesRequest) Limit(limit int32) ApiRepoListStatusesRequest {
+func (r RepositoryAPIRepoListStatusesRequest) Limit(limit int32) RepositoryAPIRepoListStatusesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoListStatusesRequest) Execute() ([]CommitStatus, *http.Response, error) {
+func (r RepositoryAPIRepoListStatusesRequest) Execute() ([]CommitStatus, *http.Response, error) {
 	return r.ApiService.RepoListStatusesExecute(r)
 }
 
@@ -30784,10 +30784,10 @@ RepoListStatuses Get a commit's statuses
  @param owner owner of the repo
  @param repo name of the repo
  @param sha sha of the commit
- @return ApiRepoListStatusesRequest
+ @return RepositoryAPIRepoListStatusesRequest
 */
-func (a *RepositoryAPIService) RepoListStatuses(ctx context.Context, owner string, repo string, sha string) ApiRepoListStatusesRequest {
-	return ApiRepoListStatusesRequest{
+func (a *RepositoryAPIService) RepoListStatuses(ctx context.Context, owner string, repo string, sha string) RepositoryAPIRepoListStatusesRequest {
+	return RepositoryAPIRepoListStatusesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -30798,7 +30798,7 @@ func (a *RepositoryAPIService) RepoListStatuses(ctx context.Context, owner strin
 
 // Execute executes the request
 //  @return []CommitStatus
-func (a *RepositoryAPIService) RepoListStatusesExecute(r ApiRepoListStatusesRequest) ([]CommitStatus, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListStatusesExecute(r RepositoryAPIRepoListStatusesRequest) ([]CommitStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -30991,7 +30991,7 @@ func (a *RepositoryAPIService) RepoListStatusesExecute(r ApiRepoListStatusesRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListStatusesByRefRequest struct {
+type RepositoryAPIRepoListStatusesByRefRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -31004,30 +31004,30 @@ type ApiRepoListStatusesByRefRequest struct {
 }
 
 // type of sort
-func (r ApiRepoListStatusesByRefRequest) Sort(sort string) ApiRepoListStatusesByRefRequest {
+func (r RepositoryAPIRepoListStatusesByRefRequest) Sort(sort string) RepositoryAPIRepoListStatusesByRefRequest {
 	r.sort = &sort
 	return r
 }
 
 // type of state
-func (r ApiRepoListStatusesByRefRequest) State(state string) ApiRepoListStatusesByRefRequest {
+func (r RepositoryAPIRepoListStatusesByRefRequest) State(state string) RepositoryAPIRepoListStatusesByRefRequest {
 	r.state = &state
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoListStatusesByRefRequest) Page(page int32) ApiRepoListStatusesByRefRequest {
+func (r RepositoryAPIRepoListStatusesByRefRequest) Page(page int32) RepositoryAPIRepoListStatusesByRefRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoListStatusesByRefRequest) Limit(limit int32) ApiRepoListStatusesByRefRequest {
+func (r RepositoryAPIRepoListStatusesByRefRequest) Limit(limit int32) RepositoryAPIRepoListStatusesByRefRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoListStatusesByRefRequest) Execute() ([]CommitStatus, *http.Response, error) {
+func (r RepositoryAPIRepoListStatusesByRefRequest) Execute() ([]CommitStatus, *http.Response, error) {
 	return r.ApiService.RepoListStatusesByRefExecute(r)
 }
 
@@ -31038,10 +31038,10 @@ RepoListStatusesByRef Get a commit's statuses, by branch/tag/commit reference
  @param owner owner of the repo
  @param repo name of the repo
  @param ref name of branch/tag/commit
- @return ApiRepoListStatusesByRefRequest
+ @return RepositoryAPIRepoListStatusesByRefRequest
 */
-func (a *RepositoryAPIService) RepoListStatusesByRef(ctx context.Context, owner string, repo string, ref string) ApiRepoListStatusesByRefRequest {
-	return ApiRepoListStatusesByRefRequest{
+func (a *RepositoryAPIService) RepoListStatusesByRef(ctx context.Context, owner string, repo string, ref string) RepositoryAPIRepoListStatusesByRefRequest {
+	return RepositoryAPIRepoListStatusesByRefRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -31052,7 +31052,7 @@ func (a *RepositoryAPIService) RepoListStatusesByRef(ctx context.Context, owner 
 
 // Execute executes the request
 //  @return []CommitStatus
-func (a *RepositoryAPIService) RepoListStatusesByRefExecute(r ApiRepoListStatusesByRefRequest) ([]CommitStatus, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListStatusesByRefExecute(r RepositoryAPIRepoListStatusesByRefRequest) ([]CommitStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -31245,7 +31245,7 @@ func (a *RepositoryAPIService) RepoListStatusesByRefExecute(r ApiRepoListStatuse
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListSubscribersRequest struct {
+type RepositoryAPIRepoListSubscribersRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -31255,18 +31255,18 @@ type ApiRepoListSubscribersRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoListSubscribersRequest) Page(page int32) ApiRepoListSubscribersRequest {
+func (r RepositoryAPIRepoListSubscribersRequest) Page(page int32) RepositoryAPIRepoListSubscribersRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoListSubscribersRequest) Limit(limit int32) ApiRepoListSubscribersRequest {
+func (r RepositoryAPIRepoListSubscribersRequest) Limit(limit int32) RepositoryAPIRepoListSubscribersRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoListSubscribersRequest) Execute() ([]User, *http.Response, error) {
+func (r RepositoryAPIRepoListSubscribersRequest) Execute() ([]User, *http.Response, error) {
 	return r.ApiService.RepoListSubscribersExecute(r)
 }
 
@@ -31276,10 +31276,10 @@ RepoListSubscribers List a repo's watchers
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListSubscribersRequest
+ @return RepositoryAPIRepoListSubscribersRequest
 */
-func (a *RepositoryAPIService) RepoListSubscribers(ctx context.Context, owner string, repo string) ApiRepoListSubscribersRequest {
-	return ApiRepoListSubscribersRequest{
+func (a *RepositoryAPIService) RepoListSubscribers(ctx context.Context, owner string, repo string) RepositoryAPIRepoListSubscribersRequest {
+	return RepositoryAPIRepoListSubscribersRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -31289,7 +31289,7 @@ func (a *RepositoryAPIService) RepoListSubscribers(ctx context.Context, owner st
 
 // Execute executes the request
 //  @return []User
-func (a *RepositoryAPIService) RepoListSubscribersExecute(r ApiRepoListSubscribersRequest) ([]User, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListSubscribersExecute(r RepositoryAPIRepoListSubscribersRequest) ([]User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -31464,14 +31464,14 @@ func (a *RepositoryAPIService) RepoListSubscribersExecute(r ApiRepoListSubscribe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListTagProtectionRequest struct {
+type RepositoryAPIRepoListTagProtectionRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoListTagProtectionRequest) Execute() ([]TagProtection, *http.Response, error) {
+func (r RepositoryAPIRepoListTagProtectionRequest) Execute() ([]TagProtection, *http.Response, error) {
 	return r.ApiService.RepoListTagProtectionExecute(r)
 }
 
@@ -31481,10 +31481,10 @@ RepoListTagProtection List tag protections for a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListTagProtectionRequest
+ @return RepositoryAPIRepoListTagProtectionRequest
 */
-func (a *RepositoryAPIService) RepoListTagProtection(ctx context.Context, owner string, repo string) ApiRepoListTagProtectionRequest {
-	return ApiRepoListTagProtectionRequest{
+func (a *RepositoryAPIService) RepoListTagProtection(ctx context.Context, owner string, repo string) RepositoryAPIRepoListTagProtectionRequest {
+	return RepositoryAPIRepoListTagProtectionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -31494,7 +31494,7 @@ func (a *RepositoryAPIService) RepoListTagProtection(ctx context.Context, owner 
 
 // Execute executes the request
 //  @return []TagProtection
-func (a *RepositoryAPIService) RepoListTagProtectionExecute(r ApiRepoListTagProtectionRequest) ([]TagProtection, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListTagProtectionExecute(r RepositoryAPIRepoListTagProtectionRequest) ([]TagProtection, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -31653,7 +31653,7 @@ func (a *RepositoryAPIService) RepoListTagProtectionExecute(r ApiRepoListTagProt
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListTagsRequest struct {
+type RepositoryAPIRepoListTagsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -31663,18 +31663,18 @@ type ApiRepoListTagsRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoListTagsRequest) Page(page int32) ApiRepoListTagsRequest {
+func (r RepositoryAPIRepoListTagsRequest) Page(page int32) RepositoryAPIRepoListTagsRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results, default maximum page size is 50
-func (r ApiRepoListTagsRequest) Limit(limit int32) ApiRepoListTagsRequest {
+func (r RepositoryAPIRepoListTagsRequest) Limit(limit int32) RepositoryAPIRepoListTagsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoListTagsRequest) Execute() ([]Tag, *http.Response, error) {
+func (r RepositoryAPIRepoListTagsRequest) Execute() ([]Tag, *http.Response, error) {
 	return r.ApiService.RepoListTagsExecute(r)
 }
 
@@ -31684,10 +31684,10 @@ RepoListTags List a repository's tags
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListTagsRequest
+ @return RepositoryAPIRepoListTagsRequest
 */
-func (a *RepositoryAPIService) RepoListTags(ctx context.Context, owner string, repo string) ApiRepoListTagsRequest {
-	return ApiRepoListTagsRequest{
+func (a *RepositoryAPIService) RepoListTags(ctx context.Context, owner string, repo string) RepositoryAPIRepoListTagsRequest {
+	return RepositoryAPIRepoListTagsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -31697,7 +31697,7 @@ func (a *RepositoryAPIService) RepoListTags(ctx context.Context, owner string, r
 
 // Execute executes the request
 //  @return []Tag
-func (a *RepositoryAPIService) RepoListTagsExecute(r ApiRepoListTagsRequest) ([]Tag, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListTagsExecute(r RepositoryAPIRepoListTagsRequest) ([]Tag, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -31872,14 +31872,14 @@ func (a *RepositoryAPIService) RepoListTagsExecute(r ApiRepoListTagsRequest) ([]
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListTeamsRequest struct {
+type RepositoryAPIRepoListTeamsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoListTeamsRequest) Execute() ([]Team, *http.Response, error) {
+func (r RepositoryAPIRepoListTeamsRequest) Execute() ([]Team, *http.Response, error) {
 	return r.ApiService.RepoListTeamsExecute(r)
 }
 
@@ -31889,10 +31889,10 @@ RepoListTeams List a repository's teams
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListTeamsRequest
+ @return RepositoryAPIRepoListTeamsRequest
 */
-func (a *RepositoryAPIService) RepoListTeams(ctx context.Context, owner string, repo string) ApiRepoListTeamsRequest {
-	return ApiRepoListTeamsRequest{
+func (a *RepositoryAPIService) RepoListTeams(ctx context.Context, owner string, repo string) RepositoryAPIRepoListTeamsRequest {
+	return RepositoryAPIRepoListTeamsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -31902,7 +31902,7 @@ func (a *RepositoryAPIService) RepoListTeams(ctx context.Context, owner string, 
 
 // Execute executes the request
 //  @return []Team
-func (a *RepositoryAPIService) RepoListTeamsExecute(r ApiRepoListTeamsRequest) ([]Team, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListTeamsExecute(r RepositoryAPIRepoListTeamsRequest) ([]Team, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -32071,7 +32071,7 @@ func (a *RepositoryAPIService) RepoListTeamsExecute(r ApiRepoListTeamsRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoListTopicsRequest struct {
+type RepositoryAPIRepoListTopicsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -32081,18 +32081,18 @@ type ApiRepoListTopicsRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoListTopicsRequest) Page(page int32) ApiRepoListTopicsRequest {
+func (r RepositoryAPIRepoListTopicsRequest) Page(page int32) RepositoryAPIRepoListTopicsRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoListTopicsRequest) Limit(limit int32) ApiRepoListTopicsRequest {
+func (r RepositoryAPIRepoListTopicsRequest) Limit(limit int32) RepositoryAPIRepoListTopicsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoListTopicsRequest) Execute() (*TopicName, *http.Response, error) {
+func (r RepositoryAPIRepoListTopicsRequest) Execute() (*TopicName, *http.Response, error) {
 	return r.ApiService.RepoListTopicsExecute(r)
 }
 
@@ -32102,10 +32102,10 @@ RepoListTopics Get list of topics that a repository has
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoListTopicsRequest
+ @return RepositoryAPIRepoListTopicsRequest
 */
-func (a *RepositoryAPIService) RepoListTopics(ctx context.Context, owner string, repo string) ApiRepoListTopicsRequest {
-	return ApiRepoListTopicsRequest{
+func (a *RepositoryAPIService) RepoListTopics(ctx context.Context, owner string, repo string) RepositoryAPIRepoListTopicsRequest {
+	return RepositoryAPIRepoListTopicsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -32115,7 +32115,7 @@ func (a *RepositoryAPIService) RepoListTopics(ctx context.Context, owner string,
 
 // Execute executes the request
 //  @return TopicName
-func (a *RepositoryAPIService) RepoListTopicsExecute(r ApiRepoListTopicsRequest) (*TopicName, *http.Response, error) {
+func (a *RepositoryAPIService) RepoListTopicsExecute(r RepositoryAPIRepoListTopicsRequest) (*TopicName, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -32290,7 +32290,7 @@ func (a *RepositoryAPIService) RepoListTopicsExecute(r ApiRepoListTopicsRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoMergePullRequestRequest struct {
+type RepositoryAPIRepoMergePullRequestRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -32299,12 +32299,12 @@ type ApiRepoMergePullRequestRequest struct {
 	body *MergePullRequestOption
 }
 
-func (r ApiRepoMergePullRequestRequest) Body(body MergePullRequestOption) ApiRepoMergePullRequestRequest {
+func (r RepositoryAPIRepoMergePullRequestRequest) Body(body MergePullRequestOption) RepositoryAPIRepoMergePullRequestRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoMergePullRequestRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoMergePullRequestRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoMergePullRequestExecute(r)
 }
 
@@ -32315,10 +32315,10 @@ RepoMergePullRequest Merge a pull request
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the pull request to merge
- @return ApiRepoMergePullRequestRequest
+ @return RepositoryAPIRepoMergePullRequestRequest
 */
-func (a *RepositoryAPIService) RepoMergePullRequest(ctx context.Context, owner string, repo string, index int64) ApiRepoMergePullRequestRequest {
-	return ApiRepoMergePullRequestRequest{
+func (a *RepositoryAPIService) RepoMergePullRequest(ctx context.Context, owner string, repo string, index int64) RepositoryAPIRepoMergePullRequestRequest {
+	return RepositoryAPIRepoMergePullRequestRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -32328,7 +32328,7 @@ func (a *RepositoryAPIService) RepoMergePullRequest(ctx context.Context, owner s
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoMergePullRequestExecute(r ApiRepoMergePullRequestRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoMergePullRequestExecute(r RepositoryAPIRepoMergePullRequestRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -32512,18 +32512,18 @@ func (a *RepositoryAPIService) RepoMergePullRequestExecute(r ApiRepoMergePullReq
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoMigrateRequest struct {
+type RepositoryAPIRepoMigrateRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	body *MigrateRepoOptions
 }
 
-func (r ApiRepoMigrateRequest) Body(body MigrateRepoOptions) ApiRepoMigrateRequest {
+func (r RepositoryAPIRepoMigrateRequest) Body(body MigrateRepoOptions) RepositoryAPIRepoMigrateRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoMigrateRequest) Execute() (*Repository, *http.Response, error) {
+func (r RepositoryAPIRepoMigrateRequest) Execute() (*Repository, *http.Response, error) {
 	return r.ApiService.RepoMigrateExecute(r)
 }
 
@@ -32531,10 +32531,10 @@ func (r ApiRepoMigrateRequest) Execute() (*Repository, *http.Response, error) {
 RepoMigrate Migrate a remote git repository
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRepoMigrateRequest
+ @return RepositoryAPIRepoMigrateRequest
 */
-func (a *RepositoryAPIService) RepoMigrate(ctx context.Context) ApiRepoMigrateRequest {
-	return ApiRepoMigrateRequest{
+func (a *RepositoryAPIService) RepoMigrate(ctx context.Context) RepositoryAPIRepoMigrateRequest {
+	return RepositoryAPIRepoMigrateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -32542,7 +32542,7 @@ func (a *RepositoryAPIService) RepoMigrate(ctx context.Context) ApiRepoMigrateRe
 
 // Execute executes the request
 //  @return Repository
-func (a *RepositoryAPIService) RepoMigrateExecute(r ApiRepoMigrateRequest) (*Repository, *http.Response, error) {
+func (a *RepositoryAPIService) RepoMigrateExecute(r RepositoryAPIRepoMigrateRequest) (*Repository, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -32722,14 +32722,14 @@ func (a *RepositoryAPIService) RepoMigrateExecute(r ApiRepoMigrateRequest) (*Rep
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoMirrorSyncRequest struct {
+type RepositoryAPIRepoMirrorSyncRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoMirrorSyncRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoMirrorSyncRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoMirrorSyncExecute(r)
 }
 
@@ -32739,10 +32739,10 @@ RepoMirrorSync Sync a mirrored repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo to sync
  @param repo name of the repo to sync
- @return ApiRepoMirrorSyncRequest
+ @return RepositoryAPIRepoMirrorSyncRequest
 */
-func (a *RepositoryAPIService) RepoMirrorSync(ctx context.Context, owner string, repo string) ApiRepoMirrorSyncRequest {
-	return ApiRepoMirrorSyncRequest{
+func (a *RepositoryAPIService) RepoMirrorSync(ctx context.Context, owner string, repo string) RepositoryAPIRepoMirrorSyncRequest {
+	return RepositoryAPIRepoMirrorSyncRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -32751,7 +32751,7 @@ func (a *RepositoryAPIService) RepoMirrorSync(ctx context.Context, owner string,
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoMirrorSyncExecute(r ApiRepoMirrorSyncRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoMirrorSyncExecute(r RepositoryAPIRepoMirrorSyncRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -32922,14 +32922,14 @@ func (a *RepositoryAPIService) RepoMirrorSyncExecute(r ApiRepoMirrorSyncRequest)
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoNewPinAllowedRequest struct {
+type RepositoryAPIRepoNewPinAllowedRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoNewPinAllowedRequest) Execute() (*NewIssuePinsAllowed, *http.Response, error) {
+func (r RepositoryAPIRepoNewPinAllowedRequest) Execute() (*NewIssuePinsAllowed, *http.Response, error) {
 	return r.ApiService.RepoNewPinAllowedExecute(r)
 }
 
@@ -32939,10 +32939,10 @@ RepoNewPinAllowed Returns if new Issue Pins are allowed
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoNewPinAllowedRequest
+ @return RepositoryAPIRepoNewPinAllowedRequest
 */
-func (a *RepositoryAPIService) RepoNewPinAllowed(ctx context.Context, owner string, repo string) ApiRepoNewPinAllowedRequest {
-	return ApiRepoNewPinAllowedRequest{
+func (a *RepositoryAPIService) RepoNewPinAllowed(ctx context.Context, owner string, repo string) RepositoryAPIRepoNewPinAllowedRequest {
+	return RepositoryAPIRepoNewPinAllowedRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -32952,7 +32952,7 @@ func (a *RepositoryAPIService) RepoNewPinAllowed(ctx context.Context, owner stri
 
 // Execute executes the request
 //  @return NewIssuePinsAllowed
-func (a *RepositoryAPIService) RepoNewPinAllowedExecute(r ApiRepoNewPinAllowedRequest) (*NewIssuePinsAllowed, *http.Response, error) {
+func (a *RepositoryAPIService) RepoNewPinAllowedExecute(r RepositoryAPIRepoNewPinAllowedRequest) (*NewIssuePinsAllowed, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -33121,7 +33121,7 @@ func (a *RepositoryAPIService) RepoNewPinAllowedExecute(r ApiRepoNewPinAllowedRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoPullRequestIsMergedRequest struct {
+type RepositoryAPIRepoPullRequestIsMergedRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -33129,7 +33129,7 @@ type ApiRepoPullRequestIsMergedRequest struct {
 	index int64
 }
 
-func (r ApiRepoPullRequestIsMergedRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoPullRequestIsMergedRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoPullRequestIsMergedExecute(r)
 }
 
@@ -33140,10 +33140,10 @@ RepoPullRequestIsMerged Check if a pull request has been merged
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the pull request
- @return ApiRepoPullRequestIsMergedRequest
+ @return RepositoryAPIRepoPullRequestIsMergedRequest
 */
-func (a *RepositoryAPIService) RepoPullRequestIsMerged(ctx context.Context, owner string, repo string, index int64) ApiRepoPullRequestIsMergedRequest {
-	return ApiRepoPullRequestIsMergedRequest{
+func (a *RepositoryAPIService) RepoPullRequestIsMerged(ctx context.Context, owner string, repo string, index int64) RepositoryAPIRepoPullRequestIsMergedRequest {
+	return RepositoryAPIRepoPullRequestIsMergedRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -33153,7 +33153,7 @@ func (a *RepositoryAPIService) RepoPullRequestIsMerged(ctx context.Context, owne
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoPullRequestIsMergedExecute(r ApiRepoPullRequestIsMergedRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoPullRequestIsMergedExecute(r RepositoryAPIRepoPullRequestIsMergedRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -33303,14 +33303,14 @@ func (a *RepositoryAPIService) RepoPullRequestIsMergedExecute(r ApiRepoPullReque
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoPushMirrorSyncRequest struct {
+type RepositoryAPIRepoPushMirrorSyncRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoPushMirrorSyncRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoPushMirrorSyncRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoPushMirrorSyncExecute(r)
 }
 
@@ -33320,10 +33320,10 @@ RepoPushMirrorSync Sync all push mirrored repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo to sync
  @param repo name of the repo to sync
- @return ApiRepoPushMirrorSyncRequest
+ @return RepositoryAPIRepoPushMirrorSyncRequest
 */
-func (a *RepositoryAPIService) RepoPushMirrorSync(ctx context.Context, owner string, repo string) ApiRepoPushMirrorSyncRequest {
-	return ApiRepoPushMirrorSyncRequest{
+func (a *RepositoryAPIService) RepoPushMirrorSync(ctx context.Context, owner string, repo string) RepositoryAPIRepoPushMirrorSyncRequest {
+	return RepositoryAPIRepoPushMirrorSyncRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -33332,7 +33332,7 @@ func (a *RepositoryAPIService) RepoPushMirrorSync(ctx context.Context, owner str
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoPushMirrorSyncExecute(r ApiRepoPushMirrorSyncRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoPushMirrorSyncExecute(r RepositoryAPIRepoPushMirrorSyncRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -33514,7 +33514,7 @@ func (a *RepositoryAPIService) RepoPushMirrorSyncExecute(r ApiRepoPushMirrorSync
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoRemoveNoteRequest struct {
+type RepositoryAPIRepoRemoveNoteRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -33522,7 +33522,7 @@ type ApiRepoRemoveNoteRequest struct {
 	sha string
 }
 
-func (r ApiRepoRemoveNoteRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoRemoveNoteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoRemoveNoteExecute(r)
 }
 
@@ -33533,10 +33533,10 @@ RepoRemoveNote Removes a note corresponding to a single commit from a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param sha a git ref or commit sha
- @return ApiRepoRemoveNoteRequest
+ @return RepositoryAPIRepoRemoveNoteRequest
 */
-func (a *RepositoryAPIService) RepoRemoveNote(ctx context.Context, owner string, repo string, sha string) ApiRepoRemoveNoteRequest {
-	return ApiRepoRemoveNoteRequest{
+func (a *RepositoryAPIService) RepoRemoveNote(ctx context.Context, owner string, repo string, sha string) RepositoryAPIRepoRemoveNoteRequest {
+	return RepositoryAPIRepoRemoveNoteRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -33546,7 +33546,7 @@ func (a *RepositoryAPIService) RepoRemoveNote(ctx context.Context, owner string,
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoRemoveNoteExecute(r ApiRepoRemoveNoteRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoRemoveNoteExecute(r RepositoryAPIRepoRemoveNoteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -33717,7 +33717,7 @@ func (a *RepositoryAPIService) RepoRemoveNoteExecute(r ApiRepoRemoveNoteRequest)
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoReplaceAllFlagsRequest struct {
+type RepositoryAPIRepoReplaceAllFlagsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -33725,12 +33725,12 @@ type ApiRepoReplaceAllFlagsRequest struct {
 	body *ReplaceFlagsOption
 }
 
-func (r ApiRepoReplaceAllFlagsRequest) Body(body ReplaceFlagsOption) ApiRepoReplaceAllFlagsRequest {
+func (r RepositoryAPIRepoReplaceAllFlagsRequest) Body(body ReplaceFlagsOption) RepositoryAPIRepoReplaceAllFlagsRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoReplaceAllFlagsRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoReplaceAllFlagsRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoReplaceAllFlagsExecute(r)
 }
 
@@ -33740,10 +33740,10 @@ RepoReplaceAllFlags Replace all flags of a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoReplaceAllFlagsRequest
+ @return RepositoryAPIRepoReplaceAllFlagsRequest
 */
-func (a *RepositoryAPIService) RepoReplaceAllFlags(ctx context.Context, owner string, repo string) ApiRepoReplaceAllFlagsRequest {
-	return ApiRepoReplaceAllFlagsRequest{
+func (a *RepositoryAPIService) RepoReplaceAllFlags(ctx context.Context, owner string, repo string) RepositoryAPIRepoReplaceAllFlagsRequest {
+	return RepositoryAPIRepoReplaceAllFlagsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -33752,7 +33752,7 @@ func (a *RepositoryAPIService) RepoReplaceAllFlags(ctx context.Context, owner st
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoReplaceAllFlagsExecute(r ApiRepoReplaceAllFlagsRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoReplaceAllFlagsExecute(r RepositoryAPIRepoReplaceAllFlagsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -33924,7 +33924,7 @@ func (a *RepositoryAPIService) RepoReplaceAllFlagsExecute(r ApiRepoReplaceAllFla
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoSearchRequest struct {
+type RepositoryAPIRepoSearchRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	q *string
@@ -33947,108 +33947,108 @@ type ApiRepoSearchRequest struct {
 }
 
 // keyword
-func (r ApiRepoSearchRequest) Q(q string) ApiRepoSearchRequest {
+func (r RepositoryAPIRepoSearchRequest) Q(q string) RepositoryAPIRepoSearchRequest {
 	r.q = &q
 	return r
 }
 
 // Limit search to repositories with keyword as topic
-func (r ApiRepoSearchRequest) Topic(topic bool) ApiRepoSearchRequest {
+func (r RepositoryAPIRepoSearchRequest) Topic(topic bool) RepositoryAPIRepoSearchRequest {
 	r.topic = &topic
 	return r
 }
 
 // include search of keyword within repository description
-func (r ApiRepoSearchRequest) IncludeDesc(includeDesc bool) ApiRepoSearchRequest {
+func (r RepositoryAPIRepoSearchRequest) IncludeDesc(includeDesc bool) RepositoryAPIRepoSearchRequest {
 	r.includeDesc = &includeDesc
 	return r
 }
 
 // search only for repos that the user with the given id owns or contributes to
-func (r ApiRepoSearchRequest) Uid(uid int64) ApiRepoSearchRequest {
+func (r RepositoryAPIRepoSearchRequest) Uid(uid int64) RepositoryAPIRepoSearchRequest {
 	r.uid = &uid
 	return r
 }
 
 // repo owner to prioritize in the results
-func (r ApiRepoSearchRequest) PriorityOwnerId(priorityOwnerId int64) ApiRepoSearchRequest {
+func (r RepositoryAPIRepoSearchRequest) PriorityOwnerId(priorityOwnerId int64) RepositoryAPIRepoSearchRequest {
 	r.priorityOwnerId = &priorityOwnerId
 	return r
 }
 
 // search only for repos that belong to the given team id
-func (r ApiRepoSearchRequest) TeamId(teamId int64) ApiRepoSearchRequest {
+func (r RepositoryAPIRepoSearchRequest) TeamId(teamId int64) RepositoryAPIRepoSearchRequest {
 	r.teamId = &teamId
 	return r
 }
 
 // search only for repos that the user with the given id has starred
-func (r ApiRepoSearchRequest) StarredBy(starredBy int64) ApiRepoSearchRequest {
+func (r RepositoryAPIRepoSearchRequest) StarredBy(starredBy int64) RepositoryAPIRepoSearchRequest {
 	r.starredBy = &starredBy
 	return r
 }
 
 // include private repositories this user has access to (defaults to true)
-func (r ApiRepoSearchRequest) Private(private bool) ApiRepoSearchRequest {
+func (r RepositoryAPIRepoSearchRequest) Private(private bool) RepositoryAPIRepoSearchRequest {
 	r.private = &private
 	return r
 }
 
 // show only public, private or all repositories (defaults to all)
-func (r ApiRepoSearchRequest) IsPrivate(isPrivate bool) ApiRepoSearchRequest {
+func (r RepositoryAPIRepoSearchRequest) IsPrivate(isPrivate bool) RepositoryAPIRepoSearchRequest {
 	r.isPrivate = &isPrivate
 	return r
 }
 
 // include template repositories this user has access to (defaults to true)
-func (r ApiRepoSearchRequest) Template(template bool) ApiRepoSearchRequest {
+func (r RepositoryAPIRepoSearchRequest) Template(template bool) RepositoryAPIRepoSearchRequest {
 	r.template = &template
 	return r
 }
 
 // show only archived, non-archived or all repositories (defaults to all)
-func (r ApiRepoSearchRequest) Archived(archived bool) ApiRepoSearchRequest {
+func (r RepositoryAPIRepoSearchRequest) Archived(archived bool) RepositoryAPIRepoSearchRequest {
 	r.archived = &archived
 	return r
 }
 
 // type of repository to search for. Supported values are \&quot;fork\&quot;, \&quot;source\&quot;, \&quot;mirror\&quot; and \&quot;collaborative\&quot;
-func (r ApiRepoSearchRequest) Mode(mode string) ApiRepoSearchRequest {
+func (r RepositoryAPIRepoSearchRequest) Mode(mode string) RepositoryAPIRepoSearchRequest {
 	r.mode = &mode
 	return r
 }
 
 // if &#x60;uid&#x60; is given, search only for repos that the user owns
-func (r ApiRepoSearchRequest) Exclusive(exclusive bool) ApiRepoSearchRequest {
+func (r RepositoryAPIRepoSearchRequest) Exclusive(exclusive bool) RepositoryAPIRepoSearchRequest {
 	r.exclusive = &exclusive
 	return r
 }
 
 // sort repos by attribute. Supported values are \&quot;alpha\&quot;, \&quot;created\&quot;, \&quot;updated\&quot;, \&quot;size\&quot;, \&quot;git_size\&quot;, \&quot;lfs_size\&quot;, \&quot;stars\&quot;, \&quot;forks\&quot; and \&quot;id\&quot;. Default is \&quot;alpha\&quot;
-func (r ApiRepoSearchRequest) Sort(sort string) ApiRepoSearchRequest {
+func (r RepositoryAPIRepoSearchRequest) Sort(sort string) RepositoryAPIRepoSearchRequest {
 	r.sort = &sort
 	return r
 }
 
 // sort order, either \&quot;asc\&quot; (ascending) or \&quot;desc\&quot; (descending). Default is \&quot;asc\&quot;, ignored if \&quot;sort\&quot; is not specified.
-func (r ApiRepoSearchRequest) Order(order string) ApiRepoSearchRequest {
+func (r RepositoryAPIRepoSearchRequest) Order(order string) RepositoryAPIRepoSearchRequest {
 	r.order = &order
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoSearchRequest) Page(page int32) ApiRepoSearchRequest {
+func (r RepositoryAPIRepoSearchRequest) Page(page int32) RepositoryAPIRepoSearchRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoSearchRequest) Limit(limit int32) ApiRepoSearchRequest {
+func (r RepositoryAPIRepoSearchRequest) Limit(limit int32) RepositoryAPIRepoSearchRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoSearchRequest) Execute() (*SearchResults, *http.Response, error) {
+func (r RepositoryAPIRepoSearchRequest) Execute() (*SearchResults, *http.Response, error) {
 	return r.ApiService.RepoSearchExecute(r)
 }
 
@@ -34056,10 +34056,10 @@ func (r ApiRepoSearchRequest) Execute() (*SearchResults, *http.Response, error) 
 RepoSearch Search for repositories
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRepoSearchRequest
+ @return RepositoryAPIRepoSearchRequest
 */
-func (a *RepositoryAPIService) RepoSearch(ctx context.Context) ApiRepoSearchRequest {
-	return ApiRepoSearchRequest{
+func (a *RepositoryAPIService) RepoSearch(ctx context.Context) RepositoryAPIRepoSearchRequest {
+	return RepositoryAPIRepoSearchRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -34067,7 +34067,7 @@ func (a *RepositoryAPIService) RepoSearch(ctx context.Context) ApiRepoSearchRequ
 
 // Execute executes the request
 //  @return SearchResults
-func (a *RepositoryAPIService) RepoSearchExecute(r ApiRepoSearchRequest) (*SearchResults, *http.Response, error) {
+func (a *RepositoryAPIService) RepoSearchExecute(r RepositoryAPIRepoSearchRequest) (*SearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -34285,7 +34285,7 @@ func (a *RepositoryAPIService) RepoSearchExecute(r ApiRepoSearchRequest) (*Searc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoSearchRunJobsRequest struct {
+type RepositoryAPIRepoSearchRunJobsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -34294,12 +34294,12 @@ type ApiRepoSearchRunJobsRequest struct {
 }
 
 // a comma separated list of run job labels to search for
-func (r ApiRepoSearchRunJobsRequest) Labels(labels string) ApiRepoSearchRunJobsRequest {
+func (r RepositoryAPIRepoSearchRunJobsRequest) Labels(labels string) RepositoryAPIRepoSearchRunJobsRequest {
 	r.labels = &labels
 	return r
 }
 
-func (r ApiRepoSearchRunJobsRequest) Execute() ([]ActionRunJob, *http.Response, error) {
+func (r RepositoryAPIRepoSearchRunJobsRequest) Execute() ([]ActionRunJob, *http.Response, error) {
 	return r.ApiService.RepoSearchRunJobsExecute(r)
 }
 
@@ -34309,10 +34309,10 @@ RepoSearchRunJobs Search for repository's action jobs according filter condition
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoSearchRunJobsRequest
+ @return RepositoryAPIRepoSearchRunJobsRequest
 */
-func (a *RepositoryAPIService) RepoSearchRunJobs(ctx context.Context, owner string, repo string) ApiRepoSearchRunJobsRequest {
-	return ApiRepoSearchRunJobsRequest{
+func (a *RepositoryAPIService) RepoSearchRunJobs(ctx context.Context, owner string, repo string) RepositoryAPIRepoSearchRunJobsRequest {
+	return RepositoryAPIRepoSearchRunJobsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -34322,7 +34322,7 @@ func (a *RepositoryAPIService) RepoSearchRunJobs(ctx context.Context, owner stri
 
 // Execute executes the request
 //  @return []ActionRunJob
-func (a *RepositoryAPIService) RepoSearchRunJobsExecute(r ApiRepoSearchRunJobsRequest) ([]ActionRunJob, *http.Response, error) {
+func (a *RepositoryAPIService) RepoSearchRunJobsExecute(r RepositoryAPIRepoSearchRunJobsRequest) ([]ActionRunJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -34494,7 +34494,7 @@ func (a *RepositoryAPIService) RepoSearchRunJobsExecute(r ApiRepoSearchRunJobsRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoSetNoteRequest struct {
+type RepositoryAPIRepoSetNoteRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -34503,12 +34503,12 @@ type ApiRepoSetNoteRequest struct {
 	body *NoteOptions
 }
 
-func (r ApiRepoSetNoteRequest) Body(body NoteOptions) ApiRepoSetNoteRequest {
+func (r RepositoryAPIRepoSetNoteRequest) Body(body NoteOptions) RepositoryAPIRepoSetNoteRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoSetNoteRequest) Execute() (*Note, *http.Response, error) {
+func (r RepositoryAPIRepoSetNoteRequest) Execute() (*Note, *http.Response, error) {
 	return r.ApiService.RepoSetNoteExecute(r)
 }
 
@@ -34519,10 +34519,10 @@ RepoSetNote Set a note corresponding to a single commit from a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param sha a git ref or commit sha
- @return ApiRepoSetNoteRequest
+ @return RepositoryAPIRepoSetNoteRequest
 */
-func (a *RepositoryAPIService) RepoSetNote(ctx context.Context, owner string, repo string, sha string) ApiRepoSetNoteRequest {
-	return ApiRepoSetNoteRequest{
+func (a *RepositoryAPIService) RepoSetNote(ctx context.Context, owner string, repo string, sha string) RepositoryAPIRepoSetNoteRequest {
+	return RepositoryAPIRepoSetNoteRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -34533,7 +34533,7 @@ func (a *RepositoryAPIService) RepoSetNote(ctx context.Context, owner string, re
 
 // Execute executes the request
 //  @return Note
-func (a *RepositoryAPIService) RepoSetNoteExecute(r ApiRepoSetNoteRequest) (*Note, *http.Response, error) {
+func (a *RepositoryAPIService) RepoSetNoteExecute(r RepositoryAPIRepoSetNoteRequest) (*Note, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -34716,14 +34716,14 @@ func (a *RepositoryAPIService) RepoSetNoteExecute(r ApiRepoSetNoteRequest) (*Not
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoSigningKeyRequest struct {
+type RepositoryAPIRepoSigningKeyRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoSigningKeyRequest) Execute() (string, *http.Response, error) {
+func (r RepositoryAPIRepoSigningKeyRequest) Execute() (string, *http.Response, error) {
 	return r.ApiService.RepoSigningKeyExecute(r)
 }
 
@@ -34733,10 +34733,10 @@ RepoSigningKey Get signing-key.gpg for given repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoSigningKeyRequest
+ @return RepositoryAPIRepoSigningKeyRequest
 */
-func (a *RepositoryAPIService) RepoSigningKey(ctx context.Context, owner string, repo string) ApiRepoSigningKeyRequest {
-	return ApiRepoSigningKeyRequest{
+func (a *RepositoryAPIService) RepoSigningKey(ctx context.Context, owner string, repo string) RepositoryAPIRepoSigningKeyRequest {
+	return RepositoryAPIRepoSigningKeyRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -34746,7 +34746,7 @@ func (a *RepositoryAPIService) RepoSigningKey(ctx context.Context, owner string,
 
 // Execute executes the request
 //  @return string
-func (a *RepositoryAPIService) RepoSigningKeyExecute(r ApiRepoSigningKeyRequest) (string, *http.Response, error) {
+func (a *RepositoryAPIService) RepoSigningKeyExecute(r RepositoryAPIRepoSigningKeyRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -34905,7 +34905,7 @@ func (a *RepositoryAPIService) RepoSigningKeyExecute(r ApiRepoSigningKeyRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoSubmitPullReviewRequest struct {
+type RepositoryAPIRepoSubmitPullReviewRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -34915,12 +34915,12 @@ type ApiRepoSubmitPullReviewRequest struct {
 	body *SubmitPullReviewOptions
 }
 
-func (r ApiRepoSubmitPullReviewRequest) Body(body SubmitPullReviewOptions) ApiRepoSubmitPullReviewRequest {
+func (r RepositoryAPIRepoSubmitPullReviewRequest) Body(body SubmitPullReviewOptions) RepositoryAPIRepoSubmitPullReviewRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoSubmitPullReviewRequest) Execute() (*PullReview, *http.Response, error) {
+func (r RepositoryAPIRepoSubmitPullReviewRequest) Execute() (*PullReview, *http.Response, error) {
 	return r.ApiService.RepoSubmitPullReviewExecute(r)
 }
 
@@ -34932,10 +34932,10 @@ RepoSubmitPullReview Submit a pending review to an pull request
  @param repo name of the repo
  @param index index of the pull request
  @param id id of the review
- @return ApiRepoSubmitPullReviewRequest
+ @return RepositoryAPIRepoSubmitPullReviewRequest
 */
-func (a *RepositoryAPIService) RepoSubmitPullReview(ctx context.Context, owner string, repo string, index int64, id int64) ApiRepoSubmitPullReviewRequest {
-	return ApiRepoSubmitPullReviewRequest{
+func (a *RepositoryAPIService) RepoSubmitPullReview(ctx context.Context, owner string, repo string, index int64, id int64) RepositoryAPIRepoSubmitPullReviewRequest {
+	return RepositoryAPIRepoSubmitPullReviewRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -34947,7 +34947,7 @@ func (a *RepositoryAPIService) RepoSubmitPullReview(ctx context.Context, owner s
 
 // Execute executes the request
 //  @return PullReview
-func (a *RepositoryAPIService) RepoSubmitPullReviewExecute(r ApiRepoSubmitPullReviewRequest) (*PullReview, *http.Response, error) {
+func (a *RepositoryAPIService) RepoSubmitPullReviewExecute(r RepositoryAPIRepoSubmitPullReviewRequest) (*PullReview, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -35134,7 +35134,7 @@ func (a *RepositoryAPIService) RepoSubmitPullReviewExecute(r ApiRepoSubmitPullRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoSyncForkBranchRequest struct {
+type RepositoryAPIRepoSyncForkBranchRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -35142,7 +35142,7 @@ type ApiRepoSyncForkBranchRequest struct {
 	branch string
 }
 
-func (r ApiRepoSyncForkBranchRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoSyncForkBranchRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoSyncForkBranchExecute(r)
 }
 
@@ -35153,10 +35153,10 @@ RepoSyncForkBranch Syncs a fork branch with the base branch
  @param owner owner of the repo
  @param repo name of the repo
  @param branch The branch
- @return ApiRepoSyncForkBranchRequest
+ @return RepositoryAPIRepoSyncForkBranchRequest
 */
-func (a *RepositoryAPIService) RepoSyncForkBranch(ctx context.Context, owner string, repo string, branch string) ApiRepoSyncForkBranchRequest {
-	return ApiRepoSyncForkBranchRequest{
+func (a *RepositoryAPIService) RepoSyncForkBranch(ctx context.Context, owner string, repo string, branch string) RepositoryAPIRepoSyncForkBranchRequest {
+	return RepositoryAPIRepoSyncForkBranchRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -35166,7 +35166,7 @@ func (a *RepositoryAPIService) RepoSyncForkBranch(ctx context.Context, owner str
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoSyncForkBranchExecute(r ApiRepoSyncForkBranchRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoSyncForkBranchExecute(r RepositoryAPIRepoSyncForkBranchRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -35337,7 +35337,7 @@ func (a *RepositoryAPIService) RepoSyncForkBranchExecute(r ApiRepoSyncForkBranch
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoSyncForkBranchInfoRequest struct {
+type RepositoryAPIRepoSyncForkBranchInfoRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -35345,7 +35345,7 @@ type ApiRepoSyncForkBranchInfoRequest struct {
 	branch string
 }
 
-func (r ApiRepoSyncForkBranchInfoRequest) Execute() ([]SyncForkInfo, *http.Response, error) {
+func (r RepositoryAPIRepoSyncForkBranchInfoRequest) Execute() ([]SyncForkInfo, *http.Response, error) {
 	return r.ApiService.RepoSyncForkBranchInfoExecute(r)
 }
 
@@ -35356,10 +35356,10 @@ RepoSyncForkBranchInfo Gets information about syncing a fork branch with the bas
  @param owner owner of the repo
  @param repo name of the repo
  @param branch The branch
- @return ApiRepoSyncForkBranchInfoRequest
+ @return RepositoryAPIRepoSyncForkBranchInfoRequest
 */
-func (a *RepositoryAPIService) RepoSyncForkBranchInfo(ctx context.Context, owner string, repo string, branch string) ApiRepoSyncForkBranchInfoRequest {
-	return ApiRepoSyncForkBranchInfoRequest{
+func (a *RepositoryAPIService) RepoSyncForkBranchInfo(ctx context.Context, owner string, repo string, branch string) RepositoryAPIRepoSyncForkBranchInfoRequest {
+	return RepositoryAPIRepoSyncForkBranchInfoRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -35370,7 +35370,7 @@ func (a *RepositoryAPIService) RepoSyncForkBranchInfo(ctx context.Context, owner
 
 // Execute executes the request
 //  @return []SyncForkInfo
-func (a *RepositoryAPIService) RepoSyncForkBranchInfoExecute(r ApiRepoSyncForkBranchInfoRequest) ([]SyncForkInfo, *http.Response, error) {
+func (a *RepositoryAPIService) RepoSyncForkBranchInfoExecute(r RepositoryAPIRepoSyncForkBranchInfoRequest) ([]SyncForkInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -35551,14 +35551,14 @@ func (a *RepositoryAPIService) RepoSyncForkBranchInfoExecute(r ApiRepoSyncForkBr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoSyncForkDefaultRequest struct {
+type RepositoryAPIRepoSyncForkDefaultRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoSyncForkDefaultRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoSyncForkDefaultRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoSyncForkDefaultExecute(r)
 }
 
@@ -35568,10 +35568,10 @@ RepoSyncForkDefault Syncs the default branch of a fork with the base branch
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoSyncForkDefaultRequest
+ @return RepositoryAPIRepoSyncForkDefaultRequest
 */
-func (a *RepositoryAPIService) RepoSyncForkDefault(ctx context.Context, owner string, repo string) ApiRepoSyncForkDefaultRequest {
-	return ApiRepoSyncForkDefaultRequest{
+func (a *RepositoryAPIService) RepoSyncForkDefault(ctx context.Context, owner string, repo string) RepositoryAPIRepoSyncForkDefaultRequest {
+	return RepositoryAPIRepoSyncForkDefaultRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -35580,7 +35580,7 @@ func (a *RepositoryAPIService) RepoSyncForkDefault(ctx context.Context, owner st
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoSyncForkDefaultExecute(r ApiRepoSyncForkDefaultRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoSyncForkDefaultExecute(r RepositoryAPIRepoSyncForkDefaultRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -35750,14 +35750,14 @@ func (a *RepositoryAPIService) RepoSyncForkDefaultExecute(r ApiRepoSyncForkDefau
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoSyncForkDefaultInfoRequest struct {
+type RepositoryAPIRepoSyncForkDefaultInfoRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoSyncForkDefaultInfoRequest) Execute() ([]SyncForkInfo, *http.Response, error) {
+func (r RepositoryAPIRepoSyncForkDefaultInfoRequest) Execute() ([]SyncForkInfo, *http.Response, error) {
 	return r.ApiService.RepoSyncForkDefaultInfoExecute(r)
 }
 
@@ -35767,10 +35767,10 @@ RepoSyncForkDefaultInfo Gets information about syncing the fork default branch w
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoSyncForkDefaultInfoRequest
+ @return RepositoryAPIRepoSyncForkDefaultInfoRequest
 */
-func (a *RepositoryAPIService) RepoSyncForkDefaultInfo(ctx context.Context, owner string, repo string) ApiRepoSyncForkDefaultInfoRequest {
-	return ApiRepoSyncForkDefaultInfoRequest{
+func (a *RepositoryAPIService) RepoSyncForkDefaultInfo(ctx context.Context, owner string, repo string) RepositoryAPIRepoSyncForkDefaultInfoRequest {
+	return RepositoryAPIRepoSyncForkDefaultInfoRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -35780,7 +35780,7 @@ func (a *RepositoryAPIService) RepoSyncForkDefaultInfo(ctx context.Context, owne
 
 // Execute executes the request
 //  @return []SyncForkInfo
-func (a *RepositoryAPIService) RepoSyncForkDefaultInfoExecute(r ApiRepoSyncForkDefaultInfoRequest) ([]SyncForkInfo, *http.Response, error) {
+func (a *RepositoryAPIService) RepoSyncForkDefaultInfoExecute(r RepositoryAPIRepoSyncForkDefaultInfoRequest) ([]SyncForkInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -35960,7 +35960,7 @@ func (a *RepositoryAPIService) RepoSyncForkDefaultInfoExecute(r ApiRepoSyncForkD
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoTestHookRequest struct {
+type RepositoryAPIRepoTestHookRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -35970,12 +35970,12 @@ type ApiRepoTestHookRequest struct {
 }
 
 // The name of the commit/branch/tag, indicates which commit will be loaded to the webhook payload.
-func (r ApiRepoTestHookRequest) Ref(ref string) ApiRepoTestHookRequest {
+func (r RepositoryAPIRepoTestHookRequest) Ref(ref string) RepositoryAPIRepoTestHookRequest {
 	r.ref = &ref
 	return r
 }
 
-func (r ApiRepoTestHookRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoTestHookRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoTestHookExecute(r)
 }
 
@@ -35986,10 +35986,10 @@ RepoTestHook Test a push webhook
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the hook to test
- @return ApiRepoTestHookRequest
+ @return RepositoryAPIRepoTestHookRequest
 */
-func (a *RepositoryAPIService) RepoTestHook(ctx context.Context, owner string, repo string, id int64) ApiRepoTestHookRequest {
-	return ApiRepoTestHookRequest{
+func (a *RepositoryAPIService) RepoTestHook(ctx context.Context, owner string, repo string, id int64) RepositoryAPIRepoTestHookRequest {
+	return RepositoryAPIRepoTestHookRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -35999,7 +35999,7 @@ func (a *RepositoryAPIService) RepoTestHook(ctx context.Context, owner string, r
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoTestHookExecute(r ApiRepoTestHookRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoTestHookExecute(r RepositoryAPIRepoTestHookRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -36162,7 +36162,7 @@ func (a *RepositoryAPIService) RepoTestHookExecute(r ApiRepoTestHookRequest) (*h
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoTrackedTimesRequest struct {
+type RepositoryAPIRepoTrackedTimesRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -36175,36 +36175,36 @@ type ApiRepoTrackedTimesRequest struct {
 }
 
 // optional filter by user (available for issue managers)
-func (r ApiRepoTrackedTimesRequest) User(user string) ApiRepoTrackedTimesRequest {
+func (r RepositoryAPIRepoTrackedTimesRequest) User(user string) RepositoryAPIRepoTrackedTimesRequest {
 	r.user = &user
 	return r
 }
 
 // Only show times updated after the given time. This is a timestamp in RFC 3339 format
-func (r ApiRepoTrackedTimesRequest) Since(since time.Time) ApiRepoTrackedTimesRequest {
+func (r RepositoryAPIRepoTrackedTimesRequest) Since(since time.Time) RepositoryAPIRepoTrackedTimesRequest {
 	r.since = &since
 	return r
 }
 
 // Only show times updated before the given time. This is a timestamp in RFC 3339 format
-func (r ApiRepoTrackedTimesRequest) Before(before time.Time) ApiRepoTrackedTimesRequest {
+func (r RepositoryAPIRepoTrackedTimesRequest) Before(before time.Time) RepositoryAPIRepoTrackedTimesRequest {
 	r.before = &before
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiRepoTrackedTimesRequest) Page(page int32) ApiRepoTrackedTimesRequest {
+func (r RepositoryAPIRepoTrackedTimesRequest) Page(page int32) RepositoryAPIRepoTrackedTimesRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiRepoTrackedTimesRequest) Limit(limit int32) ApiRepoTrackedTimesRequest {
+func (r RepositoryAPIRepoTrackedTimesRequest) Limit(limit int32) RepositoryAPIRepoTrackedTimesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiRepoTrackedTimesRequest) Execute() ([]TrackedTime, *http.Response, error) {
+func (r RepositoryAPIRepoTrackedTimesRequest) Execute() ([]TrackedTime, *http.Response, error) {
 	return r.ApiService.RepoTrackedTimesExecute(r)
 }
 
@@ -36214,10 +36214,10 @@ RepoTrackedTimes List a repo's tracked times
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoTrackedTimesRequest
+ @return RepositoryAPIRepoTrackedTimesRequest
 */
-func (a *RepositoryAPIService) RepoTrackedTimes(ctx context.Context, owner string, repo string) ApiRepoTrackedTimesRequest {
-	return ApiRepoTrackedTimesRequest{
+func (a *RepositoryAPIService) RepoTrackedTimes(ctx context.Context, owner string, repo string) RepositoryAPIRepoTrackedTimesRequest {
+	return RepositoryAPIRepoTrackedTimesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -36227,7 +36227,7 @@ func (a *RepositoryAPIService) RepoTrackedTimes(ctx context.Context, owner strin
 
 // Execute executes the request
 //  @return []TrackedTime
-func (a *RepositoryAPIService) RepoTrackedTimesExecute(r ApiRepoTrackedTimesRequest) ([]TrackedTime, *http.Response, error) {
+func (a *RepositoryAPIService) RepoTrackedTimesExecute(r RepositoryAPIRepoTrackedTimesRequest) ([]TrackedTime, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -36433,7 +36433,7 @@ func (a *RepositoryAPIService) RepoTrackedTimesExecute(r ApiRepoTrackedTimesRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoTransferRequest struct {
+type RepositoryAPIRepoTransferRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -36442,12 +36442,12 @@ type ApiRepoTransferRequest struct {
 }
 
 // Transfer Options
-func (r ApiRepoTransferRequest) Body(body TransferRepoOption) ApiRepoTransferRequest {
+func (r RepositoryAPIRepoTransferRequest) Body(body TransferRepoOption) RepositoryAPIRepoTransferRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoTransferRequest) Execute() (*Repository, *http.Response, error) {
+func (r RepositoryAPIRepoTransferRequest) Execute() (*Repository, *http.Response, error) {
 	return r.ApiService.RepoTransferExecute(r)
 }
 
@@ -36457,10 +36457,10 @@ RepoTransfer Transfer a repo ownership
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo to transfer
  @param repo name of the repo to transfer
- @return ApiRepoTransferRequest
+ @return RepositoryAPIRepoTransferRequest
 */
-func (a *RepositoryAPIService) RepoTransfer(ctx context.Context, owner string, repo string) ApiRepoTransferRequest {
-	return ApiRepoTransferRequest{
+func (a *RepositoryAPIService) RepoTransfer(ctx context.Context, owner string, repo string) RepositoryAPIRepoTransferRequest {
+	return RepositoryAPIRepoTransferRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -36470,7 +36470,7 @@ func (a *RepositoryAPIService) RepoTransfer(ctx context.Context, owner string, r
 
 // Execute executes the request
 //  @return Repository
-func (a *RepositoryAPIService) RepoTransferExecute(r ApiRepoTransferRequest) (*Repository, *http.Response, error) {
+func (a *RepositoryAPIService) RepoTransferExecute(r RepositoryAPIRepoTransferRequest) (*Repository, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -36666,7 +36666,7 @@ func (a *RepositoryAPIService) RepoTransferExecute(r ApiRepoTransferRequest) (*R
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoUnDismissPullReviewRequest struct {
+type RepositoryAPIRepoUnDismissPullReviewRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -36675,7 +36675,7 @@ type ApiRepoUnDismissPullReviewRequest struct {
 	id int64
 }
 
-func (r ApiRepoUnDismissPullReviewRequest) Execute() (*PullReview, *http.Response, error) {
+func (r RepositoryAPIRepoUnDismissPullReviewRequest) Execute() (*PullReview, *http.Response, error) {
 	return r.ApiService.RepoUnDismissPullReviewExecute(r)
 }
 
@@ -36687,10 +36687,10 @@ RepoUnDismissPullReview Cancel to dismiss a review for a pull request
  @param repo name of the repo
  @param index index of the pull request
  @param id id of the review
- @return ApiRepoUnDismissPullReviewRequest
+ @return RepositoryAPIRepoUnDismissPullReviewRequest
 */
-func (a *RepositoryAPIService) RepoUnDismissPullReview(ctx context.Context, owner string, repo string, index int64, id int64) ApiRepoUnDismissPullReviewRequest {
-	return ApiRepoUnDismissPullReviewRequest{
+func (a *RepositoryAPIService) RepoUnDismissPullReview(ctx context.Context, owner string, repo string, index int64, id int64) RepositoryAPIRepoUnDismissPullReviewRequest {
+	return RepositoryAPIRepoUnDismissPullReviewRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -36702,7 +36702,7 @@ func (a *RepositoryAPIService) RepoUnDismissPullReview(ctx context.Context, owne
 
 // Execute executes the request
 //  @return PullReview
-func (a *RepositoryAPIService) RepoUnDismissPullReviewExecute(r ApiRepoUnDismissPullReviewRequest) (*PullReview, *http.Response, error) {
+func (a *RepositoryAPIService) RepoUnDismissPullReviewExecute(r RepositoryAPIRepoUnDismissPullReviewRequest) (*PullReview, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -36895,7 +36895,7 @@ func (a *RepositoryAPIService) RepoUnDismissPullReviewExecute(r ApiRepoUnDismiss
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoUpdateAvatarRequest struct {
+type RepositoryAPIRepoUpdateAvatarRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -36903,12 +36903,12 @@ type ApiRepoUpdateAvatarRequest struct {
 	body *UpdateRepoAvatarOption
 }
 
-func (r ApiRepoUpdateAvatarRequest) Body(body UpdateRepoAvatarOption) ApiRepoUpdateAvatarRequest {
+func (r RepositoryAPIRepoUpdateAvatarRequest) Body(body UpdateRepoAvatarOption) RepositoryAPIRepoUpdateAvatarRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoUpdateAvatarRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoUpdateAvatarRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoUpdateAvatarExecute(r)
 }
 
@@ -36918,10 +36918,10 @@ RepoUpdateAvatar Update avatar
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoUpdateAvatarRequest
+ @return RepositoryAPIRepoUpdateAvatarRequest
 */
-func (a *RepositoryAPIService) RepoUpdateAvatar(ctx context.Context, owner string, repo string) ApiRepoUpdateAvatarRequest {
-	return ApiRepoUpdateAvatarRequest{
+func (a *RepositoryAPIService) RepoUpdateAvatar(ctx context.Context, owner string, repo string) RepositoryAPIRepoUpdateAvatarRequest {
+	return RepositoryAPIRepoUpdateAvatarRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -36930,7 +36930,7 @@ func (a *RepositoryAPIService) RepoUpdateAvatar(ctx context.Context, owner strin
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoUpdateAvatarExecute(r ApiRepoUpdateAvatarRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoUpdateAvatarExecute(r RepositoryAPIRepoUpdateAvatarRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -37091,7 +37091,7 @@ func (a *RepositoryAPIService) RepoUpdateAvatarExecute(r ApiRepoUpdateAvatarRequ
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoUpdateBranchRequest struct {
+type RepositoryAPIRepoUpdateBranchRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -37100,12 +37100,12 @@ type ApiRepoUpdateBranchRequest struct {
 	body *UpdateBranchRepoOption
 }
 
-func (r ApiRepoUpdateBranchRequest) Body(body UpdateBranchRepoOption) ApiRepoUpdateBranchRequest {
+func (r RepositoryAPIRepoUpdateBranchRequest) Body(body UpdateBranchRepoOption) RepositoryAPIRepoUpdateBranchRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoUpdateBranchRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoUpdateBranchRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoUpdateBranchExecute(r)
 }
 
@@ -37116,10 +37116,10 @@ RepoUpdateBranch Update a branch
  @param owner owner of the repo
  @param repo name of the repo
  @param branch name of the branch
- @return ApiRepoUpdateBranchRequest
+ @return RepositoryAPIRepoUpdateBranchRequest
 */
-func (a *RepositoryAPIService) RepoUpdateBranch(ctx context.Context, owner string, repo string, branch string) ApiRepoUpdateBranchRequest {
-	return ApiRepoUpdateBranchRequest{
+func (a *RepositoryAPIService) RepoUpdateBranch(ctx context.Context, owner string, repo string, branch string) RepositoryAPIRepoUpdateBranchRequest {
+	return RepositoryAPIRepoUpdateBranchRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -37129,7 +37129,7 @@ func (a *RepositoryAPIService) RepoUpdateBranch(ctx context.Context, owner strin
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoUpdateBranchExecute(r ApiRepoUpdateBranchRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoUpdateBranchExecute(r RepositoryAPIRepoUpdateBranchRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -37313,7 +37313,7 @@ func (a *RepositoryAPIService) RepoUpdateBranchExecute(r ApiRepoUpdateBranchRequ
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoUpdateFileRequest struct {
+type RepositoryAPIRepoUpdateFileRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -37322,12 +37322,12 @@ type ApiRepoUpdateFileRequest struct {
 	body *UpdateFileOptions
 }
 
-func (r ApiRepoUpdateFileRequest) Body(body UpdateFileOptions) ApiRepoUpdateFileRequest {
+func (r RepositoryAPIRepoUpdateFileRequest) Body(body UpdateFileOptions) RepositoryAPIRepoUpdateFileRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoUpdateFileRequest) Execute() (*FileResponse, *http.Response, error) {
+func (r RepositoryAPIRepoUpdateFileRequest) Execute() (*FileResponse, *http.Response, error) {
 	return r.ApiService.RepoUpdateFileExecute(r)
 }
 
@@ -37338,10 +37338,10 @@ RepoUpdateFile Update a file in a repository
  @param owner owner of the repo
  @param repo name of the repo
  @param filepath path of the file to update
- @return ApiRepoUpdateFileRequest
+ @return RepositoryAPIRepoUpdateFileRequest
 */
-func (a *RepositoryAPIService) RepoUpdateFile(ctx context.Context, owner string, repo string, filepath string) ApiRepoUpdateFileRequest {
-	return ApiRepoUpdateFileRequest{
+func (a *RepositoryAPIService) RepoUpdateFile(ctx context.Context, owner string, repo string, filepath string) RepositoryAPIRepoUpdateFileRequest {
+	return RepositoryAPIRepoUpdateFileRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -37352,7 +37352,7 @@ func (a *RepositoryAPIService) RepoUpdateFile(ctx context.Context, owner string,
 
 // Execute executes the request
 //  @return FileResponse
-func (a *RepositoryAPIService) RepoUpdateFileExecute(r ApiRepoUpdateFileRequest) (*FileResponse, *http.Response, error) {
+func (a *RepositoryAPIService) RepoUpdateFileExecute(r RepositoryAPIRepoUpdateFileRequest) (*FileResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -37560,7 +37560,7 @@ func (a *RepositoryAPIService) RepoUpdateFileExecute(r ApiRepoUpdateFileRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRepoUpdatePullRequestRequest struct {
+type RepositoryAPIRepoUpdatePullRequestRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -37570,12 +37570,12 @@ type ApiRepoUpdatePullRequestRequest struct {
 }
 
 // how to update pull request
-func (r ApiRepoUpdatePullRequestRequest) Style(style string) ApiRepoUpdatePullRequestRequest {
+func (r RepositoryAPIRepoUpdatePullRequestRequest) Style(style string) RepositoryAPIRepoUpdatePullRequestRequest {
 	r.style = &style
 	return r
 }
 
-func (r ApiRepoUpdatePullRequestRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoUpdatePullRequestRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoUpdatePullRequestExecute(r)
 }
 
@@ -37586,10 +37586,10 @@ RepoUpdatePullRequest Merge PR's baseBranch into headBranch
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the pull request to get
- @return ApiRepoUpdatePullRequestRequest
+ @return RepositoryAPIRepoUpdatePullRequestRequest
 */
-func (a *RepositoryAPIService) RepoUpdatePullRequest(ctx context.Context, owner string, repo string, index int64) ApiRepoUpdatePullRequestRequest {
-	return ApiRepoUpdatePullRequestRequest{
+func (a *RepositoryAPIService) RepoUpdatePullRequest(ctx context.Context, owner string, repo string, index int64) RepositoryAPIRepoUpdatePullRequestRequest {
+	return RepositoryAPIRepoUpdatePullRequestRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -37599,7 +37599,7 @@ func (a *RepositoryAPIService) RepoUpdatePullRequest(ctx context.Context, owner 
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoUpdatePullRequestExecute(r ApiRepoUpdatePullRequestRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoUpdatePullRequestExecute(r RepositoryAPIRepoUpdatePullRequestRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -37795,7 +37795,7 @@ func (a *RepositoryAPIService) RepoUpdatePullRequestExecute(r ApiRepoUpdatePullR
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoUpdateTopicsRequest struct {
+type RepositoryAPIRepoUpdateTopicsRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -37803,12 +37803,12 @@ type ApiRepoUpdateTopicsRequest struct {
 	body *RepoTopicOptions
 }
 
-func (r ApiRepoUpdateTopicsRequest) Body(body RepoTopicOptions) ApiRepoUpdateTopicsRequest {
+func (r RepositoryAPIRepoUpdateTopicsRequest) Body(body RepoTopicOptions) RepositoryAPIRepoUpdateTopicsRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiRepoUpdateTopicsRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIRepoUpdateTopicsRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RepoUpdateTopicsExecute(r)
 }
 
@@ -37818,10 +37818,10 @@ RepoUpdateTopics Replace list of topics for a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoUpdateTopicsRequest
+ @return RepositoryAPIRepoUpdateTopicsRequest
 */
-func (a *RepositoryAPIService) RepoUpdateTopics(ctx context.Context, owner string, repo string) ApiRepoUpdateTopicsRequest {
-	return ApiRepoUpdateTopicsRequest{
+func (a *RepositoryAPIService) RepoUpdateTopics(ctx context.Context, owner string, repo string) RepositoryAPIRepoUpdateTopicsRequest {
+	return RepositoryAPIRepoUpdateTopicsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -37830,7 +37830,7 @@ func (a *RepositoryAPIService) RepoUpdateTopics(ctx context.Context, owner strin
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) RepoUpdateTopicsExecute(r ApiRepoUpdateTopicsRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) RepoUpdateTopicsExecute(r RepositoryAPIRepoUpdateTopicsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -38002,14 +38002,14 @@ func (a *RepositoryAPIService) RepoUpdateTopicsExecute(r ApiRepoUpdateTopicsRequ
 	return localVarHTTPResponse, nil
 }
 
-type ApiRepoValidateIssueConfigRequest struct {
+type RepositoryAPIRepoValidateIssueConfigRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiRepoValidateIssueConfigRequest) Execute() (*IssueConfigValidation, *http.Response, error) {
+func (r RepositoryAPIRepoValidateIssueConfigRequest) Execute() (*IssueConfigValidation, *http.Response, error) {
 	return r.ApiService.RepoValidateIssueConfigExecute(r)
 }
 
@@ -38019,10 +38019,10 @@ RepoValidateIssueConfig Returns the validation information for a issue config
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiRepoValidateIssueConfigRequest
+ @return RepositoryAPIRepoValidateIssueConfigRequest
 */
-func (a *RepositoryAPIService) RepoValidateIssueConfig(ctx context.Context, owner string, repo string) ApiRepoValidateIssueConfigRequest {
-	return ApiRepoValidateIssueConfigRequest{
+func (a *RepositoryAPIService) RepoValidateIssueConfig(ctx context.Context, owner string, repo string) RepositoryAPIRepoValidateIssueConfigRequest {
+	return RepositoryAPIRepoValidateIssueConfigRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -38032,7 +38032,7 @@ func (a *RepositoryAPIService) RepoValidateIssueConfig(ctx context.Context, owne
 
 // Execute executes the request
 //  @return IssueConfigValidation
-func (a *RepositoryAPIService) RepoValidateIssueConfigExecute(r ApiRepoValidateIssueConfigRequest) (*IssueConfigValidation, *http.Response, error) {
+func (a *RepositoryAPIService) RepoValidateIssueConfigExecute(r RepositoryAPIRepoValidateIssueConfigRequest) (*IssueConfigValidation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -38201,7 +38201,7 @@ func (a *RepositoryAPIService) RepoValidateIssueConfigExecute(r ApiRepoValidateI
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiTopicSearchRequest struct {
+type RepositoryAPITopicSearchRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	q *string
@@ -38210,24 +38210,24 @@ type ApiTopicSearchRequest struct {
 }
 
 // keywords to search
-func (r ApiTopicSearchRequest) Q(q string) ApiTopicSearchRequest {
+func (r RepositoryAPITopicSearchRequest) Q(q string) RepositoryAPITopicSearchRequest {
 	r.q = &q
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiTopicSearchRequest) Page(page int32) ApiTopicSearchRequest {
+func (r RepositoryAPITopicSearchRequest) Page(page int32) RepositoryAPITopicSearchRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiTopicSearchRequest) Limit(limit int32) ApiTopicSearchRequest {
+func (r RepositoryAPITopicSearchRequest) Limit(limit int32) RepositoryAPITopicSearchRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiTopicSearchRequest) Execute() ([]TopicResponse, *http.Response, error) {
+func (r RepositoryAPITopicSearchRequest) Execute() ([]TopicResponse, *http.Response, error) {
 	return r.ApiService.TopicSearchExecute(r)
 }
 
@@ -38235,10 +38235,10 @@ func (r ApiTopicSearchRequest) Execute() ([]TopicResponse, *http.Response, error
 TopicSearch search topics via keyword
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiTopicSearchRequest
+ @return RepositoryAPITopicSearchRequest
 */
-func (a *RepositoryAPIService) TopicSearch(ctx context.Context) ApiTopicSearchRequest {
-	return ApiTopicSearchRequest{
+func (a *RepositoryAPIService) TopicSearch(ctx context.Context) RepositoryAPITopicSearchRequest {
+	return RepositoryAPITopicSearchRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -38246,7 +38246,7 @@ func (a *RepositoryAPIService) TopicSearch(ctx context.Context) ApiTopicSearchRe
 
 // Execute executes the request
 //  @return []TopicResponse
-func (a *RepositoryAPIService) TopicSearchExecute(r ApiTopicSearchRequest) ([]TopicResponse, *http.Response, error) {
+func (a *RepositoryAPIService) TopicSearchExecute(r RepositoryAPITopicSearchRequest) ([]TopicResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -38434,7 +38434,7 @@ func (a *RepositoryAPIService) TopicSearchExecute(r ApiTopicSearchRequest) ([]To
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateRepoSecretRequest struct {
+type RepositoryAPIUpdateRepoSecretRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -38443,12 +38443,12 @@ type ApiUpdateRepoSecretRequest struct {
 	body *CreateOrUpdateSecretOption
 }
 
-func (r ApiUpdateRepoSecretRequest) Body(body CreateOrUpdateSecretOption) ApiUpdateRepoSecretRequest {
+func (r RepositoryAPIUpdateRepoSecretRequest) Body(body CreateOrUpdateSecretOption) RepositoryAPIUpdateRepoSecretRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiUpdateRepoSecretRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIUpdateRepoSecretRequest) Execute() (*http.Response, error) {
 	return r.ApiService.UpdateRepoSecretExecute(r)
 }
 
@@ -38459,10 +38459,10 @@ UpdateRepoSecret Create or Update a secret value in a repository
  @param owner owner of the repository
  @param repo name of the repository
  @param secretname name of the secret
- @return ApiUpdateRepoSecretRequest
+ @return RepositoryAPIUpdateRepoSecretRequest
 */
-func (a *RepositoryAPIService) UpdateRepoSecret(ctx context.Context, owner string, repo string, secretname string) ApiUpdateRepoSecretRequest {
-	return ApiUpdateRepoSecretRequest{
+func (a *RepositoryAPIService) UpdateRepoSecret(ctx context.Context, owner string, repo string, secretname string) RepositoryAPIUpdateRepoSecretRequest {
+	return RepositoryAPIUpdateRepoSecretRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -38472,7 +38472,7 @@ func (a *RepositoryAPIService) UpdateRepoSecret(ctx context.Context, owner strin
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) UpdateRepoSecretExecute(r ApiUpdateRepoSecretRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) UpdateRepoSecretExecute(r RepositoryAPIUpdateRepoSecretRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -38645,7 +38645,7 @@ func (a *RepositoryAPIService) UpdateRepoSecretExecute(r ApiUpdateRepoSecretRequ
 	return localVarHTTPResponse, nil
 }
 
-type ApiUpdateRepoVariableRequest struct {
+type RepositoryAPIUpdateRepoVariableRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -38654,12 +38654,12 @@ type ApiUpdateRepoVariableRequest struct {
 	body *UpdateVariableOption
 }
 
-func (r ApiUpdateRepoVariableRequest) Body(body UpdateVariableOption) ApiUpdateRepoVariableRequest {
+func (r RepositoryAPIUpdateRepoVariableRequest) Body(body UpdateVariableOption) RepositoryAPIUpdateRepoVariableRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiUpdateRepoVariableRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIUpdateRepoVariableRequest) Execute() (*http.Response, error) {
 	return r.ApiService.UpdateRepoVariableExecute(r)
 }
 
@@ -38670,10 +38670,10 @@ UpdateRepoVariable Update a repo-level variable
  @param owner name of the owner
  @param repo name of the repository
  @param variablename name of the variable
- @return ApiUpdateRepoVariableRequest
+ @return RepositoryAPIUpdateRepoVariableRequest
 */
-func (a *RepositoryAPIService) UpdateRepoVariable(ctx context.Context, owner string, repo string, variablename string) ApiUpdateRepoVariableRequest {
-	return ApiUpdateRepoVariableRequest{
+func (a *RepositoryAPIService) UpdateRepoVariable(ctx context.Context, owner string, repo string, variablename string) RepositoryAPIUpdateRepoVariableRequest {
+	return RepositoryAPIUpdateRepoVariableRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -38683,7 +38683,7 @@ func (a *RepositoryAPIService) UpdateRepoVariable(ctx context.Context, owner str
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) UpdateRepoVariableExecute(r ApiUpdateRepoVariableRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) UpdateRepoVariableExecute(r RepositoryAPIUpdateRepoVariableRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -38856,14 +38856,14 @@ func (a *RepositoryAPIService) UpdateRepoVariableExecute(r ApiUpdateRepoVariable
 	return localVarHTTPResponse, nil
 }
 
-type ApiUserCurrentCheckSubscriptionRequest struct {
+type RepositoryAPIUserCurrentCheckSubscriptionRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiUserCurrentCheckSubscriptionRequest) Execute() (*WatchInfo, *http.Response, error) {
+func (r RepositoryAPIUserCurrentCheckSubscriptionRequest) Execute() (*WatchInfo, *http.Response, error) {
 	return r.ApiService.UserCurrentCheckSubscriptionExecute(r)
 }
 
@@ -38873,10 +38873,10 @@ UserCurrentCheckSubscription Check if the current user is watching a repo
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiUserCurrentCheckSubscriptionRequest
+ @return RepositoryAPIUserCurrentCheckSubscriptionRequest
 */
-func (a *RepositoryAPIService) UserCurrentCheckSubscription(ctx context.Context, owner string, repo string) ApiUserCurrentCheckSubscriptionRequest {
-	return ApiUserCurrentCheckSubscriptionRequest{
+func (a *RepositoryAPIService) UserCurrentCheckSubscription(ctx context.Context, owner string, repo string) RepositoryAPIUserCurrentCheckSubscriptionRequest {
+	return RepositoryAPIUserCurrentCheckSubscriptionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -38886,7 +38886,7 @@ func (a *RepositoryAPIService) UserCurrentCheckSubscription(ctx context.Context,
 
 // Execute executes the request
 //  @return WatchInfo
-func (a *RepositoryAPIService) UserCurrentCheckSubscriptionExecute(r ApiUserCurrentCheckSubscriptionRequest) (*WatchInfo, *http.Response, error) {
+func (a *RepositoryAPIService) UserCurrentCheckSubscriptionExecute(r RepositoryAPIUserCurrentCheckSubscriptionRequest) (*WatchInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -39045,14 +39045,14 @@ func (a *RepositoryAPIService) UserCurrentCheckSubscriptionExecute(r ApiUserCurr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUserCurrentDeleteSubscriptionRequest struct {
+type RepositoryAPIUserCurrentDeleteSubscriptionRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiUserCurrentDeleteSubscriptionRequest) Execute() (*http.Response, error) {
+func (r RepositoryAPIUserCurrentDeleteSubscriptionRequest) Execute() (*http.Response, error) {
 	return r.ApiService.UserCurrentDeleteSubscriptionExecute(r)
 }
 
@@ -39062,10 +39062,10 @@ UserCurrentDeleteSubscription Unwatch a repo
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiUserCurrentDeleteSubscriptionRequest
+ @return RepositoryAPIUserCurrentDeleteSubscriptionRequest
 */
-func (a *RepositoryAPIService) UserCurrentDeleteSubscription(ctx context.Context, owner string, repo string) ApiUserCurrentDeleteSubscriptionRequest {
-	return ApiUserCurrentDeleteSubscriptionRequest{
+func (a *RepositoryAPIService) UserCurrentDeleteSubscription(ctx context.Context, owner string, repo string) RepositoryAPIUserCurrentDeleteSubscriptionRequest {
+	return RepositoryAPIUserCurrentDeleteSubscriptionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -39074,7 +39074,7 @@ func (a *RepositoryAPIService) UserCurrentDeleteSubscription(ctx context.Context
 }
 
 // Execute executes the request
-func (a *RepositoryAPIService) UserCurrentDeleteSubscriptionExecute(r ApiUserCurrentDeleteSubscriptionRequest) (*http.Response, error) {
+func (a *RepositoryAPIService) UserCurrentDeleteSubscriptionExecute(r RepositoryAPIUserCurrentDeleteSubscriptionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -39233,14 +39233,14 @@ func (a *RepositoryAPIService) UserCurrentDeleteSubscriptionExecute(r ApiUserCur
 	return localVarHTTPResponse, nil
 }
 
-type ApiUserCurrentPutSubscriptionRequest struct {
+type RepositoryAPIUserCurrentPutSubscriptionRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
 	repo string
 }
 
-func (r ApiUserCurrentPutSubscriptionRequest) Execute() (*WatchInfo, *http.Response, error) {
+func (r RepositoryAPIUserCurrentPutSubscriptionRequest) Execute() (*WatchInfo, *http.Response, error) {
 	return r.ApiService.UserCurrentPutSubscriptionExecute(r)
 }
 
@@ -39250,10 +39250,10 @@ UserCurrentPutSubscription Watch a repo
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiUserCurrentPutSubscriptionRequest
+ @return RepositoryAPIUserCurrentPutSubscriptionRequest
 */
-func (a *RepositoryAPIService) UserCurrentPutSubscription(ctx context.Context, owner string, repo string) ApiUserCurrentPutSubscriptionRequest {
-	return ApiUserCurrentPutSubscriptionRequest{
+func (a *RepositoryAPIService) UserCurrentPutSubscription(ctx context.Context, owner string, repo string) RepositoryAPIUserCurrentPutSubscriptionRequest {
+	return RepositoryAPIUserCurrentPutSubscriptionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -39263,7 +39263,7 @@ func (a *RepositoryAPIService) UserCurrentPutSubscription(ctx context.Context, o
 
 // Execute executes the request
 //  @return WatchInfo
-func (a *RepositoryAPIService) UserCurrentPutSubscriptionExecute(r ApiUserCurrentPutSubscriptionRequest) (*WatchInfo, *http.Response, error) {
+func (a *RepositoryAPIService) UserCurrentPutSubscriptionExecute(r RepositoryAPIUserCurrentPutSubscriptionRequest) (*WatchInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -39432,7 +39432,7 @@ func (a *RepositoryAPIService) UserCurrentPutSubscriptionExecute(r ApiUserCurren
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUserTrackedTimesRequest struct {
+type RepositoryAPIUserTrackedTimesRequest struct {
 	ctx context.Context
 	ApiService *RepositoryAPIService
 	owner string
@@ -39440,7 +39440,7 @@ type ApiUserTrackedTimesRequest struct {
 	user string
 }
 
-func (r ApiUserTrackedTimesRequest) Execute() ([]TrackedTime, *http.Response, error) {
+func (r RepositoryAPIUserTrackedTimesRequest) Execute() ([]TrackedTime, *http.Response, error) {
 	return r.ApiService.UserTrackedTimesExecute(r)
 }
 
@@ -39451,12 +39451,12 @@ UserTrackedTimes List a user's tracked times in a repo
  @param owner owner of the repo
  @param repo name of the repo
  @param user username of user
- @return ApiUserTrackedTimesRequest
+ @return RepositoryAPIUserTrackedTimesRequest
 
 Deprecated
 */
-func (a *RepositoryAPIService) UserTrackedTimes(ctx context.Context, owner string, repo string, user string) ApiUserTrackedTimesRequest {
-	return ApiUserTrackedTimesRequest{
+func (a *RepositoryAPIService) UserTrackedTimes(ctx context.Context, owner string, repo string, user string) RepositoryAPIUserTrackedTimesRequest {
+	return RepositoryAPIUserTrackedTimesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -39468,7 +39468,7 @@ func (a *RepositoryAPIService) UserTrackedTimes(ctx context.Context, owner strin
 // Execute executes the request
 //  @return []TrackedTime
 // Deprecated
-func (a *RepositoryAPIService) UserTrackedTimesExecute(r ApiUserTrackedTimesRequest) ([]TrackedTime, *http.Response, error) {
+func (a *RepositoryAPIService) UserTrackedTimesExecute(r RepositoryAPIUserTrackedTimesRequest) ([]TrackedTime, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

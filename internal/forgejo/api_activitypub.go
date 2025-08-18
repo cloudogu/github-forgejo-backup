@@ -23,12 +23,12 @@ import (
 // ActivitypubAPIService ActivitypubAPI service
 type ActivitypubAPIService service
 
-type ApiActivitypubInstanceActorRequest struct {
+type ActivitypubAPIActivitypubInstanceActorRequest struct {
 	ctx context.Context
 	ApiService *ActivitypubAPIService
 }
 
-func (r ApiActivitypubInstanceActorRequest) Execute() (*ActivityPub, *http.Response, error) {
+func (r ActivitypubAPIActivitypubInstanceActorRequest) Execute() (*ActivityPub, *http.Response, error) {
 	return r.ApiService.ActivitypubInstanceActorExecute(r)
 }
 
@@ -36,10 +36,10 @@ func (r ApiActivitypubInstanceActorRequest) Execute() (*ActivityPub, *http.Respo
 ActivitypubInstanceActor Returns the instance's Actor
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiActivitypubInstanceActorRequest
+ @return ActivitypubAPIActivitypubInstanceActorRequest
 */
-func (a *ActivitypubAPIService) ActivitypubInstanceActor(ctx context.Context) ApiActivitypubInstanceActorRequest {
-	return ApiActivitypubInstanceActorRequest{
+func (a *ActivitypubAPIService) ActivitypubInstanceActor(ctx context.Context) ActivitypubAPIActivitypubInstanceActorRequest {
+	return ActivitypubAPIActivitypubInstanceActorRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -47,7 +47,7 @@ func (a *ActivitypubAPIService) ActivitypubInstanceActor(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return ActivityPub
-func (a *ActivitypubAPIService) ActivitypubInstanceActorExecute(r ApiActivitypubInstanceActorRequest) (*ActivityPub, *http.Response, error) {
+func (a *ActivitypubAPIService) ActivitypubInstanceActorExecute(r ActivitypubAPIActivitypubInstanceActorRequest) (*ActivityPub, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -204,12 +204,12 @@ func (a *ActivitypubAPIService) ActivitypubInstanceActorExecute(r ApiActivitypub
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiActivitypubInstanceActorInboxRequest struct {
+type ActivitypubAPIActivitypubInstanceActorInboxRequest struct {
 	ctx context.Context
 	ApiService *ActivitypubAPIService
 }
 
-func (r ApiActivitypubInstanceActorInboxRequest) Execute() (*http.Response, error) {
+func (r ActivitypubAPIActivitypubInstanceActorInboxRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ActivitypubInstanceActorInboxExecute(r)
 }
 
@@ -217,17 +217,17 @@ func (r ApiActivitypubInstanceActorInboxRequest) Execute() (*http.Response, erro
 ActivitypubInstanceActorInbox Send to the inbox
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiActivitypubInstanceActorInboxRequest
+ @return ActivitypubAPIActivitypubInstanceActorInboxRequest
 */
-func (a *ActivitypubAPIService) ActivitypubInstanceActorInbox(ctx context.Context) ApiActivitypubInstanceActorInboxRequest {
-	return ApiActivitypubInstanceActorInboxRequest{
+func (a *ActivitypubAPIService) ActivitypubInstanceActorInbox(ctx context.Context) ActivitypubAPIActivitypubInstanceActorInboxRequest {
+	return ActivitypubAPIActivitypubInstanceActorInboxRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *ActivitypubAPIService) ActivitypubInstanceActorInboxExecute(r ApiActivitypubInstanceActorInboxRequest) (*http.Response, error) {
+func (a *ActivitypubAPIService) ActivitypubInstanceActorInboxExecute(r ActivitypubAPIActivitypubInstanceActorInboxRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -374,13 +374,13 @@ func (a *ActivitypubAPIService) ActivitypubInstanceActorInboxExecute(r ApiActivi
 	return localVarHTTPResponse, nil
 }
 
-type ApiActivitypubPersonRequest struct {
+type ActivitypubAPIActivitypubPersonRequest struct {
 	ctx context.Context
 	ApiService *ActivitypubAPIService
 	userId int32
 }
 
-func (r ApiActivitypubPersonRequest) Execute() (*ActivityPub, *http.Response, error) {
+func (r ActivitypubAPIActivitypubPersonRequest) Execute() (*ActivityPub, *http.Response, error) {
 	return r.ApiService.ActivitypubPersonExecute(r)
 }
 
@@ -389,10 +389,10 @@ ActivitypubPerson Returns the Person actor for a user
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userId user ID of the user
- @return ApiActivitypubPersonRequest
+ @return ActivitypubAPIActivitypubPersonRequest
 */
-func (a *ActivitypubAPIService) ActivitypubPerson(ctx context.Context, userId int32) ApiActivitypubPersonRequest {
-	return ApiActivitypubPersonRequest{
+func (a *ActivitypubAPIService) ActivitypubPerson(ctx context.Context, userId int32) ActivitypubAPIActivitypubPersonRequest {
+	return ActivitypubAPIActivitypubPersonRequest{
 		ApiService: a,
 		ctx: ctx,
 		userId: userId,
@@ -401,7 +401,7 @@ func (a *ActivitypubAPIService) ActivitypubPerson(ctx context.Context, userId in
 
 // Execute executes the request
 //  @return ActivityPub
-func (a *ActivitypubAPIService) ActivitypubPersonExecute(r ApiActivitypubPersonRequest) (*ActivityPub, *http.Response, error) {
+func (a *ActivitypubAPIService) ActivitypubPersonExecute(r ActivitypubAPIActivitypubPersonRequest) (*ActivityPub, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -559,13 +559,13 @@ func (a *ActivitypubAPIService) ActivitypubPersonExecute(r ApiActivitypubPersonR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiActivitypubPersonInboxRequest struct {
+type ActivitypubAPIActivitypubPersonInboxRequest struct {
 	ctx context.Context
 	ApiService *ActivitypubAPIService
 	userId int32
 }
 
-func (r ApiActivitypubPersonInboxRequest) Execute() (*http.Response, error) {
+func (r ActivitypubAPIActivitypubPersonInboxRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ActivitypubPersonInboxExecute(r)
 }
 
@@ -574,10 +574,10 @@ ActivitypubPersonInbox Send to the inbox
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param userId user ID of the user
- @return ApiActivitypubPersonInboxRequest
+ @return ActivitypubAPIActivitypubPersonInboxRequest
 */
-func (a *ActivitypubAPIService) ActivitypubPersonInbox(ctx context.Context, userId int32) ApiActivitypubPersonInboxRequest {
-	return ApiActivitypubPersonInboxRequest{
+func (a *ActivitypubAPIService) ActivitypubPersonInbox(ctx context.Context, userId int32) ActivitypubAPIActivitypubPersonInboxRequest {
+	return ActivitypubAPIActivitypubPersonInboxRequest{
 		ApiService: a,
 		ctx: ctx,
 		userId: userId,
@@ -585,7 +585,7 @@ func (a *ActivitypubAPIService) ActivitypubPersonInbox(ctx context.Context, user
 }
 
 // Execute executes the request
-func (a *ActivitypubAPIService) ActivitypubPersonInboxExecute(r ApiActivitypubPersonInboxRequest) (*http.Response, error) {
+func (a *ActivitypubAPIService) ActivitypubPersonInboxExecute(r ActivitypubAPIActivitypubPersonInboxRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -733,13 +733,13 @@ func (a *ActivitypubAPIService) ActivitypubPersonInboxExecute(r ApiActivitypubPe
 	return localVarHTTPResponse, nil
 }
 
-type ApiActivitypubRepositoryRequest struct {
+type ActivitypubAPIActivitypubRepositoryRequest struct {
 	ctx context.Context
 	ApiService *ActivitypubAPIService
 	repositoryId int32
 }
 
-func (r ApiActivitypubRepositoryRequest) Execute() (*ActivityPub, *http.Response, error) {
+func (r ActivitypubAPIActivitypubRepositoryRequest) Execute() (*ActivityPub, *http.Response, error) {
 	return r.ApiService.ActivitypubRepositoryExecute(r)
 }
 
@@ -748,10 +748,10 @@ ActivitypubRepository Returns the Repository actor for a repo
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param repositoryId repository ID of the repo
- @return ApiActivitypubRepositoryRequest
+ @return ActivitypubAPIActivitypubRepositoryRequest
 */
-func (a *ActivitypubAPIService) ActivitypubRepository(ctx context.Context, repositoryId int32) ApiActivitypubRepositoryRequest {
-	return ApiActivitypubRepositoryRequest{
+func (a *ActivitypubAPIService) ActivitypubRepository(ctx context.Context, repositoryId int32) ActivitypubAPIActivitypubRepositoryRequest {
+	return ActivitypubAPIActivitypubRepositoryRequest{
 		ApiService: a,
 		ctx: ctx,
 		repositoryId: repositoryId,
@@ -760,7 +760,7 @@ func (a *ActivitypubAPIService) ActivitypubRepository(ctx context.Context, repos
 
 // Execute executes the request
 //  @return ActivityPub
-func (a *ActivitypubAPIService) ActivitypubRepositoryExecute(r ApiActivitypubRepositoryRequest) (*ActivityPub, *http.Response, error) {
+func (a *ActivitypubAPIService) ActivitypubRepositoryExecute(r ActivitypubAPIActivitypubRepositoryRequest) (*ActivityPub, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -918,19 +918,19 @@ func (a *ActivitypubAPIService) ActivitypubRepositoryExecute(r ApiActivitypubRep
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiActivitypubRepositoryInboxRequest struct {
+type ActivitypubAPIActivitypubRepositoryInboxRequest struct {
 	ctx context.Context
 	ApiService *ActivitypubAPIService
 	repositoryId int32
 	body *map[string]interface{}
 }
 
-func (r ApiActivitypubRepositoryInboxRequest) Body(body map[string]interface{}) ApiActivitypubRepositoryInboxRequest {
+func (r ActivitypubAPIActivitypubRepositoryInboxRequest) Body(body map[string]interface{}) ActivitypubAPIActivitypubRepositoryInboxRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiActivitypubRepositoryInboxRequest) Execute() (*http.Response, error) {
+func (r ActivitypubAPIActivitypubRepositoryInboxRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ActivitypubRepositoryInboxExecute(r)
 }
 
@@ -939,10 +939,10 @@ ActivitypubRepositoryInbox Send to the inbox
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param repositoryId repository ID of the repo
- @return ApiActivitypubRepositoryInboxRequest
+ @return ActivitypubAPIActivitypubRepositoryInboxRequest
 */
-func (a *ActivitypubAPIService) ActivitypubRepositoryInbox(ctx context.Context, repositoryId int32) ApiActivitypubRepositoryInboxRequest {
-	return ApiActivitypubRepositoryInboxRequest{
+func (a *ActivitypubAPIService) ActivitypubRepositoryInbox(ctx context.Context, repositoryId int32) ActivitypubAPIActivitypubRepositoryInboxRequest {
+	return ActivitypubAPIActivitypubRepositoryInboxRequest{
 		ApiService: a,
 		ctx: ctx,
 		repositoryId: repositoryId,
@@ -950,7 +950,7 @@ func (a *ActivitypubAPIService) ActivitypubRepositoryInbox(ctx context.Context, 
 }
 
 // Execute executes the request
-func (a *ActivitypubAPIService) ActivitypubRepositoryInboxExecute(r ApiActivitypubRepositoryInboxRequest) (*http.Response, error) {
+func (a *ActivitypubAPIService) ActivitypubRepositoryInboxExecute(r ActivitypubAPIActivitypubRepositoryInboxRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}

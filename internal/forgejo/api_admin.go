@@ -23,14 +23,14 @@ import (
 // AdminAPIService AdminAPI service
 type AdminAPIService service
 
-type ApiAdminAddRuleToQuotaGroupRequest struct {
+type AdminAPIAdminAddRuleToQuotaGroupRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	quotagroup string
 	quotarule string
 }
 
-func (r ApiAdminAddRuleToQuotaGroupRequest) Execute() (*http.Response, error) {
+func (r AdminAPIAdminAddRuleToQuotaGroupRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AdminAddRuleToQuotaGroupExecute(r)
 }
 
@@ -40,10 +40,10 @@ AdminAddRuleToQuotaGroup Adds a rule to a quota group
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param quotagroup quota group to add a rule to
  @param quotarule the name of the quota rule to add to the group
- @return ApiAdminAddRuleToQuotaGroupRequest
+ @return AdminAPIAdminAddRuleToQuotaGroupRequest
 */
-func (a *AdminAPIService) AdminAddRuleToQuotaGroup(ctx context.Context, quotagroup string, quotarule string) ApiAdminAddRuleToQuotaGroupRequest {
-	return ApiAdminAddRuleToQuotaGroupRequest{
+func (a *AdminAPIService) AdminAddRuleToQuotaGroup(ctx context.Context, quotagroup string, quotarule string) AdminAPIAdminAddRuleToQuotaGroupRequest {
+	return AdminAPIAdminAddRuleToQuotaGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 		quotagroup: quotagroup,
@@ -52,7 +52,7 @@ func (a *AdminAPIService) AdminAddRuleToQuotaGroup(ctx context.Context, quotagro
 }
 
 // Execute executes the request
-func (a *AdminAPIService) AdminAddRuleToQuotaGroupExecute(r ApiAdminAddRuleToQuotaGroupRequest) (*http.Response, error) {
+func (a *AdminAPIService) AdminAddRuleToQuotaGroupExecute(r AdminAPIAdminAddRuleToQuotaGroupRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -255,14 +255,14 @@ func (a *AdminAPIService) AdminAddRuleToQuotaGroupExecute(r ApiAdminAddRuleToQuo
 	return localVarHTTPResponse, nil
 }
 
-type ApiAdminAddUserToQuotaGroupRequest struct {
+type AdminAPIAdminAddUserToQuotaGroupRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	quotagroup string
 	username string
 }
 
-func (r ApiAdminAddUserToQuotaGroupRequest) Execute() (*http.Response, error) {
+func (r AdminAPIAdminAddUserToQuotaGroupRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AdminAddUserToQuotaGroupExecute(r)
 }
 
@@ -272,10 +272,10 @@ AdminAddUserToQuotaGroup Add a user to a quota group
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param quotagroup quota group to add the user to
  @param username username of the user to add to the quota group
- @return ApiAdminAddUserToQuotaGroupRequest
+ @return AdminAPIAdminAddUserToQuotaGroupRequest
 */
-func (a *AdminAPIService) AdminAddUserToQuotaGroup(ctx context.Context, quotagroup string, username string) ApiAdminAddUserToQuotaGroupRequest {
-	return ApiAdminAddUserToQuotaGroupRequest{
+func (a *AdminAPIService) AdminAddUserToQuotaGroup(ctx context.Context, quotagroup string, username string) AdminAPIAdminAddUserToQuotaGroupRequest {
+	return AdminAPIAdminAddUserToQuotaGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 		quotagroup: quotagroup,
@@ -284,7 +284,7 @@ func (a *AdminAPIService) AdminAddUserToQuotaGroup(ctx context.Context, quotagro
 }
 
 // Execute executes the request
-func (a *AdminAPIService) AdminAddUserToQuotaGroupExecute(r ApiAdminAddUserToQuotaGroupRequest) (*http.Response, error) {
+func (a *AdminAPIService) AdminAddUserToQuotaGroupExecute(r AdminAPIAdminAddUserToQuotaGroupRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -487,14 +487,14 @@ func (a *AdminAPIService) AdminAddUserToQuotaGroupExecute(r ApiAdminAddUserToQuo
 	return localVarHTTPResponse, nil
 }
 
-type ApiAdminAdoptRepositoryRequest struct {
+type AdminAPIAdminAdoptRepositoryRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	owner string
 	repo string
 }
 
-func (r ApiAdminAdoptRepositoryRequest) Execute() (*http.Response, error) {
+func (r AdminAPIAdminAdoptRepositoryRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AdminAdoptRepositoryExecute(r)
 }
 
@@ -504,10 +504,10 @@ AdminAdoptRepository Adopt unadopted files as a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiAdminAdoptRepositoryRequest
+ @return AdminAPIAdminAdoptRepositoryRequest
 */
-func (a *AdminAPIService) AdminAdoptRepository(ctx context.Context, owner string, repo string) ApiAdminAdoptRepositoryRequest {
-	return ApiAdminAdoptRepositoryRequest{
+func (a *AdminAPIService) AdminAdoptRepository(ctx context.Context, owner string, repo string) AdminAPIAdminAdoptRepositoryRequest {
+	return AdminAPIAdminAdoptRepositoryRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -516,7 +516,7 @@ func (a *AdminAPIService) AdminAdoptRepository(ctx context.Context, owner string
 }
 
 // Execute executes the request
-func (a *AdminAPIService) AdminAdoptRepositoryExecute(r ApiAdminAdoptRepositoryRequest) (*http.Response, error) {
+func (a *AdminAPIService) AdminAdoptRepositoryExecute(r AdminAPIAdminAdoptRepositoryRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -686,18 +686,18 @@ func (a *AdminAPIService) AdminAdoptRepositoryExecute(r ApiAdminAdoptRepositoryR
 	return localVarHTTPResponse, nil
 }
 
-type ApiAdminCreateHookRequest struct {
+type AdminAPIAdminCreateHookRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	body *CreateHookOption
 }
 
-func (r ApiAdminCreateHookRequest) Body(body CreateHookOption) ApiAdminCreateHookRequest {
+func (r AdminAPIAdminCreateHookRequest) Body(body CreateHookOption) AdminAPIAdminCreateHookRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiAdminCreateHookRequest) Execute() (*Hook, *http.Response, error) {
+func (r AdminAPIAdminCreateHookRequest) Execute() (*Hook, *http.Response, error) {
 	return r.ApiService.AdminCreateHookExecute(r)
 }
 
@@ -705,10 +705,10 @@ func (r ApiAdminCreateHookRequest) Execute() (*Hook, *http.Response, error) {
 AdminCreateHook Create a hook
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminCreateHookRequest
+ @return AdminAPIAdminCreateHookRequest
 */
-func (a *AdminAPIService) AdminCreateHook(ctx context.Context) ApiAdminCreateHookRequest {
-	return ApiAdminCreateHookRequest{
+func (a *AdminAPIService) AdminCreateHook(ctx context.Context) AdminAPIAdminCreateHookRequest {
+	return AdminAPIAdminCreateHookRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -716,7 +716,7 @@ func (a *AdminAPIService) AdminCreateHook(ctx context.Context) ApiAdminCreateHoo
 
 // Execute executes the request
 //  @return Hook
-func (a *AdminAPIService) AdminCreateHookExecute(r ApiAdminCreateHookRequest) (*Hook, *http.Response, error) {
+func (a *AdminAPIService) AdminCreateHookExecute(r AdminAPIAdminCreateHookRequest) (*Hook, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -878,19 +878,19 @@ func (a *AdminAPIService) AdminCreateHookExecute(r ApiAdminCreateHookRequest) (*
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminCreateOrgRequest struct {
+type AdminAPIAdminCreateOrgRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	username string
 	organization *CreateOrgOption
 }
 
-func (r ApiAdminCreateOrgRequest) Organization(organization CreateOrgOption) ApiAdminCreateOrgRequest {
+func (r AdminAPIAdminCreateOrgRequest) Organization(organization CreateOrgOption) AdminAPIAdminCreateOrgRequest {
 	r.organization = &organization
 	return r
 }
 
-func (r ApiAdminCreateOrgRequest) Execute() (*Organization, *http.Response, error) {
+func (r AdminAPIAdminCreateOrgRequest) Execute() (*Organization, *http.Response, error) {
 	return r.ApiService.AdminCreateOrgExecute(r)
 }
 
@@ -899,10 +899,10 @@ AdminCreateOrg Create an organization
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param username username of the user that will own the created organization
- @return ApiAdminCreateOrgRequest
+ @return AdminAPIAdminCreateOrgRequest
 */
-func (a *AdminAPIService) AdminCreateOrg(ctx context.Context, username string) ApiAdminCreateOrgRequest {
-	return ApiAdminCreateOrgRequest{
+func (a *AdminAPIService) AdminCreateOrg(ctx context.Context, username string) AdminAPIAdminCreateOrgRequest {
+	return AdminAPIAdminCreateOrgRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
@@ -911,7 +911,7 @@ func (a *AdminAPIService) AdminCreateOrg(ctx context.Context, username string) A
 
 // Execute executes the request
 //  @return Organization
-func (a *AdminAPIService) AdminCreateOrgExecute(r ApiAdminCreateOrgRequest) (*Organization, *http.Response, error) {
+func (a *AdminAPIService) AdminCreateOrgExecute(r AdminAPIAdminCreateOrgRequest) (*Organization, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1095,19 +1095,19 @@ func (a *AdminAPIService) AdminCreateOrgExecute(r ApiAdminCreateOrgRequest) (*Or
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminCreatePublicKeyRequest struct {
+type AdminAPIAdminCreatePublicKeyRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	username string
 	key *CreateKeyOption
 }
 
-func (r ApiAdminCreatePublicKeyRequest) Key(key CreateKeyOption) ApiAdminCreatePublicKeyRequest {
+func (r AdminAPIAdminCreatePublicKeyRequest) Key(key CreateKeyOption) AdminAPIAdminCreatePublicKeyRequest {
 	r.key = &key
 	return r
 }
 
-func (r ApiAdminCreatePublicKeyRequest) Execute() (*PublicKey, *http.Response, error) {
+func (r AdminAPIAdminCreatePublicKeyRequest) Execute() (*PublicKey, *http.Response, error) {
 	return r.ApiService.AdminCreatePublicKeyExecute(r)
 }
 
@@ -1116,10 +1116,10 @@ AdminCreatePublicKey Add a public key on behalf of a user
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param username username of the user
- @return ApiAdminCreatePublicKeyRequest
+ @return AdminAPIAdminCreatePublicKeyRequest
 */
-func (a *AdminAPIService) AdminCreatePublicKey(ctx context.Context, username string) ApiAdminCreatePublicKeyRequest {
-	return ApiAdminCreatePublicKeyRequest{
+func (a *AdminAPIService) AdminCreatePublicKey(ctx context.Context, username string) AdminAPIAdminCreatePublicKeyRequest {
+	return AdminAPIAdminCreatePublicKeyRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
@@ -1128,7 +1128,7 @@ func (a *AdminAPIService) AdminCreatePublicKey(ctx context.Context, username str
 
 // Execute executes the request
 //  @return PublicKey
-func (a *AdminAPIService) AdminCreatePublicKeyExecute(r ApiAdminCreatePublicKeyRequest) (*PublicKey, *http.Response, error) {
+func (a *AdminAPIService) AdminCreatePublicKeyExecute(r AdminAPIAdminCreatePublicKeyRequest) (*PublicKey, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1309,19 +1309,19 @@ func (a *AdminAPIService) AdminCreatePublicKeyExecute(r ApiAdminCreatePublicKeyR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminCreateQuotaGroupRequest struct {
+type AdminAPIAdminCreateQuotaGroupRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	group *CreateQuotaGroupOptions
 }
 
 // Definition of the quota group
-func (r ApiAdminCreateQuotaGroupRequest) Group(group CreateQuotaGroupOptions) ApiAdminCreateQuotaGroupRequest {
+func (r AdminAPIAdminCreateQuotaGroupRequest) Group(group CreateQuotaGroupOptions) AdminAPIAdminCreateQuotaGroupRequest {
 	r.group = &group
 	return r
 }
 
-func (r ApiAdminCreateQuotaGroupRequest) Execute() (*QuotaGroup, *http.Response, error) {
+func (r AdminAPIAdminCreateQuotaGroupRequest) Execute() (*QuotaGroup, *http.Response, error) {
 	return r.ApiService.AdminCreateQuotaGroupExecute(r)
 }
 
@@ -1329,10 +1329,10 @@ func (r ApiAdminCreateQuotaGroupRequest) Execute() (*QuotaGroup, *http.Response,
 AdminCreateQuotaGroup Create a new quota group
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminCreateQuotaGroupRequest
+ @return AdminAPIAdminCreateQuotaGroupRequest
 */
-func (a *AdminAPIService) AdminCreateQuotaGroup(ctx context.Context) ApiAdminCreateQuotaGroupRequest {
-	return ApiAdminCreateQuotaGroupRequest{
+func (a *AdminAPIService) AdminCreateQuotaGroup(ctx context.Context) AdminAPIAdminCreateQuotaGroupRequest {
+	return AdminAPIAdminCreateQuotaGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1340,7 +1340,7 @@ func (a *AdminAPIService) AdminCreateQuotaGroup(ctx context.Context) ApiAdminCre
 
 // Execute executes the request
 //  @return QuotaGroup
-func (a *AdminAPIService) AdminCreateQuotaGroupExecute(r ApiAdminCreateQuotaGroupRequest) (*QuotaGroup, *http.Response, error) {
+func (a *AdminAPIService) AdminCreateQuotaGroupExecute(r AdminAPIAdminCreateQuotaGroupRequest) (*QuotaGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1545,19 +1545,19 @@ func (a *AdminAPIService) AdminCreateQuotaGroupExecute(r ApiAdminCreateQuotaGrou
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminCreateQuotaRuleRequest struct {
+type AdminAPIAdminCreateQuotaRuleRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	rule *CreateQuotaRuleOptions
 }
 
 // Definition of the quota rule
-func (r ApiAdminCreateQuotaRuleRequest) Rule(rule CreateQuotaRuleOptions) ApiAdminCreateQuotaRuleRequest {
+func (r AdminAPIAdminCreateQuotaRuleRequest) Rule(rule CreateQuotaRuleOptions) AdminAPIAdminCreateQuotaRuleRequest {
 	r.rule = &rule
 	return r
 }
 
-func (r ApiAdminCreateQuotaRuleRequest) Execute() (*QuotaRuleInfo, *http.Response, error) {
+func (r AdminAPIAdminCreateQuotaRuleRequest) Execute() (*QuotaRuleInfo, *http.Response, error) {
 	return r.ApiService.AdminCreateQuotaRuleExecute(r)
 }
 
@@ -1565,10 +1565,10 @@ func (r ApiAdminCreateQuotaRuleRequest) Execute() (*QuotaRuleInfo, *http.Respons
 AdminCreateQuotaRule Create a new quota rule
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminCreateQuotaRuleRequest
+ @return AdminAPIAdminCreateQuotaRuleRequest
 */
-func (a *AdminAPIService) AdminCreateQuotaRule(ctx context.Context) ApiAdminCreateQuotaRuleRequest {
-	return ApiAdminCreateQuotaRuleRequest{
+func (a *AdminAPIService) AdminCreateQuotaRule(ctx context.Context) AdminAPIAdminCreateQuotaRuleRequest {
+	return AdminAPIAdminCreateQuotaRuleRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1576,7 +1576,7 @@ func (a *AdminAPIService) AdminCreateQuotaRule(ctx context.Context) ApiAdminCrea
 
 // Execute executes the request
 //  @return QuotaRuleInfo
-func (a *AdminAPIService) AdminCreateQuotaRuleExecute(r ApiAdminCreateQuotaRuleRequest) (*QuotaRuleInfo, *http.Response, error) {
+func (a *AdminAPIService) AdminCreateQuotaRuleExecute(r AdminAPIAdminCreateQuotaRuleRequest) (*QuotaRuleInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1781,19 +1781,19 @@ func (a *AdminAPIService) AdminCreateQuotaRuleExecute(r ApiAdminCreateQuotaRuleR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminCreateRepoRequest struct {
+type AdminAPIAdminCreateRepoRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	username string
 	repository *CreateRepoOption
 }
 
-func (r ApiAdminCreateRepoRequest) Repository(repository CreateRepoOption) ApiAdminCreateRepoRequest {
+func (r AdminAPIAdminCreateRepoRequest) Repository(repository CreateRepoOption) AdminAPIAdminCreateRepoRequest {
 	r.repository = &repository
 	return r
 }
 
-func (r ApiAdminCreateRepoRequest) Execute() (*Repository, *http.Response, error) {
+func (r AdminAPIAdminCreateRepoRequest) Execute() (*Repository, *http.Response, error) {
 	return r.ApiService.AdminCreateRepoExecute(r)
 }
 
@@ -1802,10 +1802,10 @@ AdminCreateRepo Create a repository on behalf of a user
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param username username of the user. This user will own the created repository
- @return ApiAdminCreateRepoRequest
+ @return AdminAPIAdminCreateRepoRequest
 */
-func (a *AdminAPIService) AdminCreateRepo(ctx context.Context, username string) ApiAdminCreateRepoRequest {
-	return ApiAdminCreateRepoRequest{
+func (a *AdminAPIService) AdminCreateRepo(ctx context.Context, username string) AdminAPIAdminCreateRepoRequest {
+	return AdminAPIAdminCreateRepoRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
@@ -1814,7 +1814,7 @@ func (a *AdminAPIService) AdminCreateRepo(ctx context.Context, username string) 
 
 // Execute executes the request
 //  @return Repository
-func (a *AdminAPIService) AdminCreateRepoExecute(r ApiAdminCreateRepoRequest) (*Repository, *http.Response, error) {
+func (a *AdminAPIService) AdminCreateRepoExecute(r AdminAPIAdminCreateRepoRequest) (*Repository, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2031,18 +2031,18 @@ func (a *AdminAPIService) AdminCreateRepoExecute(r ApiAdminCreateRepoRequest) (*
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminCreateUserRequest struct {
+type AdminAPIAdminCreateUserRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	body *CreateUserOption
 }
 
-func (r ApiAdminCreateUserRequest) Body(body CreateUserOption) ApiAdminCreateUserRequest {
+func (r AdminAPIAdminCreateUserRequest) Body(body CreateUserOption) AdminAPIAdminCreateUserRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiAdminCreateUserRequest) Execute() (*User, *http.Response, error) {
+func (r AdminAPIAdminCreateUserRequest) Execute() (*User, *http.Response, error) {
 	return r.ApiService.AdminCreateUserExecute(r)
 }
 
@@ -2050,10 +2050,10 @@ func (r ApiAdminCreateUserRequest) Execute() (*User, *http.Response, error) {
 AdminCreateUser Create a user
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminCreateUserRequest
+ @return AdminAPIAdminCreateUserRequest
 */
-func (a *AdminAPIService) AdminCreateUser(ctx context.Context) ApiAdminCreateUserRequest {
-	return ApiAdminCreateUserRequest{
+func (a *AdminAPIService) AdminCreateUser(ctx context.Context) AdminAPIAdminCreateUserRequest {
+	return AdminAPIAdminCreateUserRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2061,7 +2061,7 @@ func (a *AdminAPIService) AdminCreateUser(ctx context.Context) ApiAdminCreateUse
 
 // Execute executes the request
 //  @return User
-func (a *AdminAPIService) AdminCreateUserExecute(r ApiAdminCreateUserRequest) (*User, *http.Response, error) {
+func (a *AdminAPIService) AdminCreateUserExecute(r AdminAPIAdminCreateUserRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2252,7 +2252,7 @@ func (a *AdminAPIService) AdminCreateUserExecute(r ApiAdminCreateUserRequest) (*
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminCronListRequest struct {
+type AdminAPIAdminCronListRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	page *int32
@@ -2260,18 +2260,18 @@ type ApiAdminCronListRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiAdminCronListRequest) Page(page int32) ApiAdminCronListRequest {
+func (r AdminAPIAdminCronListRequest) Page(page int32) AdminAPIAdminCronListRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiAdminCronListRequest) Limit(limit int32) ApiAdminCronListRequest {
+func (r AdminAPIAdminCronListRequest) Limit(limit int32) AdminAPIAdminCronListRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiAdminCronListRequest) Execute() ([]Cron, *http.Response, error) {
+func (r AdminAPIAdminCronListRequest) Execute() ([]Cron, *http.Response, error) {
 	return r.ApiService.AdminCronListExecute(r)
 }
 
@@ -2279,10 +2279,10 @@ func (r ApiAdminCronListRequest) Execute() ([]Cron, *http.Response, error) {
 AdminCronList List cron tasks
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminCronListRequest
+ @return AdminAPIAdminCronListRequest
 */
-func (a *AdminAPIService) AdminCronList(ctx context.Context) ApiAdminCronListRequest {
-	return ApiAdminCronListRequest{
+func (a *AdminAPIService) AdminCronList(ctx context.Context) AdminAPIAdminCronListRequest {
+	return AdminAPIAdminCronListRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2290,7 +2290,7 @@ func (a *AdminAPIService) AdminCronList(ctx context.Context) ApiAdminCronListReq
 
 // Execute executes the request
 //  @return []Cron
-func (a *AdminAPIService) AdminCronListExecute(r ApiAdminCronListRequest) ([]Cron, *http.Response, error) {
+func (a *AdminAPIService) AdminCronListExecute(r AdminAPIAdminCronListRequest) ([]Cron, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2463,13 +2463,13 @@ func (a *AdminAPIService) AdminCronListExecute(r ApiAdminCronListRequest) ([]Cro
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminCronRunRequest struct {
+type AdminAPIAdminCronRunRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	task string
 }
 
-func (r ApiAdminCronRunRequest) Execute() (*http.Response, error) {
+func (r AdminAPIAdminCronRunRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AdminCronRunExecute(r)
 }
 
@@ -2478,10 +2478,10 @@ AdminCronRun Run cron task
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param task task to run
- @return ApiAdminCronRunRequest
+ @return AdminAPIAdminCronRunRequest
 */
-func (a *AdminAPIService) AdminCronRun(ctx context.Context, task string) ApiAdminCronRunRequest {
-	return ApiAdminCronRunRequest{
+func (a *AdminAPIService) AdminCronRun(ctx context.Context, task string) AdminAPIAdminCronRunRequest {
+	return AdminAPIAdminCronRunRequest{
 		ApiService: a,
 		ctx: ctx,
 		task: task,
@@ -2489,7 +2489,7 @@ func (a *AdminAPIService) AdminCronRun(ctx context.Context, task string) ApiAdmi
 }
 
 // Execute executes the request
-func (a *AdminAPIService) AdminCronRunExecute(r ApiAdminCronRunRequest) (*http.Response, error) {
+func (a *AdminAPIService) AdminCronRunExecute(r AdminAPIAdminCronRunRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2647,13 +2647,13 @@ func (a *AdminAPIService) AdminCronRunExecute(r ApiAdminCronRunRequest) (*http.R
 	return localVarHTTPResponse, nil
 }
 
-type ApiAdminDEleteQuotaRuleRequest struct {
+type AdminAPIAdminDEleteQuotaRuleRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	quotarule string
 }
 
-func (r ApiAdminDEleteQuotaRuleRequest) Execute() (*http.Response, error) {
+func (r AdminAPIAdminDEleteQuotaRuleRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AdminDEleteQuotaRuleExecute(r)
 }
 
@@ -2662,10 +2662,10 @@ AdminDEleteQuotaRule Deletes a quota rule
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param quotarule quota rule to delete
- @return ApiAdminDEleteQuotaRuleRequest
+ @return AdminAPIAdminDEleteQuotaRuleRequest
 */
-func (a *AdminAPIService) AdminDEleteQuotaRule(ctx context.Context, quotarule string) ApiAdminDEleteQuotaRuleRequest {
-	return ApiAdminDEleteQuotaRuleRequest{
+func (a *AdminAPIService) AdminDEleteQuotaRule(ctx context.Context, quotarule string) AdminAPIAdminDEleteQuotaRuleRequest {
+	return AdminAPIAdminDEleteQuotaRuleRequest{
 		ApiService: a,
 		ctx: ctx,
 		quotarule: quotarule,
@@ -2673,7 +2673,7 @@ func (a *AdminAPIService) AdminDEleteQuotaRule(ctx context.Context, quotarule st
 }
 
 // Execute executes the request
-func (a *AdminAPIService) AdminDEleteQuotaRuleExecute(r ApiAdminDEleteQuotaRuleRequest) (*http.Response, error) {
+func (a *AdminAPIService) AdminDEleteQuotaRuleExecute(r AdminAPIAdminDEleteQuotaRuleRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -2853,13 +2853,13 @@ func (a *AdminAPIService) AdminDEleteQuotaRuleExecute(r ApiAdminDEleteQuotaRuleR
 	return localVarHTTPResponse, nil
 }
 
-type ApiAdminDeleteHookRequest struct {
+type AdminAPIAdminDeleteHookRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	id int64
 }
 
-func (r ApiAdminDeleteHookRequest) Execute() (*http.Response, error) {
+func (r AdminAPIAdminDeleteHookRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AdminDeleteHookExecute(r)
 }
 
@@ -2868,10 +2868,10 @@ AdminDeleteHook Delete a hook
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of the hook to delete
- @return ApiAdminDeleteHookRequest
+ @return AdminAPIAdminDeleteHookRequest
 */
-func (a *AdminAPIService) AdminDeleteHook(ctx context.Context, id int64) ApiAdminDeleteHookRequest {
-	return ApiAdminDeleteHookRequest{
+func (a *AdminAPIService) AdminDeleteHook(ctx context.Context, id int64) AdminAPIAdminDeleteHookRequest {
+	return AdminAPIAdminDeleteHookRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2879,7 +2879,7 @@ func (a *AdminAPIService) AdminDeleteHook(ctx context.Context, id int64) ApiAdmi
 }
 
 // Execute executes the request
-func (a *AdminAPIService) AdminDeleteHookExecute(r ApiAdminDeleteHookRequest) (*http.Response, error) {
+func (a *AdminAPIService) AdminDeleteHookExecute(r AdminAPIAdminDeleteHookRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -3027,13 +3027,13 @@ func (a *AdminAPIService) AdminDeleteHookExecute(r ApiAdminDeleteHookRequest) (*
 	return localVarHTTPResponse, nil
 }
 
-type ApiAdminDeleteQuotaGroupRequest struct {
+type AdminAPIAdminDeleteQuotaGroupRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	quotagroup string
 }
 
-func (r ApiAdminDeleteQuotaGroupRequest) Execute() (*http.Response, error) {
+func (r AdminAPIAdminDeleteQuotaGroupRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AdminDeleteQuotaGroupExecute(r)
 }
 
@@ -3042,10 +3042,10 @@ AdminDeleteQuotaGroup Delete a quota group
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param quotagroup quota group to delete
- @return ApiAdminDeleteQuotaGroupRequest
+ @return AdminAPIAdminDeleteQuotaGroupRequest
 */
-func (a *AdminAPIService) AdminDeleteQuotaGroup(ctx context.Context, quotagroup string) ApiAdminDeleteQuotaGroupRequest {
-	return ApiAdminDeleteQuotaGroupRequest{
+func (a *AdminAPIService) AdminDeleteQuotaGroup(ctx context.Context, quotagroup string) AdminAPIAdminDeleteQuotaGroupRequest {
+	return AdminAPIAdminDeleteQuotaGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 		quotagroup: quotagroup,
@@ -3053,7 +3053,7 @@ func (a *AdminAPIService) AdminDeleteQuotaGroup(ctx context.Context, quotagroup 
 }
 
 // Execute executes the request
-func (a *AdminAPIService) AdminDeleteQuotaGroupExecute(r ApiAdminDeleteQuotaGroupRequest) (*http.Response, error) {
+func (a *AdminAPIService) AdminDeleteQuotaGroupExecute(r AdminAPIAdminDeleteQuotaGroupRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -3233,14 +3233,14 @@ func (a *AdminAPIService) AdminDeleteQuotaGroupExecute(r ApiAdminDeleteQuotaGrou
 	return localVarHTTPResponse, nil
 }
 
-type ApiAdminDeleteUnadoptedRepositoryRequest struct {
+type AdminAPIAdminDeleteUnadoptedRepositoryRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	owner string
 	repo string
 }
 
-func (r ApiAdminDeleteUnadoptedRepositoryRequest) Execute() (*http.Response, error) {
+func (r AdminAPIAdminDeleteUnadoptedRepositoryRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AdminDeleteUnadoptedRepositoryExecute(r)
 }
 
@@ -3250,10 +3250,10 @@ AdminDeleteUnadoptedRepository Delete unadopted files
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiAdminDeleteUnadoptedRepositoryRequest
+ @return AdminAPIAdminDeleteUnadoptedRepositoryRequest
 */
-func (a *AdminAPIService) AdminDeleteUnadoptedRepository(ctx context.Context, owner string, repo string) ApiAdminDeleteUnadoptedRepositoryRequest {
-	return ApiAdminDeleteUnadoptedRepositoryRequest{
+func (a *AdminAPIService) AdminDeleteUnadoptedRepository(ctx context.Context, owner string, repo string) AdminAPIAdminDeleteUnadoptedRepositoryRequest {
+	return AdminAPIAdminDeleteUnadoptedRepositoryRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -3262,7 +3262,7 @@ func (a *AdminAPIService) AdminDeleteUnadoptedRepository(ctx context.Context, ow
 }
 
 // Execute executes the request
-func (a *AdminAPIService) AdminDeleteUnadoptedRepositoryExecute(r ApiAdminDeleteUnadoptedRepositoryRequest) (*http.Response, error) {
+func (a *AdminAPIService) AdminDeleteUnadoptedRepositoryExecute(r AdminAPIAdminDeleteUnadoptedRepositoryRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -3421,7 +3421,7 @@ func (a *AdminAPIService) AdminDeleteUnadoptedRepositoryExecute(r ApiAdminDelete
 	return localVarHTTPResponse, nil
 }
 
-type ApiAdminDeleteUserRequest struct {
+type AdminAPIAdminDeleteUserRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	username string
@@ -3429,12 +3429,12 @@ type ApiAdminDeleteUserRequest struct {
 }
 
 // purge the user from the system completely
-func (r ApiAdminDeleteUserRequest) Purge(purge bool) ApiAdminDeleteUserRequest {
+func (r AdminAPIAdminDeleteUserRequest) Purge(purge bool) AdminAPIAdminDeleteUserRequest {
 	r.purge = &purge
 	return r
 }
 
-func (r ApiAdminDeleteUserRequest) Execute() (*http.Response, error) {
+func (r AdminAPIAdminDeleteUserRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AdminDeleteUserExecute(r)
 }
 
@@ -3443,10 +3443,10 @@ AdminDeleteUser Delete a user
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param username username of user to delete
- @return ApiAdminDeleteUserRequest
+ @return AdminAPIAdminDeleteUserRequest
 */
-func (a *AdminAPIService) AdminDeleteUser(ctx context.Context, username string) ApiAdminDeleteUserRequest {
-	return ApiAdminDeleteUserRequest{
+func (a *AdminAPIService) AdminDeleteUser(ctx context.Context, username string) AdminAPIAdminDeleteUserRequest {
+	return AdminAPIAdminDeleteUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
@@ -3454,7 +3454,7 @@ func (a *AdminAPIService) AdminDeleteUser(ctx context.Context, username string) 
 }
 
 // Execute executes the request
-func (a *AdminAPIService) AdminDeleteUserExecute(r ApiAdminDeleteUserRequest) (*http.Response, error) {
+func (a *AdminAPIService) AdminDeleteUserExecute(r AdminAPIAdminDeleteUserRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -3637,14 +3637,14 @@ func (a *AdminAPIService) AdminDeleteUserExecute(r ApiAdminDeleteUserRequest) (*
 	return localVarHTTPResponse, nil
 }
 
-type ApiAdminDeleteUserPublicKeyRequest struct {
+type AdminAPIAdminDeleteUserPublicKeyRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	username string
 	id int64
 }
 
-func (r ApiAdminDeleteUserPublicKeyRequest) Execute() (*http.Response, error) {
+func (r AdminAPIAdminDeleteUserPublicKeyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AdminDeleteUserPublicKeyExecute(r)
 }
 
@@ -3654,10 +3654,10 @@ AdminDeleteUserPublicKey Delete a user's public key
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param username username of user
  @param id id of the key to delete
- @return ApiAdminDeleteUserPublicKeyRequest
+ @return AdminAPIAdminDeleteUserPublicKeyRequest
 */
-func (a *AdminAPIService) AdminDeleteUserPublicKey(ctx context.Context, username string, id int64) ApiAdminDeleteUserPublicKeyRequest {
-	return ApiAdminDeleteUserPublicKeyRequest{
+func (a *AdminAPIService) AdminDeleteUserPublicKey(ctx context.Context, username string, id int64) AdminAPIAdminDeleteUserPublicKeyRequest {
+	return AdminAPIAdminDeleteUserPublicKeyRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
@@ -3666,7 +3666,7 @@ func (a *AdminAPIService) AdminDeleteUserPublicKey(ctx context.Context, username
 }
 
 // Execute executes the request
-func (a *AdminAPIService) AdminDeleteUserPublicKeyExecute(r ApiAdminDeleteUserPublicKeyRequest) (*http.Response, error) {
+func (a *AdminAPIService) AdminDeleteUserPublicKeyExecute(r AdminAPIAdminDeleteUserPublicKeyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -3836,19 +3836,19 @@ func (a *AdminAPIService) AdminDeleteUserPublicKeyExecute(r ApiAdminDeleteUserPu
 	return localVarHTTPResponse, nil
 }
 
-type ApiAdminEditHookRequest struct {
+type AdminAPIAdminEditHookRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	id int64
 	body *EditHookOption
 }
 
-func (r ApiAdminEditHookRequest) Body(body EditHookOption) ApiAdminEditHookRequest {
+func (r AdminAPIAdminEditHookRequest) Body(body EditHookOption) AdminAPIAdminEditHookRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiAdminEditHookRequest) Execute() (*Hook, *http.Response, error) {
+func (r AdminAPIAdminEditHookRequest) Execute() (*Hook, *http.Response, error) {
 	return r.ApiService.AdminEditHookExecute(r)
 }
 
@@ -3857,10 +3857,10 @@ AdminEditHook Update a hook
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of the hook to update
- @return ApiAdminEditHookRequest
+ @return AdminAPIAdminEditHookRequest
 */
-func (a *AdminAPIService) AdminEditHook(ctx context.Context, id int64) ApiAdminEditHookRequest {
-	return ApiAdminEditHookRequest{
+func (a *AdminAPIService) AdminEditHook(ctx context.Context, id int64) AdminAPIAdminEditHookRequest {
+	return AdminAPIAdminEditHookRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -3869,7 +3869,7 @@ func (a *AdminAPIService) AdminEditHook(ctx context.Context, id int64) ApiAdminE
 
 // Execute executes the request
 //  @return Hook
-func (a *AdminAPIService) AdminEditHookExecute(r ApiAdminEditHookRequest) (*Hook, *http.Response, error) {
+func (a *AdminAPIService) AdminEditHookExecute(r AdminAPIAdminEditHookRequest) (*Hook, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -4029,19 +4029,19 @@ func (a *AdminAPIService) AdminEditHookExecute(r ApiAdminEditHookRequest) (*Hook
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminEditQuotaRuleRequest struct {
+type AdminAPIAdminEditQuotaRuleRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	quotarule string
 	rule *EditQuotaRuleOptions
 }
 
-func (r ApiAdminEditQuotaRuleRequest) Rule(rule EditQuotaRuleOptions) ApiAdminEditQuotaRuleRequest {
+func (r AdminAPIAdminEditQuotaRuleRequest) Rule(rule EditQuotaRuleOptions) AdminAPIAdminEditQuotaRuleRequest {
 	r.rule = &rule
 	return r
 }
 
-func (r ApiAdminEditQuotaRuleRequest) Execute() (*QuotaRuleInfo, *http.Response, error) {
+func (r AdminAPIAdminEditQuotaRuleRequest) Execute() (*QuotaRuleInfo, *http.Response, error) {
 	return r.ApiService.AdminEditQuotaRuleExecute(r)
 }
 
@@ -4050,10 +4050,10 @@ AdminEditQuotaRule Change an existing quota rule
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param quotarule Quota rule to change
- @return ApiAdminEditQuotaRuleRequest
+ @return AdminAPIAdminEditQuotaRuleRequest
 */
-func (a *AdminAPIService) AdminEditQuotaRule(ctx context.Context, quotarule string) ApiAdminEditQuotaRuleRequest {
-	return ApiAdminEditQuotaRuleRequest{
+func (a *AdminAPIService) AdminEditQuotaRule(ctx context.Context, quotarule string) AdminAPIAdminEditQuotaRuleRequest {
+	return AdminAPIAdminEditQuotaRuleRequest{
 		ApiService: a,
 		ctx: ctx,
 		quotarule: quotarule,
@@ -4062,7 +4062,7 @@ func (a *AdminAPIService) AdminEditQuotaRule(ctx context.Context, quotarule stri
 
 // Execute executes the request
 //  @return QuotaRuleInfo
-func (a *AdminAPIService) AdminEditQuotaRuleExecute(r ApiAdminEditQuotaRuleRequest) (*QuotaRuleInfo, *http.Response, error) {
+func (a *AdminAPIService) AdminEditQuotaRuleExecute(r AdminAPIAdminEditQuotaRuleRequest) (*QuotaRuleInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -4268,19 +4268,19 @@ func (a *AdminAPIService) AdminEditQuotaRuleExecute(r ApiAdminEditQuotaRuleReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminEditUserRequest struct {
+type AdminAPIAdminEditUserRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	username string
 	body *EditUserOption
 }
 
-func (r ApiAdminEditUserRequest) Body(body EditUserOption) ApiAdminEditUserRequest {
+func (r AdminAPIAdminEditUserRequest) Body(body EditUserOption) AdminAPIAdminEditUserRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiAdminEditUserRequest) Execute() (*User, *http.Response, error) {
+func (r AdminAPIAdminEditUserRequest) Execute() (*User, *http.Response, error) {
 	return r.ApiService.AdminEditUserExecute(r)
 }
 
@@ -4289,10 +4289,10 @@ AdminEditUser Edit an existing user
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param username username of user to edit
- @return ApiAdminEditUserRequest
+ @return AdminAPIAdminEditUserRequest
 */
-func (a *AdminAPIService) AdminEditUser(ctx context.Context, username string) ApiAdminEditUserRequest {
-	return ApiAdminEditUserRequest{
+func (a *AdminAPIService) AdminEditUser(ctx context.Context, username string) AdminAPIAdminEditUserRequest {
+	return AdminAPIAdminEditUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
@@ -4301,7 +4301,7 @@ func (a *AdminAPIService) AdminEditUser(ctx context.Context, username string) Ap
 
 // Execute executes the request
 //  @return User
-func (a *AdminAPIService) AdminEditUserExecute(r ApiAdminEditUserRequest) (*User, *http.Response, error) {
+func (a *AdminAPIService) AdminEditUserExecute(r AdminAPIAdminEditUserRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -4493,7 +4493,7 @@ func (a *AdminAPIService) AdminEditUserExecute(r ApiAdminEditUserRequest) (*User
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminGetAllEmailsRequest struct {
+type AdminAPIAdminGetAllEmailsRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	page *int32
@@ -4501,18 +4501,18 @@ type ApiAdminGetAllEmailsRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiAdminGetAllEmailsRequest) Page(page int32) ApiAdminGetAllEmailsRequest {
+func (r AdminAPIAdminGetAllEmailsRequest) Page(page int32) AdminAPIAdminGetAllEmailsRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiAdminGetAllEmailsRequest) Limit(limit int32) ApiAdminGetAllEmailsRequest {
+func (r AdminAPIAdminGetAllEmailsRequest) Limit(limit int32) AdminAPIAdminGetAllEmailsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiAdminGetAllEmailsRequest) Execute() ([]Email, *http.Response, error) {
+func (r AdminAPIAdminGetAllEmailsRequest) Execute() ([]Email, *http.Response, error) {
 	return r.ApiService.AdminGetAllEmailsExecute(r)
 }
 
@@ -4520,10 +4520,10 @@ func (r ApiAdminGetAllEmailsRequest) Execute() ([]Email, *http.Response, error) 
 AdminGetAllEmails List all emails
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminGetAllEmailsRequest
+ @return AdminAPIAdminGetAllEmailsRequest
 */
-func (a *AdminAPIService) AdminGetAllEmails(ctx context.Context) ApiAdminGetAllEmailsRequest {
-	return ApiAdminGetAllEmailsRequest{
+func (a *AdminAPIService) AdminGetAllEmails(ctx context.Context) AdminAPIAdminGetAllEmailsRequest {
+	return AdminAPIAdminGetAllEmailsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -4531,7 +4531,7 @@ func (a *AdminAPIService) AdminGetAllEmails(ctx context.Context) ApiAdminGetAllE
 
 // Execute executes the request
 //  @return []Email
-func (a *AdminAPIService) AdminGetAllEmailsExecute(r ApiAdminGetAllEmailsRequest) ([]Email, *http.Response, error) {
+func (a *AdminAPIService) AdminGetAllEmailsExecute(r AdminAPIAdminGetAllEmailsRequest) ([]Email, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -4704,7 +4704,7 @@ func (a *AdminAPIService) AdminGetAllEmailsExecute(r ApiAdminGetAllEmailsRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminGetAllOrgsRequest struct {
+type AdminAPIAdminGetAllOrgsRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	page *int32
@@ -4712,18 +4712,18 @@ type ApiAdminGetAllOrgsRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiAdminGetAllOrgsRequest) Page(page int32) ApiAdminGetAllOrgsRequest {
+func (r AdminAPIAdminGetAllOrgsRequest) Page(page int32) AdminAPIAdminGetAllOrgsRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiAdminGetAllOrgsRequest) Limit(limit int32) ApiAdminGetAllOrgsRequest {
+func (r AdminAPIAdminGetAllOrgsRequest) Limit(limit int32) AdminAPIAdminGetAllOrgsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiAdminGetAllOrgsRequest) Execute() ([]Organization, *http.Response, error) {
+func (r AdminAPIAdminGetAllOrgsRequest) Execute() ([]Organization, *http.Response, error) {
 	return r.ApiService.AdminGetAllOrgsExecute(r)
 }
 
@@ -4731,10 +4731,10 @@ func (r ApiAdminGetAllOrgsRequest) Execute() ([]Organization, *http.Response, er
 AdminGetAllOrgs List all organizations
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminGetAllOrgsRequest
+ @return AdminAPIAdminGetAllOrgsRequest
 */
-func (a *AdminAPIService) AdminGetAllOrgs(ctx context.Context) ApiAdminGetAllOrgsRequest {
-	return ApiAdminGetAllOrgsRequest{
+func (a *AdminAPIService) AdminGetAllOrgs(ctx context.Context) AdminAPIAdminGetAllOrgsRequest {
+	return AdminAPIAdminGetAllOrgsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -4742,7 +4742,7 @@ func (a *AdminAPIService) AdminGetAllOrgs(ctx context.Context) ApiAdminGetAllOrg
 
 // Execute executes the request
 //  @return []Organization
-func (a *AdminAPIService) AdminGetAllOrgsExecute(r ApiAdminGetAllOrgsRequest) ([]Organization, *http.Response, error) {
+func (a *AdminAPIService) AdminGetAllOrgsExecute(r AdminAPIAdminGetAllOrgsRequest) ([]Organization, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -4915,13 +4915,13 @@ func (a *AdminAPIService) AdminGetAllOrgsExecute(r ApiAdminGetAllOrgsRequest) ([
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminGetHookRequest struct {
+type AdminAPIAdminGetHookRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	id int64
 }
 
-func (r ApiAdminGetHookRequest) Execute() (*Hook, *http.Response, error) {
+func (r AdminAPIAdminGetHookRequest) Execute() (*Hook, *http.Response, error) {
 	return r.ApiService.AdminGetHookExecute(r)
 }
 
@@ -4930,10 +4930,10 @@ AdminGetHook Get a hook
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of the hook to get
- @return ApiAdminGetHookRequest
+ @return AdminAPIAdminGetHookRequest
 */
-func (a *AdminAPIService) AdminGetHook(ctx context.Context, id int64) ApiAdminGetHookRequest {
-	return ApiAdminGetHookRequest{
+func (a *AdminAPIService) AdminGetHook(ctx context.Context, id int64) AdminAPIAdminGetHookRequest {
+	return AdminAPIAdminGetHookRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -4942,7 +4942,7 @@ func (a *AdminAPIService) AdminGetHook(ctx context.Context, id int64) ApiAdminGe
 
 // Execute executes the request
 //  @return Hook
-func (a *AdminAPIService) AdminGetHookExecute(r ApiAdminGetHookRequest) (*Hook, *http.Response, error) {
+func (a *AdminAPIService) AdminGetHookExecute(r AdminAPIAdminGetHookRequest) (*Hook, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -5100,13 +5100,13 @@ func (a *AdminAPIService) AdminGetHookExecute(r ApiAdminGetHookRequest) (*Hook, 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminGetQuotaGroupRequest struct {
+type AdminAPIAdminGetQuotaGroupRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	quotagroup string
 }
 
-func (r ApiAdminGetQuotaGroupRequest) Execute() (*QuotaGroup, *http.Response, error) {
+func (r AdminAPIAdminGetQuotaGroupRequest) Execute() (*QuotaGroup, *http.Response, error) {
 	return r.ApiService.AdminGetQuotaGroupExecute(r)
 }
 
@@ -5115,10 +5115,10 @@ AdminGetQuotaGroup Get information about the quota group
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param quotagroup quota group to query
- @return ApiAdminGetQuotaGroupRequest
+ @return AdminAPIAdminGetQuotaGroupRequest
 */
-func (a *AdminAPIService) AdminGetQuotaGroup(ctx context.Context, quotagroup string) ApiAdminGetQuotaGroupRequest {
-	return ApiAdminGetQuotaGroupRequest{
+func (a *AdminAPIService) AdminGetQuotaGroup(ctx context.Context, quotagroup string) AdminAPIAdminGetQuotaGroupRequest {
+	return AdminAPIAdminGetQuotaGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 		quotagroup: quotagroup,
@@ -5127,7 +5127,7 @@ func (a *AdminAPIService) AdminGetQuotaGroup(ctx context.Context, quotagroup str
 
 // Execute executes the request
 //  @return QuotaGroup
-func (a *AdminAPIService) AdminGetQuotaGroupExecute(r ApiAdminGetQuotaGroupRequest) (*QuotaGroup, *http.Response, error) {
+func (a *AdminAPIService) AdminGetQuotaGroupExecute(r AdminAPIAdminGetQuotaGroupRequest) (*QuotaGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -5317,13 +5317,13 @@ func (a *AdminAPIService) AdminGetQuotaGroupExecute(r ApiAdminGetQuotaGroupReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminGetQuotaRuleRequest struct {
+type AdminAPIAdminGetQuotaRuleRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	quotarule string
 }
 
-func (r ApiAdminGetQuotaRuleRequest) Execute() (*QuotaRuleInfo, *http.Response, error) {
+func (r AdminAPIAdminGetQuotaRuleRequest) Execute() (*QuotaRuleInfo, *http.Response, error) {
 	return r.ApiService.AdminGetQuotaRuleExecute(r)
 }
 
@@ -5332,10 +5332,10 @@ AdminGetQuotaRule Get information about a quota rule
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param quotarule quota rule to query
- @return ApiAdminGetQuotaRuleRequest
+ @return AdminAPIAdminGetQuotaRuleRequest
 */
-func (a *AdminAPIService) AdminGetQuotaRule(ctx context.Context, quotarule string) ApiAdminGetQuotaRuleRequest {
-	return ApiAdminGetQuotaRuleRequest{
+func (a *AdminAPIService) AdminGetQuotaRule(ctx context.Context, quotarule string) AdminAPIAdminGetQuotaRuleRequest {
+	return AdminAPIAdminGetQuotaRuleRequest{
 		ApiService: a,
 		ctx: ctx,
 		quotarule: quotarule,
@@ -5344,7 +5344,7 @@ func (a *AdminAPIService) AdminGetQuotaRule(ctx context.Context, quotarule strin
 
 // Execute executes the request
 //  @return QuotaRuleInfo
-func (a *AdminAPIService) AdminGetQuotaRuleExecute(r ApiAdminGetQuotaRuleRequest) (*QuotaRuleInfo, *http.Response, error) {
+func (a *AdminAPIService) AdminGetQuotaRuleExecute(r AdminAPIAdminGetQuotaRuleRequest) (*QuotaRuleInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -5534,12 +5534,12 @@ func (a *AdminAPIService) AdminGetQuotaRuleExecute(r ApiAdminGetQuotaRuleRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminGetRunnerRegistrationTokenRequest struct {
+type AdminAPIAdminGetRunnerRegistrationTokenRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 }
 
-func (r ApiAdminGetRunnerRegistrationTokenRequest) Execute() (*http.Response, error) {
+func (r AdminAPIAdminGetRunnerRegistrationTokenRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AdminGetRunnerRegistrationTokenExecute(r)
 }
 
@@ -5547,17 +5547,17 @@ func (r ApiAdminGetRunnerRegistrationTokenRequest) Execute() (*http.Response, er
 AdminGetRunnerRegistrationToken Get an global actions runner registration token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminGetRunnerRegistrationTokenRequest
+ @return AdminAPIAdminGetRunnerRegistrationTokenRequest
 */
-func (a *AdminAPIService) AdminGetRunnerRegistrationToken(ctx context.Context) ApiAdminGetRunnerRegistrationTokenRequest {
-	return ApiAdminGetRunnerRegistrationTokenRequest{
+func (a *AdminAPIService) AdminGetRunnerRegistrationToken(ctx context.Context) AdminAPIAdminGetRunnerRegistrationTokenRequest {
+	return AdminAPIAdminGetRunnerRegistrationTokenRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *AdminAPIService) AdminGetRunnerRegistrationTokenExecute(r ApiAdminGetRunnerRegistrationTokenRequest) (*http.Response, error) {
+func (a *AdminAPIService) AdminGetRunnerRegistrationTokenExecute(r AdminAPIAdminGetRunnerRegistrationTokenRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -5704,13 +5704,13 @@ func (a *AdminAPIService) AdminGetRunnerRegistrationTokenExecute(r ApiAdminGetRu
 	return localVarHTTPResponse, nil
 }
 
-type ApiAdminGetUserQuotaRequest struct {
+type AdminAPIAdminGetUserQuotaRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	username string
 }
 
-func (r ApiAdminGetUserQuotaRequest) Execute() (*QuotaInfo, *http.Response, error) {
+func (r AdminAPIAdminGetUserQuotaRequest) Execute() (*QuotaInfo, *http.Response, error) {
 	return r.ApiService.AdminGetUserQuotaExecute(r)
 }
 
@@ -5719,10 +5719,10 @@ AdminGetUserQuota Get the user's quota info
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param username username of user to query
- @return ApiAdminGetUserQuotaRequest
+ @return AdminAPIAdminGetUserQuotaRequest
 */
-func (a *AdminAPIService) AdminGetUserQuota(ctx context.Context, username string) ApiAdminGetUserQuotaRequest {
-	return ApiAdminGetUserQuotaRequest{
+func (a *AdminAPIService) AdminGetUserQuota(ctx context.Context, username string) AdminAPIAdminGetUserQuotaRequest {
+	return AdminAPIAdminGetUserQuotaRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
@@ -5731,7 +5731,7 @@ func (a *AdminAPIService) AdminGetUserQuota(ctx context.Context, username string
 
 // Execute executes the request
 //  @return QuotaInfo
-func (a *AdminAPIService) AdminGetUserQuotaExecute(r ApiAdminGetUserQuotaRequest) (*QuotaInfo, *http.Response, error) {
+func (a *AdminAPIService) AdminGetUserQuotaExecute(r AdminAPIAdminGetUserQuotaRequest) (*QuotaInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -5932,7 +5932,7 @@ func (a *AdminAPIService) AdminGetUserQuotaExecute(r ApiAdminGetUserQuotaRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminListHooksRequest struct {
+type AdminAPIAdminListHooksRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	page *int32
@@ -5940,18 +5940,18 @@ type ApiAdminListHooksRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiAdminListHooksRequest) Page(page int32) ApiAdminListHooksRequest {
+func (r AdminAPIAdminListHooksRequest) Page(page int32) AdminAPIAdminListHooksRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiAdminListHooksRequest) Limit(limit int32) ApiAdminListHooksRequest {
+func (r AdminAPIAdminListHooksRequest) Limit(limit int32) AdminAPIAdminListHooksRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiAdminListHooksRequest) Execute() ([]Hook, *http.Response, error) {
+func (r AdminAPIAdminListHooksRequest) Execute() ([]Hook, *http.Response, error) {
 	return r.ApiService.AdminListHooksExecute(r)
 }
 
@@ -5959,10 +5959,10 @@ func (r ApiAdminListHooksRequest) Execute() ([]Hook, *http.Response, error) {
 AdminListHooks List system's webhooks
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminListHooksRequest
+ @return AdminAPIAdminListHooksRequest
 */
-func (a *AdminAPIService) AdminListHooks(ctx context.Context) ApiAdminListHooksRequest {
-	return ApiAdminListHooksRequest{
+func (a *AdminAPIService) AdminListHooks(ctx context.Context) AdminAPIAdminListHooksRequest {
+	return AdminAPIAdminListHooksRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -5970,7 +5970,7 @@ func (a *AdminAPIService) AdminListHooks(ctx context.Context) ApiAdminListHooksR
 
 // Execute executes the request
 //  @return []Hook
-func (a *AdminAPIService) AdminListHooksExecute(r ApiAdminListHooksRequest) ([]Hook, *http.Response, error) {
+func (a *AdminAPIService) AdminListHooksExecute(r AdminAPIAdminListHooksRequest) ([]Hook, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -6133,12 +6133,12 @@ func (a *AdminAPIService) AdminListHooksExecute(r ApiAdminListHooksRequest) ([]H
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminListQuotaGroupsRequest struct {
+type AdminAPIAdminListQuotaGroupsRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 }
 
-func (r ApiAdminListQuotaGroupsRequest) Execute() ([]QuotaGroup, *http.Response, error) {
+func (r AdminAPIAdminListQuotaGroupsRequest) Execute() ([]QuotaGroup, *http.Response, error) {
 	return r.ApiService.AdminListQuotaGroupsExecute(r)
 }
 
@@ -6146,10 +6146,10 @@ func (r ApiAdminListQuotaGroupsRequest) Execute() ([]QuotaGroup, *http.Response,
 AdminListQuotaGroups List the available quota groups
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminListQuotaGroupsRequest
+ @return AdminAPIAdminListQuotaGroupsRequest
 */
-func (a *AdminAPIService) AdminListQuotaGroups(ctx context.Context) ApiAdminListQuotaGroupsRequest {
-	return ApiAdminListQuotaGroupsRequest{
+func (a *AdminAPIService) AdminListQuotaGroups(ctx context.Context) AdminAPIAdminListQuotaGroupsRequest {
+	return AdminAPIAdminListQuotaGroupsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -6157,7 +6157,7 @@ func (a *AdminAPIService) AdminListQuotaGroups(ctx context.Context) ApiAdminList
 
 // Execute executes the request
 //  @return []QuotaGroup
-func (a *AdminAPIService) AdminListQuotaGroupsExecute(r ApiAdminListQuotaGroupsRequest) ([]QuotaGroup, *http.Response, error) {
+func (a *AdminAPIService) AdminListQuotaGroupsExecute(r AdminAPIAdminListQuotaGroupsRequest) ([]QuotaGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -6324,12 +6324,12 @@ func (a *AdminAPIService) AdminListQuotaGroupsExecute(r ApiAdminListQuotaGroupsR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminListQuotaRulesRequest struct {
+type AdminAPIAdminListQuotaRulesRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 }
 
-func (r ApiAdminListQuotaRulesRequest) Execute() ([]QuotaRuleInfo, *http.Response, error) {
+func (r AdminAPIAdminListQuotaRulesRequest) Execute() ([]QuotaRuleInfo, *http.Response, error) {
 	return r.ApiService.AdminListQuotaRulesExecute(r)
 }
 
@@ -6337,10 +6337,10 @@ func (r ApiAdminListQuotaRulesRequest) Execute() ([]QuotaRuleInfo, *http.Respons
 AdminListQuotaRules List the available quota rules
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminListQuotaRulesRequest
+ @return AdminAPIAdminListQuotaRulesRequest
 */
-func (a *AdminAPIService) AdminListQuotaRules(ctx context.Context) ApiAdminListQuotaRulesRequest {
-	return ApiAdminListQuotaRulesRequest{
+func (a *AdminAPIService) AdminListQuotaRules(ctx context.Context) AdminAPIAdminListQuotaRulesRequest {
+	return AdminAPIAdminListQuotaRulesRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -6348,7 +6348,7 @@ func (a *AdminAPIService) AdminListQuotaRules(ctx context.Context) ApiAdminListQ
 
 // Execute executes the request
 //  @return []QuotaRuleInfo
-func (a *AdminAPIService) AdminListQuotaRulesExecute(r ApiAdminListQuotaRulesRequest) ([]QuotaRuleInfo, *http.Response, error) {
+func (a *AdminAPIService) AdminListQuotaRulesExecute(r AdminAPIAdminListQuotaRulesRequest) ([]QuotaRuleInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -6515,13 +6515,13 @@ func (a *AdminAPIService) AdminListQuotaRulesExecute(r ApiAdminListQuotaRulesReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminListUsersInQuotaGroupRequest struct {
+type AdminAPIAdminListUsersInQuotaGroupRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	quotagroup string
 }
 
-func (r ApiAdminListUsersInQuotaGroupRequest) Execute() ([]User, *http.Response, error) {
+func (r AdminAPIAdminListUsersInQuotaGroupRequest) Execute() ([]User, *http.Response, error) {
 	return r.ApiService.AdminListUsersInQuotaGroupExecute(r)
 }
 
@@ -6530,10 +6530,10 @@ AdminListUsersInQuotaGroup List users in a quota group
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param quotagroup quota group to list members of
- @return ApiAdminListUsersInQuotaGroupRequest
+ @return AdminAPIAdminListUsersInQuotaGroupRequest
 */
-func (a *AdminAPIService) AdminListUsersInQuotaGroup(ctx context.Context, quotagroup string) ApiAdminListUsersInQuotaGroupRequest {
-	return ApiAdminListUsersInQuotaGroupRequest{
+func (a *AdminAPIService) AdminListUsersInQuotaGroup(ctx context.Context, quotagroup string) AdminAPIAdminListUsersInQuotaGroupRequest {
+	return AdminAPIAdminListUsersInQuotaGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 		quotagroup: quotagroup,
@@ -6542,7 +6542,7 @@ func (a *AdminAPIService) AdminListUsersInQuotaGroup(ctx context.Context, quotag
 
 // Execute executes the request
 //  @return []User
-func (a *AdminAPIService) AdminListUsersInQuotaGroupExecute(r ApiAdminListUsersInQuotaGroupRequest) ([]User, *http.Response, error) {
+func (a *AdminAPIService) AdminListUsersInQuotaGroupExecute(r AdminAPIAdminListUsersInQuotaGroupRequest) ([]User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -6732,14 +6732,14 @@ func (a *AdminAPIService) AdminListUsersInQuotaGroupExecute(r ApiAdminListUsersI
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminRemoveRuleFromQuotaGroupRequest struct {
+type AdminAPIAdminRemoveRuleFromQuotaGroupRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	quotagroup string
 	quotarule string
 }
 
-func (r ApiAdminRemoveRuleFromQuotaGroupRequest) Execute() (*http.Response, error) {
+func (r AdminAPIAdminRemoveRuleFromQuotaGroupRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AdminRemoveRuleFromQuotaGroupExecute(r)
 }
 
@@ -6749,10 +6749,10 @@ AdminRemoveRuleFromQuotaGroup Removes a rule from a quota group
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param quotagroup quota group to remove a rule from
  @param quotarule the name of the quota rule to remove from the group
- @return ApiAdminRemoveRuleFromQuotaGroupRequest
+ @return AdminAPIAdminRemoveRuleFromQuotaGroupRequest
 */
-func (a *AdminAPIService) AdminRemoveRuleFromQuotaGroup(ctx context.Context, quotagroup string, quotarule string) ApiAdminRemoveRuleFromQuotaGroupRequest {
-	return ApiAdminRemoveRuleFromQuotaGroupRequest{
+func (a *AdminAPIService) AdminRemoveRuleFromQuotaGroup(ctx context.Context, quotagroup string, quotarule string) AdminAPIAdminRemoveRuleFromQuotaGroupRequest {
+	return AdminAPIAdminRemoveRuleFromQuotaGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 		quotagroup: quotagroup,
@@ -6761,7 +6761,7 @@ func (a *AdminAPIService) AdminRemoveRuleFromQuotaGroup(ctx context.Context, quo
 }
 
 // Execute executes the request
-func (a *AdminAPIService) AdminRemoveRuleFromQuotaGroupExecute(r ApiAdminRemoveRuleFromQuotaGroupRequest) (*http.Response, error) {
+func (a *AdminAPIService) AdminRemoveRuleFromQuotaGroupExecute(r AdminAPIAdminRemoveRuleFromQuotaGroupRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -6942,14 +6942,14 @@ func (a *AdminAPIService) AdminRemoveRuleFromQuotaGroupExecute(r ApiAdminRemoveR
 	return localVarHTTPResponse, nil
 }
 
-type ApiAdminRemoveUserFromQuotaGroupRequest struct {
+type AdminAPIAdminRemoveUserFromQuotaGroupRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	quotagroup string
 	username string
 }
 
-func (r ApiAdminRemoveUserFromQuotaGroupRequest) Execute() (*http.Response, error) {
+func (r AdminAPIAdminRemoveUserFromQuotaGroupRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AdminRemoveUserFromQuotaGroupExecute(r)
 }
 
@@ -6959,10 +6959,10 @@ AdminRemoveUserFromQuotaGroup Remove a user from a quota group
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param quotagroup quota group to remove a user from
  @param username username of the user to remove from the quota group
- @return ApiAdminRemoveUserFromQuotaGroupRequest
+ @return AdminAPIAdminRemoveUserFromQuotaGroupRequest
 */
-func (a *AdminAPIService) AdminRemoveUserFromQuotaGroup(ctx context.Context, quotagroup string, username string) ApiAdminRemoveUserFromQuotaGroupRequest {
-	return ApiAdminRemoveUserFromQuotaGroupRequest{
+func (a *AdminAPIService) AdminRemoveUserFromQuotaGroup(ctx context.Context, quotagroup string, username string) AdminAPIAdminRemoveUserFromQuotaGroupRequest {
+	return AdminAPIAdminRemoveUserFromQuotaGroupRequest{
 		ApiService: a,
 		ctx: ctx,
 		quotagroup: quotagroup,
@@ -6971,7 +6971,7 @@ func (a *AdminAPIService) AdminRemoveUserFromQuotaGroup(ctx context.Context, quo
 }
 
 // Execute executes the request
-func (a *AdminAPIService) AdminRemoveUserFromQuotaGroupExecute(r ApiAdminRemoveUserFromQuotaGroupRequest) (*http.Response, error) {
+func (a *AdminAPIService) AdminRemoveUserFromQuotaGroupExecute(r AdminAPIAdminRemoveUserFromQuotaGroupRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -7152,19 +7152,19 @@ func (a *AdminAPIService) AdminRemoveUserFromQuotaGroupExecute(r ApiAdminRemoveU
 	return localVarHTTPResponse, nil
 }
 
-type ApiAdminRenameUserRequest struct {
+type AdminAPIAdminRenameUserRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	username string
 	body *RenameUserOption
 }
 
-func (r ApiAdminRenameUserRequest) Body(body RenameUserOption) ApiAdminRenameUserRequest {
+func (r AdminAPIAdminRenameUserRequest) Body(body RenameUserOption) AdminAPIAdminRenameUserRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiAdminRenameUserRequest) Execute() (*http.Response, error) {
+func (r AdminAPIAdminRenameUserRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AdminRenameUserExecute(r)
 }
 
@@ -7173,10 +7173,10 @@ AdminRenameUser Rename a user
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param username existing username of user
- @return ApiAdminRenameUserRequest
+ @return AdminAPIAdminRenameUserRequest
 */
-func (a *AdminAPIService) AdminRenameUser(ctx context.Context, username string) ApiAdminRenameUserRequest {
-	return ApiAdminRenameUserRequest{
+func (a *AdminAPIService) AdminRenameUser(ctx context.Context, username string) AdminAPIAdminRenameUserRequest {
+	return AdminAPIAdminRenameUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
@@ -7184,7 +7184,7 @@ func (a *AdminAPIService) AdminRenameUser(ctx context.Context, username string) 
 }
 
 // Execute executes the request
-func (a *AdminAPIService) AdminRenameUserExecute(r ApiAdminRenameUserRequest) (*http.Response, error) {
+func (a *AdminAPIService) AdminRenameUserExecute(r AdminAPIAdminRenameUserRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -7358,7 +7358,7 @@ func (a *AdminAPIService) AdminRenameUserExecute(r ApiAdminRenameUserRequest) (*
 	return localVarHTTPResponse, nil
 }
 
-type ApiAdminSearchEmailsRequest struct {
+type AdminAPIAdminSearchEmailsRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	q *string
@@ -7367,24 +7367,24 @@ type ApiAdminSearchEmailsRequest struct {
 }
 
 // keyword
-func (r ApiAdminSearchEmailsRequest) Q(q string) ApiAdminSearchEmailsRequest {
+func (r AdminAPIAdminSearchEmailsRequest) Q(q string) AdminAPIAdminSearchEmailsRequest {
 	r.q = &q
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiAdminSearchEmailsRequest) Page(page int32) ApiAdminSearchEmailsRequest {
+func (r AdminAPIAdminSearchEmailsRequest) Page(page int32) AdminAPIAdminSearchEmailsRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiAdminSearchEmailsRequest) Limit(limit int32) ApiAdminSearchEmailsRequest {
+func (r AdminAPIAdminSearchEmailsRequest) Limit(limit int32) AdminAPIAdminSearchEmailsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiAdminSearchEmailsRequest) Execute() ([]Email, *http.Response, error) {
+func (r AdminAPIAdminSearchEmailsRequest) Execute() ([]Email, *http.Response, error) {
 	return r.ApiService.AdminSearchEmailsExecute(r)
 }
 
@@ -7392,10 +7392,10 @@ func (r ApiAdminSearchEmailsRequest) Execute() ([]Email, *http.Response, error) 
 AdminSearchEmails Search all emails
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminSearchEmailsRequest
+ @return AdminAPIAdminSearchEmailsRequest
 */
-func (a *AdminAPIService) AdminSearchEmails(ctx context.Context) ApiAdminSearchEmailsRequest {
-	return ApiAdminSearchEmailsRequest{
+func (a *AdminAPIService) AdminSearchEmails(ctx context.Context) AdminAPIAdminSearchEmailsRequest {
+	return AdminAPIAdminSearchEmailsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -7403,7 +7403,7 @@ func (a *AdminAPIService) AdminSearchEmails(ctx context.Context) ApiAdminSearchE
 
 // Execute executes the request
 //  @return []Email
-func (a *AdminAPIService) AdminSearchEmailsExecute(r ApiAdminSearchEmailsRequest) ([]Email, *http.Response, error) {
+func (a *AdminAPIService) AdminSearchEmailsExecute(r AdminAPIAdminSearchEmailsRequest) ([]Email, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -7579,19 +7579,19 @@ func (a *AdminAPIService) AdminSearchEmailsExecute(r ApiAdminSearchEmailsRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminSearchRunJobsRequest struct {
+type AdminAPIAdminSearchRunJobsRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	labels *string
 }
 
 // a comma separated list of run job labels to search for
-func (r ApiAdminSearchRunJobsRequest) Labels(labels string) ApiAdminSearchRunJobsRequest {
+func (r AdminAPIAdminSearchRunJobsRequest) Labels(labels string) AdminAPIAdminSearchRunJobsRequest {
 	r.labels = &labels
 	return r
 }
 
-func (r ApiAdminSearchRunJobsRequest) Execute() ([]ActionRunJob, *http.Response, error) {
+func (r AdminAPIAdminSearchRunJobsRequest) Execute() ([]ActionRunJob, *http.Response, error) {
 	return r.ApiService.AdminSearchRunJobsExecute(r)
 }
 
@@ -7599,10 +7599,10 @@ func (r ApiAdminSearchRunJobsRequest) Execute() ([]ActionRunJob, *http.Response,
 AdminSearchRunJobs Search action jobs according filter conditions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminSearchRunJobsRequest
+ @return AdminAPIAdminSearchRunJobsRequest
 */
-func (a *AdminAPIService) AdminSearchRunJobs(ctx context.Context) ApiAdminSearchRunJobsRequest {
-	return ApiAdminSearchRunJobsRequest{
+func (a *AdminAPIService) AdminSearchRunJobs(ctx context.Context) AdminAPIAdminSearchRunJobsRequest {
+	return AdminAPIAdminSearchRunJobsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -7610,7 +7610,7 @@ func (a *AdminAPIService) AdminSearchRunJobs(ctx context.Context) ApiAdminSearch
 
 // Execute executes the request
 //  @return []ActionRunJob
-func (a *AdminAPIService) AdminSearchRunJobsExecute(r ApiAdminSearchRunJobsRequest) ([]ActionRunJob, *http.Response, error) {
+func (a *AdminAPIService) AdminSearchRunJobsExecute(r AdminAPIAdminSearchRunJobsRequest) ([]ActionRunJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -7780,7 +7780,7 @@ func (a *AdminAPIService) AdminSearchRunJobsExecute(r ApiAdminSearchRunJobsReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminSearchUsersRequest struct {
+type AdminAPIAdminSearchUsersRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	sourceId *int64
@@ -7791,36 +7791,36 @@ type ApiAdminSearchUsersRequest struct {
 }
 
 // ID of the user&#39;s login source to search for
-func (r ApiAdminSearchUsersRequest) SourceId(sourceId int64) ApiAdminSearchUsersRequest {
+func (r AdminAPIAdminSearchUsersRequest) SourceId(sourceId int64) AdminAPIAdminSearchUsersRequest {
 	r.sourceId = &sourceId
 	return r
 }
 
 // user&#39;s login name to search for
-func (r ApiAdminSearchUsersRequest) LoginName(loginName string) ApiAdminSearchUsersRequest {
+func (r AdminAPIAdminSearchUsersRequest) LoginName(loginName string) AdminAPIAdminSearchUsersRequest {
 	r.loginName = &loginName
 	return r
 }
 
 // sort order of results
-func (r ApiAdminSearchUsersRequest) Sort(sort string) ApiAdminSearchUsersRequest {
+func (r AdminAPIAdminSearchUsersRequest) Sort(sort string) AdminAPIAdminSearchUsersRequest {
 	r.sort = &sort
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiAdminSearchUsersRequest) Page(page int32) ApiAdminSearchUsersRequest {
+func (r AdminAPIAdminSearchUsersRequest) Page(page int32) AdminAPIAdminSearchUsersRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiAdminSearchUsersRequest) Limit(limit int32) ApiAdminSearchUsersRequest {
+func (r AdminAPIAdminSearchUsersRequest) Limit(limit int32) AdminAPIAdminSearchUsersRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiAdminSearchUsersRequest) Execute() ([]User, *http.Response, error) {
+func (r AdminAPIAdminSearchUsersRequest) Execute() ([]User, *http.Response, error) {
 	return r.ApiService.AdminSearchUsersExecute(r)
 }
 
@@ -7828,10 +7828,10 @@ func (r ApiAdminSearchUsersRequest) Execute() ([]User, *http.Response, error) {
 AdminSearchUsers Search users according filter conditions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminSearchUsersRequest
+ @return AdminAPIAdminSearchUsersRequest
 */
-func (a *AdminAPIService) AdminSearchUsers(ctx context.Context) ApiAdminSearchUsersRequest {
-	return ApiAdminSearchUsersRequest{
+func (a *AdminAPIService) AdminSearchUsers(ctx context.Context) AdminAPIAdminSearchUsersRequest {
+	return AdminAPIAdminSearchUsersRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -7839,7 +7839,7 @@ func (a *AdminAPIService) AdminSearchUsers(ctx context.Context) ApiAdminSearchUs
 
 // Execute executes the request
 //  @return []User
-func (a *AdminAPIService) AdminSearchUsersExecute(r ApiAdminSearchUsersRequest) ([]User, *http.Response, error) {
+func (a *AdminAPIService) AdminSearchUsersExecute(r AdminAPIAdminSearchUsersRequest) ([]User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -8021,7 +8021,7 @@ func (a *AdminAPIService) AdminSearchUsersExecute(r ApiAdminSearchUsersRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAdminSetUserQuotaGroupsRequest struct {
+type AdminAPIAdminSetUserQuotaGroupsRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	username string
@@ -8029,12 +8029,12 @@ type ApiAdminSetUserQuotaGroupsRequest struct {
 }
 
 // list of groups that the user should be a member of
-func (r ApiAdminSetUserQuotaGroupsRequest) Groups(groups SetUserQuotaGroupsOptions) ApiAdminSetUserQuotaGroupsRequest {
+func (r AdminAPIAdminSetUserQuotaGroupsRequest) Groups(groups SetUserQuotaGroupsOptions) AdminAPIAdminSetUserQuotaGroupsRequest {
 	r.groups = &groups
 	return r
 }
 
-func (r ApiAdminSetUserQuotaGroupsRequest) Execute() (*http.Response, error) {
+func (r AdminAPIAdminSetUserQuotaGroupsRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AdminSetUserQuotaGroupsExecute(r)
 }
 
@@ -8043,10 +8043,10 @@ AdminSetUserQuotaGroups Set the user's quota groups to a given list.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param username username of the user to modify the quota groups from
- @return ApiAdminSetUserQuotaGroupsRequest
+ @return AdminAPIAdminSetUserQuotaGroupsRequest
 */
-func (a *AdminAPIService) AdminSetUserQuotaGroups(ctx context.Context, username string) ApiAdminSetUserQuotaGroupsRequest {
-	return ApiAdminSetUserQuotaGroupsRequest{
+func (a *AdminAPIService) AdminSetUserQuotaGroups(ctx context.Context, username string) AdminAPIAdminSetUserQuotaGroupsRequest {
+	return AdminAPIAdminSetUserQuotaGroupsRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
@@ -8054,7 +8054,7 @@ func (a *AdminAPIService) AdminSetUserQuotaGroups(ctx context.Context, username 
 }
 
 // Execute executes the request
-func (a *AdminAPIService) AdminSetUserQuotaGroupsExecute(r ApiAdminSetUserQuotaGroupsRequest) (*http.Response, error) {
+func (a *AdminAPIService) AdminSetUserQuotaGroupsExecute(r AdminAPIAdminSetUserQuotaGroupsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -8250,7 +8250,7 @@ func (a *AdminAPIService) AdminSetUserQuotaGroupsExecute(r ApiAdminSetUserQuotaG
 	return localVarHTTPResponse, nil
 }
 
-type ApiAdminUnadoptedListRequest struct {
+type AdminAPIAdminUnadoptedListRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
 	page *int32
@@ -8259,24 +8259,24 @@ type ApiAdminUnadoptedListRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiAdminUnadoptedListRequest) Page(page int32) ApiAdminUnadoptedListRequest {
+func (r AdminAPIAdminUnadoptedListRequest) Page(page int32) AdminAPIAdminUnadoptedListRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiAdminUnadoptedListRequest) Limit(limit int32) ApiAdminUnadoptedListRequest {
+func (r AdminAPIAdminUnadoptedListRequest) Limit(limit int32) AdminAPIAdminUnadoptedListRequest {
 	r.limit = &limit
 	return r
 }
 
 // pattern of repositories to search for
-func (r ApiAdminUnadoptedListRequest) Pattern(pattern string) ApiAdminUnadoptedListRequest {
+func (r AdminAPIAdminUnadoptedListRequest) Pattern(pattern string) AdminAPIAdminUnadoptedListRequest {
 	r.pattern = &pattern
 	return r
 }
 
-func (r ApiAdminUnadoptedListRequest) Execute() ([]string, *http.Response, error) {
+func (r AdminAPIAdminUnadoptedListRequest) Execute() ([]string, *http.Response, error) {
 	return r.ApiService.AdminUnadoptedListExecute(r)
 }
 
@@ -8284,10 +8284,10 @@ func (r ApiAdminUnadoptedListRequest) Execute() ([]string, *http.Response, error
 AdminUnadoptedList List unadopted repositories
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAdminUnadoptedListRequest
+ @return AdminAPIAdminUnadoptedListRequest
 */
-func (a *AdminAPIService) AdminUnadoptedList(ctx context.Context) ApiAdminUnadoptedListRequest {
-	return ApiAdminUnadoptedListRequest{
+func (a *AdminAPIService) AdminUnadoptedList(ctx context.Context) AdminAPIAdminUnadoptedListRequest {
+	return AdminAPIAdminUnadoptedListRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -8295,7 +8295,7 @@ func (a *AdminAPIService) AdminUnadoptedList(ctx context.Context) ApiAdminUnadop
 
 // Execute executes the request
 //  @return []string
-func (a *AdminAPIService) AdminUnadoptedListExecute(r ApiAdminUnadoptedListRequest) ([]string, *http.Response, error) {
+func (a *AdminAPIService) AdminUnadoptedListExecute(r AdminAPIAdminUnadoptedListRequest) ([]string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

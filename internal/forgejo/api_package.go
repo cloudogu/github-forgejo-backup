@@ -23,7 +23,7 @@ import (
 // PackageAPIService PackageAPI service
 type PackageAPIService service
 
-type ApiDeletePackageRequest struct {
+type PackageAPIDeletePackageRequest struct {
 	ctx context.Context
 	ApiService *PackageAPIService
 	owner string
@@ -32,7 +32,7 @@ type ApiDeletePackageRequest struct {
 	version string
 }
 
-func (r ApiDeletePackageRequest) Execute() (*http.Response, error) {
+func (r PackageAPIDeletePackageRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeletePackageExecute(r)
 }
 
@@ -44,10 +44,10 @@ DeletePackage Delete a package
  @param type_ type of the package
  @param name name of the package
  @param version version of the package
- @return ApiDeletePackageRequest
+ @return PackageAPIDeletePackageRequest
 */
-func (a *PackageAPIService) DeletePackage(ctx context.Context, owner string, type_ string, name string, version string) ApiDeletePackageRequest {
-	return ApiDeletePackageRequest{
+func (a *PackageAPIService) DeletePackage(ctx context.Context, owner string, type_ string, name string, version string) PackageAPIDeletePackageRequest {
+	return PackageAPIDeletePackageRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -58,7 +58,7 @@ func (a *PackageAPIService) DeletePackage(ctx context.Context, owner string, typ
 }
 
 // Execute executes the request
-func (a *PackageAPIService) DeletePackageExecute(r ApiDeletePackageRequest) (*http.Response, error) {
+func (a *PackageAPIService) DeletePackageExecute(r PackageAPIDeletePackageRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -219,7 +219,7 @@ func (a *PackageAPIService) DeletePackageExecute(r ApiDeletePackageRequest) (*ht
 	return localVarHTTPResponse, nil
 }
 
-type ApiGetPackageRequest struct {
+type PackageAPIGetPackageRequest struct {
 	ctx context.Context
 	ApiService *PackageAPIService
 	owner string
@@ -228,7 +228,7 @@ type ApiGetPackageRequest struct {
 	version string
 }
 
-func (r ApiGetPackageRequest) Execute() (*Package, *http.Response, error) {
+func (r PackageAPIGetPackageRequest) Execute() (*Package, *http.Response, error) {
 	return r.ApiService.GetPackageExecute(r)
 }
 
@@ -240,10 +240,10 @@ GetPackage Gets a package
  @param type_ type of the package
  @param name name of the package
  @param version version of the package
- @return ApiGetPackageRequest
+ @return PackageAPIGetPackageRequest
 */
-func (a *PackageAPIService) GetPackage(ctx context.Context, owner string, type_ string, name string, version string) ApiGetPackageRequest {
-	return ApiGetPackageRequest{
+func (a *PackageAPIService) GetPackage(ctx context.Context, owner string, type_ string, name string, version string) PackageAPIGetPackageRequest {
+	return PackageAPIGetPackageRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -255,7 +255,7 @@ func (a *PackageAPIService) GetPackage(ctx context.Context, owner string, type_ 
 
 // Execute executes the request
 //  @return Package
-func (a *PackageAPIService) GetPackageExecute(r ApiGetPackageRequest) (*Package, *http.Response, error) {
+func (a *PackageAPIService) GetPackageExecute(r PackageAPIGetPackageRequest) (*Package, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -426,7 +426,7 @@ func (a *PackageAPIService) GetPackageExecute(r ApiGetPackageRequest) (*Package,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiLinkPackageRequest struct {
+type PackageAPILinkPackageRequest struct {
 	ctx context.Context
 	ApiService *PackageAPIService
 	owner string
@@ -435,7 +435,7 @@ type ApiLinkPackageRequest struct {
 	repoName string
 }
 
-func (r ApiLinkPackageRequest) Execute() (*http.Response, error) {
+func (r PackageAPILinkPackageRequest) Execute() (*http.Response, error) {
 	return r.ApiService.LinkPackageExecute(r)
 }
 
@@ -447,10 +447,10 @@ LinkPackage Link a package to a repository
  @param type_ type of the package
  @param name name of the package
  @param repoName name of the repository to link.
- @return ApiLinkPackageRequest
+ @return PackageAPILinkPackageRequest
 */
-func (a *PackageAPIService) LinkPackage(ctx context.Context, owner string, type_ string, name string, repoName string) ApiLinkPackageRequest {
-	return ApiLinkPackageRequest{
+func (a *PackageAPIService) LinkPackage(ctx context.Context, owner string, type_ string, name string, repoName string) PackageAPILinkPackageRequest {
+	return PackageAPILinkPackageRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -461,7 +461,7 @@ func (a *PackageAPIService) LinkPackage(ctx context.Context, owner string, type_
 }
 
 // Execute executes the request
-func (a *PackageAPIService) LinkPackageExecute(r ApiLinkPackageRequest) (*http.Response, error) {
+func (a *PackageAPIService) LinkPackageExecute(r PackageAPILinkPackageRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -622,7 +622,7 @@ func (a *PackageAPIService) LinkPackageExecute(r ApiLinkPackageRequest) (*http.R
 	return localVarHTTPResponse, nil
 }
 
-type ApiListPackageFilesRequest struct {
+type PackageAPIListPackageFilesRequest struct {
 	ctx context.Context
 	ApiService *PackageAPIService
 	owner string
@@ -631,7 +631,7 @@ type ApiListPackageFilesRequest struct {
 	version string
 }
 
-func (r ApiListPackageFilesRequest) Execute() ([]PackageFile, *http.Response, error) {
+func (r PackageAPIListPackageFilesRequest) Execute() ([]PackageFile, *http.Response, error) {
 	return r.ApiService.ListPackageFilesExecute(r)
 }
 
@@ -643,10 +643,10 @@ ListPackageFiles Gets all files of a package
  @param type_ type of the package
  @param name name of the package
  @param version version of the package
- @return ApiListPackageFilesRequest
+ @return PackageAPIListPackageFilesRequest
 */
-func (a *PackageAPIService) ListPackageFiles(ctx context.Context, owner string, type_ string, name string, version string) ApiListPackageFilesRequest {
-	return ApiListPackageFilesRequest{
+func (a *PackageAPIService) ListPackageFiles(ctx context.Context, owner string, type_ string, name string, version string) PackageAPIListPackageFilesRequest {
+	return PackageAPIListPackageFilesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -658,7 +658,7 @@ func (a *PackageAPIService) ListPackageFiles(ctx context.Context, owner string, 
 
 // Execute executes the request
 //  @return []PackageFile
-func (a *PackageAPIService) ListPackageFilesExecute(r ApiListPackageFilesRequest) ([]PackageFile, *http.Response, error) {
+func (a *PackageAPIService) ListPackageFilesExecute(r PackageAPIListPackageFilesRequest) ([]PackageFile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -829,7 +829,7 @@ func (a *PackageAPIService) ListPackageFilesExecute(r ApiListPackageFilesRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListPackagesRequest struct {
+type PackageAPIListPackagesRequest struct {
 	ctx context.Context
 	ApiService *PackageAPIService
 	owner string
@@ -840,30 +840,30 @@ type ApiListPackagesRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiListPackagesRequest) Page(page int32) ApiListPackagesRequest {
+func (r PackageAPIListPackagesRequest) Page(page int32) PackageAPIListPackagesRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiListPackagesRequest) Limit(limit int32) ApiListPackagesRequest {
+func (r PackageAPIListPackagesRequest) Limit(limit int32) PackageAPIListPackagesRequest {
 	r.limit = &limit
 	return r
 }
 
 // package type filter
-func (r ApiListPackagesRequest) Type_(type_ string) ApiListPackagesRequest {
+func (r PackageAPIListPackagesRequest) Type_(type_ string) PackageAPIListPackagesRequest {
 	r.type_ = &type_
 	return r
 }
 
 // name filter
-func (r ApiListPackagesRequest) Q(q string) ApiListPackagesRequest {
+func (r PackageAPIListPackagesRequest) Q(q string) PackageAPIListPackagesRequest {
 	r.q = &q
 	return r
 }
 
-func (r ApiListPackagesRequest) Execute() ([]Package, *http.Response, error) {
+func (r PackageAPIListPackagesRequest) Execute() ([]Package, *http.Response, error) {
 	return r.ApiService.ListPackagesExecute(r)
 }
 
@@ -872,10 +872,10 @@ ListPackages Gets all packages of an owner
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the packages
- @return ApiListPackagesRequest
+ @return PackageAPIListPackagesRequest
 */
-func (a *PackageAPIService) ListPackages(ctx context.Context, owner string) ApiListPackagesRequest {
-	return ApiListPackagesRequest{
+func (a *PackageAPIService) ListPackages(ctx context.Context, owner string) PackageAPIListPackagesRequest {
+	return PackageAPIListPackagesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -884,7 +884,7 @@ func (a *PackageAPIService) ListPackages(ctx context.Context, owner string) ApiL
 
 // Execute executes the request
 //  @return []Package
-func (a *PackageAPIService) ListPackagesExecute(r ApiListPackagesRequest) ([]Package, *http.Response, error) {
+func (a *PackageAPIService) ListPackagesExecute(r PackageAPIListPackagesRequest) ([]Package, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1064,7 +1064,7 @@ func (a *PackageAPIService) ListPackagesExecute(r ApiListPackagesRequest) ([]Pac
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUnlinkPackageRequest struct {
+type PackageAPIUnlinkPackageRequest struct {
 	ctx context.Context
 	ApiService *PackageAPIService
 	owner string
@@ -1072,7 +1072,7 @@ type ApiUnlinkPackageRequest struct {
 	name string
 }
 
-func (r ApiUnlinkPackageRequest) Execute() (*http.Response, error) {
+func (r PackageAPIUnlinkPackageRequest) Execute() (*http.Response, error) {
 	return r.ApiService.UnlinkPackageExecute(r)
 }
 
@@ -1083,10 +1083,10 @@ UnlinkPackage Unlink a package from a repository
  @param owner owner of the package
  @param type_ type of the package
  @param name name of the package
- @return ApiUnlinkPackageRequest
+ @return PackageAPIUnlinkPackageRequest
 */
-func (a *PackageAPIService) UnlinkPackage(ctx context.Context, owner string, type_ string, name string) ApiUnlinkPackageRequest {
-	return ApiUnlinkPackageRequest{
+func (a *PackageAPIService) UnlinkPackage(ctx context.Context, owner string, type_ string, name string) PackageAPIUnlinkPackageRequest {
+	return PackageAPIUnlinkPackageRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -1096,7 +1096,7 @@ func (a *PackageAPIService) UnlinkPackage(ctx context.Context, owner string, typ
 }
 
 // Execute executes the request
-func (a *PackageAPIService) UnlinkPackageExecute(r ApiUnlinkPackageRequest) (*http.Response, error) {
+func (a *PackageAPIService) UnlinkPackageExecute(r PackageAPIUnlinkPackageRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}

@@ -25,7 +25,7 @@ import (
 // IssueAPIService IssueAPI service
 type IssueAPIService service
 
-type ApiIssueAddLabelRequest struct {
+type IssueAPIIssueAddLabelRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -34,12 +34,12 @@ type ApiIssueAddLabelRequest struct {
 	body *IssueLabelsOption
 }
 
-func (r ApiIssueAddLabelRequest) Body(body IssueLabelsOption) ApiIssueAddLabelRequest {
+func (r IssueAPIIssueAddLabelRequest) Body(body IssueLabelsOption) IssueAPIIssueAddLabelRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueAddLabelRequest) Execute() ([]Label, *http.Response, error) {
+func (r IssueAPIIssueAddLabelRequest) Execute() ([]Label, *http.Response, error) {
 	return r.ApiService.IssueAddLabelExecute(r)
 }
 
@@ -50,10 +50,10 @@ IssueAddLabel Add a label to an issue
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueAddLabelRequest
+ @return IssueAPIIssueAddLabelRequest
 */
-func (a *IssueAPIService) IssueAddLabel(ctx context.Context, owner string, repo string, index int64) ApiIssueAddLabelRequest {
-	return ApiIssueAddLabelRequest{
+func (a *IssueAPIService) IssueAddLabel(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueAddLabelRequest {
+	return IssueAPIIssueAddLabelRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -64,7 +64,7 @@ func (a *IssueAPIService) IssueAddLabel(ctx context.Context, owner string, repo 
 
 // Execute executes the request
 //  @return []Label
-func (a *IssueAPIService) IssueAddLabelExecute(r ApiIssueAddLabelRequest) ([]Label, *http.Response, error) {
+func (a *IssueAPIService) IssueAddLabelExecute(r IssueAPIIssueAddLabelRequest) ([]Label, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -247,7 +247,7 @@ func (a *IssueAPIService) IssueAddLabelExecute(r ApiIssueAddLabelRequest) ([]Lab
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueAddSubscriptionRequest struct {
+type IssueAPIIssueAddSubscriptionRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -256,7 +256,7 @@ type ApiIssueAddSubscriptionRequest struct {
 	user string
 }
 
-func (r ApiIssueAddSubscriptionRequest) Execute() (*http.Response, error) {
+func (r IssueAPIIssueAddSubscriptionRequest) Execute() (*http.Response, error) {
 	return r.ApiService.IssueAddSubscriptionExecute(r)
 }
 
@@ -268,10 +268,10 @@ IssueAddSubscription Subscribe user to issue
  @param repo name of the repo
  @param index index of the issue
  @param user user to subscribe
- @return ApiIssueAddSubscriptionRequest
+ @return IssueAPIIssueAddSubscriptionRequest
 */
-func (a *IssueAPIService) IssueAddSubscription(ctx context.Context, owner string, repo string, index int64, user string) ApiIssueAddSubscriptionRequest {
-	return ApiIssueAddSubscriptionRequest{
+func (a *IssueAPIService) IssueAddSubscription(ctx context.Context, owner string, repo string, index int64, user string) IssueAPIIssueAddSubscriptionRequest {
+	return IssueAPIIssueAddSubscriptionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -282,7 +282,7 @@ func (a *IssueAPIService) IssueAddSubscription(ctx context.Context, owner string
 }
 
 // Execute executes the request
-func (a *IssueAPIService) IssueAddSubscriptionExecute(r ApiIssueAddSubscriptionRequest) (*http.Response, error) {
+func (a *IssueAPIService) IssueAddSubscriptionExecute(r IssueAPIIssueAddSubscriptionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -443,7 +443,7 @@ func (a *IssueAPIService) IssueAddSubscriptionExecute(r ApiIssueAddSubscriptionR
 	return localVarHTTPResponse, nil
 }
 
-type ApiIssueAddTimeRequest struct {
+type IssueAPIIssueAddTimeRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -452,12 +452,12 @@ type ApiIssueAddTimeRequest struct {
 	body *AddTimeOption
 }
 
-func (r ApiIssueAddTimeRequest) Body(body AddTimeOption) ApiIssueAddTimeRequest {
+func (r IssueAPIIssueAddTimeRequest) Body(body AddTimeOption) IssueAPIIssueAddTimeRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueAddTimeRequest) Execute() (*TrackedTime, *http.Response, error) {
+func (r IssueAPIIssueAddTimeRequest) Execute() (*TrackedTime, *http.Response, error) {
 	return r.ApiService.IssueAddTimeExecute(r)
 }
 
@@ -468,10 +468,10 @@ IssueAddTime Add tracked time to a issue
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueAddTimeRequest
+ @return IssueAPIIssueAddTimeRequest
 */
-func (a *IssueAPIService) IssueAddTime(ctx context.Context, owner string, repo string, index int64) ApiIssueAddTimeRequest {
-	return ApiIssueAddTimeRequest{
+func (a *IssueAPIService) IssueAddTime(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueAddTimeRequest {
+	return IssueAPIIssueAddTimeRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -482,7 +482,7 @@ func (a *IssueAPIService) IssueAddTime(ctx context.Context, owner string, repo s
 
 // Execute executes the request
 //  @return TrackedTime
-func (a *IssueAPIService) IssueAddTimeExecute(r ApiIssueAddTimeRequest) (*TrackedTime, *http.Response, error) {
+func (a *IssueAPIService) IssueAddTimeExecute(r IssueAPIIssueAddTimeRequest) (*TrackedTime, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -676,7 +676,7 @@ func (a *IssueAPIService) IssueAddTimeExecute(r ApiIssueAddTimeRequest) (*Tracke
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueCheckSubscriptionRequest struct {
+type IssueAPIIssueCheckSubscriptionRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -684,7 +684,7 @@ type ApiIssueCheckSubscriptionRequest struct {
 	index int64
 }
 
-func (r ApiIssueCheckSubscriptionRequest) Execute() (*WatchInfo, *http.Response, error) {
+func (r IssueAPIIssueCheckSubscriptionRequest) Execute() (*WatchInfo, *http.Response, error) {
 	return r.ApiService.IssueCheckSubscriptionExecute(r)
 }
 
@@ -695,10 +695,10 @@ IssueCheckSubscription Check if user is subscribed to an issue
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueCheckSubscriptionRequest
+ @return IssueAPIIssueCheckSubscriptionRequest
 */
-func (a *IssueAPIService) IssueCheckSubscription(ctx context.Context, owner string, repo string, index int64) ApiIssueCheckSubscriptionRequest {
-	return ApiIssueCheckSubscriptionRequest{
+func (a *IssueAPIService) IssueCheckSubscription(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueCheckSubscriptionRequest {
+	return IssueAPIIssueCheckSubscriptionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -709,7 +709,7 @@ func (a *IssueAPIService) IssueCheckSubscription(ctx context.Context, owner stri
 
 // Execute executes the request
 //  @return WatchInfo
-func (a *IssueAPIService) IssueCheckSubscriptionExecute(r ApiIssueCheckSubscriptionRequest) (*WatchInfo, *http.Response, error) {
+func (a *IssueAPIService) IssueCheckSubscriptionExecute(r IssueAPIIssueCheckSubscriptionRequest) (*WatchInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -879,7 +879,7 @@ func (a *IssueAPIService) IssueCheckSubscriptionExecute(r ApiIssueCheckSubscript
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueClearLabelsRequest struct {
+type IssueAPIIssueClearLabelsRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -888,12 +888,12 @@ type ApiIssueClearLabelsRequest struct {
 	body *DeleteLabelsOption
 }
 
-func (r ApiIssueClearLabelsRequest) Body(body DeleteLabelsOption) ApiIssueClearLabelsRequest {
+func (r IssueAPIIssueClearLabelsRequest) Body(body DeleteLabelsOption) IssueAPIIssueClearLabelsRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueClearLabelsRequest) Execute() (*http.Response, error) {
+func (r IssueAPIIssueClearLabelsRequest) Execute() (*http.Response, error) {
 	return r.ApiService.IssueClearLabelsExecute(r)
 }
 
@@ -904,10 +904,10 @@ IssueClearLabels Remove all labels from an issue
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueClearLabelsRequest
+ @return IssueAPIIssueClearLabelsRequest
 */
-func (a *IssueAPIService) IssueClearLabels(ctx context.Context, owner string, repo string, index int64) ApiIssueClearLabelsRequest {
-	return ApiIssueClearLabelsRequest{
+func (a *IssueAPIService) IssueClearLabels(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueClearLabelsRequest {
+	return IssueAPIIssueClearLabelsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -917,7 +917,7 @@ func (a *IssueAPIService) IssueClearLabels(ctx context.Context, owner string, re
 }
 
 // Execute executes the request
-func (a *IssueAPIService) IssueClearLabelsExecute(r ApiIssueClearLabelsRequest) (*http.Response, error) {
+func (a *IssueAPIService) IssueClearLabelsExecute(r IssueAPIIssueClearLabelsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -1090,7 +1090,7 @@ func (a *IssueAPIService) IssueClearLabelsExecute(r ApiIssueClearLabelsRequest) 
 	return localVarHTTPResponse, nil
 }
 
-type ApiIssueCreateCommentRequest struct {
+type IssueAPIIssueCreateCommentRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -1099,12 +1099,12 @@ type ApiIssueCreateCommentRequest struct {
 	body *CreateIssueCommentOption
 }
 
-func (r ApiIssueCreateCommentRequest) Body(body CreateIssueCommentOption) ApiIssueCreateCommentRequest {
+func (r IssueAPIIssueCreateCommentRequest) Body(body CreateIssueCommentOption) IssueAPIIssueCreateCommentRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueCreateCommentRequest) Execute() (*Comment, *http.Response, error) {
+func (r IssueAPIIssueCreateCommentRequest) Execute() (*Comment, *http.Response, error) {
 	return r.ApiService.IssueCreateCommentExecute(r)
 }
 
@@ -1115,10 +1115,10 @@ IssueCreateComment Add a comment to an issue
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueCreateCommentRequest
+ @return IssueAPIIssueCreateCommentRequest
 */
-func (a *IssueAPIService) IssueCreateComment(ctx context.Context, owner string, repo string, index int64) ApiIssueCreateCommentRequest {
-	return ApiIssueCreateCommentRequest{
+func (a *IssueAPIService) IssueCreateComment(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueCreateCommentRequest {
+	return IssueAPIIssueCreateCommentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -1129,7 +1129,7 @@ func (a *IssueAPIService) IssueCreateComment(ctx context.Context, owner string, 
 
 // Execute executes the request
 //  @return Comment
-func (a *IssueAPIService) IssueCreateCommentExecute(r ApiIssueCreateCommentRequest) (*Comment, *http.Response, error) {
+func (a *IssueAPIService) IssueCreateCommentExecute(r IssueAPIIssueCreateCommentRequest) (*Comment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1334,7 +1334,7 @@ func (a *IssueAPIService) IssueCreateCommentExecute(r ApiIssueCreateCommentReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueCreateIssueRequest struct {
+type IssueAPIIssueCreateIssueRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -1342,12 +1342,12 @@ type ApiIssueCreateIssueRequest struct {
 	body *CreateIssueOption
 }
 
-func (r ApiIssueCreateIssueRequest) Body(body CreateIssueOption) ApiIssueCreateIssueRequest {
+func (r IssueAPIIssueCreateIssueRequest) Body(body CreateIssueOption) IssueAPIIssueCreateIssueRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueCreateIssueRequest) Execute() (*Issue, *http.Response, error) {
+func (r IssueAPIIssueCreateIssueRequest) Execute() (*Issue, *http.Response, error) {
 	return r.ApiService.IssueCreateIssueExecute(r)
 }
 
@@ -1357,10 +1357,10 @@ IssueCreateIssue Create an issue. If using deadline only the date will be taken 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiIssueCreateIssueRequest
+ @return IssueAPIIssueCreateIssueRequest
 */
-func (a *IssueAPIService) IssueCreateIssue(ctx context.Context, owner string, repo string) ApiIssueCreateIssueRequest {
-	return ApiIssueCreateIssueRequest{
+func (a *IssueAPIService) IssueCreateIssue(ctx context.Context, owner string, repo string) IssueAPIIssueCreateIssueRequest {
+	return IssueAPIIssueCreateIssueRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -1370,7 +1370,7 @@ func (a *IssueAPIService) IssueCreateIssue(ctx context.Context, owner string, re
 
 // Execute executes the request
 //  @return Issue
-func (a *IssueAPIService) IssueCreateIssueExecute(r ApiIssueCreateIssueRequest) (*Issue, *http.Response, error) {
+func (a *IssueAPIService) IssueCreateIssueExecute(r IssueAPIIssueCreateIssueRequest) (*Issue, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1585,7 +1585,7 @@ func (a *IssueAPIService) IssueCreateIssueExecute(r ApiIssueCreateIssueRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueCreateIssueAttachmentRequest struct {
+type IssueAPIIssueCreateIssueAttachmentRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -1597,24 +1597,24 @@ type ApiIssueCreateIssueAttachmentRequest struct {
 }
 
 // attachment to upload
-func (r ApiIssueCreateIssueAttachmentRequest) Attachment(attachment *os.File) ApiIssueCreateIssueAttachmentRequest {
+func (r IssueAPIIssueCreateIssueAttachmentRequest) Attachment(attachment *os.File) IssueAPIIssueCreateIssueAttachmentRequest {
 	r.attachment = attachment
 	return r
 }
 
 // name of the attachment
-func (r ApiIssueCreateIssueAttachmentRequest) Name(name string) ApiIssueCreateIssueAttachmentRequest {
+func (r IssueAPIIssueCreateIssueAttachmentRequest) Name(name string) IssueAPIIssueCreateIssueAttachmentRequest {
 	r.name = &name
 	return r
 }
 
 // time of the attachment&#39;s creation. This is a timestamp in RFC 3339 format
-func (r ApiIssueCreateIssueAttachmentRequest) UpdatedAt(updatedAt time.Time) ApiIssueCreateIssueAttachmentRequest {
+func (r IssueAPIIssueCreateIssueAttachmentRequest) UpdatedAt(updatedAt time.Time) IssueAPIIssueCreateIssueAttachmentRequest {
 	r.updatedAt = &updatedAt
 	return r
 }
 
-func (r ApiIssueCreateIssueAttachmentRequest) Execute() (*Attachment, *http.Response, error) {
+func (r IssueAPIIssueCreateIssueAttachmentRequest) Execute() (*Attachment, *http.Response, error) {
 	return r.ApiService.IssueCreateIssueAttachmentExecute(r)
 }
 
@@ -1625,10 +1625,10 @@ IssueCreateIssueAttachment Create an issue attachment
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueCreateIssueAttachmentRequest
+ @return IssueAPIIssueCreateIssueAttachmentRequest
 */
-func (a *IssueAPIService) IssueCreateIssueAttachment(ctx context.Context, owner string, repo string, index int64) ApiIssueCreateIssueAttachmentRequest {
-	return ApiIssueCreateIssueAttachmentRequest{
+func (a *IssueAPIService) IssueCreateIssueAttachment(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueCreateIssueAttachmentRequest {
+	return IssueAPIIssueCreateIssueAttachmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -1639,7 +1639,7 @@ func (a *IssueAPIService) IssueCreateIssueAttachment(ctx context.Context, owner 
 
 // Execute executes the request
 //  @return Attachment
-func (a *IssueAPIService) IssueCreateIssueAttachmentExecute(r ApiIssueCreateIssueAttachmentRequest) (*Attachment, *http.Response, error) {
+func (a *IssueAPIService) IssueCreateIssueAttachmentExecute(r IssueAPIIssueCreateIssueAttachmentRequest) (*Attachment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1866,7 +1866,7 @@ func (a *IssueAPIService) IssueCreateIssueAttachmentExecute(r ApiIssueCreateIssu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueCreateIssueBlockingRequest struct {
+type IssueAPIIssueCreateIssueBlockingRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -1875,12 +1875,12 @@ type ApiIssueCreateIssueBlockingRequest struct {
 	body *IssueMeta
 }
 
-func (r ApiIssueCreateIssueBlockingRequest) Body(body IssueMeta) ApiIssueCreateIssueBlockingRequest {
+func (r IssueAPIIssueCreateIssueBlockingRequest) Body(body IssueMeta) IssueAPIIssueCreateIssueBlockingRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueCreateIssueBlockingRequest) Execute() (*Issue, *http.Response, error) {
+func (r IssueAPIIssueCreateIssueBlockingRequest) Execute() (*Issue, *http.Response, error) {
 	return r.ApiService.IssueCreateIssueBlockingExecute(r)
 }
 
@@ -1891,10 +1891,10 @@ IssueCreateIssueBlocking Block the issue given in the body by the issue in path
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueCreateIssueBlockingRequest
+ @return IssueAPIIssueCreateIssueBlockingRequest
 */
-func (a *IssueAPIService) IssueCreateIssueBlocking(ctx context.Context, owner string, repo string, index string) ApiIssueCreateIssueBlockingRequest {
-	return ApiIssueCreateIssueBlockingRequest{
+func (a *IssueAPIService) IssueCreateIssueBlocking(ctx context.Context, owner string, repo string, index string) IssueAPIIssueCreateIssueBlockingRequest {
+	return IssueAPIIssueCreateIssueBlockingRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -1905,7 +1905,7 @@ func (a *IssueAPIService) IssueCreateIssueBlocking(ctx context.Context, owner st
 
 // Execute executes the request
 //  @return Issue
-func (a *IssueAPIService) IssueCreateIssueBlockingExecute(r ApiIssueCreateIssueBlockingRequest) (*Issue, *http.Response, error) {
+func (a *IssueAPIService) IssueCreateIssueBlockingExecute(r IssueAPIIssueCreateIssueBlockingRequest) (*Issue, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2067,7 +2067,7 @@ func (a *IssueAPIService) IssueCreateIssueBlockingExecute(r ApiIssueCreateIssueB
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueCreateIssueCommentAttachmentRequest struct {
+type IssueAPIIssueCreateIssueCommentAttachmentRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -2079,24 +2079,24 @@ type ApiIssueCreateIssueCommentAttachmentRequest struct {
 }
 
 // attachment to upload
-func (r ApiIssueCreateIssueCommentAttachmentRequest) Attachment(attachment *os.File) ApiIssueCreateIssueCommentAttachmentRequest {
+func (r IssueAPIIssueCreateIssueCommentAttachmentRequest) Attachment(attachment *os.File) IssueAPIIssueCreateIssueCommentAttachmentRequest {
 	r.attachment = attachment
 	return r
 }
 
 // name of the attachment
-func (r ApiIssueCreateIssueCommentAttachmentRequest) Name(name string) ApiIssueCreateIssueCommentAttachmentRequest {
+func (r IssueAPIIssueCreateIssueCommentAttachmentRequest) Name(name string) IssueAPIIssueCreateIssueCommentAttachmentRequest {
 	r.name = &name
 	return r
 }
 
 // time of the attachment&#39;s creation. This is a timestamp in RFC 3339 format
-func (r ApiIssueCreateIssueCommentAttachmentRequest) UpdatedAt(updatedAt time.Time) ApiIssueCreateIssueCommentAttachmentRequest {
+func (r IssueAPIIssueCreateIssueCommentAttachmentRequest) UpdatedAt(updatedAt time.Time) IssueAPIIssueCreateIssueCommentAttachmentRequest {
 	r.updatedAt = &updatedAt
 	return r
 }
 
-func (r ApiIssueCreateIssueCommentAttachmentRequest) Execute() (*Attachment, *http.Response, error) {
+func (r IssueAPIIssueCreateIssueCommentAttachmentRequest) Execute() (*Attachment, *http.Response, error) {
 	return r.ApiService.IssueCreateIssueCommentAttachmentExecute(r)
 }
 
@@ -2107,10 +2107,10 @@ IssueCreateIssueCommentAttachment Create a comment attachment
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the comment
- @return ApiIssueCreateIssueCommentAttachmentRequest
+ @return IssueAPIIssueCreateIssueCommentAttachmentRequest
 */
-func (a *IssueAPIService) IssueCreateIssueCommentAttachment(ctx context.Context, owner string, repo string, id int64) ApiIssueCreateIssueCommentAttachmentRequest {
-	return ApiIssueCreateIssueCommentAttachmentRequest{
+func (a *IssueAPIService) IssueCreateIssueCommentAttachment(ctx context.Context, owner string, repo string, id int64) IssueAPIIssueCreateIssueCommentAttachmentRequest {
+	return IssueAPIIssueCreateIssueCommentAttachmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -2121,7 +2121,7 @@ func (a *IssueAPIService) IssueCreateIssueCommentAttachment(ctx context.Context,
 
 // Execute executes the request
 //  @return Attachment
-func (a *IssueAPIService) IssueCreateIssueCommentAttachmentExecute(r ApiIssueCreateIssueCommentAttachmentRequest) (*Attachment, *http.Response, error) {
+func (a *IssueAPIService) IssueCreateIssueCommentAttachmentExecute(r IssueAPIIssueCreateIssueCommentAttachmentRequest) (*Attachment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2348,7 +2348,7 @@ func (a *IssueAPIService) IssueCreateIssueCommentAttachmentExecute(r ApiIssueCre
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueCreateIssueDependenciesRequest struct {
+type IssueAPIIssueCreateIssueDependenciesRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -2357,12 +2357,12 @@ type ApiIssueCreateIssueDependenciesRequest struct {
 	body *IssueMeta
 }
 
-func (r ApiIssueCreateIssueDependenciesRequest) Body(body IssueMeta) ApiIssueCreateIssueDependenciesRequest {
+func (r IssueAPIIssueCreateIssueDependenciesRequest) Body(body IssueMeta) IssueAPIIssueCreateIssueDependenciesRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueCreateIssueDependenciesRequest) Execute() (*Issue, *http.Response, error) {
+func (r IssueAPIIssueCreateIssueDependenciesRequest) Execute() (*Issue, *http.Response, error) {
 	return r.ApiService.IssueCreateIssueDependenciesExecute(r)
 }
 
@@ -2373,10 +2373,10 @@ IssueCreateIssueDependencies Make the issue in the url depend on the issue in th
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueCreateIssueDependenciesRequest
+ @return IssueAPIIssueCreateIssueDependenciesRequest
 */
-func (a *IssueAPIService) IssueCreateIssueDependencies(ctx context.Context, owner string, repo string, index string) ApiIssueCreateIssueDependenciesRequest {
-	return ApiIssueCreateIssueDependenciesRequest{
+func (a *IssueAPIService) IssueCreateIssueDependencies(ctx context.Context, owner string, repo string, index string) IssueAPIIssueCreateIssueDependenciesRequest {
+	return IssueAPIIssueCreateIssueDependenciesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -2387,7 +2387,7 @@ func (a *IssueAPIService) IssueCreateIssueDependencies(ctx context.Context, owne
 
 // Execute executes the request
 //  @return Issue
-func (a *IssueAPIService) IssueCreateIssueDependenciesExecute(r ApiIssueCreateIssueDependenciesRequest) (*Issue, *http.Response, error) {
+func (a *IssueAPIService) IssueCreateIssueDependenciesExecute(r IssueAPIIssueCreateIssueDependenciesRequest) (*Issue, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2559,7 +2559,7 @@ func (a *IssueAPIService) IssueCreateIssueDependenciesExecute(r ApiIssueCreateIs
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueCreateLabelRequest struct {
+type IssueAPIIssueCreateLabelRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -2567,12 +2567,12 @@ type ApiIssueCreateLabelRequest struct {
 	body *CreateLabelOption
 }
 
-func (r ApiIssueCreateLabelRequest) Body(body CreateLabelOption) ApiIssueCreateLabelRequest {
+func (r IssueAPIIssueCreateLabelRequest) Body(body CreateLabelOption) IssueAPIIssueCreateLabelRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueCreateLabelRequest) Execute() (*Label, *http.Response, error) {
+func (r IssueAPIIssueCreateLabelRequest) Execute() (*Label, *http.Response, error) {
 	return r.ApiService.IssueCreateLabelExecute(r)
 }
 
@@ -2582,10 +2582,10 @@ IssueCreateLabel Create a label
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiIssueCreateLabelRequest
+ @return IssueAPIIssueCreateLabelRequest
 */
-func (a *IssueAPIService) IssueCreateLabel(ctx context.Context, owner string, repo string) ApiIssueCreateLabelRequest {
-	return ApiIssueCreateLabelRequest{
+func (a *IssueAPIService) IssueCreateLabel(ctx context.Context, owner string, repo string) IssueAPIIssueCreateLabelRequest {
+	return IssueAPIIssueCreateLabelRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -2595,7 +2595,7 @@ func (a *IssueAPIService) IssueCreateLabel(ctx context.Context, owner string, re
 
 // Execute executes the request
 //  @return Label
-func (a *IssueAPIService) IssueCreateLabelExecute(r ApiIssueCreateLabelRequest) (*Label, *http.Response, error) {
+func (a *IssueAPIService) IssueCreateLabelExecute(r IssueAPIIssueCreateLabelRequest) (*Label, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2777,7 +2777,7 @@ func (a *IssueAPIService) IssueCreateLabelExecute(r ApiIssueCreateLabelRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueCreateMilestoneRequest struct {
+type IssueAPIIssueCreateMilestoneRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -2785,12 +2785,12 @@ type ApiIssueCreateMilestoneRequest struct {
 	body *CreateMilestoneOption
 }
 
-func (r ApiIssueCreateMilestoneRequest) Body(body CreateMilestoneOption) ApiIssueCreateMilestoneRequest {
+func (r IssueAPIIssueCreateMilestoneRequest) Body(body CreateMilestoneOption) IssueAPIIssueCreateMilestoneRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueCreateMilestoneRequest) Execute() (*Milestone, *http.Response, error) {
+func (r IssueAPIIssueCreateMilestoneRequest) Execute() (*Milestone, *http.Response, error) {
 	return r.ApiService.IssueCreateMilestoneExecute(r)
 }
 
@@ -2800,10 +2800,10 @@ IssueCreateMilestone Create a milestone
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiIssueCreateMilestoneRequest
+ @return IssueAPIIssueCreateMilestoneRequest
 */
-func (a *IssueAPIService) IssueCreateMilestone(ctx context.Context, owner string, repo string) ApiIssueCreateMilestoneRequest {
-	return ApiIssueCreateMilestoneRequest{
+func (a *IssueAPIService) IssueCreateMilestone(ctx context.Context, owner string, repo string) IssueAPIIssueCreateMilestoneRequest {
+	return IssueAPIIssueCreateMilestoneRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -2813,7 +2813,7 @@ func (a *IssueAPIService) IssueCreateMilestone(ctx context.Context, owner string
 
 // Execute executes the request
 //  @return Milestone
-func (a *IssueAPIService) IssueCreateMilestoneExecute(r ApiIssueCreateMilestoneRequest) (*Milestone, *http.Response, error) {
+func (a *IssueAPIService) IssueCreateMilestoneExecute(r IssueAPIIssueCreateMilestoneRequest) (*Milestone, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2984,7 +2984,7 @@ func (a *IssueAPIService) IssueCreateMilestoneExecute(r ApiIssueCreateMilestoneR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueDeleteRequest struct {
+type IssueAPIIssueDeleteRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -2992,7 +2992,7 @@ type ApiIssueDeleteRequest struct {
 	index int64
 }
 
-func (r ApiIssueDeleteRequest) Execute() (*http.Response, error) {
+func (r IssueAPIIssueDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.IssueDeleteExecute(r)
 }
 
@@ -3003,10 +3003,10 @@ IssueDelete Delete an issue
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of issue to delete
- @return ApiIssueDeleteRequest
+ @return IssueAPIIssueDeleteRequest
 */
-func (a *IssueAPIService) IssueDelete(ctx context.Context, owner string, repo string, index int64) ApiIssueDeleteRequest {
-	return ApiIssueDeleteRequest{
+func (a *IssueAPIService) IssueDelete(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueDeleteRequest {
+	return IssueAPIIssueDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -3016,7 +3016,7 @@ func (a *IssueAPIService) IssueDelete(ctx context.Context, owner string, repo st
 }
 
 // Execute executes the request
-func (a *IssueAPIService) IssueDeleteExecute(r ApiIssueDeleteRequest) (*http.Response, error) {
+func (a *IssueAPIService) IssueDeleteExecute(r IssueAPIIssueDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -3187,7 +3187,7 @@ func (a *IssueAPIService) IssueDeleteExecute(r ApiIssueDeleteRequest) (*http.Res
 	return localVarHTTPResponse, nil
 }
 
-type ApiIssueDeleteCommentRequest struct {
+type IssueAPIIssueDeleteCommentRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -3195,7 +3195,7 @@ type ApiIssueDeleteCommentRequest struct {
 	id int64
 }
 
-func (r ApiIssueDeleteCommentRequest) Execute() (*http.Response, error) {
+func (r IssueAPIIssueDeleteCommentRequest) Execute() (*http.Response, error) {
 	return r.ApiService.IssueDeleteCommentExecute(r)
 }
 
@@ -3206,10 +3206,10 @@ IssueDeleteComment Delete a comment
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of comment to delete
- @return ApiIssueDeleteCommentRequest
+ @return IssueAPIIssueDeleteCommentRequest
 */
-func (a *IssueAPIService) IssueDeleteComment(ctx context.Context, owner string, repo string, id int64) ApiIssueDeleteCommentRequest {
-	return ApiIssueDeleteCommentRequest{
+func (a *IssueAPIService) IssueDeleteComment(ctx context.Context, owner string, repo string, id int64) IssueAPIIssueDeleteCommentRequest {
+	return IssueAPIIssueDeleteCommentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -3219,7 +3219,7 @@ func (a *IssueAPIService) IssueDeleteComment(ctx context.Context, owner string, 
 }
 
 // Execute executes the request
-func (a *IssueAPIService) IssueDeleteCommentExecute(r ApiIssueDeleteCommentRequest) (*http.Response, error) {
+func (a *IssueAPIService) IssueDeleteCommentExecute(r IssueAPIIssueDeleteCommentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -3390,7 +3390,7 @@ func (a *IssueAPIService) IssueDeleteCommentExecute(r ApiIssueDeleteCommentReque
 	return localVarHTTPResponse, nil
 }
 
-type ApiIssueDeleteCommentDeprecatedRequest struct {
+type IssueAPIIssueDeleteCommentDeprecatedRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -3399,7 +3399,7 @@ type ApiIssueDeleteCommentDeprecatedRequest struct {
 	id int64
 }
 
-func (r ApiIssueDeleteCommentDeprecatedRequest) Execute() (*http.Response, error) {
+func (r IssueAPIIssueDeleteCommentDeprecatedRequest) Execute() (*http.Response, error) {
 	return r.ApiService.IssueDeleteCommentDeprecatedExecute(r)
 }
 
@@ -3411,12 +3411,12 @@ IssueDeleteCommentDeprecated Delete a comment
  @param repo name of the repo
  @param index this parameter is ignored
  @param id id of comment to delete
- @return ApiIssueDeleteCommentDeprecatedRequest
+ @return IssueAPIIssueDeleteCommentDeprecatedRequest
 
 Deprecated
 */
-func (a *IssueAPIService) IssueDeleteCommentDeprecated(ctx context.Context, owner string, repo string, index int32, id int64) ApiIssueDeleteCommentDeprecatedRequest {
-	return ApiIssueDeleteCommentDeprecatedRequest{
+func (a *IssueAPIService) IssueDeleteCommentDeprecated(ctx context.Context, owner string, repo string, index int32, id int64) IssueAPIIssueDeleteCommentDeprecatedRequest {
+	return IssueAPIIssueDeleteCommentDeprecatedRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -3428,7 +3428,7 @@ func (a *IssueAPIService) IssueDeleteCommentDeprecated(ctx context.Context, owne
 
 // Execute executes the request
 // Deprecated
-func (a *IssueAPIService) IssueDeleteCommentDeprecatedExecute(r ApiIssueDeleteCommentDeprecatedRequest) (*http.Response, error) {
+func (a *IssueAPIService) IssueDeleteCommentDeprecatedExecute(r IssueAPIIssueDeleteCommentDeprecatedRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -3600,7 +3600,7 @@ func (a *IssueAPIService) IssueDeleteCommentDeprecatedExecute(r ApiIssueDeleteCo
 	return localVarHTTPResponse, nil
 }
 
-type ApiIssueDeleteCommentReactionRequest struct {
+type IssueAPIIssueDeleteCommentReactionRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -3609,12 +3609,12 @@ type ApiIssueDeleteCommentReactionRequest struct {
 	content *EditReactionOption
 }
 
-func (r ApiIssueDeleteCommentReactionRequest) Content(content EditReactionOption) ApiIssueDeleteCommentReactionRequest {
+func (r IssueAPIIssueDeleteCommentReactionRequest) Content(content EditReactionOption) IssueAPIIssueDeleteCommentReactionRequest {
 	r.content = &content
 	return r
 }
 
-func (r ApiIssueDeleteCommentReactionRequest) Execute() (*http.Response, error) {
+func (r IssueAPIIssueDeleteCommentReactionRequest) Execute() (*http.Response, error) {
 	return r.ApiService.IssueDeleteCommentReactionExecute(r)
 }
 
@@ -3625,10 +3625,10 @@ IssueDeleteCommentReaction Remove a reaction from a comment of an issue
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the comment to edit
- @return ApiIssueDeleteCommentReactionRequest
+ @return IssueAPIIssueDeleteCommentReactionRequest
 */
-func (a *IssueAPIService) IssueDeleteCommentReaction(ctx context.Context, owner string, repo string, id int64) ApiIssueDeleteCommentReactionRequest {
-	return ApiIssueDeleteCommentReactionRequest{
+func (a *IssueAPIService) IssueDeleteCommentReaction(ctx context.Context, owner string, repo string, id int64) IssueAPIIssueDeleteCommentReactionRequest {
+	return IssueAPIIssueDeleteCommentReactionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -3638,7 +3638,7 @@ func (a *IssueAPIService) IssueDeleteCommentReaction(ctx context.Context, owner 
 }
 
 // Execute executes the request
-func (a *IssueAPIService) IssueDeleteCommentReactionExecute(r ApiIssueDeleteCommentReactionRequest) (*http.Response, error) {
+func (a *IssueAPIService) IssueDeleteCommentReactionExecute(r IssueAPIIssueDeleteCommentReactionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -3811,7 +3811,7 @@ func (a *IssueAPIService) IssueDeleteCommentReactionExecute(r ApiIssueDeleteComm
 	return localVarHTTPResponse, nil
 }
 
-type ApiIssueDeleteIssueAttachmentRequest struct {
+type IssueAPIIssueDeleteIssueAttachmentRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -3820,7 +3820,7 @@ type ApiIssueDeleteIssueAttachmentRequest struct {
 	attachmentId int64
 }
 
-func (r ApiIssueDeleteIssueAttachmentRequest) Execute() (*http.Response, error) {
+func (r IssueAPIIssueDeleteIssueAttachmentRequest) Execute() (*http.Response, error) {
 	return r.ApiService.IssueDeleteIssueAttachmentExecute(r)
 }
 
@@ -3832,10 +3832,10 @@ IssueDeleteIssueAttachment Delete an issue attachment
  @param repo name of the repo
  @param index index of the issue
  @param attachmentId id of the attachment to delete
- @return ApiIssueDeleteIssueAttachmentRequest
+ @return IssueAPIIssueDeleteIssueAttachmentRequest
 */
-func (a *IssueAPIService) IssueDeleteIssueAttachment(ctx context.Context, owner string, repo string, index int64, attachmentId int64) ApiIssueDeleteIssueAttachmentRequest {
-	return ApiIssueDeleteIssueAttachmentRequest{
+func (a *IssueAPIService) IssueDeleteIssueAttachment(ctx context.Context, owner string, repo string, index int64, attachmentId int64) IssueAPIIssueDeleteIssueAttachmentRequest {
+	return IssueAPIIssueDeleteIssueAttachmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -3846,7 +3846,7 @@ func (a *IssueAPIService) IssueDeleteIssueAttachment(ctx context.Context, owner 
 }
 
 // Execute executes the request
-func (a *IssueAPIService) IssueDeleteIssueAttachmentExecute(r ApiIssueDeleteIssueAttachmentRequest) (*http.Response, error) {
+func (a *IssueAPIService) IssueDeleteIssueAttachmentExecute(r IssueAPIIssueDeleteIssueAttachmentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -4018,7 +4018,7 @@ func (a *IssueAPIService) IssueDeleteIssueAttachmentExecute(r ApiIssueDeleteIssu
 	return localVarHTTPResponse, nil
 }
 
-type ApiIssueDeleteIssueCommentAttachmentRequest struct {
+type IssueAPIIssueDeleteIssueCommentAttachmentRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -4027,7 +4027,7 @@ type ApiIssueDeleteIssueCommentAttachmentRequest struct {
 	attachmentId int64
 }
 
-func (r ApiIssueDeleteIssueCommentAttachmentRequest) Execute() (*http.Response, error) {
+func (r IssueAPIIssueDeleteIssueCommentAttachmentRequest) Execute() (*http.Response, error) {
 	return r.ApiService.IssueDeleteIssueCommentAttachmentExecute(r)
 }
 
@@ -4039,10 +4039,10 @@ IssueDeleteIssueCommentAttachment Delete a comment attachment
  @param repo name of the repo
  @param id id of the comment
  @param attachmentId id of the attachment to delete
- @return ApiIssueDeleteIssueCommentAttachmentRequest
+ @return IssueAPIIssueDeleteIssueCommentAttachmentRequest
 */
-func (a *IssueAPIService) IssueDeleteIssueCommentAttachment(ctx context.Context, owner string, repo string, id int64, attachmentId int64) ApiIssueDeleteIssueCommentAttachmentRequest {
-	return ApiIssueDeleteIssueCommentAttachmentRequest{
+func (a *IssueAPIService) IssueDeleteIssueCommentAttachment(ctx context.Context, owner string, repo string, id int64, attachmentId int64) IssueAPIIssueDeleteIssueCommentAttachmentRequest {
+	return IssueAPIIssueDeleteIssueCommentAttachmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -4053,7 +4053,7 @@ func (a *IssueAPIService) IssueDeleteIssueCommentAttachment(ctx context.Context,
 }
 
 // Execute executes the request
-func (a *IssueAPIService) IssueDeleteIssueCommentAttachmentExecute(r ApiIssueDeleteIssueCommentAttachmentRequest) (*http.Response, error) {
+func (a *IssueAPIService) IssueDeleteIssueCommentAttachmentExecute(r IssueAPIIssueDeleteIssueCommentAttachmentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -4225,7 +4225,7 @@ func (a *IssueAPIService) IssueDeleteIssueCommentAttachmentExecute(r ApiIssueDel
 	return localVarHTTPResponse, nil
 }
 
-type ApiIssueDeleteIssueReactionRequest struct {
+type IssueAPIIssueDeleteIssueReactionRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -4234,12 +4234,12 @@ type ApiIssueDeleteIssueReactionRequest struct {
 	content *EditReactionOption
 }
 
-func (r ApiIssueDeleteIssueReactionRequest) Content(content EditReactionOption) ApiIssueDeleteIssueReactionRequest {
+func (r IssueAPIIssueDeleteIssueReactionRequest) Content(content EditReactionOption) IssueAPIIssueDeleteIssueReactionRequest {
 	r.content = &content
 	return r
 }
 
-func (r ApiIssueDeleteIssueReactionRequest) Execute() (*http.Response, error) {
+func (r IssueAPIIssueDeleteIssueReactionRequest) Execute() (*http.Response, error) {
 	return r.ApiService.IssueDeleteIssueReactionExecute(r)
 }
 
@@ -4250,10 +4250,10 @@ IssueDeleteIssueReaction Remove a reaction from an issue
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueDeleteIssueReactionRequest
+ @return IssueAPIIssueDeleteIssueReactionRequest
 */
-func (a *IssueAPIService) IssueDeleteIssueReaction(ctx context.Context, owner string, repo string, index int64) ApiIssueDeleteIssueReactionRequest {
-	return ApiIssueDeleteIssueReactionRequest{
+func (a *IssueAPIService) IssueDeleteIssueReaction(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueDeleteIssueReactionRequest {
+	return IssueAPIIssueDeleteIssueReactionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -4263,7 +4263,7 @@ func (a *IssueAPIService) IssueDeleteIssueReaction(ctx context.Context, owner st
 }
 
 // Execute executes the request
-func (a *IssueAPIService) IssueDeleteIssueReactionExecute(r ApiIssueDeleteIssueReactionRequest) (*http.Response, error) {
+func (a *IssueAPIService) IssueDeleteIssueReactionExecute(r IssueAPIIssueDeleteIssueReactionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -4436,7 +4436,7 @@ func (a *IssueAPIService) IssueDeleteIssueReactionExecute(r ApiIssueDeleteIssueR
 	return localVarHTTPResponse, nil
 }
 
-type ApiIssueDeleteLabelRequest struct {
+type IssueAPIIssueDeleteLabelRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -4444,7 +4444,7 @@ type ApiIssueDeleteLabelRequest struct {
 	id int64
 }
 
-func (r ApiIssueDeleteLabelRequest) Execute() (*http.Response, error) {
+func (r IssueAPIIssueDeleteLabelRequest) Execute() (*http.Response, error) {
 	return r.ApiService.IssueDeleteLabelExecute(r)
 }
 
@@ -4455,10 +4455,10 @@ IssueDeleteLabel Delete a label
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the label to delete
- @return ApiIssueDeleteLabelRequest
+ @return IssueAPIIssueDeleteLabelRequest
 */
-func (a *IssueAPIService) IssueDeleteLabel(ctx context.Context, owner string, repo string, id int64) ApiIssueDeleteLabelRequest {
-	return ApiIssueDeleteLabelRequest{
+func (a *IssueAPIService) IssueDeleteLabel(ctx context.Context, owner string, repo string, id int64) IssueAPIIssueDeleteLabelRequest {
+	return IssueAPIIssueDeleteLabelRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -4468,7 +4468,7 @@ func (a *IssueAPIService) IssueDeleteLabel(ctx context.Context, owner string, re
 }
 
 // Execute executes the request
-func (a *IssueAPIService) IssueDeleteLabelExecute(r ApiIssueDeleteLabelRequest) (*http.Response, error) {
+func (a *IssueAPIService) IssueDeleteLabelExecute(r IssueAPIIssueDeleteLabelRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -4628,7 +4628,7 @@ func (a *IssueAPIService) IssueDeleteLabelExecute(r ApiIssueDeleteLabelRequest) 
 	return localVarHTTPResponse, nil
 }
 
-type ApiIssueDeleteMilestoneRequest struct {
+type IssueAPIIssueDeleteMilestoneRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -4636,7 +4636,7 @@ type ApiIssueDeleteMilestoneRequest struct {
 	id string
 }
 
-func (r ApiIssueDeleteMilestoneRequest) Execute() (*http.Response, error) {
+func (r IssueAPIIssueDeleteMilestoneRequest) Execute() (*http.Response, error) {
 	return r.ApiService.IssueDeleteMilestoneExecute(r)
 }
 
@@ -4647,10 +4647,10 @@ IssueDeleteMilestone Delete a milestone
  @param owner owner of the repo
  @param repo name of the repo
  @param id the milestone to delete, identified by ID and if not available by name
- @return ApiIssueDeleteMilestoneRequest
+ @return IssueAPIIssueDeleteMilestoneRequest
 */
-func (a *IssueAPIService) IssueDeleteMilestone(ctx context.Context, owner string, repo string, id string) ApiIssueDeleteMilestoneRequest {
-	return ApiIssueDeleteMilestoneRequest{
+func (a *IssueAPIService) IssueDeleteMilestone(ctx context.Context, owner string, repo string, id string) IssueAPIIssueDeleteMilestoneRequest {
+	return IssueAPIIssueDeleteMilestoneRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -4660,7 +4660,7 @@ func (a *IssueAPIService) IssueDeleteMilestone(ctx context.Context, owner string
 }
 
 // Execute executes the request
-func (a *IssueAPIService) IssueDeleteMilestoneExecute(r ApiIssueDeleteMilestoneRequest) (*http.Response, error) {
+func (a *IssueAPIService) IssueDeleteMilestoneExecute(r IssueAPIIssueDeleteMilestoneRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -4820,7 +4820,7 @@ func (a *IssueAPIService) IssueDeleteMilestoneExecute(r ApiIssueDeleteMilestoneR
 	return localVarHTTPResponse, nil
 }
 
-type ApiIssueDeleteStopWatchRequest struct {
+type IssueAPIIssueDeleteStopWatchRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -4828,7 +4828,7 @@ type ApiIssueDeleteStopWatchRequest struct {
 	index int64
 }
 
-func (r ApiIssueDeleteStopWatchRequest) Execute() (*http.Response, error) {
+func (r IssueAPIIssueDeleteStopWatchRequest) Execute() (*http.Response, error) {
 	return r.ApiService.IssueDeleteStopWatchExecute(r)
 }
 
@@ -4839,10 +4839,10 @@ IssueDeleteStopWatch Delete an issue's existing stopwatch.
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue to stop the stopwatch on
- @return ApiIssueDeleteStopWatchRequest
+ @return IssueAPIIssueDeleteStopWatchRequest
 */
-func (a *IssueAPIService) IssueDeleteStopWatch(ctx context.Context, owner string, repo string, index int64) ApiIssueDeleteStopWatchRequest {
-	return ApiIssueDeleteStopWatchRequest{
+func (a *IssueAPIService) IssueDeleteStopWatch(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueDeleteStopWatchRequest {
+	return IssueAPIIssueDeleteStopWatchRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -4852,7 +4852,7 @@ func (a *IssueAPIService) IssueDeleteStopWatch(ctx context.Context, owner string
 }
 
 // Execute executes the request
-func (a *IssueAPIService) IssueDeleteStopWatchExecute(r ApiIssueDeleteStopWatchRequest) (*http.Response, error) {
+func (a *IssueAPIService) IssueDeleteStopWatchExecute(r IssueAPIIssueDeleteStopWatchRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -5013,7 +5013,7 @@ func (a *IssueAPIService) IssueDeleteStopWatchExecute(r ApiIssueDeleteStopWatchR
 	return localVarHTTPResponse, nil
 }
 
-type ApiIssueDeleteSubscriptionRequest struct {
+type IssueAPIIssueDeleteSubscriptionRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -5022,7 +5022,7 @@ type ApiIssueDeleteSubscriptionRequest struct {
 	user string
 }
 
-func (r ApiIssueDeleteSubscriptionRequest) Execute() (*http.Response, error) {
+func (r IssueAPIIssueDeleteSubscriptionRequest) Execute() (*http.Response, error) {
 	return r.ApiService.IssueDeleteSubscriptionExecute(r)
 }
 
@@ -5034,10 +5034,10 @@ IssueDeleteSubscription Unsubscribe user from issue
  @param repo name of the repo
  @param index index of the issue
  @param user user witch unsubscribe
- @return ApiIssueDeleteSubscriptionRequest
+ @return IssueAPIIssueDeleteSubscriptionRequest
 */
-func (a *IssueAPIService) IssueDeleteSubscription(ctx context.Context, owner string, repo string, index int64, user string) ApiIssueDeleteSubscriptionRequest {
-	return ApiIssueDeleteSubscriptionRequest{
+func (a *IssueAPIService) IssueDeleteSubscription(ctx context.Context, owner string, repo string, index int64, user string) IssueAPIIssueDeleteSubscriptionRequest {
+	return IssueAPIIssueDeleteSubscriptionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -5048,7 +5048,7 @@ func (a *IssueAPIService) IssueDeleteSubscription(ctx context.Context, owner str
 }
 
 // Execute executes the request
-func (a *IssueAPIService) IssueDeleteSubscriptionExecute(r ApiIssueDeleteSubscriptionRequest) (*http.Response, error) {
+func (a *IssueAPIService) IssueDeleteSubscriptionExecute(r IssueAPIIssueDeleteSubscriptionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -5209,7 +5209,7 @@ func (a *IssueAPIService) IssueDeleteSubscriptionExecute(r ApiIssueDeleteSubscri
 	return localVarHTTPResponse, nil
 }
 
-type ApiIssueDeleteTimeRequest struct {
+type IssueAPIIssueDeleteTimeRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -5218,7 +5218,7 @@ type ApiIssueDeleteTimeRequest struct {
 	id int64
 }
 
-func (r ApiIssueDeleteTimeRequest) Execute() (*http.Response, error) {
+func (r IssueAPIIssueDeleteTimeRequest) Execute() (*http.Response, error) {
 	return r.ApiService.IssueDeleteTimeExecute(r)
 }
 
@@ -5230,10 +5230,10 @@ IssueDeleteTime Delete specific tracked time
  @param repo name of the repo
  @param index index of the issue
  @param id id of time to delete
- @return ApiIssueDeleteTimeRequest
+ @return IssueAPIIssueDeleteTimeRequest
 */
-func (a *IssueAPIService) IssueDeleteTime(ctx context.Context, owner string, repo string, index int64, id int64) ApiIssueDeleteTimeRequest {
-	return ApiIssueDeleteTimeRequest{
+func (a *IssueAPIService) IssueDeleteTime(ctx context.Context, owner string, repo string, index int64, id int64) IssueAPIIssueDeleteTimeRequest {
+	return IssueAPIIssueDeleteTimeRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -5244,7 +5244,7 @@ func (a *IssueAPIService) IssueDeleteTime(ctx context.Context, owner string, rep
 }
 
 // Execute executes the request
-func (a *IssueAPIService) IssueDeleteTimeExecute(r ApiIssueDeleteTimeRequest) (*http.Response, error) {
+func (a *IssueAPIService) IssueDeleteTimeExecute(r IssueAPIIssueDeleteTimeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -5427,7 +5427,7 @@ func (a *IssueAPIService) IssueDeleteTimeExecute(r ApiIssueDeleteTimeRequest) (*
 	return localVarHTTPResponse, nil
 }
 
-type ApiIssueEditCommentRequest struct {
+type IssueAPIIssueEditCommentRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -5436,12 +5436,12 @@ type ApiIssueEditCommentRequest struct {
 	body *EditIssueCommentOption
 }
 
-func (r ApiIssueEditCommentRequest) Body(body EditIssueCommentOption) ApiIssueEditCommentRequest {
+func (r IssueAPIIssueEditCommentRequest) Body(body EditIssueCommentOption) IssueAPIIssueEditCommentRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueEditCommentRequest) Execute() (*Comment, *http.Response, error) {
+func (r IssueAPIIssueEditCommentRequest) Execute() (*Comment, *http.Response, error) {
 	return r.ApiService.IssueEditCommentExecute(r)
 }
 
@@ -5452,10 +5452,10 @@ IssueEditComment Edit a comment
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the comment to edit
- @return ApiIssueEditCommentRequest
+ @return IssueAPIIssueEditCommentRequest
 */
-func (a *IssueAPIService) IssueEditComment(ctx context.Context, owner string, repo string, id int64) ApiIssueEditCommentRequest {
-	return ApiIssueEditCommentRequest{
+func (a *IssueAPIService) IssueEditComment(ctx context.Context, owner string, repo string, id int64) IssueAPIIssueEditCommentRequest {
+	return IssueAPIIssueEditCommentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -5466,7 +5466,7 @@ func (a *IssueAPIService) IssueEditComment(ctx context.Context, owner string, re
 
 // Execute executes the request
 //  @return Comment
-func (a *IssueAPIService) IssueEditCommentExecute(r ApiIssueEditCommentRequest) (*Comment, *http.Response, error) {
+func (a *IssueAPIService) IssueEditCommentExecute(r IssueAPIIssueEditCommentRequest) (*Comment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -5671,7 +5671,7 @@ func (a *IssueAPIService) IssueEditCommentExecute(r ApiIssueEditCommentRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueEditCommentDeprecatedRequest struct {
+type IssueAPIIssueEditCommentDeprecatedRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -5681,12 +5681,12 @@ type ApiIssueEditCommentDeprecatedRequest struct {
 	body *EditIssueCommentOption
 }
 
-func (r ApiIssueEditCommentDeprecatedRequest) Body(body EditIssueCommentOption) ApiIssueEditCommentDeprecatedRequest {
+func (r IssueAPIIssueEditCommentDeprecatedRequest) Body(body EditIssueCommentOption) IssueAPIIssueEditCommentDeprecatedRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueEditCommentDeprecatedRequest) Execute() (*Comment, *http.Response, error) {
+func (r IssueAPIIssueEditCommentDeprecatedRequest) Execute() (*Comment, *http.Response, error) {
 	return r.ApiService.IssueEditCommentDeprecatedExecute(r)
 }
 
@@ -5698,12 +5698,12 @@ IssueEditCommentDeprecated Edit a comment
  @param repo name of the repo
  @param index this parameter is ignored
  @param id id of the comment to edit
- @return ApiIssueEditCommentDeprecatedRequest
+ @return IssueAPIIssueEditCommentDeprecatedRequest
 
 Deprecated
 */
-func (a *IssueAPIService) IssueEditCommentDeprecated(ctx context.Context, owner string, repo string, index int32, id int64) ApiIssueEditCommentDeprecatedRequest {
-	return ApiIssueEditCommentDeprecatedRequest{
+func (a *IssueAPIService) IssueEditCommentDeprecated(ctx context.Context, owner string, repo string, index int32, id int64) IssueAPIIssueEditCommentDeprecatedRequest {
+	return IssueAPIIssueEditCommentDeprecatedRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -5716,7 +5716,7 @@ func (a *IssueAPIService) IssueEditCommentDeprecated(ctx context.Context, owner 
 // Execute executes the request
 //  @return Comment
 // Deprecated
-func (a *IssueAPIService) IssueEditCommentDeprecatedExecute(r ApiIssueEditCommentDeprecatedRequest) (*Comment, *http.Response, error) {
+func (a *IssueAPIService) IssueEditCommentDeprecatedExecute(r IssueAPIIssueEditCommentDeprecatedRequest) (*Comment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -5911,7 +5911,7 @@ func (a *IssueAPIService) IssueEditCommentDeprecatedExecute(r ApiIssueEditCommen
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueEditIssueRequest struct {
+type IssueAPIIssueEditIssueRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -5920,12 +5920,12 @@ type ApiIssueEditIssueRequest struct {
 	body *EditIssueOption
 }
 
-func (r ApiIssueEditIssueRequest) Body(body EditIssueOption) ApiIssueEditIssueRequest {
+func (r IssueAPIIssueEditIssueRequest) Body(body EditIssueOption) IssueAPIIssueEditIssueRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueEditIssueRequest) Execute() (*Issue, *http.Response, error) {
+func (r IssueAPIIssueEditIssueRequest) Execute() (*Issue, *http.Response, error) {
 	return r.ApiService.IssueEditIssueExecute(r)
 }
 
@@ -5936,10 +5936,10 @@ IssueEditIssue Edit an issue. If using deadline only the date will be taken into
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue to edit
- @return ApiIssueEditIssueRequest
+ @return IssueAPIIssueEditIssueRequest
 */
-func (a *IssueAPIService) IssueEditIssue(ctx context.Context, owner string, repo string, index int64) ApiIssueEditIssueRequest {
-	return ApiIssueEditIssueRequest{
+func (a *IssueAPIService) IssueEditIssue(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueEditIssueRequest {
+	return IssueAPIIssueEditIssueRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -5950,7 +5950,7 @@ func (a *IssueAPIService) IssueEditIssue(ctx context.Context, owner string, repo
 
 // Execute executes the request
 //  @return Issue
-func (a *IssueAPIService) IssueEditIssueExecute(r ApiIssueEditIssueRequest) (*Issue, *http.Response, error) {
+func (a *IssueAPIService) IssueEditIssueExecute(r IssueAPIIssueEditIssueRequest) (*Issue, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -6144,7 +6144,7 @@ func (a *IssueAPIService) IssueEditIssueExecute(r ApiIssueEditIssueRequest) (*Is
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueEditIssueAttachmentRequest struct {
+type IssueAPIIssueEditIssueAttachmentRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -6154,12 +6154,12 @@ type ApiIssueEditIssueAttachmentRequest struct {
 	body *EditAttachmentOptions
 }
 
-func (r ApiIssueEditIssueAttachmentRequest) Body(body EditAttachmentOptions) ApiIssueEditIssueAttachmentRequest {
+func (r IssueAPIIssueEditIssueAttachmentRequest) Body(body EditAttachmentOptions) IssueAPIIssueEditIssueAttachmentRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueEditIssueAttachmentRequest) Execute() (*Attachment, *http.Response, error) {
+func (r IssueAPIIssueEditIssueAttachmentRequest) Execute() (*Attachment, *http.Response, error) {
 	return r.ApiService.IssueEditIssueAttachmentExecute(r)
 }
 
@@ -6171,10 +6171,10 @@ IssueEditIssueAttachment Edit an issue attachment
  @param repo name of the repo
  @param index index of the issue
  @param attachmentId id of the attachment to edit
- @return ApiIssueEditIssueAttachmentRequest
+ @return IssueAPIIssueEditIssueAttachmentRequest
 */
-func (a *IssueAPIService) IssueEditIssueAttachment(ctx context.Context, owner string, repo string, index int64, attachmentId int64) ApiIssueEditIssueAttachmentRequest {
-	return ApiIssueEditIssueAttachmentRequest{
+func (a *IssueAPIService) IssueEditIssueAttachment(ctx context.Context, owner string, repo string, index int64, attachmentId int64) IssueAPIIssueEditIssueAttachmentRequest {
+	return IssueAPIIssueEditIssueAttachmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -6186,7 +6186,7 @@ func (a *IssueAPIService) IssueEditIssueAttachment(ctx context.Context, owner st
 
 // Execute executes the request
 //  @return Attachment
-func (a *IssueAPIService) IssueEditIssueAttachmentExecute(r ApiIssueEditIssueAttachmentRequest) (*Attachment, *http.Response, error) {
+func (a *IssueAPIService) IssueEditIssueAttachmentExecute(r IssueAPIIssueEditIssueAttachmentRequest) (*Attachment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -6370,7 +6370,7 @@ func (a *IssueAPIService) IssueEditIssueAttachmentExecute(r ApiIssueEditIssueAtt
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueEditIssueCommentAttachmentRequest struct {
+type IssueAPIIssueEditIssueCommentAttachmentRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -6380,12 +6380,12 @@ type ApiIssueEditIssueCommentAttachmentRequest struct {
 	body *EditAttachmentOptions
 }
 
-func (r ApiIssueEditIssueCommentAttachmentRequest) Body(body EditAttachmentOptions) ApiIssueEditIssueCommentAttachmentRequest {
+func (r IssueAPIIssueEditIssueCommentAttachmentRequest) Body(body EditAttachmentOptions) IssueAPIIssueEditIssueCommentAttachmentRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueEditIssueCommentAttachmentRequest) Execute() (*Attachment, *http.Response, error) {
+func (r IssueAPIIssueEditIssueCommentAttachmentRequest) Execute() (*Attachment, *http.Response, error) {
 	return r.ApiService.IssueEditIssueCommentAttachmentExecute(r)
 }
 
@@ -6397,10 +6397,10 @@ IssueEditIssueCommentAttachment Edit a comment attachment
  @param repo name of the repo
  @param id id of the comment
  @param attachmentId id of the attachment to edit
- @return ApiIssueEditIssueCommentAttachmentRequest
+ @return IssueAPIIssueEditIssueCommentAttachmentRequest
 */
-func (a *IssueAPIService) IssueEditIssueCommentAttachment(ctx context.Context, owner string, repo string, id int64, attachmentId int64) ApiIssueEditIssueCommentAttachmentRequest {
-	return ApiIssueEditIssueCommentAttachmentRequest{
+func (a *IssueAPIService) IssueEditIssueCommentAttachment(ctx context.Context, owner string, repo string, id int64, attachmentId int64) IssueAPIIssueEditIssueCommentAttachmentRequest {
+	return IssueAPIIssueEditIssueCommentAttachmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -6412,7 +6412,7 @@ func (a *IssueAPIService) IssueEditIssueCommentAttachment(ctx context.Context, o
 
 // Execute executes the request
 //  @return Attachment
-func (a *IssueAPIService) IssueEditIssueCommentAttachmentExecute(r ApiIssueEditIssueCommentAttachmentRequest) (*Attachment, *http.Response, error) {
+func (a *IssueAPIService) IssueEditIssueCommentAttachmentExecute(r IssueAPIIssueEditIssueCommentAttachmentRequest) (*Attachment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -6596,7 +6596,7 @@ func (a *IssueAPIService) IssueEditIssueCommentAttachmentExecute(r ApiIssueEditI
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueEditIssueDeadlineRequest struct {
+type IssueAPIIssueEditIssueDeadlineRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -6605,12 +6605,12 @@ type ApiIssueEditIssueDeadlineRequest struct {
 	body *EditDeadlineOption
 }
 
-func (r ApiIssueEditIssueDeadlineRequest) Body(body EditDeadlineOption) ApiIssueEditIssueDeadlineRequest {
+func (r IssueAPIIssueEditIssueDeadlineRequest) Body(body EditDeadlineOption) IssueAPIIssueEditIssueDeadlineRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueEditIssueDeadlineRequest) Execute() (*IssueDeadline, *http.Response, error) {
+func (r IssueAPIIssueEditIssueDeadlineRequest) Execute() (*IssueDeadline, *http.Response, error) {
 	return r.ApiService.IssueEditIssueDeadlineExecute(r)
 }
 
@@ -6621,10 +6621,10 @@ IssueEditIssueDeadline Set an issue deadline. If set to null, the deadline is de
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue to create or update a deadline on
- @return ApiIssueEditIssueDeadlineRequest
+ @return IssueAPIIssueEditIssueDeadlineRequest
 */
-func (a *IssueAPIService) IssueEditIssueDeadline(ctx context.Context, owner string, repo string, index int64) ApiIssueEditIssueDeadlineRequest {
-	return ApiIssueEditIssueDeadlineRequest{
+func (a *IssueAPIService) IssueEditIssueDeadline(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueEditIssueDeadlineRequest {
+	return IssueAPIIssueEditIssueDeadlineRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -6635,7 +6635,7 @@ func (a *IssueAPIService) IssueEditIssueDeadline(ctx context.Context, owner stri
 
 // Execute executes the request
 //  @return IssueDeadline
-func (a *IssueAPIService) IssueEditIssueDeadlineExecute(r ApiIssueEditIssueDeadlineRequest) (*IssueDeadline, *http.Response, error) {
+func (a *IssueAPIService) IssueEditIssueDeadlineExecute(r IssueAPIIssueEditIssueDeadlineRequest) (*IssueDeadline, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -6818,7 +6818,7 @@ func (a *IssueAPIService) IssueEditIssueDeadlineExecute(r ApiIssueEditIssueDeadl
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueEditLabelRequest struct {
+type IssueAPIIssueEditLabelRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -6827,12 +6827,12 @@ type ApiIssueEditLabelRequest struct {
 	body *EditLabelOption
 }
 
-func (r ApiIssueEditLabelRequest) Body(body EditLabelOption) ApiIssueEditLabelRequest {
+func (r IssueAPIIssueEditLabelRequest) Body(body EditLabelOption) IssueAPIIssueEditLabelRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueEditLabelRequest) Execute() (*Label, *http.Response, error) {
+func (r IssueAPIIssueEditLabelRequest) Execute() (*Label, *http.Response, error) {
 	return r.ApiService.IssueEditLabelExecute(r)
 }
 
@@ -6843,10 +6843,10 @@ IssueEditLabel Update a label
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the label to edit
- @return ApiIssueEditLabelRequest
+ @return IssueAPIIssueEditLabelRequest
 */
-func (a *IssueAPIService) IssueEditLabel(ctx context.Context, owner string, repo string, id int64) ApiIssueEditLabelRequest {
-	return ApiIssueEditLabelRequest{
+func (a *IssueAPIService) IssueEditLabel(ctx context.Context, owner string, repo string, id int64) IssueAPIIssueEditLabelRequest {
+	return IssueAPIIssueEditLabelRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -6857,7 +6857,7 @@ func (a *IssueAPIService) IssueEditLabel(ctx context.Context, owner string, repo
 
 // Execute executes the request
 //  @return Label
-func (a *IssueAPIService) IssueEditLabelExecute(r ApiIssueEditLabelRequest) (*Label, *http.Response, error) {
+func (a *IssueAPIService) IssueEditLabelExecute(r IssueAPIIssueEditLabelRequest) (*Label, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -7040,7 +7040,7 @@ func (a *IssueAPIService) IssueEditLabelExecute(r ApiIssueEditLabelRequest) (*La
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueEditMilestoneRequest struct {
+type IssueAPIIssueEditMilestoneRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -7049,12 +7049,12 @@ type ApiIssueEditMilestoneRequest struct {
 	body *EditMilestoneOption
 }
 
-func (r ApiIssueEditMilestoneRequest) Body(body EditMilestoneOption) ApiIssueEditMilestoneRequest {
+func (r IssueAPIIssueEditMilestoneRequest) Body(body EditMilestoneOption) IssueAPIIssueEditMilestoneRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueEditMilestoneRequest) Execute() (*Milestone, *http.Response, error) {
+func (r IssueAPIIssueEditMilestoneRequest) Execute() (*Milestone, *http.Response, error) {
 	return r.ApiService.IssueEditMilestoneExecute(r)
 }
 
@@ -7065,10 +7065,10 @@ IssueEditMilestone Update a milestone
  @param owner owner of the repo
  @param repo name of the repo
  @param id the milestone to edit, identified by ID and if not available by name
- @return ApiIssueEditMilestoneRequest
+ @return IssueAPIIssueEditMilestoneRequest
 */
-func (a *IssueAPIService) IssueEditMilestone(ctx context.Context, owner string, repo string, id string) ApiIssueEditMilestoneRequest {
-	return ApiIssueEditMilestoneRequest{
+func (a *IssueAPIService) IssueEditMilestone(ctx context.Context, owner string, repo string, id string) IssueAPIIssueEditMilestoneRequest {
+	return IssueAPIIssueEditMilestoneRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -7079,7 +7079,7 @@ func (a *IssueAPIService) IssueEditMilestone(ctx context.Context, owner string, 
 
 // Execute executes the request
 //  @return Milestone
-func (a *IssueAPIService) IssueEditMilestoneExecute(r ApiIssueEditMilestoneRequest) (*Milestone, *http.Response, error) {
+func (a *IssueAPIService) IssueEditMilestoneExecute(r IssueAPIIssueEditMilestoneRequest) (*Milestone, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -7251,7 +7251,7 @@ func (a *IssueAPIService) IssueEditMilestoneExecute(r ApiIssueEditMilestoneReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueGetCommentRequest struct {
+type IssueAPIIssueGetCommentRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -7259,7 +7259,7 @@ type ApiIssueGetCommentRequest struct {
 	id int64
 }
 
-func (r ApiIssueGetCommentRequest) Execute() (*Comment, *http.Response, error) {
+func (r IssueAPIIssueGetCommentRequest) Execute() (*Comment, *http.Response, error) {
 	return r.ApiService.IssueGetCommentExecute(r)
 }
 
@@ -7270,10 +7270,10 @@ IssueGetComment Get a comment
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the comment
- @return ApiIssueGetCommentRequest
+ @return IssueAPIIssueGetCommentRequest
 */
-func (a *IssueAPIService) IssueGetComment(ctx context.Context, owner string, repo string, id int64) ApiIssueGetCommentRequest {
-	return ApiIssueGetCommentRequest{
+func (a *IssueAPIService) IssueGetComment(ctx context.Context, owner string, repo string, id int64) IssueAPIIssueGetCommentRequest {
+	return IssueAPIIssueGetCommentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -7284,7 +7284,7 @@ func (a *IssueAPIService) IssueGetComment(ctx context.Context, owner string, rep
 
 // Execute executes the request
 //  @return Comment
-func (a *IssueAPIService) IssueGetCommentExecute(r ApiIssueGetCommentRequest) (*Comment, *http.Response, error) {
+func (a *IssueAPIService) IssueGetCommentExecute(r IssueAPIIssueGetCommentRequest) (*Comment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -7476,7 +7476,7 @@ func (a *IssueAPIService) IssueGetCommentExecute(r ApiIssueGetCommentRequest) (*
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueGetCommentReactionsRequest struct {
+type IssueAPIIssueGetCommentReactionsRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -7484,7 +7484,7 @@ type ApiIssueGetCommentReactionsRequest struct {
 	id int64
 }
 
-func (r ApiIssueGetCommentReactionsRequest) Execute() ([]Reaction, *http.Response, error) {
+func (r IssueAPIIssueGetCommentReactionsRequest) Execute() ([]Reaction, *http.Response, error) {
 	return r.ApiService.IssueGetCommentReactionsExecute(r)
 }
 
@@ -7495,10 +7495,10 @@ IssueGetCommentReactions Get a list of reactions from a comment of an issue
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the comment to edit
- @return ApiIssueGetCommentReactionsRequest
+ @return IssueAPIIssueGetCommentReactionsRequest
 */
-func (a *IssueAPIService) IssueGetCommentReactions(ctx context.Context, owner string, repo string, id int64) ApiIssueGetCommentReactionsRequest {
-	return ApiIssueGetCommentReactionsRequest{
+func (a *IssueAPIService) IssueGetCommentReactions(ctx context.Context, owner string, repo string, id int64) IssueAPIIssueGetCommentReactionsRequest {
+	return IssueAPIIssueGetCommentReactionsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -7509,7 +7509,7 @@ func (a *IssueAPIService) IssueGetCommentReactions(ctx context.Context, owner st
 
 // Execute executes the request
 //  @return []Reaction
-func (a *IssueAPIService) IssueGetCommentReactionsExecute(r ApiIssueGetCommentReactionsRequest) ([]Reaction, *http.Response, error) {
+func (a *IssueAPIService) IssueGetCommentReactionsExecute(r IssueAPIIssueGetCommentReactionsRequest) ([]Reaction, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -7690,7 +7690,7 @@ func (a *IssueAPIService) IssueGetCommentReactionsExecute(r ApiIssueGetCommentRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueGetCommentsRequest struct {
+type IssueAPIIssueGetCommentsRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -7701,18 +7701,18 @@ type ApiIssueGetCommentsRequest struct {
 }
 
 // if provided, only comments updated since the specified time are returned.
-func (r ApiIssueGetCommentsRequest) Since(since time.Time) ApiIssueGetCommentsRequest {
+func (r IssueAPIIssueGetCommentsRequest) Since(since time.Time) IssueAPIIssueGetCommentsRequest {
 	r.since = &since
 	return r
 }
 
 // if provided, only comments updated before the provided time are returned.
-func (r ApiIssueGetCommentsRequest) Before(before time.Time) ApiIssueGetCommentsRequest {
+func (r IssueAPIIssueGetCommentsRequest) Before(before time.Time) IssueAPIIssueGetCommentsRequest {
 	r.before = &before
 	return r
 }
 
-func (r ApiIssueGetCommentsRequest) Execute() ([]Comment, *http.Response, error) {
+func (r IssueAPIIssueGetCommentsRequest) Execute() ([]Comment, *http.Response, error) {
 	return r.ApiService.IssueGetCommentsExecute(r)
 }
 
@@ -7723,10 +7723,10 @@ IssueGetComments List all comments on an issue
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueGetCommentsRequest
+ @return IssueAPIIssueGetCommentsRequest
 */
-func (a *IssueAPIService) IssueGetComments(ctx context.Context, owner string, repo string, index int64) ApiIssueGetCommentsRequest {
-	return ApiIssueGetCommentsRequest{
+func (a *IssueAPIService) IssueGetComments(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueGetCommentsRequest {
+	return IssueAPIIssueGetCommentsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -7737,7 +7737,7 @@ func (a *IssueAPIService) IssueGetComments(ctx context.Context, owner string, re
 
 // Execute executes the request
 //  @return []Comment
-func (a *IssueAPIService) IssueGetCommentsExecute(r ApiIssueGetCommentsRequest) ([]Comment, *http.Response, error) {
+func (a *IssueAPIService) IssueGetCommentsExecute(r IssueAPIIssueGetCommentsRequest) ([]Comment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -7935,7 +7935,7 @@ func (a *IssueAPIService) IssueGetCommentsExecute(r ApiIssueGetCommentsRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueGetCommentsAndTimelineRequest struct {
+type IssueAPIIssueGetCommentsAndTimelineRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -7948,30 +7948,30 @@ type ApiIssueGetCommentsAndTimelineRequest struct {
 }
 
 // if provided, only comments updated since the specified time are returned.
-func (r ApiIssueGetCommentsAndTimelineRequest) Since(since time.Time) ApiIssueGetCommentsAndTimelineRequest {
+func (r IssueAPIIssueGetCommentsAndTimelineRequest) Since(since time.Time) IssueAPIIssueGetCommentsAndTimelineRequest {
 	r.since = &since
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiIssueGetCommentsAndTimelineRequest) Page(page int32) ApiIssueGetCommentsAndTimelineRequest {
+func (r IssueAPIIssueGetCommentsAndTimelineRequest) Page(page int32) IssueAPIIssueGetCommentsAndTimelineRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiIssueGetCommentsAndTimelineRequest) Limit(limit int32) ApiIssueGetCommentsAndTimelineRequest {
+func (r IssueAPIIssueGetCommentsAndTimelineRequest) Limit(limit int32) IssueAPIIssueGetCommentsAndTimelineRequest {
 	r.limit = &limit
 	return r
 }
 
 // if provided, only comments updated before the provided time are returned.
-func (r ApiIssueGetCommentsAndTimelineRequest) Before(before time.Time) ApiIssueGetCommentsAndTimelineRequest {
+func (r IssueAPIIssueGetCommentsAndTimelineRequest) Before(before time.Time) IssueAPIIssueGetCommentsAndTimelineRequest {
 	r.before = &before
 	return r
 }
 
-func (r ApiIssueGetCommentsAndTimelineRequest) Execute() ([]TimelineComment, *http.Response, error) {
+func (r IssueAPIIssueGetCommentsAndTimelineRequest) Execute() ([]TimelineComment, *http.Response, error) {
 	return r.ApiService.IssueGetCommentsAndTimelineExecute(r)
 }
 
@@ -7982,10 +7982,10 @@ IssueGetCommentsAndTimeline List all comments and events on an issue
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueGetCommentsAndTimelineRequest
+ @return IssueAPIIssueGetCommentsAndTimelineRequest
 */
-func (a *IssueAPIService) IssueGetCommentsAndTimeline(ctx context.Context, owner string, repo string, index int64) ApiIssueGetCommentsAndTimelineRequest {
-	return ApiIssueGetCommentsAndTimelineRequest{
+func (a *IssueAPIService) IssueGetCommentsAndTimeline(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueGetCommentsAndTimelineRequest {
+	return IssueAPIIssueGetCommentsAndTimelineRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -7996,7 +7996,7 @@ func (a *IssueAPIService) IssueGetCommentsAndTimeline(ctx context.Context, owner
 
 // Execute executes the request
 //  @return []TimelineComment
-func (a *IssueAPIService) IssueGetCommentsAndTimelineExecute(r ApiIssueGetCommentsAndTimelineRequest) ([]TimelineComment, *http.Response, error) {
+func (a *IssueAPIService) IssueGetCommentsAndTimelineExecute(r IssueAPIIssueGetCommentsAndTimelineRequest) ([]TimelineComment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -8200,7 +8200,7 @@ func (a *IssueAPIService) IssueGetCommentsAndTimelineExecute(r ApiIssueGetCommen
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueGetIssueRequest struct {
+type IssueAPIIssueGetIssueRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -8208,7 +8208,7 @@ type ApiIssueGetIssueRequest struct {
 	index int64
 }
 
-func (r ApiIssueGetIssueRequest) Execute() (*Issue, *http.Response, error) {
+func (r IssueAPIIssueGetIssueRequest) Execute() (*Issue, *http.Response, error) {
 	return r.ApiService.IssueGetIssueExecute(r)
 }
 
@@ -8219,10 +8219,10 @@ IssueGetIssue Get an issue
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue to get
- @return ApiIssueGetIssueRequest
+ @return IssueAPIIssueGetIssueRequest
 */
-func (a *IssueAPIService) IssueGetIssue(ctx context.Context, owner string, repo string, index int64) ApiIssueGetIssueRequest {
-	return ApiIssueGetIssueRequest{
+func (a *IssueAPIService) IssueGetIssue(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueGetIssueRequest {
+	return IssueAPIIssueGetIssueRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -8233,7 +8233,7 @@ func (a *IssueAPIService) IssueGetIssue(ctx context.Context, owner string, repo 
 
 // Execute executes the request
 //  @return Issue
-func (a *IssueAPIService) IssueGetIssueExecute(r ApiIssueGetIssueRequest) (*Issue, *http.Response, error) {
+func (a *IssueAPIService) IssueGetIssueExecute(r IssueAPIIssueGetIssueRequest) (*Issue, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -8403,7 +8403,7 @@ func (a *IssueAPIService) IssueGetIssueExecute(r ApiIssueGetIssueRequest) (*Issu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueGetIssueAttachmentRequest struct {
+type IssueAPIIssueGetIssueAttachmentRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -8412,7 +8412,7 @@ type ApiIssueGetIssueAttachmentRequest struct {
 	attachmentId int64
 }
 
-func (r ApiIssueGetIssueAttachmentRequest) Execute() (*Attachment, *http.Response, error) {
+func (r IssueAPIIssueGetIssueAttachmentRequest) Execute() (*Attachment, *http.Response, error) {
 	return r.ApiService.IssueGetIssueAttachmentExecute(r)
 }
 
@@ -8424,10 +8424,10 @@ IssueGetIssueAttachment Get an issue attachment
  @param repo name of the repo
  @param index index of the issue
  @param attachmentId id of the attachment to get
- @return ApiIssueGetIssueAttachmentRequest
+ @return IssueAPIIssueGetIssueAttachmentRequest
 */
-func (a *IssueAPIService) IssueGetIssueAttachment(ctx context.Context, owner string, repo string, index int64, attachmentId int64) ApiIssueGetIssueAttachmentRequest {
-	return ApiIssueGetIssueAttachmentRequest{
+func (a *IssueAPIService) IssueGetIssueAttachment(ctx context.Context, owner string, repo string, index int64, attachmentId int64) IssueAPIIssueGetIssueAttachmentRequest {
+	return IssueAPIIssueGetIssueAttachmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -8439,7 +8439,7 @@ func (a *IssueAPIService) IssueGetIssueAttachment(ctx context.Context, owner str
 
 // Execute executes the request
 //  @return Attachment
-func (a *IssueAPIService) IssueGetIssueAttachmentExecute(r ApiIssueGetIssueAttachmentRequest) (*Attachment, *http.Response, error) {
+func (a *IssueAPIService) IssueGetIssueAttachmentExecute(r IssueAPIIssueGetIssueAttachmentRequest) (*Attachment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -8610,7 +8610,7 @@ func (a *IssueAPIService) IssueGetIssueAttachmentExecute(r ApiIssueGetIssueAttac
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueGetIssueCommentAttachmentRequest struct {
+type IssueAPIIssueGetIssueCommentAttachmentRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -8619,7 +8619,7 @@ type ApiIssueGetIssueCommentAttachmentRequest struct {
 	attachmentId int64
 }
 
-func (r ApiIssueGetIssueCommentAttachmentRequest) Execute() (*Attachment, *http.Response, error) {
+func (r IssueAPIIssueGetIssueCommentAttachmentRequest) Execute() (*Attachment, *http.Response, error) {
 	return r.ApiService.IssueGetIssueCommentAttachmentExecute(r)
 }
 
@@ -8631,10 +8631,10 @@ IssueGetIssueCommentAttachment Get a comment attachment
  @param repo name of the repo
  @param id id of the comment
  @param attachmentId id of the attachment to get
- @return ApiIssueGetIssueCommentAttachmentRequest
+ @return IssueAPIIssueGetIssueCommentAttachmentRequest
 */
-func (a *IssueAPIService) IssueGetIssueCommentAttachment(ctx context.Context, owner string, repo string, id int64, attachmentId int64) ApiIssueGetIssueCommentAttachmentRequest {
-	return ApiIssueGetIssueCommentAttachmentRequest{
+func (a *IssueAPIService) IssueGetIssueCommentAttachment(ctx context.Context, owner string, repo string, id int64, attachmentId int64) IssueAPIIssueGetIssueCommentAttachmentRequest {
+	return IssueAPIIssueGetIssueCommentAttachmentRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -8646,7 +8646,7 @@ func (a *IssueAPIService) IssueGetIssueCommentAttachment(ctx context.Context, ow
 
 // Execute executes the request
 //  @return Attachment
-func (a *IssueAPIService) IssueGetIssueCommentAttachmentExecute(r ApiIssueGetIssueCommentAttachmentRequest) (*Attachment, *http.Response, error) {
+func (a *IssueAPIService) IssueGetIssueCommentAttachmentExecute(r IssueAPIIssueGetIssueCommentAttachmentRequest) (*Attachment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -8817,7 +8817,7 @@ func (a *IssueAPIService) IssueGetIssueCommentAttachmentExecute(r ApiIssueGetIss
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueGetIssueReactionsRequest struct {
+type IssueAPIIssueGetIssueReactionsRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -8828,18 +8828,18 @@ type ApiIssueGetIssueReactionsRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiIssueGetIssueReactionsRequest) Page(page int32) ApiIssueGetIssueReactionsRequest {
+func (r IssueAPIIssueGetIssueReactionsRequest) Page(page int32) IssueAPIIssueGetIssueReactionsRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiIssueGetIssueReactionsRequest) Limit(limit int32) ApiIssueGetIssueReactionsRequest {
+func (r IssueAPIIssueGetIssueReactionsRequest) Limit(limit int32) IssueAPIIssueGetIssueReactionsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiIssueGetIssueReactionsRequest) Execute() ([]Reaction, *http.Response, error) {
+func (r IssueAPIIssueGetIssueReactionsRequest) Execute() ([]Reaction, *http.Response, error) {
 	return r.ApiService.IssueGetIssueReactionsExecute(r)
 }
 
@@ -8850,10 +8850,10 @@ IssueGetIssueReactions Get a list reactions of an issue
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueGetIssueReactionsRequest
+ @return IssueAPIIssueGetIssueReactionsRequest
 */
-func (a *IssueAPIService) IssueGetIssueReactions(ctx context.Context, owner string, repo string, index int64) ApiIssueGetIssueReactionsRequest {
-	return ApiIssueGetIssueReactionsRequest{
+func (a *IssueAPIService) IssueGetIssueReactions(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueGetIssueReactionsRequest {
+	return IssueAPIIssueGetIssueReactionsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -8864,7 +8864,7 @@ func (a *IssueAPIService) IssueGetIssueReactions(ctx context.Context, owner stri
 
 // Execute executes the request
 //  @return []Reaction
-func (a *IssueAPIService) IssueGetIssueReactionsExecute(r ApiIssueGetIssueReactionsRequest) ([]Reaction, *http.Response, error) {
+func (a *IssueAPIService) IssueGetIssueReactionsExecute(r IssueAPIIssueGetIssueReactionsRequest) ([]Reaction, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -9051,7 +9051,7 @@ func (a *IssueAPIService) IssueGetIssueReactionsExecute(r ApiIssueGetIssueReacti
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueGetLabelRequest struct {
+type IssueAPIIssueGetLabelRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -9059,7 +9059,7 @@ type ApiIssueGetLabelRequest struct {
 	id int64
 }
 
-func (r ApiIssueGetLabelRequest) Execute() (*Label, *http.Response, error) {
+func (r IssueAPIIssueGetLabelRequest) Execute() (*Label, *http.Response, error) {
 	return r.ApiService.IssueGetLabelExecute(r)
 }
 
@@ -9070,10 +9070,10 @@ IssueGetLabel Get a single label
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the label to get
- @return ApiIssueGetLabelRequest
+ @return IssueAPIIssueGetLabelRequest
 */
-func (a *IssueAPIService) IssueGetLabel(ctx context.Context, owner string, repo string, id int64) ApiIssueGetLabelRequest {
-	return ApiIssueGetLabelRequest{
+func (a *IssueAPIService) IssueGetLabel(ctx context.Context, owner string, repo string, id int64) IssueAPIIssueGetLabelRequest {
+	return IssueAPIIssueGetLabelRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -9084,7 +9084,7 @@ func (a *IssueAPIService) IssueGetLabel(ctx context.Context, owner string, repo 
 
 // Execute executes the request
 //  @return Label
-func (a *IssueAPIService) IssueGetLabelExecute(r ApiIssueGetLabelRequest) (*Label, *http.Response, error) {
+func (a *IssueAPIService) IssueGetLabelExecute(r IssueAPIIssueGetLabelRequest) (*Label, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -9254,7 +9254,7 @@ func (a *IssueAPIService) IssueGetLabelExecute(r ApiIssueGetLabelRequest) (*Labe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueGetLabelsRequest struct {
+type IssueAPIIssueGetLabelsRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -9262,7 +9262,7 @@ type ApiIssueGetLabelsRequest struct {
 	index int64
 }
 
-func (r ApiIssueGetLabelsRequest) Execute() ([]Label, *http.Response, error) {
+func (r IssueAPIIssueGetLabelsRequest) Execute() ([]Label, *http.Response, error) {
 	return r.ApiService.IssueGetLabelsExecute(r)
 }
 
@@ -9273,10 +9273,10 @@ IssueGetLabels Get an issue's labels
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueGetLabelsRequest
+ @return IssueAPIIssueGetLabelsRequest
 */
-func (a *IssueAPIService) IssueGetLabels(ctx context.Context, owner string, repo string, index int64) ApiIssueGetLabelsRequest {
-	return ApiIssueGetLabelsRequest{
+func (a *IssueAPIService) IssueGetLabels(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueGetLabelsRequest {
+	return IssueAPIIssueGetLabelsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -9287,7 +9287,7 @@ func (a *IssueAPIService) IssueGetLabels(ctx context.Context, owner string, repo
 
 // Execute executes the request
 //  @return []Label
-func (a *IssueAPIService) IssueGetLabelsExecute(r ApiIssueGetLabelsRequest) ([]Label, *http.Response, error) {
+func (a *IssueAPIService) IssueGetLabelsExecute(r IssueAPIIssueGetLabelsRequest) ([]Label, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -9457,7 +9457,7 @@ func (a *IssueAPIService) IssueGetLabelsExecute(r ApiIssueGetLabelsRequest) ([]L
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueGetMilestoneRequest struct {
+type IssueAPIIssueGetMilestoneRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -9465,7 +9465,7 @@ type ApiIssueGetMilestoneRequest struct {
 	id string
 }
 
-func (r ApiIssueGetMilestoneRequest) Execute() (*Milestone, *http.Response, error) {
+func (r IssueAPIIssueGetMilestoneRequest) Execute() (*Milestone, *http.Response, error) {
 	return r.ApiService.IssueGetMilestoneExecute(r)
 }
 
@@ -9476,10 +9476,10 @@ IssueGetMilestone Get a milestone
  @param owner owner of the repo
  @param repo name of the repo
  @param id the milestone to get, identified by ID and if not available by name
- @return ApiIssueGetMilestoneRequest
+ @return IssueAPIIssueGetMilestoneRequest
 */
-func (a *IssueAPIService) IssueGetMilestone(ctx context.Context, owner string, repo string, id string) ApiIssueGetMilestoneRequest {
-	return ApiIssueGetMilestoneRequest{
+func (a *IssueAPIService) IssueGetMilestone(ctx context.Context, owner string, repo string, id string) IssueAPIIssueGetMilestoneRequest {
+	return IssueAPIIssueGetMilestoneRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -9490,7 +9490,7 @@ func (a *IssueAPIService) IssueGetMilestone(ctx context.Context, owner string, r
 
 // Execute executes the request
 //  @return Milestone
-func (a *IssueAPIService) IssueGetMilestoneExecute(r ApiIssueGetMilestoneRequest) (*Milestone, *http.Response, error) {
+func (a *IssueAPIService) IssueGetMilestoneExecute(r IssueAPIIssueGetMilestoneRequest) (*Milestone, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -9660,7 +9660,7 @@ func (a *IssueAPIService) IssueGetMilestoneExecute(r ApiIssueGetMilestoneRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueGetMilestonesListRequest struct {
+type IssueAPIIssueGetMilestonesListRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -9672,30 +9672,30 @@ type ApiIssueGetMilestonesListRequest struct {
 }
 
 // Milestone state, Recognized values are open, closed and all. Defaults to \&quot;open\&quot;
-func (r ApiIssueGetMilestonesListRequest) State(state string) ApiIssueGetMilestonesListRequest {
+func (r IssueAPIIssueGetMilestonesListRequest) State(state string) IssueAPIIssueGetMilestonesListRequest {
 	r.state = &state
 	return r
 }
 
 // filter by milestone name
-func (r ApiIssueGetMilestonesListRequest) Name(name string) ApiIssueGetMilestonesListRequest {
+func (r IssueAPIIssueGetMilestonesListRequest) Name(name string) IssueAPIIssueGetMilestonesListRequest {
 	r.name = &name
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiIssueGetMilestonesListRequest) Page(page int32) ApiIssueGetMilestonesListRequest {
+func (r IssueAPIIssueGetMilestonesListRequest) Page(page int32) IssueAPIIssueGetMilestonesListRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiIssueGetMilestonesListRequest) Limit(limit int32) ApiIssueGetMilestonesListRequest {
+func (r IssueAPIIssueGetMilestonesListRequest) Limit(limit int32) IssueAPIIssueGetMilestonesListRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiIssueGetMilestonesListRequest) Execute() ([]Milestone, *http.Response, error) {
+func (r IssueAPIIssueGetMilestonesListRequest) Execute() ([]Milestone, *http.Response, error) {
 	return r.ApiService.IssueGetMilestonesListExecute(r)
 }
 
@@ -9705,10 +9705,10 @@ IssueGetMilestonesList Get all of a repository's opened milestones
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiIssueGetMilestonesListRequest
+ @return IssueAPIIssueGetMilestonesListRequest
 */
-func (a *IssueAPIService) IssueGetMilestonesList(ctx context.Context, owner string, repo string) ApiIssueGetMilestonesListRequest {
-	return ApiIssueGetMilestonesListRequest{
+func (a *IssueAPIService) IssueGetMilestonesList(ctx context.Context, owner string, repo string) IssueAPIIssueGetMilestonesListRequest {
+	return IssueAPIIssueGetMilestonesListRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -9718,7 +9718,7 @@ func (a *IssueAPIService) IssueGetMilestonesList(ctx context.Context, owner stri
 
 // Execute executes the request
 //  @return []Milestone
-func (a *IssueAPIService) IssueGetMilestonesListExecute(r ApiIssueGetMilestonesListRequest) ([]Milestone, *http.Response, error) {
+func (a *IssueAPIService) IssueGetMilestonesListExecute(r IssueAPIIssueGetMilestonesListRequest) ([]Milestone, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -9899,7 +9899,7 @@ func (a *IssueAPIService) IssueGetMilestonesListExecute(r ApiIssueGetMilestonesL
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueGetRepoCommentsRequest struct {
+type IssueAPIIssueGetRepoCommentsRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -9911,30 +9911,30 @@ type ApiIssueGetRepoCommentsRequest struct {
 }
 
 // if provided, only comments updated since the provided time are returned.
-func (r ApiIssueGetRepoCommentsRequest) Since(since time.Time) ApiIssueGetRepoCommentsRequest {
+func (r IssueAPIIssueGetRepoCommentsRequest) Since(since time.Time) IssueAPIIssueGetRepoCommentsRequest {
 	r.since = &since
 	return r
 }
 
 // if provided, only comments updated before the provided time are returned.
-func (r ApiIssueGetRepoCommentsRequest) Before(before time.Time) ApiIssueGetRepoCommentsRequest {
+func (r IssueAPIIssueGetRepoCommentsRequest) Before(before time.Time) IssueAPIIssueGetRepoCommentsRequest {
 	r.before = &before
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiIssueGetRepoCommentsRequest) Page(page int32) ApiIssueGetRepoCommentsRequest {
+func (r IssueAPIIssueGetRepoCommentsRequest) Page(page int32) IssueAPIIssueGetRepoCommentsRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiIssueGetRepoCommentsRequest) Limit(limit int32) ApiIssueGetRepoCommentsRequest {
+func (r IssueAPIIssueGetRepoCommentsRequest) Limit(limit int32) IssueAPIIssueGetRepoCommentsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiIssueGetRepoCommentsRequest) Execute() ([]Comment, *http.Response, error) {
+func (r IssueAPIIssueGetRepoCommentsRequest) Execute() ([]Comment, *http.Response, error) {
 	return r.ApiService.IssueGetRepoCommentsExecute(r)
 }
 
@@ -9944,10 +9944,10 @@ IssueGetRepoComments List all comments in a repository
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiIssueGetRepoCommentsRequest
+ @return IssueAPIIssueGetRepoCommentsRequest
 */
-func (a *IssueAPIService) IssueGetRepoComments(ctx context.Context, owner string, repo string) ApiIssueGetRepoCommentsRequest {
-	return ApiIssueGetRepoCommentsRequest{
+func (a *IssueAPIService) IssueGetRepoComments(ctx context.Context, owner string, repo string) IssueAPIIssueGetRepoCommentsRequest {
+	return IssueAPIIssueGetRepoCommentsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -9957,7 +9957,7 @@ func (a *IssueAPIService) IssueGetRepoComments(ctx context.Context, owner string
 
 // Execute executes the request
 //  @return []Comment
-func (a *IssueAPIService) IssueGetRepoCommentsExecute(r ApiIssueGetRepoCommentsRequest) ([]Comment, *http.Response, error) {
+func (a *IssueAPIService) IssueGetRepoCommentsExecute(r IssueAPIIssueGetRepoCommentsRequest) ([]Comment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -10160,7 +10160,7 @@ func (a *IssueAPIService) IssueGetRepoCommentsExecute(r ApiIssueGetRepoCommentsR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueListBlocksRequest struct {
+type IssueAPIIssueListBlocksRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -10171,18 +10171,18 @@ type ApiIssueListBlocksRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiIssueListBlocksRequest) Page(page int32) ApiIssueListBlocksRequest {
+func (r IssueAPIIssueListBlocksRequest) Page(page int32) IssueAPIIssueListBlocksRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiIssueListBlocksRequest) Limit(limit int32) ApiIssueListBlocksRequest {
+func (r IssueAPIIssueListBlocksRequest) Limit(limit int32) IssueAPIIssueListBlocksRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiIssueListBlocksRequest) Execute() ([]Issue, *http.Response, error) {
+func (r IssueAPIIssueListBlocksRequest) Execute() ([]Issue, *http.Response, error) {
 	return r.ApiService.IssueListBlocksExecute(r)
 }
 
@@ -10193,10 +10193,10 @@ IssueListBlocks List issues that are blocked by this issue
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueListBlocksRequest
+ @return IssueAPIIssueListBlocksRequest
 */
-func (a *IssueAPIService) IssueListBlocks(ctx context.Context, owner string, repo string, index string) ApiIssueListBlocksRequest {
-	return ApiIssueListBlocksRequest{
+func (a *IssueAPIService) IssueListBlocks(ctx context.Context, owner string, repo string, index string) IssueAPIIssueListBlocksRequest {
+	return IssueAPIIssueListBlocksRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -10207,7 +10207,7 @@ func (a *IssueAPIService) IssueListBlocks(ctx context.Context, owner string, rep
 
 // Execute executes the request
 //  @return []Issue
-func (a *IssueAPIService) IssueListBlocksExecute(r ApiIssueListBlocksRequest) ([]Issue, *http.Response, error) {
+func (a *IssueAPIService) IssueListBlocksExecute(r IssueAPIIssueListBlocksRequest) ([]Issue, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -10383,7 +10383,7 @@ func (a *IssueAPIService) IssueListBlocksExecute(r ApiIssueListBlocksRequest) ([
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueListIssueAttachmentsRequest struct {
+type IssueAPIIssueListIssueAttachmentsRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -10391,7 +10391,7 @@ type ApiIssueListIssueAttachmentsRequest struct {
 	index int64
 }
 
-func (r ApiIssueListIssueAttachmentsRequest) Execute() ([]Attachment, *http.Response, error) {
+func (r IssueAPIIssueListIssueAttachmentsRequest) Execute() ([]Attachment, *http.Response, error) {
 	return r.ApiService.IssueListIssueAttachmentsExecute(r)
 }
 
@@ -10402,10 +10402,10 @@ IssueListIssueAttachments List issue's attachments
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueListIssueAttachmentsRequest
+ @return IssueAPIIssueListIssueAttachmentsRequest
 */
-func (a *IssueAPIService) IssueListIssueAttachments(ctx context.Context, owner string, repo string, index int64) ApiIssueListIssueAttachmentsRequest {
-	return ApiIssueListIssueAttachmentsRequest{
+func (a *IssueAPIService) IssueListIssueAttachments(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueListIssueAttachmentsRequest {
+	return IssueAPIIssueListIssueAttachmentsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -10416,7 +10416,7 @@ func (a *IssueAPIService) IssueListIssueAttachments(ctx context.Context, owner s
 
 // Execute executes the request
 //  @return []Attachment
-func (a *IssueAPIService) IssueListIssueAttachmentsExecute(r ApiIssueListIssueAttachmentsRequest) ([]Attachment, *http.Response, error) {
+func (a *IssueAPIService) IssueListIssueAttachmentsExecute(r IssueAPIIssueListIssueAttachmentsRequest) ([]Attachment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -10586,7 +10586,7 @@ func (a *IssueAPIService) IssueListIssueAttachmentsExecute(r ApiIssueListIssueAt
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueListIssueCommentAttachmentsRequest struct {
+type IssueAPIIssueListIssueCommentAttachmentsRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -10594,7 +10594,7 @@ type ApiIssueListIssueCommentAttachmentsRequest struct {
 	id int64
 }
 
-func (r ApiIssueListIssueCommentAttachmentsRequest) Execute() ([]Attachment, *http.Response, error) {
+func (r IssueAPIIssueListIssueCommentAttachmentsRequest) Execute() ([]Attachment, *http.Response, error) {
 	return r.ApiService.IssueListIssueCommentAttachmentsExecute(r)
 }
 
@@ -10605,10 +10605,10 @@ IssueListIssueCommentAttachments List comment's attachments
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the comment
- @return ApiIssueListIssueCommentAttachmentsRequest
+ @return IssueAPIIssueListIssueCommentAttachmentsRequest
 */
-func (a *IssueAPIService) IssueListIssueCommentAttachments(ctx context.Context, owner string, repo string, id int64) ApiIssueListIssueCommentAttachmentsRequest {
-	return ApiIssueListIssueCommentAttachmentsRequest{
+func (a *IssueAPIService) IssueListIssueCommentAttachments(ctx context.Context, owner string, repo string, id int64) IssueAPIIssueListIssueCommentAttachmentsRequest {
+	return IssueAPIIssueListIssueCommentAttachmentsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -10619,7 +10619,7 @@ func (a *IssueAPIService) IssueListIssueCommentAttachments(ctx context.Context, 
 
 // Execute executes the request
 //  @return []Attachment
-func (a *IssueAPIService) IssueListIssueCommentAttachmentsExecute(r ApiIssueListIssueCommentAttachmentsRequest) ([]Attachment, *http.Response, error) {
+func (a *IssueAPIService) IssueListIssueCommentAttachmentsExecute(r IssueAPIIssueListIssueCommentAttachmentsRequest) ([]Attachment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -10789,7 +10789,7 @@ func (a *IssueAPIService) IssueListIssueCommentAttachmentsExecute(r ApiIssueList
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueListIssueDependenciesRequest struct {
+type IssueAPIIssueListIssueDependenciesRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -10800,18 +10800,18 @@ type ApiIssueListIssueDependenciesRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiIssueListIssueDependenciesRequest) Page(page int32) ApiIssueListIssueDependenciesRequest {
+func (r IssueAPIIssueListIssueDependenciesRequest) Page(page int32) IssueAPIIssueListIssueDependenciesRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiIssueListIssueDependenciesRequest) Limit(limit int32) ApiIssueListIssueDependenciesRequest {
+func (r IssueAPIIssueListIssueDependenciesRequest) Limit(limit int32) IssueAPIIssueListIssueDependenciesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiIssueListIssueDependenciesRequest) Execute() ([]Issue, *http.Response, error) {
+func (r IssueAPIIssueListIssueDependenciesRequest) Execute() ([]Issue, *http.Response, error) {
 	return r.ApiService.IssueListIssueDependenciesExecute(r)
 }
 
@@ -10822,10 +10822,10 @@ IssueListIssueDependencies List an issue's dependencies, i.e all issues that blo
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueListIssueDependenciesRequest
+ @return IssueAPIIssueListIssueDependenciesRequest
 */
-func (a *IssueAPIService) IssueListIssueDependencies(ctx context.Context, owner string, repo string, index string) ApiIssueListIssueDependenciesRequest {
-	return ApiIssueListIssueDependenciesRequest{
+func (a *IssueAPIService) IssueListIssueDependencies(ctx context.Context, owner string, repo string, index string) IssueAPIIssueListIssueDependenciesRequest {
+	return IssueAPIIssueListIssueDependenciesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -10836,7 +10836,7 @@ func (a *IssueAPIService) IssueListIssueDependencies(ctx context.Context, owner 
 
 // Execute executes the request
 //  @return []Issue
-func (a *IssueAPIService) IssueListIssueDependenciesExecute(r ApiIssueListIssueDependenciesRequest) ([]Issue, *http.Response, error) {
+func (a *IssueAPIService) IssueListIssueDependenciesExecute(r IssueAPIIssueListIssueDependenciesRequest) ([]Issue, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -11012,7 +11012,7 @@ func (a *IssueAPIService) IssueListIssueDependenciesExecute(r ApiIssueListIssueD
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueListIssuesRequest struct {
+type IssueAPIIssueListIssuesRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -11033,84 +11033,84 @@ type ApiIssueListIssuesRequest struct {
 }
 
 // whether issue is open or closed
-func (r ApiIssueListIssuesRequest) State(state string) ApiIssueListIssuesRequest {
+func (r IssueAPIIssueListIssuesRequest) State(state string) IssueAPIIssueListIssuesRequest {
 	r.state = &state
 	return r
 }
 
 // comma separated list of labels. Fetch only issues that have any of this labels. Non existent labels are discarded
-func (r ApiIssueListIssuesRequest) Labels(labels string) ApiIssueListIssuesRequest {
+func (r IssueAPIIssueListIssuesRequest) Labels(labels string) IssueAPIIssueListIssuesRequest {
 	r.labels = &labels
 	return r
 }
 
 // search string
-func (r ApiIssueListIssuesRequest) Q(q string) ApiIssueListIssuesRequest {
+func (r IssueAPIIssueListIssuesRequest) Q(q string) IssueAPIIssueListIssuesRequest {
 	r.q = &q
 	return r
 }
 
 // filter by type (issues / pulls) if set
-func (r ApiIssueListIssuesRequest) Type_(type_ string) ApiIssueListIssuesRequest {
+func (r IssueAPIIssueListIssuesRequest) Type_(type_ string) IssueAPIIssueListIssuesRequest {
 	r.type_ = &type_
 	return r
 }
 
 // comma separated list of milestone names or ids. It uses names and fall back to ids. Fetch only issues that have any of this milestones. Non existent milestones are discarded
-func (r ApiIssueListIssuesRequest) Milestones(milestones string) ApiIssueListIssuesRequest {
+func (r IssueAPIIssueListIssuesRequest) Milestones(milestones string) IssueAPIIssueListIssuesRequest {
 	r.milestones = &milestones
 	return r
 }
 
 // Only show items updated after the given time. This is a timestamp in RFC 3339 format
-func (r ApiIssueListIssuesRequest) Since(since time.Time) ApiIssueListIssuesRequest {
+func (r IssueAPIIssueListIssuesRequest) Since(since time.Time) IssueAPIIssueListIssuesRequest {
 	r.since = &since
 	return r
 }
 
 // Only show items updated before the given time. This is a timestamp in RFC 3339 format
-func (r ApiIssueListIssuesRequest) Before(before time.Time) ApiIssueListIssuesRequest {
+func (r IssueAPIIssueListIssuesRequest) Before(before time.Time) IssueAPIIssueListIssuesRequest {
 	r.before = &before
 	return r
 }
 
 // Only show items which were created by the given user
-func (r ApiIssueListIssuesRequest) CreatedBy(createdBy string) ApiIssueListIssuesRequest {
+func (r IssueAPIIssueListIssuesRequest) CreatedBy(createdBy string) IssueAPIIssueListIssuesRequest {
 	r.createdBy = &createdBy
 	return r
 }
 
 // Only show items for which the given user is assigned
-func (r ApiIssueListIssuesRequest) AssignedBy(assignedBy string) ApiIssueListIssuesRequest {
+func (r IssueAPIIssueListIssuesRequest) AssignedBy(assignedBy string) IssueAPIIssueListIssuesRequest {
 	r.assignedBy = &assignedBy
 	return r
 }
 
 // Only show items in which the given user was mentioned
-func (r ApiIssueListIssuesRequest) MentionedBy(mentionedBy string) ApiIssueListIssuesRequest {
+func (r IssueAPIIssueListIssuesRequest) MentionedBy(mentionedBy string) IssueAPIIssueListIssuesRequest {
 	r.mentionedBy = &mentionedBy
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiIssueListIssuesRequest) Page(page int32) ApiIssueListIssuesRequest {
+func (r IssueAPIIssueListIssuesRequest) Page(page int32) IssueAPIIssueListIssuesRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiIssueListIssuesRequest) Limit(limit int32) ApiIssueListIssuesRequest {
+func (r IssueAPIIssueListIssuesRequest) Limit(limit int32) IssueAPIIssueListIssuesRequest {
 	r.limit = &limit
 	return r
 }
 
 // Type of sort
-func (r ApiIssueListIssuesRequest) Sort(sort string) ApiIssueListIssuesRequest {
+func (r IssueAPIIssueListIssuesRequest) Sort(sort string) IssueAPIIssueListIssuesRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiIssueListIssuesRequest) Execute() ([]Issue, *http.Response, error) {
+func (r IssueAPIIssueListIssuesRequest) Execute() ([]Issue, *http.Response, error) {
 	return r.ApiService.IssueListIssuesExecute(r)
 }
 
@@ -11120,10 +11120,10 @@ IssueListIssues List a repository's issues
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiIssueListIssuesRequest
+ @return IssueAPIIssueListIssuesRequest
 */
-func (a *IssueAPIService) IssueListIssues(ctx context.Context, owner string, repo string) ApiIssueListIssuesRequest {
-	return ApiIssueListIssuesRequest{
+func (a *IssueAPIService) IssueListIssues(ctx context.Context, owner string, repo string) IssueAPIIssueListIssuesRequest {
+	return IssueAPIIssueListIssuesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -11133,7 +11133,7 @@ func (a *IssueAPIService) IssueListIssues(ctx context.Context, owner string, rep
 
 // Execute executes the request
 //  @return []Issue
-func (a *IssueAPIService) IssueListIssuesExecute(r ApiIssueListIssuesRequest) ([]Issue, *http.Response, error) {
+func (a *IssueAPIService) IssueListIssuesExecute(r IssueAPIIssueListIssuesRequest) ([]Issue, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -11344,7 +11344,7 @@ func (a *IssueAPIService) IssueListIssuesExecute(r ApiIssueListIssuesRequest) ([
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueListLabelsRequest struct {
+type IssueAPIIssueListLabelsRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -11354,18 +11354,18 @@ type ApiIssueListLabelsRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiIssueListLabelsRequest) Page(page int32) ApiIssueListLabelsRequest {
+func (r IssueAPIIssueListLabelsRequest) Page(page int32) IssueAPIIssueListLabelsRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiIssueListLabelsRequest) Limit(limit int32) ApiIssueListLabelsRequest {
+func (r IssueAPIIssueListLabelsRequest) Limit(limit int32) IssueAPIIssueListLabelsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiIssueListLabelsRequest) Execute() ([]Label, *http.Response, error) {
+func (r IssueAPIIssueListLabelsRequest) Execute() ([]Label, *http.Response, error) {
 	return r.ApiService.IssueListLabelsExecute(r)
 }
 
@@ -11375,10 +11375,10 @@ IssueListLabels Get all of a repository's labels
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param owner owner of the repo
  @param repo name of the repo
- @return ApiIssueListLabelsRequest
+ @return IssueAPIIssueListLabelsRequest
 */
-func (a *IssueAPIService) IssueListLabels(ctx context.Context, owner string, repo string) ApiIssueListLabelsRequest {
-	return ApiIssueListLabelsRequest{
+func (a *IssueAPIService) IssueListLabels(ctx context.Context, owner string, repo string) IssueAPIIssueListLabelsRequest {
+	return IssueAPIIssueListLabelsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -11388,7 +11388,7 @@ func (a *IssueAPIService) IssueListLabels(ctx context.Context, owner string, rep
 
 // Execute executes the request
 //  @return []Label
-func (a *IssueAPIService) IssueListLabelsExecute(r ApiIssueListLabelsRequest) ([]Label, *http.Response, error) {
+func (a *IssueAPIService) IssueListLabelsExecute(r IssueAPIIssueListLabelsRequest) ([]Label, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -11563,7 +11563,7 @@ func (a *IssueAPIService) IssueListLabelsExecute(r ApiIssueListLabelsRequest) ([
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssuePostCommentReactionRequest struct {
+type IssueAPIIssuePostCommentReactionRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -11572,12 +11572,12 @@ type ApiIssuePostCommentReactionRequest struct {
 	content *EditReactionOption
 }
 
-func (r ApiIssuePostCommentReactionRequest) Content(content EditReactionOption) ApiIssuePostCommentReactionRequest {
+func (r IssueAPIIssuePostCommentReactionRequest) Content(content EditReactionOption) IssueAPIIssuePostCommentReactionRequest {
 	r.content = &content
 	return r
 }
 
-func (r ApiIssuePostCommentReactionRequest) Execute() (*Reaction, *http.Response, error) {
+func (r IssueAPIIssuePostCommentReactionRequest) Execute() (*Reaction, *http.Response, error) {
 	return r.ApiService.IssuePostCommentReactionExecute(r)
 }
 
@@ -11588,10 +11588,10 @@ IssuePostCommentReaction Add a reaction to a comment of an issue
  @param owner owner of the repo
  @param repo name of the repo
  @param id id of the comment to edit
- @return ApiIssuePostCommentReactionRequest
+ @return IssueAPIIssuePostCommentReactionRequest
 */
-func (a *IssueAPIService) IssuePostCommentReaction(ctx context.Context, owner string, repo string, id int64) ApiIssuePostCommentReactionRequest {
-	return ApiIssuePostCommentReactionRequest{
+func (a *IssueAPIService) IssuePostCommentReaction(ctx context.Context, owner string, repo string, id int64) IssueAPIIssuePostCommentReactionRequest {
+	return IssueAPIIssuePostCommentReactionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -11602,7 +11602,7 @@ func (a *IssueAPIService) IssuePostCommentReaction(ctx context.Context, owner st
 
 // Execute executes the request
 //  @return Reaction
-func (a *IssueAPIService) IssuePostCommentReactionExecute(r ApiIssuePostCommentReactionRequest) (*Reaction, *http.Response, error) {
+func (a *IssueAPIService) IssuePostCommentReactionExecute(r IssueAPIIssuePostCommentReactionRequest) (*Reaction, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -11785,7 +11785,7 @@ func (a *IssueAPIService) IssuePostCommentReactionExecute(r ApiIssuePostCommentR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssuePostIssueReactionRequest struct {
+type IssueAPIIssuePostIssueReactionRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -11794,12 +11794,12 @@ type ApiIssuePostIssueReactionRequest struct {
 	content *EditReactionOption
 }
 
-func (r ApiIssuePostIssueReactionRequest) Content(content EditReactionOption) ApiIssuePostIssueReactionRequest {
+func (r IssueAPIIssuePostIssueReactionRequest) Content(content EditReactionOption) IssueAPIIssuePostIssueReactionRequest {
 	r.content = &content
 	return r
 }
 
-func (r ApiIssuePostIssueReactionRequest) Execute() (*Reaction, *http.Response, error) {
+func (r IssueAPIIssuePostIssueReactionRequest) Execute() (*Reaction, *http.Response, error) {
 	return r.ApiService.IssuePostIssueReactionExecute(r)
 }
 
@@ -11810,10 +11810,10 @@ IssuePostIssueReaction Add a reaction to an issue
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssuePostIssueReactionRequest
+ @return IssueAPIIssuePostIssueReactionRequest
 */
-func (a *IssueAPIService) IssuePostIssueReaction(ctx context.Context, owner string, repo string, index int64) ApiIssuePostIssueReactionRequest {
-	return ApiIssuePostIssueReactionRequest{
+func (a *IssueAPIService) IssuePostIssueReaction(ctx context.Context, owner string, repo string, index int64) IssueAPIIssuePostIssueReactionRequest {
+	return IssueAPIIssuePostIssueReactionRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -11824,7 +11824,7 @@ func (a *IssueAPIService) IssuePostIssueReaction(ctx context.Context, owner stri
 
 // Execute executes the request
 //  @return Reaction
-func (a *IssueAPIService) IssuePostIssueReactionExecute(r ApiIssuePostIssueReactionRequest) (*Reaction, *http.Response, error) {
+func (a *IssueAPIService) IssuePostIssueReactionExecute(r IssueAPIIssuePostIssueReactionRequest) (*Reaction, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -12007,7 +12007,7 @@ func (a *IssueAPIService) IssuePostIssueReactionExecute(r ApiIssuePostIssueReact
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueRemoveIssueBlockingRequest struct {
+type IssueAPIIssueRemoveIssueBlockingRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -12016,12 +12016,12 @@ type ApiIssueRemoveIssueBlockingRequest struct {
 	body *IssueMeta
 }
 
-func (r ApiIssueRemoveIssueBlockingRequest) Body(body IssueMeta) ApiIssueRemoveIssueBlockingRequest {
+func (r IssueAPIIssueRemoveIssueBlockingRequest) Body(body IssueMeta) IssueAPIIssueRemoveIssueBlockingRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueRemoveIssueBlockingRequest) Execute() (*Issue, *http.Response, error) {
+func (r IssueAPIIssueRemoveIssueBlockingRequest) Execute() (*Issue, *http.Response, error) {
 	return r.ApiService.IssueRemoveIssueBlockingExecute(r)
 }
 
@@ -12032,10 +12032,10 @@ IssueRemoveIssueBlocking Unblock the issue given in the body by the issue in pat
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueRemoveIssueBlockingRequest
+ @return IssueAPIIssueRemoveIssueBlockingRequest
 */
-func (a *IssueAPIService) IssueRemoveIssueBlocking(ctx context.Context, owner string, repo string, index string) ApiIssueRemoveIssueBlockingRequest {
-	return ApiIssueRemoveIssueBlockingRequest{
+func (a *IssueAPIService) IssueRemoveIssueBlocking(ctx context.Context, owner string, repo string, index string) IssueAPIIssueRemoveIssueBlockingRequest {
+	return IssueAPIIssueRemoveIssueBlockingRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -12046,7 +12046,7 @@ func (a *IssueAPIService) IssueRemoveIssueBlocking(ctx context.Context, owner st
 
 // Execute executes the request
 //  @return Issue
-func (a *IssueAPIService) IssueRemoveIssueBlockingExecute(r ApiIssueRemoveIssueBlockingRequest) (*Issue, *http.Response, error) {
+func (a *IssueAPIService) IssueRemoveIssueBlockingExecute(r IssueAPIIssueRemoveIssueBlockingRequest) (*Issue, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -12218,7 +12218,7 @@ func (a *IssueAPIService) IssueRemoveIssueBlockingExecute(r ApiIssueRemoveIssueB
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueRemoveIssueDependenciesRequest struct {
+type IssueAPIIssueRemoveIssueDependenciesRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -12227,12 +12227,12 @@ type ApiIssueRemoveIssueDependenciesRequest struct {
 	body *IssueMeta
 }
 
-func (r ApiIssueRemoveIssueDependenciesRequest) Body(body IssueMeta) ApiIssueRemoveIssueDependenciesRequest {
+func (r IssueAPIIssueRemoveIssueDependenciesRequest) Body(body IssueMeta) IssueAPIIssueRemoveIssueDependenciesRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueRemoveIssueDependenciesRequest) Execute() (*Issue, *http.Response, error) {
+func (r IssueAPIIssueRemoveIssueDependenciesRequest) Execute() (*Issue, *http.Response, error) {
 	return r.ApiService.IssueRemoveIssueDependenciesExecute(r)
 }
 
@@ -12243,10 +12243,10 @@ IssueRemoveIssueDependencies Remove an issue dependency
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueRemoveIssueDependenciesRequest
+ @return IssueAPIIssueRemoveIssueDependenciesRequest
 */
-func (a *IssueAPIService) IssueRemoveIssueDependencies(ctx context.Context, owner string, repo string, index string) ApiIssueRemoveIssueDependenciesRequest {
-	return ApiIssueRemoveIssueDependenciesRequest{
+func (a *IssueAPIService) IssueRemoveIssueDependencies(ctx context.Context, owner string, repo string, index string) IssueAPIIssueRemoveIssueDependenciesRequest {
+	return IssueAPIIssueRemoveIssueDependenciesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -12257,7 +12257,7 @@ func (a *IssueAPIService) IssueRemoveIssueDependencies(ctx context.Context, owne
 
 // Execute executes the request
 //  @return Issue
-func (a *IssueAPIService) IssueRemoveIssueDependenciesExecute(r ApiIssueRemoveIssueDependenciesRequest) (*Issue, *http.Response, error) {
+func (a *IssueAPIService) IssueRemoveIssueDependenciesExecute(r IssueAPIIssueRemoveIssueDependenciesRequest) (*Issue, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -12440,7 +12440,7 @@ func (a *IssueAPIService) IssueRemoveIssueDependenciesExecute(r ApiIssueRemoveIs
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueRemoveLabelRequest struct {
+type IssueAPIIssueRemoveLabelRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -12450,12 +12450,12 @@ type ApiIssueRemoveLabelRequest struct {
 	body *DeleteLabelsOption
 }
 
-func (r ApiIssueRemoveLabelRequest) Body(body DeleteLabelsOption) ApiIssueRemoveLabelRequest {
+func (r IssueAPIIssueRemoveLabelRequest) Body(body DeleteLabelsOption) IssueAPIIssueRemoveLabelRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueRemoveLabelRequest) Execute() (*http.Response, error) {
+func (r IssueAPIIssueRemoveLabelRequest) Execute() (*http.Response, error) {
 	return r.ApiService.IssueRemoveLabelExecute(r)
 }
 
@@ -12467,10 +12467,10 @@ IssueRemoveLabel Remove a label from an issue
  @param repo name of the repo
  @param index index of the issue
  @param id id of the label to remove
- @return ApiIssueRemoveLabelRequest
+ @return IssueAPIIssueRemoveLabelRequest
 */
-func (a *IssueAPIService) IssueRemoveLabel(ctx context.Context, owner string, repo string, index int64, id int64) ApiIssueRemoveLabelRequest {
-	return ApiIssueRemoveLabelRequest{
+func (a *IssueAPIService) IssueRemoveLabel(ctx context.Context, owner string, repo string, index int64, id int64) IssueAPIIssueRemoveLabelRequest {
+	return IssueAPIIssueRemoveLabelRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -12481,7 +12481,7 @@ func (a *IssueAPIService) IssueRemoveLabel(ctx context.Context, owner string, re
 }
 
 // Execute executes the request
-func (a *IssueAPIService) IssueRemoveLabelExecute(r ApiIssueRemoveLabelRequest) (*http.Response, error) {
+func (a *IssueAPIService) IssueRemoveLabelExecute(r IssueAPIIssueRemoveLabelRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -12666,7 +12666,7 @@ func (a *IssueAPIService) IssueRemoveLabelExecute(r ApiIssueRemoveLabelRequest) 
 	return localVarHTTPResponse, nil
 }
 
-type ApiIssueReplaceLabelsRequest struct {
+type IssueAPIIssueReplaceLabelsRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -12675,12 +12675,12 @@ type ApiIssueReplaceLabelsRequest struct {
 	body *IssueLabelsOption
 }
 
-func (r ApiIssueReplaceLabelsRequest) Body(body IssueLabelsOption) ApiIssueReplaceLabelsRequest {
+func (r IssueAPIIssueReplaceLabelsRequest) Body(body IssueLabelsOption) IssueAPIIssueReplaceLabelsRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiIssueReplaceLabelsRequest) Execute() ([]Label, *http.Response, error) {
+func (r IssueAPIIssueReplaceLabelsRequest) Execute() ([]Label, *http.Response, error) {
 	return r.ApiService.IssueReplaceLabelsExecute(r)
 }
 
@@ -12691,10 +12691,10 @@ IssueReplaceLabels Replace an issue's labels
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueReplaceLabelsRequest
+ @return IssueAPIIssueReplaceLabelsRequest
 */
-func (a *IssueAPIService) IssueReplaceLabels(ctx context.Context, owner string, repo string, index int64) ApiIssueReplaceLabelsRequest {
-	return ApiIssueReplaceLabelsRequest{
+func (a *IssueAPIService) IssueReplaceLabels(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueReplaceLabelsRequest {
+	return IssueAPIIssueReplaceLabelsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -12705,7 +12705,7 @@ func (a *IssueAPIService) IssueReplaceLabels(ctx context.Context, owner string, 
 
 // Execute executes the request
 //  @return []Label
-func (a *IssueAPIService) IssueReplaceLabelsExecute(r ApiIssueReplaceLabelsRequest) ([]Label, *http.Response, error) {
+func (a *IssueAPIService) IssueReplaceLabelsExecute(r IssueAPIIssueReplaceLabelsRequest) ([]Label, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -12888,7 +12888,7 @@ func (a *IssueAPIService) IssueReplaceLabelsExecute(r ApiIssueReplaceLabelsReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueResetTimeRequest struct {
+type IssueAPIIssueResetTimeRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -12896,7 +12896,7 @@ type ApiIssueResetTimeRequest struct {
 	index int64
 }
 
-func (r ApiIssueResetTimeRequest) Execute() (*http.Response, error) {
+func (r IssueAPIIssueResetTimeRequest) Execute() (*http.Response, error) {
 	return r.ApiService.IssueResetTimeExecute(r)
 }
 
@@ -12907,10 +12907,10 @@ IssueResetTime Reset a tracked time of an issue
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue to add tracked time to
- @return ApiIssueResetTimeRequest
+ @return IssueAPIIssueResetTimeRequest
 */
-func (a *IssueAPIService) IssueResetTime(ctx context.Context, owner string, repo string, index int64) ApiIssueResetTimeRequest {
-	return ApiIssueResetTimeRequest{
+func (a *IssueAPIService) IssueResetTime(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueResetTimeRequest {
+	return IssueAPIIssueResetTimeRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -12920,7 +12920,7 @@ func (a *IssueAPIService) IssueResetTime(ctx context.Context, owner string, repo
 }
 
 // Execute executes the request
-func (a *IssueAPIService) IssueResetTimeExecute(r ApiIssueResetTimeRequest) (*http.Response, error) {
+func (a *IssueAPIService) IssueResetTimeExecute(r IssueAPIIssueResetTimeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -13102,7 +13102,7 @@ func (a *IssueAPIService) IssueResetTimeExecute(r ApiIssueResetTimeRequest) (*ht
 	return localVarHTTPResponse, nil
 }
 
-type ApiIssueSearchIssuesRequest struct {
+type IssueAPIIssueSearchIssuesRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	state *string
@@ -13125,108 +13125,108 @@ type ApiIssueSearchIssuesRequest struct {
 }
 
 // State of the issue
-func (r ApiIssueSearchIssuesRequest) State(state string) ApiIssueSearchIssuesRequest {
+func (r IssueAPIIssueSearchIssuesRequest) State(state string) IssueAPIIssueSearchIssuesRequest {
 	r.state = &state
 	return r
 }
 
 // Comma-separated list of label names. Fetch only issues that have any of these labels. Non existent labels are discarded.
-func (r ApiIssueSearchIssuesRequest) Labels(labels string) ApiIssueSearchIssuesRequest {
+func (r IssueAPIIssueSearchIssuesRequest) Labels(labels string) IssueAPIIssueSearchIssuesRequest {
 	r.labels = &labels
 	return r
 }
 
 // Comma-separated list of milestone names. Fetch only issues that have any of these milestones. Non existent milestones are discarded.
-func (r ApiIssueSearchIssuesRequest) Milestones(milestones string) ApiIssueSearchIssuesRequest {
+func (r IssueAPIIssueSearchIssuesRequest) Milestones(milestones string) IssueAPIIssueSearchIssuesRequest {
 	r.milestones = &milestones
 	return r
 }
 
 // Search string
-func (r ApiIssueSearchIssuesRequest) Q(q string) ApiIssueSearchIssuesRequest {
+func (r IssueAPIIssueSearchIssuesRequest) Q(q string) IssueAPIIssueSearchIssuesRequest {
 	r.q = &q
 	return r
 }
 
 // Repository ID to prioritize in the results
-func (r ApiIssueSearchIssuesRequest) PriorityRepoId(priorityRepoId int64) ApiIssueSearchIssuesRequest {
+func (r IssueAPIIssueSearchIssuesRequest) PriorityRepoId(priorityRepoId int64) IssueAPIIssueSearchIssuesRequest {
 	r.priorityRepoId = &priorityRepoId
 	return r
 }
 
 // Filter by issue type
-func (r ApiIssueSearchIssuesRequest) Type_(type_ string) ApiIssueSearchIssuesRequest {
+func (r IssueAPIIssueSearchIssuesRequest) Type_(type_ string) IssueAPIIssueSearchIssuesRequest {
 	r.type_ = &type_
 	return r
 }
 
 // Only show issues updated after the given time (RFC 3339 format)
-func (r ApiIssueSearchIssuesRequest) Since(since time.Time) ApiIssueSearchIssuesRequest {
+func (r IssueAPIIssueSearchIssuesRequest) Since(since time.Time) IssueAPIIssueSearchIssuesRequest {
 	r.since = &since
 	return r
 }
 
 // Only show issues updated before the given time (RFC 3339 format)
-func (r ApiIssueSearchIssuesRequest) Before(before time.Time) ApiIssueSearchIssuesRequest {
+func (r IssueAPIIssueSearchIssuesRequest) Before(before time.Time) IssueAPIIssueSearchIssuesRequest {
 	r.before = &before
 	return r
 }
 
 // Filter issues or pulls assigned to the authenticated user
-func (r ApiIssueSearchIssuesRequest) Assigned(assigned bool) ApiIssueSearchIssuesRequest {
+func (r IssueAPIIssueSearchIssuesRequest) Assigned(assigned bool) IssueAPIIssueSearchIssuesRequest {
 	r.assigned = &assigned
 	return r
 }
 
 // Filter issues or pulls created by the authenticated user
-func (r ApiIssueSearchIssuesRequest) Created(created bool) ApiIssueSearchIssuesRequest {
+func (r IssueAPIIssueSearchIssuesRequest) Created(created bool) IssueAPIIssueSearchIssuesRequest {
 	r.created = &created
 	return r
 }
 
 // Filter issues or pulls mentioning the authenticated user
-func (r ApiIssueSearchIssuesRequest) Mentioned(mentioned bool) ApiIssueSearchIssuesRequest {
+func (r IssueAPIIssueSearchIssuesRequest) Mentioned(mentioned bool) IssueAPIIssueSearchIssuesRequest {
 	r.mentioned = &mentioned
 	return r
 }
 
 // Filter pull requests where the authenticated user&#39;s review was requested
-func (r ApiIssueSearchIssuesRequest) ReviewRequested(reviewRequested bool) ApiIssueSearchIssuesRequest {
+func (r IssueAPIIssueSearchIssuesRequest) ReviewRequested(reviewRequested bool) IssueAPIIssueSearchIssuesRequest {
 	r.reviewRequested = &reviewRequested
 	return r
 }
 
 // Filter pull requests reviewed by the authenticated user
-func (r ApiIssueSearchIssuesRequest) Reviewed(reviewed bool) ApiIssueSearchIssuesRequest {
+func (r IssueAPIIssueSearchIssuesRequest) Reviewed(reviewed bool) IssueAPIIssueSearchIssuesRequest {
 	r.reviewed = &reviewed
 	return r
 }
 
 // Filter by repository owner
-func (r ApiIssueSearchIssuesRequest) Owner(owner string) ApiIssueSearchIssuesRequest {
+func (r IssueAPIIssueSearchIssuesRequest) Owner(owner string) IssueAPIIssueSearchIssuesRequest {
 	r.owner = &owner
 	return r
 }
 
 // Filter by team (requires organization owner parameter)
-func (r ApiIssueSearchIssuesRequest) Team(team string) ApiIssueSearchIssuesRequest {
+func (r IssueAPIIssueSearchIssuesRequest) Team(team string) IssueAPIIssueSearchIssuesRequest {
 	r.team = &team
 	return r
 }
 
 // Page number of results to return (1-based)
-func (r ApiIssueSearchIssuesRequest) Page(page int32) ApiIssueSearchIssuesRequest {
+func (r IssueAPIIssueSearchIssuesRequest) Page(page int32) IssueAPIIssueSearchIssuesRequest {
 	r.page = &page
 	return r
 }
 
 // Number of items per page
-func (r ApiIssueSearchIssuesRequest) Limit(limit int32) ApiIssueSearchIssuesRequest {
+func (r IssueAPIIssueSearchIssuesRequest) Limit(limit int32) IssueAPIIssueSearchIssuesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiIssueSearchIssuesRequest) Execute() ([]Issue, *http.Response, error) {
+func (r IssueAPIIssueSearchIssuesRequest) Execute() ([]Issue, *http.Response, error) {
 	return r.ApiService.IssueSearchIssuesExecute(r)
 }
 
@@ -13234,10 +13234,10 @@ func (r ApiIssueSearchIssuesRequest) Execute() ([]Issue, *http.Response, error) 
 IssueSearchIssues Search for issues across the repositories that the user has access to
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiIssueSearchIssuesRequest
+ @return IssueAPIIssueSearchIssuesRequest
 */
-func (a *IssueAPIService) IssueSearchIssues(ctx context.Context) ApiIssueSearchIssuesRequest {
-	return ApiIssueSearchIssuesRequest{
+func (a *IssueAPIService) IssueSearchIssues(ctx context.Context) IssueAPIIssueSearchIssuesRequest {
+	return IssueAPIIssueSearchIssuesRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -13245,7 +13245,7 @@ func (a *IssueAPIService) IssueSearchIssues(ctx context.Context) ApiIssueSearchI
 
 // Execute executes the request
 //  @return []Issue
-func (a *IssueAPIService) IssueSearchIssuesExecute(r ApiIssueSearchIssuesRequest) ([]Issue, *http.Response, error) {
+func (a *IssueAPIService) IssueSearchIssuesExecute(r IssueAPIIssueSearchIssuesRequest) ([]Issue, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -13495,7 +13495,7 @@ func (a *IssueAPIService) IssueSearchIssuesExecute(r ApiIssueSearchIssuesRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueStartStopWatchRequest struct {
+type IssueAPIIssueStartStopWatchRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -13503,7 +13503,7 @@ type ApiIssueStartStopWatchRequest struct {
 	index int64
 }
 
-func (r ApiIssueStartStopWatchRequest) Execute() (*http.Response, error) {
+func (r IssueAPIIssueStartStopWatchRequest) Execute() (*http.Response, error) {
 	return r.ApiService.IssueStartStopWatchExecute(r)
 }
 
@@ -13514,10 +13514,10 @@ IssueStartStopWatch Start stopwatch on an issue.
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue to create the stopwatch on
- @return ApiIssueStartStopWatchRequest
+ @return IssueAPIIssueStartStopWatchRequest
 */
-func (a *IssueAPIService) IssueStartStopWatch(ctx context.Context, owner string, repo string, index int64) ApiIssueStartStopWatchRequest {
-	return ApiIssueStartStopWatchRequest{
+func (a *IssueAPIService) IssueStartStopWatch(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueStartStopWatchRequest {
+	return IssueAPIIssueStartStopWatchRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -13527,7 +13527,7 @@ func (a *IssueAPIService) IssueStartStopWatch(ctx context.Context, owner string,
 }
 
 // Execute executes the request
-func (a *IssueAPIService) IssueStartStopWatchExecute(r ApiIssueStartStopWatchRequest) (*http.Response, error) {
+func (a *IssueAPIService) IssueStartStopWatchExecute(r IssueAPIIssueStartStopWatchRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -13688,7 +13688,7 @@ func (a *IssueAPIService) IssueStartStopWatchExecute(r ApiIssueStartStopWatchReq
 	return localVarHTTPResponse, nil
 }
 
-type ApiIssueStopStopWatchRequest struct {
+type IssueAPIIssueStopStopWatchRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -13696,7 +13696,7 @@ type ApiIssueStopStopWatchRequest struct {
 	index int64
 }
 
-func (r ApiIssueStopStopWatchRequest) Execute() (*http.Response, error) {
+func (r IssueAPIIssueStopStopWatchRequest) Execute() (*http.Response, error) {
 	return r.ApiService.IssueStopStopWatchExecute(r)
 }
 
@@ -13707,10 +13707,10 @@ IssueStopStopWatch Stop an issue's existing stopwatch.
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue to stop the stopwatch on
- @return ApiIssueStopStopWatchRequest
+ @return IssueAPIIssueStopStopWatchRequest
 */
-func (a *IssueAPIService) IssueStopStopWatch(ctx context.Context, owner string, repo string, index int64) ApiIssueStopStopWatchRequest {
-	return ApiIssueStopStopWatchRequest{
+func (a *IssueAPIService) IssueStopStopWatch(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueStopStopWatchRequest {
+	return IssueAPIIssueStopStopWatchRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -13720,7 +13720,7 @@ func (a *IssueAPIService) IssueStopStopWatch(ctx context.Context, owner string, 
 }
 
 // Execute executes the request
-func (a *IssueAPIService) IssueStopStopWatchExecute(r ApiIssueStopStopWatchRequest) (*http.Response, error) {
+func (a *IssueAPIService) IssueStopStopWatchExecute(r IssueAPIIssueStopStopWatchRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -13881,7 +13881,7 @@ func (a *IssueAPIService) IssueStopStopWatchExecute(r ApiIssueStopStopWatchReque
 	return localVarHTTPResponse, nil
 }
 
-type ApiIssueSubscriptionsRequest struct {
+type IssueAPIIssueSubscriptionsRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -13892,18 +13892,18 @@ type ApiIssueSubscriptionsRequest struct {
 }
 
 // page number of results to return (1-based)
-func (r ApiIssueSubscriptionsRequest) Page(page int32) ApiIssueSubscriptionsRequest {
+func (r IssueAPIIssueSubscriptionsRequest) Page(page int32) IssueAPIIssueSubscriptionsRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiIssueSubscriptionsRequest) Limit(limit int32) ApiIssueSubscriptionsRequest {
+func (r IssueAPIIssueSubscriptionsRequest) Limit(limit int32) IssueAPIIssueSubscriptionsRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiIssueSubscriptionsRequest) Execute() ([]User, *http.Response, error) {
+func (r IssueAPIIssueSubscriptionsRequest) Execute() ([]User, *http.Response, error) {
 	return r.ApiService.IssueSubscriptionsExecute(r)
 }
 
@@ -13914,10 +13914,10 @@ IssueSubscriptions Get users who subscribed on an issue.
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueSubscriptionsRequest
+ @return IssueAPIIssueSubscriptionsRequest
 */
-func (a *IssueAPIService) IssueSubscriptions(ctx context.Context, owner string, repo string, index int64) ApiIssueSubscriptionsRequest {
-	return ApiIssueSubscriptionsRequest{
+func (a *IssueAPIService) IssueSubscriptions(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueSubscriptionsRequest {
+	return IssueAPIIssueSubscriptionsRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -13928,7 +13928,7 @@ func (a *IssueAPIService) IssueSubscriptions(ctx context.Context, owner string, 
 
 // Execute executes the request
 //  @return []User
-func (a *IssueAPIService) IssueSubscriptionsExecute(r ApiIssueSubscriptionsRequest) ([]User, *http.Response, error) {
+func (a *IssueAPIService) IssueSubscriptionsExecute(r IssueAPIIssueSubscriptionsRequest) ([]User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -14104,7 +14104,7 @@ func (a *IssueAPIService) IssueSubscriptionsExecute(r ApiIssueSubscriptionsReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiIssueTrackedTimesRequest struct {
+type IssueAPIIssueTrackedTimesRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -14118,36 +14118,36 @@ type ApiIssueTrackedTimesRequest struct {
 }
 
 // optional filter by user (available for issue managers)
-func (r ApiIssueTrackedTimesRequest) User(user string) ApiIssueTrackedTimesRequest {
+func (r IssueAPIIssueTrackedTimesRequest) User(user string) IssueAPIIssueTrackedTimesRequest {
 	r.user = &user
 	return r
 }
 
 // Only show times updated after the given time. This is a timestamp in RFC 3339 format
-func (r ApiIssueTrackedTimesRequest) Since(since time.Time) ApiIssueTrackedTimesRequest {
+func (r IssueAPIIssueTrackedTimesRequest) Since(since time.Time) IssueAPIIssueTrackedTimesRequest {
 	r.since = &since
 	return r
 }
 
 // Only show times updated before the given time. This is a timestamp in RFC 3339 format
-func (r ApiIssueTrackedTimesRequest) Before(before time.Time) ApiIssueTrackedTimesRequest {
+func (r IssueAPIIssueTrackedTimesRequest) Before(before time.Time) IssueAPIIssueTrackedTimesRequest {
 	r.before = &before
 	return r
 }
 
 // page number of results to return (1-based)
-func (r ApiIssueTrackedTimesRequest) Page(page int32) ApiIssueTrackedTimesRequest {
+func (r IssueAPIIssueTrackedTimesRequest) Page(page int32) IssueAPIIssueTrackedTimesRequest {
 	r.page = &page
 	return r
 }
 
 // page size of results
-func (r ApiIssueTrackedTimesRequest) Limit(limit int32) ApiIssueTrackedTimesRequest {
+func (r IssueAPIIssueTrackedTimesRequest) Limit(limit int32) IssueAPIIssueTrackedTimesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiIssueTrackedTimesRequest) Execute() ([]TrackedTime, *http.Response, error) {
+func (r IssueAPIIssueTrackedTimesRequest) Execute() ([]TrackedTime, *http.Response, error) {
 	return r.ApiService.IssueTrackedTimesExecute(r)
 }
 
@@ -14158,10 +14158,10 @@ IssueTrackedTimes List an issue's tracked times
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of the issue
- @return ApiIssueTrackedTimesRequest
+ @return IssueAPIIssueTrackedTimesRequest
 */
-func (a *IssueAPIService) IssueTrackedTimes(ctx context.Context, owner string, repo string, index int64) ApiIssueTrackedTimesRequest {
-	return ApiIssueTrackedTimesRequest{
+func (a *IssueAPIService) IssueTrackedTimes(ctx context.Context, owner string, repo string, index int64) IssueAPIIssueTrackedTimesRequest {
+	return IssueAPIIssueTrackedTimesRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -14172,7 +14172,7 @@ func (a *IssueAPIService) IssueTrackedTimes(ctx context.Context, owner string, r
 
 // Execute executes the request
 //  @return []TrackedTime
-func (a *IssueAPIService) IssueTrackedTimesExecute(r ApiIssueTrackedTimesRequest) ([]TrackedTime, *http.Response, error) {
+func (a *IssueAPIService) IssueTrackedTimesExecute(r IssueAPIIssueTrackedTimesRequest) ([]TrackedTime, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -14357,7 +14357,7 @@ func (a *IssueAPIService) IssueTrackedTimesExecute(r ApiIssueTrackedTimesRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiMoveIssuePinRequest struct {
+type IssueAPIMoveIssuePinRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -14366,7 +14366,7 @@ type ApiMoveIssuePinRequest struct {
 	position int64
 }
 
-func (r ApiMoveIssuePinRequest) Execute() (*http.Response, error) {
+func (r IssueAPIMoveIssuePinRequest) Execute() (*http.Response, error) {
 	return r.ApiService.MoveIssuePinExecute(r)
 }
 
@@ -14378,10 +14378,10 @@ MoveIssuePin Moves the Pin to the given Position
  @param repo name of the repo
  @param index index of issue
  @param position the new position
- @return ApiMoveIssuePinRequest
+ @return IssueAPIMoveIssuePinRequest
 */
-func (a *IssueAPIService) MoveIssuePin(ctx context.Context, owner string, repo string, index int64, position int64) ApiMoveIssuePinRequest {
-	return ApiMoveIssuePinRequest{
+func (a *IssueAPIService) MoveIssuePin(ctx context.Context, owner string, repo string, index int64, position int64) IssueAPIMoveIssuePinRequest {
+	return IssueAPIMoveIssuePinRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -14392,7 +14392,7 @@ func (a *IssueAPIService) MoveIssuePin(ctx context.Context, owner string, repo s
 }
 
 // Execute executes the request
-func (a *IssueAPIService) MoveIssuePinExecute(r ApiMoveIssuePinRequest) (*http.Response, error) {
+func (a *IssueAPIService) MoveIssuePinExecute(r IssueAPIMoveIssuePinRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -14564,7 +14564,7 @@ func (a *IssueAPIService) MoveIssuePinExecute(r ApiMoveIssuePinRequest) (*http.R
 	return localVarHTTPResponse, nil
 }
 
-type ApiPinIssueRequest struct {
+type IssueAPIPinIssueRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -14572,7 +14572,7 @@ type ApiPinIssueRequest struct {
 	index int64
 }
 
-func (r ApiPinIssueRequest) Execute() (*http.Response, error) {
+func (r IssueAPIPinIssueRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PinIssueExecute(r)
 }
 
@@ -14583,10 +14583,10 @@ PinIssue Pin an Issue
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of issue to pin
- @return ApiPinIssueRequest
+ @return IssueAPIPinIssueRequest
 */
-func (a *IssueAPIService) PinIssue(ctx context.Context, owner string, repo string, index int64) ApiPinIssueRequest {
-	return ApiPinIssueRequest{
+func (a *IssueAPIService) PinIssue(ctx context.Context, owner string, repo string, index int64) IssueAPIPinIssueRequest {
+	return IssueAPIPinIssueRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -14596,7 +14596,7 @@ func (a *IssueAPIService) PinIssue(ctx context.Context, owner string, repo strin
 }
 
 // Execute executes the request
-func (a *IssueAPIService) PinIssueExecute(r ApiPinIssueRequest) (*http.Response, error) {
+func (a *IssueAPIService) PinIssueExecute(r IssueAPIPinIssueRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -14767,7 +14767,7 @@ func (a *IssueAPIService) PinIssueExecute(r ApiPinIssueRequest) (*http.Response,
 	return localVarHTTPResponse, nil
 }
 
-type ApiUnpinIssueRequest struct {
+type IssueAPIUnpinIssueRequest struct {
 	ctx context.Context
 	ApiService *IssueAPIService
 	owner string
@@ -14775,7 +14775,7 @@ type ApiUnpinIssueRequest struct {
 	index int64
 }
 
-func (r ApiUnpinIssueRequest) Execute() (*http.Response, error) {
+func (r IssueAPIUnpinIssueRequest) Execute() (*http.Response, error) {
 	return r.ApiService.UnpinIssueExecute(r)
 }
 
@@ -14786,10 +14786,10 @@ UnpinIssue Unpin an Issue
  @param owner owner of the repo
  @param repo name of the repo
  @param index index of issue to unpin
- @return ApiUnpinIssueRequest
+ @return IssueAPIUnpinIssueRequest
 */
-func (a *IssueAPIService) UnpinIssue(ctx context.Context, owner string, repo string, index int64) ApiUnpinIssueRequest {
-	return ApiUnpinIssueRequest{
+func (a *IssueAPIService) UnpinIssue(ctx context.Context, owner string, repo string, index int64) IssueAPIUnpinIssueRequest {
+	return IssueAPIUnpinIssueRequest{
 		ApiService: a,
 		ctx: ctx,
 		owner: owner,
@@ -14799,7 +14799,7 @@ func (a *IssueAPIService) UnpinIssue(ctx context.Context, owner string, repo str
 }
 
 // Execute executes the request
-func (a *IssueAPIService) UnpinIssueExecute(r ApiUnpinIssueRequest) (*http.Response, error) {
+func (a *IssueAPIService) UnpinIssueExecute(r IssueAPIUnpinIssueRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}

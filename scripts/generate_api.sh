@@ -25,8 +25,8 @@ docker run --rm \
     -g go \
     -o /local/internal/${PKG_NAME} \
     --package-name "${PKG_NAME}" \
-    --additional-properties=packageName=${PKG_NAME},isGoSubmodule=true,packageVersion=0.1.0,withGoCodegenComment=true,enumClassPrefix=true \
-    --global-property=apis,models,modelDocs=false,apiDocs=false,apiTests=false,modelTests=false
+    --global-property=apis,models,apiDocs=false,modelDocs=false,apiTests=false,modelTests=false \
+    --additional-properties=packageName=${PKG_NAME},isGoSubmodule=true,packageVersion=0.1.0,withGoCodegenComment=true,enumClassPrefix=true,structPrefix=true
 
 git add internal/forgejo/
 git commit \
