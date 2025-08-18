@@ -20,11 +20,11 @@ var _ MappedNullable = &TopicResponse{}
 
 // TopicResponse TopicResponse for returning topics
 type TopicResponse struct {
-	Created   *time.Time `json:"created,omitempty"`
-	Id        *int64     `json:"id,omitempty"`
-	RepoCount *int64     `json:"repo_count,omitempty"`
-	TopicName *string    `json:"topic_name,omitempty"`
-	Updated   *time.Time `json:"updated,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	RepoCount *int64 `json:"repo_count,omitempty"`
+	TopicName *string `json:"topic_name,omitempty"`
+	Updated *time.Time `json:"updated,omitempty"`
 }
 
 // NewTopicResponse instantiates a new TopicResponse object
@@ -205,7 +205,7 @@ func (o *TopicResponse) SetUpdated(v time.Time) {
 }
 
 func (o TopicResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -267,3 +267,5 @@ func (v *NullableTopicResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

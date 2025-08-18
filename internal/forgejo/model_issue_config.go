@@ -19,8 +19,8 @@ var _ MappedNullable = &IssueConfig{}
 
 // IssueConfig struct for IssueConfig
 type IssueConfig struct {
-	BlankIssuesEnabled *bool                    `json:"blank_issues_enabled,omitempty"`
-	ContactLinks       []IssueConfigContactLink `json:"contact_links,omitempty"`
+	BlankIssuesEnabled *bool `json:"blank_issues_enabled,omitempty"`
+	ContactLinks []IssueConfigContactLink `json:"contact_links,omitempty"`
 }
 
 // NewIssueConfig instantiates a new IssueConfig object
@@ -105,7 +105,7 @@ func (o *IssueConfig) SetContactLinks(v []IssueConfigContactLink) {
 }
 
 func (o IssueConfig) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableIssueConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

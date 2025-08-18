@@ -19,10 +19,10 @@ var _ MappedNullable = &CreateStatusOption{}
 
 // CreateStatusOption CreateStatusOption holds the information needed to create a new CommitStatus for a Commit
 type CreateStatusOption struct {
-	Context     *string `json:"context,omitempty"`
+	Context *string `json:"context,omitempty"`
 	Description *string `json:"description,omitempty"`
 	// CommitStatusState holds the state of a CommitStatus It can be \"pending\", \"success\", \"error\" and \"failure\"
-	State     *string `json:"state,omitempty"`
+	State *string `json:"state,omitempty"`
 	TargetUrl *string `json:"target_url,omitempty"`
 }
 
@@ -172,7 +172,7 @@ func (o *CreateStatusOption) SetTargetUrl(v string) {
 }
 
 func (o CreateStatusOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -231,3 +231,5 @@ func (v *NullableCreateStatusOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

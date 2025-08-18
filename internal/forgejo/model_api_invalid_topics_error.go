@@ -20,7 +20,7 @@ var _ MappedNullable = &APIInvalidTopicsError{}
 // APIInvalidTopicsError struct for APIInvalidTopicsError
 type APIInvalidTopicsError struct {
 	InvalidTopics []string `json:"invalidTopics,omitempty"`
-	Message       *string  `json:"message,omitempty"`
+	Message *string `json:"message,omitempty"`
 }
 
 // NewAPIInvalidTopicsError instantiates a new APIInvalidTopicsError object
@@ -105,7 +105,7 @@ func (o *APIInvalidTopicsError) SetMessage(v string) {
 }
 
 func (o APIInvalidTopicsError) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableAPIInvalidTopicsError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,7 +20,7 @@ var _ MappedNullable = &Identity{}
 // Identity Identity for a person's identity like an author or committer
 type Identity struct {
 	Email *string `json:"email,omitempty"`
-	Name  *string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // NewIdentity instantiates a new Identity object
@@ -105,7 +105,7 @@ func (o *Identity) SetName(v string) {
 }
 
 func (o Identity) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableIdentity) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

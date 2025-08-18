@@ -16,21 +16,22 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"os"
 	"strings"
+	"os"
 	"time"
 )
+
 
 // IssueAPIService IssueAPI service
 type IssueAPIService service
 
 type ApiIssueAddLabelRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	body       *IssueLabelsOption
+	owner string
+	repo string
+	index int64
+	body *IssueLabelsOption
 }
 
 func (r ApiIssueAddLabelRequest) Body(body IssueLabelsOption) ApiIssueAddLabelRequest {
@@ -45,31 +46,30 @@ func (r ApiIssueAddLabelRequest) Execute() ([]Label, *http.Response, error) {
 /*
 IssueAddLabel Add a label to an issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueAddLabelRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueAddLabelRequest
 */
 func (a *IssueAPIService) IssueAddLabel(ctx context.Context, owner string, repo string, index int64) ApiIssueAddLabelRequest {
 	return ApiIssueAddLabelRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Label
+//  @return []Label
 func (a *IssueAPIService) IssueAddLabelExecute(r ApiIssueAddLabelRequest) ([]Label, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Label
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Label
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueAddLabel")
@@ -218,8 +218,8 @@ func (a *IssueAPIService) IssueAddLabelExecute(r ApiIssueAddLabelRequest) ([]Lab
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -229,8 +229,8 @@ func (a *IssueAPIService) IssueAddLabelExecute(r ApiIssueAddLabelRequest) ([]Lab
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -248,12 +248,12 @@ func (a *IssueAPIService) IssueAddLabelExecute(r ApiIssueAddLabelRequest) ([]Lab
 }
 
 type ApiIssueAddSubscriptionRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	user       string
+	owner string
+	repo string
+	index int64
+	user string
 }
 
 func (r ApiIssueAddSubscriptionRequest) Execute() (*http.Response, error) {
@@ -263,30 +263,30 @@ func (r ApiIssueAddSubscriptionRequest) Execute() (*http.Response, error) {
 /*
 IssueAddSubscription Subscribe user to issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@param user user to subscribe
-	@return ApiIssueAddSubscriptionRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @param user user to subscribe
+ @return ApiIssueAddSubscriptionRequest
 */
 func (a *IssueAPIService) IssueAddSubscription(ctx context.Context, owner string, repo string, index int64, user string) ApiIssueAddSubscriptionRequest {
 	return ApiIssueAddSubscriptionRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
-		user:       user,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
+		user: user,
 	}
 }
 
 // Execute executes the request
 func (a *IssueAPIService) IssueAddSubscriptionExecute(r ApiIssueAddSubscriptionRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueAddSubscription")
@@ -434,8 +434,8 @@ func (a *IssueAPIService) IssueAddSubscriptionExecute(r ApiIssueAddSubscriptionR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -444,12 +444,12 @@ func (a *IssueAPIService) IssueAddSubscriptionExecute(r ApiIssueAddSubscriptionR
 }
 
 type ApiIssueAddTimeRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	body       *AddTimeOption
+	owner string
+	repo string
+	index int64
+	body *AddTimeOption
 }
 
 func (r ApiIssueAddTimeRequest) Body(body AddTimeOption) ApiIssueAddTimeRequest {
@@ -464,31 +464,30 @@ func (r ApiIssueAddTimeRequest) Execute() (*TrackedTime, *http.Response, error) 
 /*
 IssueAddTime Add tracked time to a issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueAddTimeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueAddTimeRequest
 */
 func (a *IssueAPIService) IssueAddTime(ctx context.Context, owner string, repo string, index int64) ApiIssueAddTimeRequest {
 	return ApiIssueAddTimeRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return TrackedTime
+//  @return TrackedTime
 func (a *IssueAPIService) IssueAddTimeExecute(r ApiIssueAddTimeRequest) (*TrackedTime, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *TrackedTime
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TrackedTime
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueAddTime")
@@ -637,8 +636,8 @@ func (a *IssueAPIService) IssueAddTimeExecute(r ApiIssueAddTimeRequest) (*Tracke
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -648,8 +647,8 @@ func (a *IssueAPIService) IssueAddTimeExecute(r ApiIssueAddTimeRequest) (*Tracke
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -659,8 +658,8 @@ func (a *IssueAPIService) IssueAddTimeExecute(r ApiIssueAddTimeRequest) (*Tracke
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -678,11 +677,11 @@ func (a *IssueAPIService) IssueAddTimeExecute(r ApiIssueAddTimeRequest) (*Tracke
 }
 
 type ApiIssueCheckSubscriptionRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
+	owner string
+	repo string
+	index int64
 }
 
 func (r ApiIssueCheckSubscriptionRequest) Execute() (*WatchInfo, *http.Response, error) {
@@ -692,31 +691,30 @@ func (r ApiIssueCheckSubscriptionRequest) Execute() (*WatchInfo, *http.Response,
 /*
 IssueCheckSubscription Check if user is subscribed to an issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueCheckSubscriptionRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueCheckSubscriptionRequest
 */
 func (a *IssueAPIService) IssueCheckSubscription(ctx context.Context, owner string, repo string, index int64) ApiIssueCheckSubscriptionRequest {
 	return ApiIssueCheckSubscriptionRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return WatchInfo
+//  @return WatchInfo
 func (a *IssueAPIService) IssueCheckSubscriptionExecute(r ApiIssueCheckSubscriptionRequest) (*WatchInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *WatchInfo
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WatchInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueCheckSubscription")
@@ -863,8 +861,8 @@ func (a *IssueAPIService) IssueCheckSubscriptionExecute(r ApiIssueCheckSubscript
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -882,12 +880,12 @@ func (a *IssueAPIService) IssueCheckSubscriptionExecute(r ApiIssueCheckSubscript
 }
 
 type ApiIssueClearLabelsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	body       *DeleteLabelsOption
+	owner string
+	repo string
+	index int64
+	body *DeleteLabelsOption
 }
 
 func (r ApiIssueClearLabelsRequest) Body(body DeleteLabelsOption) ApiIssueClearLabelsRequest {
@@ -902,28 +900,28 @@ func (r ApiIssueClearLabelsRequest) Execute() (*http.Response, error) {
 /*
 IssueClearLabels Remove all labels from an issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueClearLabelsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueClearLabelsRequest
 */
 func (a *IssueAPIService) IssueClearLabels(ctx context.Context, owner string, repo string, index int64) ApiIssueClearLabelsRequest {
 	return ApiIssueClearLabelsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
 func (a *IssueAPIService) IssueClearLabelsExecute(r ApiIssueClearLabelsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueClearLabels")
@@ -1072,8 +1070,8 @@ func (a *IssueAPIService) IssueClearLabelsExecute(r ApiIssueClearLabelsRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1083,8 +1081,8 @@ func (a *IssueAPIService) IssueClearLabelsExecute(r ApiIssueClearLabelsRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1093,12 +1091,12 @@ func (a *IssueAPIService) IssueClearLabelsExecute(r ApiIssueClearLabelsRequest) 
 }
 
 type ApiIssueCreateCommentRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	body       *CreateIssueCommentOption
+	owner string
+	repo string
+	index int64
+	body *CreateIssueCommentOption
 }
 
 func (r ApiIssueCreateCommentRequest) Body(body CreateIssueCommentOption) ApiIssueCreateCommentRequest {
@@ -1113,31 +1111,30 @@ func (r ApiIssueCreateCommentRequest) Execute() (*Comment, *http.Response, error
 /*
 IssueCreateComment Add a comment to an issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueCreateCommentRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueCreateCommentRequest
 */
 func (a *IssueAPIService) IssueCreateComment(ctx context.Context, owner string, repo string, index int64) ApiIssueCreateCommentRequest {
 	return ApiIssueCreateCommentRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Comment
+//  @return Comment
 func (a *IssueAPIService) IssueCreateCommentExecute(r ApiIssueCreateCommentRequest) (*Comment, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Comment
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Comment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueCreateComment")
@@ -1286,8 +1283,8 @@ func (a *IssueAPIService) IssueCreateCommentExecute(r ApiIssueCreateCommentReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1297,8 +1294,8 @@ func (a *IssueAPIService) IssueCreateCommentExecute(r ApiIssueCreateCommentReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 423 {
@@ -1308,8 +1305,8 @@ func (a *IssueAPIService) IssueCreateCommentExecute(r ApiIssueCreateCommentReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1319,8 +1316,8 @@ func (a *IssueAPIService) IssueCreateCommentExecute(r ApiIssueCreateCommentReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1338,11 +1335,11 @@ func (a *IssueAPIService) IssueCreateCommentExecute(r ApiIssueCreateCommentReque
 }
 
 type ApiIssueCreateIssueRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	body       *CreateIssueOption
+	owner string
+	repo string
+	body *CreateIssueOption
 }
 
 func (r ApiIssueCreateIssueRequest) Body(body CreateIssueOption) ApiIssueCreateIssueRequest {
@@ -1357,29 +1354,28 @@ func (r ApiIssueCreateIssueRequest) Execute() (*Issue, *http.Response, error) {
 /*
 IssueCreateIssue Create an issue. If using deadline only the date will be taken into account, and time of day ignored.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@return ApiIssueCreateIssueRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @return ApiIssueCreateIssueRequest
 */
 func (a *IssueAPIService) IssueCreateIssue(ctx context.Context, owner string, repo string) ApiIssueCreateIssueRequest {
 	return ApiIssueCreateIssueRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Issue
+//  @return Issue
 func (a *IssueAPIService) IssueCreateIssueExecute(r ApiIssueCreateIssueRequest) (*Issue, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Issue
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Issue
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueCreateIssue")
@@ -1527,8 +1523,8 @@ func (a *IssueAPIService) IssueCreateIssueExecute(r ApiIssueCreateIssueRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1538,8 +1534,8 @@ func (a *IssueAPIService) IssueCreateIssueExecute(r ApiIssueCreateIssueRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 412 {
@@ -1549,8 +1545,8 @@ func (a *IssueAPIService) IssueCreateIssueExecute(r ApiIssueCreateIssueRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -1560,8 +1556,8 @@ func (a *IssueAPIService) IssueCreateIssueExecute(r ApiIssueCreateIssueRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 423 {
@@ -1571,8 +1567,8 @@ func (a *IssueAPIService) IssueCreateIssueExecute(r ApiIssueCreateIssueRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1590,14 +1586,14 @@ func (a *IssueAPIService) IssueCreateIssueExecute(r ApiIssueCreateIssueRequest) 
 }
 
 type ApiIssueCreateIssueAttachmentRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
+	owner string
+	repo string
+	index int64
 	attachment *os.File
-	name       *string
-	updatedAt  *time.Time
+	name *string
+	updatedAt *time.Time
 }
 
 // attachment to upload
@@ -1625,31 +1621,30 @@ func (r ApiIssueCreateIssueAttachmentRequest) Execute() (*Attachment, *http.Resp
 /*
 IssueCreateIssueAttachment Create an issue attachment
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueCreateIssueAttachmentRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueCreateIssueAttachmentRequest
 */
 func (a *IssueAPIService) IssueCreateIssueAttachment(ctx context.Context, owner string, repo string, index int64) ApiIssueCreateIssueAttachmentRequest {
 	return ApiIssueCreateIssueAttachmentRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Attachment
+//  @return Attachment
 func (a *IssueAPIService) IssueCreateIssueAttachmentExecute(r ApiIssueCreateIssueAttachmentRequest) (*Attachment, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Attachment
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Attachment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueCreateIssueAttachment")
@@ -1693,8 +1688,8 @@ func (a *IssueAPIService) IssueCreateIssueAttachmentExecute(r ApiIssueCreateIssu
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	var attachmentLocalVarFormFileName string
-	var attachmentLocalVarFileName string
-	var attachmentLocalVarFileBytes []byte
+	var attachmentLocalVarFileName     string
+	var attachmentLocalVarFileBytes    []byte
 
 	attachmentLocalVarFormFileName = "attachment"
 	attachmentLocalVarFile := r.attachment
@@ -1820,8 +1815,8 @@ func (a *IssueAPIService) IssueCreateIssueAttachmentExecute(r ApiIssueCreateIssu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1831,8 +1826,8 @@ func (a *IssueAPIService) IssueCreateIssueAttachmentExecute(r ApiIssueCreateIssu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -1842,8 +1837,8 @@ func (a *IssueAPIService) IssueCreateIssueAttachmentExecute(r ApiIssueCreateIssu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 423 {
@@ -1853,8 +1848,8 @@ func (a *IssueAPIService) IssueCreateIssueAttachmentExecute(r ApiIssueCreateIssu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1872,12 +1867,12 @@ func (a *IssueAPIService) IssueCreateIssueAttachmentExecute(r ApiIssueCreateIssu
 }
 
 type ApiIssueCreateIssueBlockingRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      string
-	body       *IssueMeta
+	owner string
+	repo string
+	index string
+	body *IssueMeta
 }
 
 func (r ApiIssueCreateIssueBlockingRequest) Body(body IssueMeta) ApiIssueCreateIssueBlockingRequest {
@@ -1892,31 +1887,30 @@ func (r ApiIssueCreateIssueBlockingRequest) Execute() (*Issue, *http.Response, e
 /*
 IssueCreateIssueBlocking Block the issue given in the body by the issue in path
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueCreateIssueBlockingRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueCreateIssueBlockingRequest
 */
 func (a *IssueAPIService) IssueCreateIssueBlocking(ctx context.Context, owner string, repo string, index string) ApiIssueCreateIssueBlockingRequest {
 	return ApiIssueCreateIssueBlockingRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Issue
+//  @return Issue
 func (a *IssueAPIService) IssueCreateIssueBlockingExecute(r ApiIssueCreateIssueBlockingRequest) (*Issue, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Issue
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Issue
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueCreateIssueBlocking")
@@ -2074,14 +2068,14 @@ func (a *IssueAPIService) IssueCreateIssueBlockingExecute(r ApiIssueCreateIssueB
 }
 
 type ApiIssueCreateIssueCommentAttachmentRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	id         int64
+	owner string
+	repo string
+	id int64
 	attachment *os.File
-	name       *string
-	updatedAt  *time.Time
+	name *string
+	updatedAt *time.Time
 }
 
 // attachment to upload
@@ -2109,31 +2103,30 @@ func (r ApiIssueCreateIssueCommentAttachmentRequest) Execute() (*Attachment, *ht
 /*
 IssueCreateIssueCommentAttachment Create a comment attachment
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param id id of the comment
-	@return ApiIssueCreateIssueCommentAttachmentRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param id id of the comment
+ @return ApiIssueCreateIssueCommentAttachmentRequest
 */
 func (a *IssueAPIService) IssueCreateIssueCommentAttachment(ctx context.Context, owner string, repo string, id int64) ApiIssueCreateIssueCommentAttachmentRequest {
 	return ApiIssueCreateIssueCommentAttachmentRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		id:         id,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Attachment
+//  @return Attachment
 func (a *IssueAPIService) IssueCreateIssueCommentAttachmentExecute(r ApiIssueCreateIssueCommentAttachmentRequest) (*Attachment, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Attachment
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Attachment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueCreateIssueCommentAttachment")
@@ -2177,8 +2170,8 @@ func (a *IssueAPIService) IssueCreateIssueCommentAttachmentExecute(r ApiIssueCre
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	var attachmentLocalVarFormFileName string
-	var attachmentLocalVarFileName string
-	var attachmentLocalVarFileBytes []byte
+	var attachmentLocalVarFileName     string
+	var attachmentLocalVarFileBytes    []byte
 
 	attachmentLocalVarFormFileName = "attachment"
 	attachmentLocalVarFile := r.attachment
@@ -2304,8 +2297,8 @@ func (a *IssueAPIService) IssueCreateIssueCommentAttachmentExecute(r ApiIssueCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2315,8 +2308,8 @@ func (a *IssueAPIService) IssueCreateIssueCommentAttachmentExecute(r ApiIssueCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -2326,8 +2319,8 @@ func (a *IssueAPIService) IssueCreateIssueCommentAttachmentExecute(r ApiIssueCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 423 {
@@ -2337,8 +2330,8 @@ func (a *IssueAPIService) IssueCreateIssueCommentAttachmentExecute(r ApiIssueCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2356,12 +2349,12 @@ func (a *IssueAPIService) IssueCreateIssueCommentAttachmentExecute(r ApiIssueCre
 }
 
 type ApiIssueCreateIssueDependenciesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      string
-	body       *IssueMeta
+	owner string
+	repo string
+	index string
+	body *IssueMeta
 }
 
 func (r ApiIssueCreateIssueDependenciesRequest) Body(body IssueMeta) ApiIssueCreateIssueDependenciesRequest {
@@ -2376,31 +2369,30 @@ func (r ApiIssueCreateIssueDependenciesRequest) Execute() (*Issue, *http.Respons
 /*
 IssueCreateIssueDependencies Make the issue in the url depend on the issue in the form.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueCreateIssueDependenciesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueCreateIssueDependenciesRequest
 */
 func (a *IssueAPIService) IssueCreateIssueDependencies(ctx context.Context, owner string, repo string, index string) ApiIssueCreateIssueDependenciesRequest {
 	return ApiIssueCreateIssueDependenciesRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Issue
+//  @return Issue
 func (a *IssueAPIService) IssueCreateIssueDependenciesExecute(r ApiIssueCreateIssueDependenciesRequest) (*Issue, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Issue
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Issue
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueCreateIssueDependencies")
@@ -2549,8 +2541,8 @@ func (a *IssueAPIService) IssueCreateIssueDependenciesExecute(r ApiIssueCreateIs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2568,11 +2560,11 @@ func (a *IssueAPIService) IssueCreateIssueDependenciesExecute(r ApiIssueCreateIs
 }
 
 type ApiIssueCreateLabelRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	body       *CreateLabelOption
+	owner string
+	repo string
+	body *CreateLabelOption
 }
 
 func (r ApiIssueCreateLabelRequest) Body(body CreateLabelOption) ApiIssueCreateLabelRequest {
@@ -2587,29 +2579,28 @@ func (r ApiIssueCreateLabelRequest) Execute() (*Label, *http.Response, error) {
 /*
 IssueCreateLabel Create a label
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@return ApiIssueCreateLabelRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @return ApiIssueCreateLabelRequest
 */
 func (a *IssueAPIService) IssueCreateLabel(ctx context.Context, owner string, repo string) ApiIssueCreateLabelRequest {
 	return ApiIssueCreateLabelRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Label
+//  @return Label
 func (a *IssueAPIService) IssueCreateLabelExecute(r ApiIssueCreateLabelRequest) (*Label, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Label
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Label
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueCreateLabel")
@@ -2757,8 +2748,8 @@ func (a *IssueAPIService) IssueCreateLabelExecute(r ApiIssueCreateLabelRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -2768,8 +2759,8 @@ func (a *IssueAPIService) IssueCreateLabelExecute(r ApiIssueCreateLabelRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2787,11 +2778,11 @@ func (a *IssueAPIService) IssueCreateLabelExecute(r ApiIssueCreateLabelRequest) 
 }
 
 type ApiIssueCreateMilestoneRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	body       *CreateMilestoneOption
+	owner string
+	repo string
+	body *CreateMilestoneOption
 }
 
 func (r ApiIssueCreateMilestoneRequest) Body(body CreateMilestoneOption) ApiIssueCreateMilestoneRequest {
@@ -2806,29 +2797,28 @@ func (r ApiIssueCreateMilestoneRequest) Execute() (*Milestone, *http.Response, e
 /*
 IssueCreateMilestone Create a milestone
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@return ApiIssueCreateMilestoneRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @return ApiIssueCreateMilestoneRequest
 */
 func (a *IssueAPIService) IssueCreateMilestone(ctx context.Context, owner string, repo string) ApiIssueCreateMilestoneRequest {
 	return ApiIssueCreateMilestoneRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Milestone
+//  @return Milestone
 func (a *IssueAPIService) IssueCreateMilestoneExecute(r ApiIssueCreateMilestoneRequest) (*Milestone, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Milestone
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Milestone
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueCreateMilestone")
@@ -2976,8 +2966,8 @@ func (a *IssueAPIService) IssueCreateMilestoneExecute(r ApiIssueCreateMilestoneR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2995,11 +2985,11 @@ func (a *IssueAPIService) IssueCreateMilestoneExecute(r ApiIssueCreateMilestoneR
 }
 
 type ApiIssueDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
+	owner string
+	repo string
+	index int64
 }
 
 func (r ApiIssueDeleteRequest) Execute() (*http.Response, error) {
@@ -3009,28 +2999,28 @@ func (r ApiIssueDeleteRequest) Execute() (*http.Response, error) {
 /*
 IssueDelete Delete an issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of issue to delete
-	@return ApiIssueDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of issue to delete
+ @return ApiIssueDeleteRequest
 */
 func (a *IssueAPIService) IssueDelete(ctx context.Context, owner string, repo string, index int64) ApiIssueDeleteRequest {
 	return ApiIssueDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
 func (a *IssueAPIService) IssueDeleteExecute(r ApiIssueDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueDelete")
@@ -3177,8 +3167,8 @@ func (a *IssueAPIService) IssueDeleteExecute(r ApiIssueDeleteRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3188,8 +3178,8 @@ func (a *IssueAPIService) IssueDeleteExecute(r ApiIssueDeleteRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3198,11 +3188,11 @@ func (a *IssueAPIService) IssueDeleteExecute(r ApiIssueDeleteRequest) (*http.Res
 }
 
 type ApiIssueDeleteCommentRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	id         int64
+	owner string
+	repo string
+	id int64
 }
 
 func (r ApiIssueDeleteCommentRequest) Execute() (*http.Response, error) {
@@ -3212,28 +3202,28 @@ func (r ApiIssueDeleteCommentRequest) Execute() (*http.Response, error) {
 /*
 IssueDeleteComment Delete a comment
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param id id of comment to delete
-	@return ApiIssueDeleteCommentRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param id id of comment to delete
+ @return ApiIssueDeleteCommentRequest
 */
 func (a *IssueAPIService) IssueDeleteComment(ctx context.Context, owner string, repo string, id int64) ApiIssueDeleteCommentRequest {
 	return ApiIssueDeleteCommentRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		id:         id,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *IssueAPIService) IssueDeleteCommentExecute(r ApiIssueDeleteCommentRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueDeleteComment")
@@ -3380,8 +3370,8 @@ func (a *IssueAPIService) IssueDeleteCommentExecute(r ApiIssueDeleteCommentReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3391,8 +3381,8 @@ func (a *IssueAPIService) IssueDeleteCommentExecute(r ApiIssueDeleteCommentReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3401,12 +3391,12 @@ func (a *IssueAPIService) IssueDeleteCommentExecute(r ApiIssueDeleteCommentReque
 }
 
 type ApiIssueDeleteCommentDeprecatedRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int32
-	id         int64
+	owner string
+	repo string
+	index int32
+	id int64
 }
 
 func (r ApiIssueDeleteCommentDeprecatedRequest) Execute() (*http.Response, error) {
@@ -3416,23 +3406,23 @@ func (r ApiIssueDeleteCommentDeprecatedRequest) Execute() (*http.Response, error
 /*
 IssueDeleteCommentDeprecated Delete a comment
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index this parameter is ignored
-	@param id id of comment to delete
-	@return ApiIssueDeleteCommentDeprecatedRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index this parameter is ignored
+ @param id id of comment to delete
+ @return ApiIssueDeleteCommentDeprecatedRequest
 
 Deprecated
 */
 func (a *IssueAPIService) IssueDeleteCommentDeprecated(ctx context.Context, owner string, repo string, index int32, id int64) ApiIssueDeleteCommentDeprecatedRequest {
 	return ApiIssueDeleteCommentDeprecatedRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
-		id:         id,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
+		id: id,
 	}
 }
 
@@ -3440,9 +3430,9 @@ func (a *IssueAPIService) IssueDeleteCommentDeprecated(ctx context.Context, owne
 // Deprecated
 func (a *IssueAPIService) IssueDeleteCommentDeprecatedExecute(r ApiIssueDeleteCommentDeprecatedRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueDeleteCommentDeprecated")
@@ -3590,8 +3580,8 @@ func (a *IssueAPIService) IssueDeleteCommentDeprecatedExecute(r ApiIssueDeleteCo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3601,8 +3591,8 @@ func (a *IssueAPIService) IssueDeleteCommentDeprecatedExecute(r ApiIssueDeleteCo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3611,12 +3601,12 @@ func (a *IssueAPIService) IssueDeleteCommentDeprecatedExecute(r ApiIssueDeleteCo
 }
 
 type ApiIssueDeleteCommentReactionRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	id         int64
-	content    *EditReactionOption
+	owner string
+	repo string
+	id int64
+	content *EditReactionOption
 }
 
 func (r ApiIssueDeleteCommentReactionRequest) Content(content EditReactionOption) ApiIssueDeleteCommentReactionRequest {
@@ -3631,28 +3621,28 @@ func (r ApiIssueDeleteCommentReactionRequest) Execute() (*http.Response, error) 
 /*
 IssueDeleteCommentReaction Remove a reaction from a comment of an issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param id id of the comment to edit
-	@return ApiIssueDeleteCommentReactionRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param id id of the comment to edit
+ @return ApiIssueDeleteCommentReactionRequest
 */
 func (a *IssueAPIService) IssueDeleteCommentReaction(ctx context.Context, owner string, repo string, id int64) ApiIssueDeleteCommentReactionRequest {
 	return ApiIssueDeleteCommentReactionRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		id:         id,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *IssueAPIService) IssueDeleteCommentReactionExecute(r ApiIssueDeleteCommentReactionRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueDeleteCommentReaction")
@@ -3801,8 +3791,8 @@ func (a *IssueAPIService) IssueDeleteCommentReactionExecute(r ApiIssueDeleteComm
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3812,8 +3802,8 @@ func (a *IssueAPIService) IssueDeleteCommentReactionExecute(r ApiIssueDeleteComm
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3822,11 +3812,11 @@ func (a *IssueAPIService) IssueDeleteCommentReactionExecute(r ApiIssueDeleteComm
 }
 
 type ApiIssueDeleteIssueAttachmentRequest struct {
-	ctx          context.Context
-	ApiService   *IssueAPIService
-	owner        string
-	repo         string
-	index        int64
+	ctx context.Context
+	ApiService *IssueAPIService
+	owner string
+	repo string
+	index int64
 	attachmentId int64
 }
 
@@ -3837,20 +3827,20 @@ func (r ApiIssueDeleteIssueAttachmentRequest) Execute() (*http.Response, error) 
 /*
 IssueDeleteIssueAttachment Delete an issue attachment
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@param attachmentId id of the attachment to delete
-	@return ApiIssueDeleteIssueAttachmentRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @param attachmentId id of the attachment to delete
+ @return ApiIssueDeleteIssueAttachmentRequest
 */
 func (a *IssueAPIService) IssueDeleteIssueAttachment(ctx context.Context, owner string, repo string, index int64, attachmentId int64) ApiIssueDeleteIssueAttachmentRequest {
 	return ApiIssueDeleteIssueAttachmentRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		owner:        owner,
-		repo:         repo,
-		index:        index,
+		ApiService: a,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 		attachmentId: attachmentId,
 	}
 }
@@ -3858,9 +3848,9 @@ func (a *IssueAPIService) IssueDeleteIssueAttachment(ctx context.Context, owner 
 // Execute executes the request
 func (a *IssueAPIService) IssueDeleteIssueAttachmentExecute(r ApiIssueDeleteIssueAttachmentRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueDeleteIssueAttachment")
@@ -4008,8 +3998,8 @@ func (a *IssueAPIService) IssueDeleteIssueAttachmentExecute(r ApiIssueDeleteIssu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 423 {
@@ -4019,8 +4009,8 @@ func (a *IssueAPIService) IssueDeleteIssueAttachmentExecute(r ApiIssueDeleteIssu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4029,11 +4019,11 @@ func (a *IssueAPIService) IssueDeleteIssueAttachmentExecute(r ApiIssueDeleteIssu
 }
 
 type ApiIssueDeleteIssueCommentAttachmentRequest struct {
-	ctx          context.Context
-	ApiService   *IssueAPIService
-	owner        string
-	repo         string
-	id           int64
+	ctx context.Context
+	ApiService *IssueAPIService
+	owner string
+	repo string
+	id int64
 	attachmentId int64
 }
 
@@ -4044,20 +4034,20 @@ func (r ApiIssueDeleteIssueCommentAttachmentRequest) Execute() (*http.Response, 
 /*
 IssueDeleteIssueCommentAttachment Delete a comment attachment
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param id id of the comment
-	@param attachmentId id of the attachment to delete
-	@return ApiIssueDeleteIssueCommentAttachmentRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param id id of the comment
+ @param attachmentId id of the attachment to delete
+ @return ApiIssueDeleteIssueCommentAttachmentRequest
 */
 func (a *IssueAPIService) IssueDeleteIssueCommentAttachment(ctx context.Context, owner string, repo string, id int64, attachmentId int64) ApiIssueDeleteIssueCommentAttachmentRequest {
 	return ApiIssueDeleteIssueCommentAttachmentRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		owner:        owner,
-		repo:         repo,
-		id:           id,
+		ApiService: a,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		id: id,
 		attachmentId: attachmentId,
 	}
 }
@@ -4065,9 +4055,9 @@ func (a *IssueAPIService) IssueDeleteIssueCommentAttachment(ctx context.Context,
 // Execute executes the request
 func (a *IssueAPIService) IssueDeleteIssueCommentAttachmentExecute(r ApiIssueDeleteIssueCommentAttachmentRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueDeleteIssueCommentAttachment")
@@ -4215,8 +4205,8 @@ func (a *IssueAPIService) IssueDeleteIssueCommentAttachmentExecute(r ApiIssueDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 423 {
@@ -4226,8 +4216,8 @@ func (a *IssueAPIService) IssueDeleteIssueCommentAttachmentExecute(r ApiIssueDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4236,12 +4226,12 @@ func (a *IssueAPIService) IssueDeleteIssueCommentAttachmentExecute(r ApiIssueDel
 }
 
 type ApiIssueDeleteIssueReactionRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	content    *EditReactionOption
+	owner string
+	repo string
+	index int64
+	content *EditReactionOption
 }
 
 func (r ApiIssueDeleteIssueReactionRequest) Content(content EditReactionOption) ApiIssueDeleteIssueReactionRequest {
@@ -4256,28 +4246,28 @@ func (r ApiIssueDeleteIssueReactionRequest) Execute() (*http.Response, error) {
 /*
 IssueDeleteIssueReaction Remove a reaction from an issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueDeleteIssueReactionRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueDeleteIssueReactionRequest
 */
 func (a *IssueAPIService) IssueDeleteIssueReaction(ctx context.Context, owner string, repo string, index int64) ApiIssueDeleteIssueReactionRequest {
 	return ApiIssueDeleteIssueReactionRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
 func (a *IssueAPIService) IssueDeleteIssueReactionExecute(r ApiIssueDeleteIssueReactionRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueDeleteIssueReaction")
@@ -4426,8 +4416,8 @@ func (a *IssueAPIService) IssueDeleteIssueReactionExecute(r ApiIssueDeleteIssueR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4437,8 +4427,8 @@ func (a *IssueAPIService) IssueDeleteIssueReactionExecute(r ApiIssueDeleteIssueR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4447,11 +4437,11 @@ func (a *IssueAPIService) IssueDeleteIssueReactionExecute(r ApiIssueDeleteIssueR
 }
 
 type ApiIssueDeleteLabelRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	id         int64
+	owner string
+	repo string
+	id int64
 }
 
 func (r ApiIssueDeleteLabelRequest) Execute() (*http.Response, error) {
@@ -4461,28 +4451,28 @@ func (r ApiIssueDeleteLabelRequest) Execute() (*http.Response, error) {
 /*
 IssueDeleteLabel Delete a label
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param id id of the label to delete
-	@return ApiIssueDeleteLabelRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param id id of the label to delete
+ @return ApiIssueDeleteLabelRequest
 */
 func (a *IssueAPIService) IssueDeleteLabel(ctx context.Context, owner string, repo string, id int64) ApiIssueDeleteLabelRequest {
 	return ApiIssueDeleteLabelRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		id:         id,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *IssueAPIService) IssueDeleteLabelExecute(r ApiIssueDeleteLabelRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueDeleteLabel")
@@ -4629,8 +4619,8 @@ func (a *IssueAPIService) IssueDeleteLabelExecute(r ApiIssueDeleteLabelRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4639,11 +4629,11 @@ func (a *IssueAPIService) IssueDeleteLabelExecute(r ApiIssueDeleteLabelRequest) 
 }
 
 type ApiIssueDeleteMilestoneRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	id         string
+	owner string
+	repo string
+	id string
 }
 
 func (r ApiIssueDeleteMilestoneRequest) Execute() (*http.Response, error) {
@@ -4653,28 +4643,28 @@ func (r ApiIssueDeleteMilestoneRequest) Execute() (*http.Response, error) {
 /*
 IssueDeleteMilestone Delete a milestone
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param id the milestone to delete, identified by ID and if not available by name
-	@return ApiIssueDeleteMilestoneRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param id the milestone to delete, identified by ID and if not available by name
+ @return ApiIssueDeleteMilestoneRequest
 */
 func (a *IssueAPIService) IssueDeleteMilestone(ctx context.Context, owner string, repo string, id string) ApiIssueDeleteMilestoneRequest {
 	return ApiIssueDeleteMilestoneRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		id:         id,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *IssueAPIService) IssueDeleteMilestoneExecute(r ApiIssueDeleteMilestoneRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueDeleteMilestone")
@@ -4821,8 +4811,8 @@ func (a *IssueAPIService) IssueDeleteMilestoneExecute(r ApiIssueDeleteMilestoneR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4831,11 +4821,11 @@ func (a *IssueAPIService) IssueDeleteMilestoneExecute(r ApiIssueDeleteMilestoneR
 }
 
 type ApiIssueDeleteStopWatchRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
+	owner string
+	repo string
+	index int64
 }
 
 func (r ApiIssueDeleteStopWatchRequest) Execute() (*http.Response, error) {
@@ -4845,28 +4835,28 @@ func (r ApiIssueDeleteStopWatchRequest) Execute() (*http.Response, error) {
 /*
 IssueDeleteStopWatch Delete an issue's existing stopwatch.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue to stop the stopwatch on
-	@return ApiIssueDeleteStopWatchRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue to stop the stopwatch on
+ @return ApiIssueDeleteStopWatchRequest
 */
 func (a *IssueAPIService) IssueDeleteStopWatch(ctx context.Context, owner string, repo string, index int64) ApiIssueDeleteStopWatchRequest {
 	return ApiIssueDeleteStopWatchRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
 func (a *IssueAPIService) IssueDeleteStopWatchExecute(r ApiIssueDeleteStopWatchRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueDeleteStopWatch")
@@ -5013,8 +5003,8 @@ func (a *IssueAPIService) IssueDeleteStopWatchExecute(r ApiIssueDeleteStopWatchR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -5024,12 +5014,12 @@ func (a *IssueAPIService) IssueDeleteStopWatchExecute(r ApiIssueDeleteStopWatchR
 }
 
 type ApiIssueDeleteSubscriptionRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	user       string
+	owner string
+	repo string
+	index int64
+	user string
 }
 
 func (r ApiIssueDeleteSubscriptionRequest) Execute() (*http.Response, error) {
@@ -5039,30 +5029,30 @@ func (r ApiIssueDeleteSubscriptionRequest) Execute() (*http.Response, error) {
 /*
 IssueDeleteSubscription Unsubscribe user from issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@param user user witch unsubscribe
-	@return ApiIssueDeleteSubscriptionRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @param user user witch unsubscribe
+ @return ApiIssueDeleteSubscriptionRequest
 */
 func (a *IssueAPIService) IssueDeleteSubscription(ctx context.Context, owner string, repo string, index int64, user string) ApiIssueDeleteSubscriptionRequest {
 	return ApiIssueDeleteSubscriptionRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
-		user:       user,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
+		user: user,
 	}
 }
 
 // Execute executes the request
 func (a *IssueAPIService) IssueDeleteSubscriptionExecute(r ApiIssueDeleteSubscriptionRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueDeleteSubscription")
@@ -5210,8 +5200,8 @@ func (a *IssueAPIService) IssueDeleteSubscriptionExecute(r ApiIssueDeleteSubscri
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -5220,12 +5210,12 @@ func (a *IssueAPIService) IssueDeleteSubscriptionExecute(r ApiIssueDeleteSubscri
 }
 
 type ApiIssueDeleteTimeRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	id         int64
+	owner string
+	repo string
+	index int64
+	id int64
 }
 
 func (r ApiIssueDeleteTimeRequest) Execute() (*http.Response, error) {
@@ -5235,30 +5225,30 @@ func (r ApiIssueDeleteTimeRequest) Execute() (*http.Response, error) {
 /*
 IssueDeleteTime Delete specific tracked time
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@param id id of time to delete
-	@return ApiIssueDeleteTimeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @param id id of time to delete
+ @return ApiIssueDeleteTimeRequest
 */
 func (a *IssueAPIService) IssueDeleteTime(ctx context.Context, owner string, repo string, index int64, id int64) ApiIssueDeleteTimeRequest {
 	return ApiIssueDeleteTimeRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
-		id:         id,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *IssueAPIService) IssueDeleteTimeExecute(r ApiIssueDeleteTimeRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueDeleteTime")
@@ -5406,8 +5396,8 @@ func (a *IssueAPIService) IssueDeleteTimeExecute(r ApiIssueDeleteTimeRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5417,8 +5407,8 @@ func (a *IssueAPIService) IssueDeleteTimeExecute(r ApiIssueDeleteTimeRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5428,8 +5418,8 @@ func (a *IssueAPIService) IssueDeleteTimeExecute(r ApiIssueDeleteTimeRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -5438,12 +5428,12 @@ func (a *IssueAPIService) IssueDeleteTimeExecute(r ApiIssueDeleteTimeRequest) (*
 }
 
 type ApiIssueEditCommentRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	id         int64
-	body       *EditIssueCommentOption
+	owner string
+	repo string
+	id int64
+	body *EditIssueCommentOption
 }
 
 func (r ApiIssueEditCommentRequest) Body(body EditIssueCommentOption) ApiIssueEditCommentRequest {
@@ -5458,31 +5448,30 @@ func (r ApiIssueEditCommentRequest) Execute() (*Comment, *http.Response, error) 
 /*
 IssueEditComment Edit a comment
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param id id of the comment to edit
-	@return ApiIssueEditCommentRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param id id of the comment to edit
+ @return ApiIssueEditCommentRequest
 */
 func (a *IssueAPIService) IssueEditComment(ctx context.Context, owner string, repo string, id int64) ApiIssueEditCommentRequest {
 	return ApiIssueEditCommentRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		id:         id,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Comment
+//  @return Comment
 func (a *IssueAPIService) IssueEditCommentExecute(r ApiIssueEditCommentRequest) (*Comment, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Comment
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Comment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueEditComment")
@@ -5631,8 +5620,8 @@ func (a *IssueAPIService) IssueEditCommentExecute(r ApiIssueEditCommentRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5642,8 +5631,8 @@ func (a *IssueAPIService) IssueEditCommentExecute(r ApiIssueEditCommentRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 423 {
@@ -5653,8 +5642,8 @@ func (a *IssueAPIService) IssueEditCommentExecute(r ApiIssueEditCommentRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5664,8 +5653,8 @@ func (a *IssueAPIService) IssueEditCommentExecute(r ApiIssueEditCommentRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5683,13 +5672,13 @@ func (a *IssueAPIService) IssueEditCommentExecute(r ApiIssueEditCommentRequest) 
 }
 
 type ApiIssueEditCommentDeprecatedRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int32
-	id         int64
-	body       *EditIssueCommentOption
+	owner string
+	repo string
+	index int32
+	id int64
+	body *EditIssueCommentOption
 }
 
 func (r ApiIssueEditCommentDeprecatedRequest) Body(body EditIssueCommentOption) ApiIssueEditCommentDeprecatedRequest {
@@ -5704,37 +5693,35 @@ func (r ApiIssueEditCommentDeprecatedRequest) Execute() (*Comment, *http.Respons
 /*
 IssueEditCommentDeprecated Edit a comment
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index this parameter is ignored
-	@param id id of the comment to edit
-	@return ApiIssueEditCommentDeprecatedRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index this parameter is ignored
+ @param id id of the comment to edit
+ @return ApiIssueEditCommentDeprecatedRequest
 
 Deprecated
 */
 func (a *IssueAPIService) IssueEditCommentDeprecated(ctx context.Context, owner string, repo string, index int32, id int64) ApiIssueEditCommentDeprecatedRequest {
 	return ApiIssueEditCommentDeprecatedRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
-		id:         id,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Comment
-//
+//  @return Comment
 // Deprecated
 func (a *IssueAPIService) IssueEditCommentDeprecatedExecute(r ApiIssueEditCommentDeprecatedRequest) (*Comment, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Comment
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Comment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueEditCommentDeprecated")
@@ -5884,8 +5871,8 @@ func (a *IssueAPIService) IssueEditCommentDeprecatedExecute(r ApiIssueEditCommen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5895,8 +5882,8 @@ func (a *IssueAPIService) IssueEditCommentDeprecatedExecute(r ApiIssueEditCommen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5906,8 +5893,8 @@ func (a *IssueAPIService) IssueEditCommentDeprecatedExecute(r ApiIssueEditCommen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5925,12 +5912,12 @@ func (a *IssueAPIService) IssueEditCommentDeprecatedExecute(r ApiIssueEditCommen
 }
 
 type ApiIssueEditIssueRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	body       *EditIssueOption
+	owner string
+	repo string
+	index int64
+	body *EditIssueOption
 }
 
 func (r ApiIssueEditIssueRequest) Body(body EditIssueOption) ApiIssueEditIssueRequest {
@@ -5945,31 +5932,30 @@ func (r ApiIssueEditIssueRequest) Execute() (*Issue, *http.Response, error) {
 /*
 IssueEditIssue Edit an issue. If using deadline only the date will be taken into account, and time of day ignored.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue to edit
-	@return ApiIssueEditIssueRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue to edit
+ @return ApiIssueEditIssueRequest
 */
 func (a *IssueAPIService) IssueEditIssue(ctx context.Context, owner string, repo string, index int64) ApiIssueEditIssueRequest {
 	return ApiIssueEditIssueRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Issue
+//  @return Issue
 func (a *IssueAPIService) IssueEditIssueExecute(r ApiIssueEditIssueRequest) (*Issue, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Issue
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Issue
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueEditIssue")
@@ -6118,8 +6104,8 @@ func (a *IssueAPIService) IssueEditIssueExecute(r ApiIssueEditIssueRequest) (*Is
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -6129,8 +6115,8 @@ func (a *IssueAPIService) IssueEditIssueExecute(r ApiIssueEditIssueRequest) (*Is
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 412 {
@@ -6140,8 +6126,8 @@ func (a *IssueAPIService) IssueEditIssueExecute(r ApiIssueEditIssueRequest) (*Is
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6159,13 +6145,13 @@ func (a *IssueAPIService) IssueEditIssueExecute(r ApiIssueEditIssueRequest) (*Is
 }
 
 type ApiIssueEditIssueAttachmentRequest struct {
-	ctx          context.Context
-	ApiService   *IssueAPIService
-	owner        string
-	repo         string
-	index        int64
+	ctx context.Context
+	ApiService *IssueAPIService
+	owner string
+	repo string
+	index int64
 	attachmentId int64
-	body         *EditAttachmentOptions
+	body *EditAttachmentOptions
 }
 
 func (r ApiIssueEditIssueAttachmentRequest) Body(body EditAttachmentOptions) ApiIssueEditIssueAttachmentRequest {
@@ -6180,33 +6166,32 @@ func (r ApiIssueEditIssueAttachmentRequest) Execute() (*Attachment, *http.Respon
 /*
 IssueEditIssueAttachment Edit an issue attachment
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@param attachmentId id of the attachment to edit
-	@return ApiIssueEditIssueAttachmentRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @param attachmentId id of the attachment to edit
+ @return ApiIssueEditIssueAttachmentRequest
 */
 func (a *IssueAPIService) IssueEditIssueAttachment(ctx context.Context, owner string, repo string, index int64, attachmentId int64) ApiIssueEditIssueAttachmentRequest {
 	return ApiIssueEditIssueAttachmentRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		owner:        owner,
-		repo:         repo,
-		index:        index,
+		ApiService: a,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 		attachmentId: attachmentId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Attachment
+//  @return Attachment
 func (a *IssueAPIService) IssueEditIssueAttachmentExecute(r ApiIssueEditIssueAttachmentRequest) (*Attachment, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Attachment
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Attachment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueEditIssueAttachment")
@@ -6356,8 +6341,8 @@ func (a *IssueAPIService) IssueEditIssueAttachmentExecute(r ApiIssueEditIssueAtt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 423 {
@@ -6367,8 +6352,8 @@ func (a *IssueAPIService) IssueEditIssueAttachmentExecute(r ApiIssueEditIssueAtt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6386,13 +6371,13 @@ func (a *IssueAPIService) IssueEditIssueAttachmentExecute(r ApiIssueEditIssueAtt
 }
 
 type ApiIssueEditIssueCommentAttachmentRequest struct {
-	ctx          context.Context
-	ApiService   *IssueAPIService
-	owner        string
-	repo         string
-	id           int64
+	ctx context.Context
+	ApiService *IssueAPIService
+	owner string
+	repo string
+	id int64
 	attachmentId int64
-	body         *EditAttachmentOptions
+	body *EditAttachmentOptions
 }
 
 func (r ApiIssueEditIssueCommentAttachmentRequest) Body(body EditAttachmentOptions) ApiIssueEditIssueCommentAttachmentRequest {
@@ -6407,33 +6392,32 @@ func (r ApiIssueEditIssueCommentAttachmentRequest) Execute() (*Attachment, *http
 /*
 IssueEditIssueCommentAttachment Edit a comment attachment
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param id id of the comment
-	@param attachmentId id of the attachment to edit
-	@return ApiIssueEditIssueCommentAttachmentRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param id id of the comment
+ @param attachmentId id of the attachment to edit
+ @return ApiIssueEditIssueCommentAttachmentRequest
 */
 func (a *IssueAPIService) IssueEditIssueCommentAttachment(ctx context.Context, owner string, repo string, id int64, attachmentId int64) ApiIssueEditIssueCommentAttachmentRequest {
 	return ApiIssueEditIssueCommentAttachmentRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		owner:        owner,
-		repo:         repo,
-		id:           id,
+		ApiService: a,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		id: id,
 		attachmentId: attachmentId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Attachment
+//  @return Attachment
 func (a *IssueAPIService) IssueEditIssueCommentAttachmentExecute(r ApiIssueEditIssueCommentAttachmentRequest) (*Attachment, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Attachment
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Attachment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueEditIssueCommentAttachment")
@@ -6583,8 +6567,8 @@ func (a *IssueAPIService) IssueEditIssueCommentAttachmentExecute(r ApiIssueEditI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 423 {
@@ -6594,8 +6578,8 @@ func (a *IssueAPIService) IssueEditIssueCommentAttachmentExecute(r ApiIssueEditI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6613,12 +6597,12 @@ func (a *IssueAPIService) IssueEditIssueCommentAttachmentExecute(r ApiIssueEditI
 }
 
 type ApiIssueEditIssueDeadlineRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	body       *EditDeadlineOption
+	owner string
+	repo string
+	index int64
+	body *EditDeadlineOption
 }
 
 func (r ApiIssueEditIssueDeadlineRequest) Body(body EditDeadlineOption) ApiIssueEditIssueDeadlineRequest {
@@ -6633,31 +6617,30 @@ func (r ApiIssueEditIssueDeadlineRequest) Execute() (*IssueDeadline, *http.Respo
 /*
 IssueEditIssueDeadline Set an issue deadline. If set to null, the deadline is deleted. If using deadline only the date will be taken into account, and time of day ignored.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue to create or update a deadline on
-	@return ApiIssueEditIssueDeadlineRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue to create or update a deadline on
+ @return ApiIssueEditIssueDeadlineRequest
 */
 func (a *IssueAPIService) IssueEditIssueDeadline(ctx context.Context, owner string, repo string, index int64) ApiIssueEditIssueDeadlineRequest {
 	return ApiIssueEditIssueDeadlineRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return IssueDeadline
+//  @return IssueDeadline
 func (a *IssueAPIService) IssueEditIssueDeadlineExecute(r ApiIssueEditIssueDeadlineRequest) (*IssueDeadline, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *IssueDeadline
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *IssueDeadline
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueEditIssueDeadline")
@@ -6806,8 +6789,8 @@ func (a *IssueAPIService) IssueEditIssueDeadlineExecute(r ApiIssueEditIssueDeadl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -6817,8 +6800,8 @@ func (a *IssueAPIService) IssueEditIssueDeadlineExecute(r ApiIssueEditIssueDeadl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6836,12 +6819,12 @@ func (a *IssueAPIService) IssueEditIssueDeadlineExecute(r ApiIssueEditIssueDeadl
 }
 
 type ApiIssueEditLabelRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	id         int64
-	body       *EditLabelOption
+	owner string
+	repo string
+	id int64
+	body *EditLabelOption
 }
 
 func (r ApiIssueEditLabelRequest) Body(body EditLabelOption) ApiIssueEditLabelRequest {
@@ -6856,31 +6839,30 @@ func (r ApiIssueEditLabelRequest) Execute() (*Label, *http.Response, error) {
 /*
 IssueEditLabel Update a label
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param id id of the label to edit
-	@return ApiIssueEditLabelRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param id id of the label to edit
+ @return ApiIssueEditLabelRequest
 */
 func (a *IssueAPIService) IssueEditLabel(ctx context.Context, owner string, repo string, id int64) ApiIssueEditLabelRequest {
 	return ApiIssueEditLabelRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		id:         id,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Label
+//  @return Label
 func (a *IssueAPIService) IssueEditLabelExecute(r ApiIssueEditLabelRequest) (*Label, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Label
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Label
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueEditLabel")
@@ -7029,8 +7011,8 @@ func (a *IssueAPIService) IssueEditLabelExecute(r ApiIssueEditLabelRequest) (*La
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -7040,8 +7022,8 @@ func (a *IssueAPIService) IssueEditLabelExecute(r ApiIssueEditLabelRequest) (*La
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -7059,12 +7041,12 @@ func (a *IssueAPIService) IssueEditLabelExecute(r ApiIssueEditLabelRequest) (*La
 }
 
 type ApiIssueEditMilestoneRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	id         string
-	body       *EditMilestoneOption
+	owner string
+	repo string
+	id string
+	body *EditMilestoneOption
 }
 
 func (r ApiIssueEditMilestoneRequest) Body(body EditMilestoneOption) ApiIssueEditMilestoneRequest {
@@ -7079,31 +7061,30 @@ func (r ApiIssueEditMilestoneRequest) Execute() (*Milestone, *http.Response, err
 /*
 IssueEditMilestone Update a milestone
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param id the milestone to edit, identified by ID and if not available by name
-	@return ApiIssueEditMilestoneRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param id the milestone to edit, identified by ID and if not available by name
+ @return ApiIssueEditMilestoneRequest
 */
 func (a *IssueAPIService) IssueEditMilestone(ctx context.Context, owner string, repo string, id string) ApiIssueEditMilestoneRequest {
 	return ApiIssueEditMilestoneRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		id:         id,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Milestone
+//  @return Milestone
 func (a *IssueAPIService) IssueEditMilestoneExecute(r ApiIssueEditMilestoneRequest) (*Milestone, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Milestone
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Milestone
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueEditMilestone")
@@ -7252,8 +7233,8 @@ func (a *IssueAPIService) IssueEditMilestoneExecute(r ApiIssueEditMilestoneReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -7271,11 +7252,11 @@ func (a *IssueAPIService) IssueEditMilestoneExecute(r ApiIssueEditMilestoneReque
 }
 
 type ApiIssueGetCommentRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	id         int64
+	owner string
+	repo string
+	id int64
 }
 
 func (r ApiIssueGetCommentRequest) Execute() (*Comment, *http.Response, error) {
@@ -7285,31 +7266,30 @@ func (r ApiIssueGetCommentRequest) Execute() (*Comment, *http.Response, error) {
 /*
 IssueGetComment Get a comment
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param id id of the comment
-	@return ApiIssueGetCommentRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param id id of the comment
+ @return ApiIssueGetCommentRequest
 */
 func (a *IssueAPIService) IssueGetComment(ctx context.Context, owner string, repo string, id int64) ApiIssueGetCommentRequest {
 	return ApiIssueGetCommentRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		id:         id,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Comment
+//  @return Comment
 func (a *IssueAPIService) IssueGetCommentExecute(r ApiIssueGetCommentRequest) (*Comment, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Comment
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Comment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueGetComment")
@@ -7456,8 +7436,8 @@ func (a *IssueAPIService) IssueGetCommentExecute(r ApiIssueGetCommentRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -7467,8 +7447,8 @@ func (a *IssueAPIService) IssueGetCommentExecute(r ApiIssueGetCommentRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -7478,8 +7458,8 @@ func (a *IssueAPIService) IssueGetCommentExecute(r ApiIssueGetCommentRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -7497,11 +7477,11 @@ func (a *IssueAPIService) IssueGetCommentExecute(r ApiIssueGetCommentRequest) (*
 }
 
 type ApiIssueGetCommentReactionsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	id         int64
+	owner string
+	repo string
+	id int64
 }
 
 func (r ApiIssueGetCommentReactionsRequest) Execute() ([]Reaction, *http.Response, error) {
@@ -7511,31 +7491,30 @@ func (r ApiIssueGetCommentReactionsRequest) Execute() ([]Reaction, *http.Respons
 /*
 IssueGetCommentReactions Get a list of reactions from a comment of an issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param id id of the comment to edit
-	@return ApiIssueGetCommentReactionsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param id id of the comment to edit
+ @return ApiIssueGetCommentReactionsRequest
 */
 func (a *IssueAPIService) IssueGetCommentReactions(ctx context.Context, owner string, repo string, id int64) ApiIssueGetCommentReactionsRequest {
 	return ApiIssueGetCommentReactionsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		id:         id,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Reaction
+//  @return []Reaction
 func (a *IssueAPIService) IssueGetCommentReactionsExecute(r ApiIssueGetCommentReactionsRequest) ([]Reaction, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Reaction
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Reaction
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueGetCommentReactions")
@@ -7682,8 +7661,8 @@ func (a *IssueAPIService) IssueGetCommentReactionsExecute(r ApiIssueGetCommentRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -7693,8 +7672,8 @@ func (a *IssueAPIService) IssueGetCommentReactionsExecute(r ApiIssueGetCommentRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -7712,13 +7691,13 @@ func (a *IssueAPIService) IssueGetCommentReactionsExecute(r ApiIssueGetCommentRe
 }
 
 type ApiIssueGetCommentsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	since      *time.Time
-	before     *time.Time
+	owner string
+	repo string
+	index int64
+	since *time.Time
+	before *time.Time
 }
 
 // if provided, only comments updated since the specified time are returned.
@@ -7740,31 +7719,30 @@ func (r ApiIssueGetCommentsRequest) Execute() ([]Comment, *http.Response, error)
 /*
 IssueGetComments List all comments on an issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueGetCommentsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueGetCommentsRequest
 */
 func (a *IssueAPIService) IssueGetComments(ctx context.Context, owner string, repo string, index int64) ApiIssueGetCommentsRequest {
 	return ApiIssueGetCommentsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Comment
+//  @return []Comment
 func (a *IssueAPIService) IssueGetCommentsExecute(r ApiIssueGetCommentsRequest) ([]Comment, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Comment
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Comment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueGetComments")
@@ -7917,8 +7895,8 @@ func (a *IssueAPIService) IssueGetCommentsExecute(r ApiIssueGetCommentsRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -7928,8 +7906,8 @@ func (a *IssueAPIService) IssueGetCommentsExecute(r ApiIssueGetCommentsRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -7939,8 +7917,8 @@ func (a *IssueAPIService) IssueGetCommentsExecute(r ApiIssueGetCommentsRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -7958,15 +7936,15 @@ func (a *IssueAPIService) IssueGetCommentsExecute(r ApiIssueGetCommentsRequest) 
 }
 
 type ApiIssueGetCommentsAndTimelineRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	since      *time.Time
-	page       *int32
-	limit      *int32
-	before     *time.Time
+	owner string
+	repo string
+	index int64
+	since *time.Time
+	page *int32
+	limit *int32
+	before *time.Time
 }
 
 // if provided, only comments updated since the specified time are returned.
@@ -8000,31 +7978,30 @@ func (r ApiIssueGetCommentsAndTimelineRequest) Execute() ([]TimelineComment, *ht
 /*
 IssueGetCommentsAndTimeline List all comments and events on an issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueGetCommentsAndTimelineRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueGetCommentsAndTimelineRequest
 */
 func (a *IssueAPIService) IssueGetCommentsAndTimeline(ctx context.Context, owner string, repo string, index int64) ApiIssueGetCommentsAndTimelineRequest {
 	return ApiIssueGetCommentsAndTimelineRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []TimelineComment
+//  @return []TimelineComment
 func (a *IssueAPIService) IssueGetCommentsAndTimelineExecute(r ApiIssueGetCommentsAndTimelineRequest) ([]TimelineComment, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []TimelineComment
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []TimelineComment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueGetCommentsAndTimeline")
@@ -8183,8 +8160,8 @@ func (a *IssueAPIService) IssueGetCommentsAndTimelineExecute(r ApiIssueGetCommen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -8194,8 +8171,8 @@ func (a *IssueAPIService) IssueGetCommentsAndTimelineExecute(r ApiIssueGetCommen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -8205,8 +8182,8 @@ func (a *IssueAPIService) IssueGetCommentsAndTimelineExecute(r ApiIssueGetCommen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -8224,11 +8201,11 @@ func (a *IssueAPIService) IssueGetCommentsAndTimelineExecute(r ApiIssueGetCommen
 }
 
 type ApiIssueGetIssueRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
+	owner string
+	repo string
+	index int64
 }
 
 func (r ApiIssueGetIssueRequest) Execute() (*Issue, *http.Response, error) {
@@ -8238,31 +8215,30 @@ func (r ApiIssueGetIssueRequest) Execute() (*Issue, *http.Response, error) {
 /*
 IssueGetIssue Get an issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue to get
-	@return ApiIssueGetIssueRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue to get
+ @return ApiIssueGetIssueRequest
 */
 func (a *IssueAPIService) IssueGetIssue(ctx context.Context, owner string, repo string, index int64) ApiIssueGetIssueRequest {
 	return ApiIssueGetIssueRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Issue
+//  @return Issue
 func (a *IssueAPIService) IssueGetIssueExecute(r ApiIssueGetIssueRequest) (*Issue, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Issue
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Issue
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueGetIssue")
@@ -8409,8 +8385,8 @@ func (a *IssueAPIService) IssueGetIssueExecute(r ApiIssueGetIssueRequest) (*Issu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -8428,11 +8404,11 @@ func (a *IssueAPIService) IssueGetIssueExecute(r ApiIssueGetIssueRequest) (*Issu
 }
 
 type ApiIssueGetIssueAttachmentRequest struct {
-	ctx          context.Context
-	ApiService   *IssueAPIService
-	owner        string
-	repo         string
-	index        int64
+	ctx context.Context
+	ApiService *IssueAPIService
+	owner string
+	repo string
+	index int64
 	attachmentId int64
 }
 
@@ -8443,33 +8419,32 @@ func (r ApiIssueGetIssueAttachmentRequest) Execute() (*Attachment, *http.Respons
 /*
 IssueGetIssueAttachment Get an issue attachment
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@param attachmentId id of the attachment to get
-	@return ApiIssueGetIssueAttachmentRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @param attachmentId id of the attachment to get
+ @return ApiIssueGetIssueAttachmentRequest
 */
 func (a *IssueAPIService) IssueGetIssueAttachment(ctx context.Context, owner string, repo string, index int64, attachmentId int64) ApiIssueGetIssueAttachmentRequest {
 	return ApiIssueGetIssueAttachmentRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		owner:        owner,
-		repo:         repo,
-		index:        index,
+		ApiService: a,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 		attachmentId: attachmentId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Attachment
+//  @return Attachment
 func (a *IssueAPIService) IssueGetIssueAttachmentExecute(r ApiIssueGetIssueAttachmentRequest) (*Attachment, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Attachment
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Attachment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueGetIssueAttachment")
@@ -8617,8 +8592,8 @@ func (a *IssueAPIService) IssueGetIssueAttachmentExecute(r ApiIssueGetIssueAttac
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -8636,11 +8611,11 @@ func (a *IssueAPIService) IssueGetIssueAttachmentExecute(r ApiIssueGetIssueAttac
 }
 
 type ApiIssueGetIssueCommentAttachmentRequest struct {
-	ctx          context.Context
-	ApiService   *IssueAPIService
-	owner        string
-	repo         string
-	id           int64
+	ctx context.Context
+	ApiService *IssueAPIService
+	owner string
+	repo string
+	id int64
 	attachmentId int64
 }
 
@@ -8651,33 +8626,32 @@ func (r ApiIssueGetIssueCommentAttachmentRequest) Execute() (*Attachment, *http.
 /*
 IssueGetIssueCommentAttachment Get a comment attachment
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param id id of the comment
-	@param attachmentId id of the attachment to get
-	@return ApiIssueGetIssueCommentAttachmentRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param id id of the comment
+ @param attachmentId id of the attachment to get
+ @return ApiIssueGetIssueCommentAttachmentRequest
 */
 func (a *IssueAPIService) IssueGetIssueCommentAttachment(ctx context.Context, owner string, repo string, id int64, attachmentId int64) ApiIssueGetIssueCommentAttachmentRequest {
 	return ApiIssueGetIssueCommentAttachmentRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		owner:        owner,
-		repo:         repo,
-		id:           id,
+		ApiService: a,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		id: id,
 		attachmentId: attachmentId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Attachment
+//  @return Attachment
 func (a *IssueAPIService) IssueGetIssueCommentAttachmentExecute(r ApiIssueGetIssueCommentAttachmentRequest) (*Attachment, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Attachment
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Attachment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueGetIssueCommentAttachment")
@@ -8825,8 +8799,8 @@ func (a *IssueAPIService) IssueGetIssueCommentAttachmentExecute(r ApiIssueGetIss
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -8844,13 +8818,13 @@ func (a *IssueAPIService) IssueGetIssueCommentAttachmentExecute(r ApiIssueGetIss
 }
 
 type ApiIssueGetIssueReactionsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	page       *int32
-	limit      *int32
+	owner string
+	repo string
+	index int64
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -8872,31 +8846,30 @@ func (r ApiIssueGetIssueReactionsRequest) Execute() ([]Reaction, *http.Response,
 /*
 IssueGetIssueReactions Get a list reactions of an issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueGetIssueReactionsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueGetIssueReactionsRequest
 */
 func (a *IssueAPIService) IssueGetIssueReactions(ctx context.Context, owner string, repo string, index int64) ApiIssueGetIssueReactionsRequest {
 	return ApiIssueGetIssueReactionsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Reaction
+//  @return []Reaction
 func (a *IssueAPIService) IssueGetIssueReactionsExecute(r ApiIssueGetIssueReactionsRequest) ([]Reaction, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Reaction
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Reaction
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueGetIssueReactions")
@@ -9049,8 +9022,8 @@ func (a *IssueAPIService) IssueGetIssueReactionsExecute(r ApiIssueGetIssueReacti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -9060,8 +9033,8 @@ func (a *IssueAPIService) IssueGetIssueReactionsExecute(r ApiIssueGetIssueReacti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -9079,11 +9052,11 @@ func (a *IssueAPIService) IssueGetIssueReactionsExecute(r ApiIssueGetIssueReacti
 }
 
 type ApiIssueGetLabelRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	id         int64
+	owner string
+	repo string
+	id int64
 }
 
 func (r ApiIssueGetLabelRequest) Execute() (*Label, *http.Response, error) {
@@ -9093,31 +9066,30 @@ func (r ApiIssueGetLabelRequest) Execute() (*Label, *http.Response, error) {
 /*
 IssueGetLabel Get a single label
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param id id of the label to get
-	@return ApiIssueGetLabelRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param id id of the label to get
+ @return ApiIssueGetLabelRequest
 */
 func (a *IssueAPIService) IssueGetLabel(ctx context.Context, owner string, repo string, id int64) ApiIssueGetLabelRequest {
 	return ApiIssueGetLabelRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		id:         id,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Label
+//  @return Label
 func (a *IssueAPIService) IssueGetLabelExecute(r ApiIssueGetLabelRequest) (*Label, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Label
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Label
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueGetLabel")
@@ -9264,8 +9236,8 @@ func (a *IssueAPIService) IssueGetLabelExecute(r ApiIssueGetLabelRequest) (*Labe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -9283,11 +9255,11 @@ func (a *IssueAPIService) IssueGetLabelExecute(r ApiIssueGetLabelRequest) (*Labe
 }
 
 type ApiIssueGetLabelsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
+	owner string
+	repo string
+	index int64
 }
 
 func (r ApiIssueGetLabelsRequest) Execute() ([]Label, *http.Response, error) {
@@ -9297,31 +9269,30 @@ func (r ApiIssueGetLabelsRequest) Execute() ([]Label, *http.Response, error) {
 /*
 IssueGetLabels Get an issue's labels
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueGetLabelsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueGetLabelsRequest
 */
 func (a *IssueAPIService) IssueGetLabels(ctx context.Context, owner string, repo string, index int64) ApiIssueGetLabelsRequest {
 	return ApiIssueGetLabelsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Label
+//  @return []Label
 func (a *IssueAPIService) IssueGetLabelsExecute(r ApiIssueGetLabelsRequest) ([]Label, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Label
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Label
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueGetLabels")
@@ -9468,8 +9439,8 @@ func (a *IssueAPIService) IssueGetLabelsExecute(r ApiIssueGetLabelsRequest) ([]L
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -9487,11 +9458,11 @@ func (a *IssueAPIService) IssueGetLabelsExecute(r ApiIssueGetLabelsRequest) ([]L
 }
 
 type ApiIssueGetMilestoneRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	id         string
+	owner string
+	repo string
+	id string
 }
 
 func (r ApiIssueGetMilestoneRequest) Execute() (*Milestone, *http.Response, error) {
@@ -9501,31 +9472,30 @@ func (r ApiIssueGetMilestoneRequest) Execute() (*Milestone, *http.Response, erro
 /*
 IssueGetMilestone Get a milestone
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param id the milestone to get, identified by ID and if not available by name
-	@return ApiIssueGetMilestoneRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param id the milestone to get, identified by ID and if not available by name
+ @return ApiIssueGetMilestoneRequest
 */
 func (a *IssueAPIService) IssueGetMilestone(ctx context.Context, owner string, repo string, id string) ApiIssueGetMilestoneRequest {
 	return ApiIssueGetMilestoneRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		id:         id,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Milestone
+//  @return Milestone
 func (a *IssueAPIService) IssueGetMilestoneExecute(r ApiIssueGetMilestoneRequest) (*Milestone, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Milestone
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Milestone
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueGetMilestone")
@@ -9672,8 +9642,8 @@ func (a *IssueAPIService) IssueGetMilestoneExecute(r ApiIssueGetMilestoneRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -9691,14 +9661,14 @@ func (a *IssueAPIService) IssueGetMilestoneExecute(r ApiIssueGetMilestoneRequest
 }
 
 type ApiIssueGetMilestonesListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	state      *string
-	name       *string
-	page       *int32
-	limit      *int32
+	owner string
+	repo string
+	state *string
+	name *string
+	page *int32
+	limit *int32
 }
 
 // Milestone state, Recognized values are open, closed and all. Defaults to \&quot;open\&quot;
@@ -9732,29 +9702,28 @@ func (r ApiIssueGetMilestonesListRequest) Execute() ([]Milestone, *http.Response
 /*
 IssueGetMilestonesList Get all of a repository's opened milestones
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@return ApiIssueGetMilestonesListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @return ApiIssueGetMilestonesListRequest
 */
 func (a *IssueAPIService) IssueGetMilestonesList(ctx context.Context, owner string, repo string) ApiIssueGetMilestonesListRequest {
 	return ApiIssueGetMilestonesListRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Milestone
+//  @return []Milestone
 func (a *IssueAPIService) IssueGetMilestonesListExecute(r ApiIssueGetMilestonesListRequest) ([]Milestone, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Milestone
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Milestone
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueGetMilestonesList")
@@ -9912,8 +9881,8 @@ func (a *IssueAPIService) IssueGetMilestonesListExecute(r ApiIssueGetMilestonesL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -9931,14 +9900,14 @@ func (a *IssueAPIService) IssueGetMilestonesListExecute(r ApiIssueGetMilestonesL
 }
 
 type ApiIssueGetRepoCommentsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	since      *time.Time
-	before     *time.Time
-	page       *int32
-	limit      *int32
+	owner string
+	repo string
+	since *time.Time
+	before *time.Time
+	page *int32
+	limit *int32
 }
 
 // if provided, only comments updated since the provided time are returned.
@@ -9972,29 +9941,28 @@ func (r ApiIssueGetRepoCommentsRequest) Execute() ([]Comment, *http.Response, er
 /*
 IssueGetRepoComments List all comments in a repository
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@return ApiIssueGetRepoCommentsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @return ApiIssueGetRepoCommentsRequest
 */
 func (a *IssueAPIService) IssueGetRepoComments(ctx context.Context, owner string, repo string) ApiIssueGetRepoCommentsRequest {
 	return ApiIssueGetRepoCommentsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Comment
+//  @return []Comment
 func (a *IssueAPIService) IssueGetRepoCommentsExecute(r ApiIssueGetRepoCommentsRequest) ([]Comment, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Comment
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Comment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueGetRepoComments")
@@ -10152,8 +10120,8 @@ func (a *IssueAPIService) IssueGetRepoCommentsExecute(r ApiIssueGetRepoCommentsR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -10163,8 +10131,8 @@ func (a *IssueAPIService) IssueGetRepoCommentsExecute(r ApiIssueGetRepoCommentsR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -10174,8 +10142,8 @@ func (a *IssueAPIService) IssueGetRepoCommentsExecute(r ApiIssueGetRepoCommentsR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -10193,13 +10161,13 @@ func (a *IssueAPIService) IssueGetRepoCommentsExecute(r ApiIssueGetRepoCommentsR
 }
 
 type ApiIssueListBlocksRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      string
-	page       *int32
-	limit      *int32
+	owner string
+	repo string
+	index string
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -10221,31 +10189,30 @@ func (r ApiIssueListBlocksRequest) Execute() ([]Issue, *http.Response, error) {
 /*
 IssueListBlocks List issues that are blocked by this issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueListBlocksRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueListBlocksRequest
 */
 func (a *IssueAPIService) IssueListBlocks(ctx context.Context, owner string, repo string, index string) ApiIssueListBlocksRequest {
 	return ApiIssueListBlocksRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Issue
+//  @return []Issue
 func (a *IssueAPIService) IssueListBlocksExecute(r ApiIssueListBlocksRequest) ([]Issue, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Issue
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Issue
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueListBlocks")
@@ -10398,8 +10365,8 @@ func (a *IssueAPIService) IssueListBlocksExecute(r ApiIssueListBlocksRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -10417,11 +10384,11 @@ func (a *IssueAPIService) IssueListBlocksExecute(r ApiIssueListBlocksRequest) ([
 }
 
 type ApiIssueListIssueAttachmentsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
+	owner string
+	repo string
+	index int64
 }
 
 func (r ApiIssueListIssueAttachmentsRequest) Execute() ([]Attachment, *http.Response, error) {
@@ -10431,31 +10398,30 @@ func (r ApiIssueListIssueAttachmentsRequest) Execute() ([]Attachment, *http.Resp
 /*
 IssueListIssueAttachments List issue's attachments
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueListIssueAttachmentsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueListIssueAttachmentsRequest
 */
 func (a *IssueAPIService) IssueListIssueAttachments(ctx context.Context, owner string, repo string, index int64) ApiIssueListIssueAttachmentsRequest {
 	return ApiIssueListIssueAttachmentsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Attachment
+//  @return []Attachment
 func (a *IssueAPIService) IssueListIssueAttachmentsExecute(r ApiIssueListIssueAttachmentsRequest) ([]Attachment, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Attachment
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Attachment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueListIssueAttachments")
@@ -10602,8 +10568,8 @@ func (a *IssueAPIService) IssueListIssueAttachmentsExecute(r ApiIssueListIssueAt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -10621,11 +10587,11 @@ func (a *IssueAPIService) IssueListIssueAttachmentsExecute(r ApiIssueListIssueAt
 }
 
 type ApiIssueListIssueCommentAttachmentsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	id         int64
+	owner string
+	repo string
+	id int64
 }
 
 func (r ApiIssueListIssueCommentAttachmentsRequest) Execute() ([]Attachment, *http.Response, error) {
@@ -10635,31 +10601,30 @@ func (r ApiIssueListIssueCommentAttachmentsRequest) Execute() ([]Attachment, *ht
 /*
 IssueListIssueCommentAttachments List comment's attachments
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param id id of the comment
-	@return ApiIssueListIssueCommentAttachmentsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param id id of the comment
+ @return ApiIssueListIssueCommentAttachmentsRequest
 */
 func (a *IssueAPIService) IssueListIssueCommentAttachments(ctx context.Context, owner string, repo string, id int64) ApiIssueListIssueCommentAttachmentsRequest {
 	return ApiIssueListIssueCommentAttachmentsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		id:         id,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Attachment
+//  @return []Attachment
 func (a *IssueAPIService) IssueListIssueCommentAttachmentsExecute(r ApiIssueListIssueCommentAttachmentsRequest) ([]Attachment, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Attachment
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Attachment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueListIssueCommentAttachments")
@@ -10806,8 +10771,8 @@ func (a *IssueAPIService) IssueListIssueCommentAttachmentsExecute(r ApiIssueList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -10825,13 +10790,13 @@ func (a *IssueAPIService) IssueListIssueCommentAttachmentsExecute(r ApiIssueList
 }
 
 type ApiIssueListIssueDependenciesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      string
-	page       *int32
-	limit      *int32
+	owner string
+	repo string
+	index string
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -10853,31 +10818,30 @@ func (r ApiIssueListIssueDependenciesRequest) Execute() ([]Issue, *http.Response
 /*
 IssueListIssueDependencies List an issue's dependencies, i.e all issues that block this issue.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueListIssueDependenciesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueListIssueDependenciesRequest
 */
 func (a *IssueAPIService) IssueListIssueDependencies(ctx context.Context, owner string, repo string, index string) ApiIssueListIssueDependenciesRequest {
 	return ApiIssueListIssueDependenciesRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Issue
+//  @return []Issue
 func (a *IssueAPIService) IssueListIssueDependenciesExecute(r ApiIssueListIssueDependenciesRequest) ([]Issue, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Issue
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Issue
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueListIssueDependencies")
@@ -11030,8 +10994,8 @@ func (a *IssueAPIService) IssueListIssueDependenciesExecute(r ApiIssueListIssueD
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -11049,23 +11013,23 @@ func (a *IssueAPIService) IssueListIssueDependenciesExecute(r ApiIssueListIssueD
 }
 
 type ApiIssueListIssuesRequest struct {
-	ctx         context.Context
-	ApiService  *IssueAPIService
-	owner       string
-	repo        string
-	state       *string
-	labels      *string
-	q           *string
-	type_       *string
-	milestones  *string
-	since       *time.Time
-	before      *time.Time
-	createdBy   *string
-	assignedBy  *string
+	ctx context.Context
+	ApiService *IssueAPIService
+	owner string
+	repo string
+	state *string
+	labels *string
+	q *string
+	type_ *string
+	milestones *string
+	since *time.Time
+	before *time.Time
+	createdBy *string
+	assignedBy *string
 	mentionedBy *string
-	page        *int32
-	limit       *int32
-	sort        *string
+	page *int32
+	limit *int32
+	sort *string
 }
 
 // whether issue is open or closed
@@ -11153,29 +11117,28 @@ func (r ApiIssueListIssuesRequest) Execute() ([]Issue, *http.Response, error) {
 /*
 IssueListIssues List a repository's issues
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@return ApiIssueListIssuesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @return ApiIssueListIssuesRequest
 */
 func (a *IssueAPIService) IssueListIssues(ctx context.Context, owner string, repo string) ApiIssueListIssuesRequest {
 	return ApiIssueListIssuesRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Issue
+//  @return []Issue
 func (a *IssueAPIService) IssueListIssuesExecute(r ApiIssueListIssuesRequest) ([]Issue, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Issue
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Issue
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueListIssues")
@@ -11363,8 +11326,8 @@ func (a *IssueAPIService) IssueListIssuesExecute(r ApiIssueListIssuesRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -11382,12 +11345,12 @@ func (a *IssueAPIService) IssueListIssuesExecute(r ApiIssueListIssuesRequest) ([
 }
 
 type ApiIssueListLabelsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	page       *int32
-	limit      *int32
+	owner string
+	repo string
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -11409,29 +11372,28 @@ func (r ApiIssueListLabelsRequest) Execute() ([]Label, *http.Response, error) {
 /*
 IssueListLabels Get all of a repository's labels
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@return ApiIssueListLabelsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @return ApiIssueListLabelsRequest
 */
 func (a *IssueAPIService) IssueListLabels(ctx context.Context, owner string, repo string) ApiIssueListLabelsRequest {
 	return ApiIssueListLabelsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Label
+//  @return []Label
 func (a *IssueAPIService) IssueListLabelsExecute(r ApiIssueListLabelsRequest) ([]Label, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Label
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Label
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueListLabels")
@@ -11583,8 +11545,8 @@ func (a *IssueAPIService) IssueListLabelsExecute(r ApiIssueListLabelsRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -11602,12 +11564,12 @@ func (a *IssueAPIService) IssueListLabelsExecute(r ApiIssueListLabelsRequest) ([
 }
 
 type ApiIssuePostCommentReactionRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	id         int64
-	content    *EditReactionOption
+	owner string
+	repo string
+	id int64
+	content *EditReactionOption
 }
 
 func (r ApiIssuePostCommentReactionRequest) Content(content EditReactionOption) ApiIssuePostCommentReactionRequest {
@@ -11622,31 +11584,30 @@ func (r ApiIssuePostCommentReactionRequest) Execute() (*Reaction, *http.Response
 /*
 IssuePostCommentReaction Add a reaction to a comment of an issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param id id of the comment to edit
-	@return ApiIssuePostCommentReactionRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param id id of the comment to edit
+ @return ApiIssuePostCommentReactionRequest
 */
 func (a *IssueAPIService) IssuePostCommentReaction(ctx context.Context, owner string, repo string, id int64) ApiIssuePostCommentReactionRequest {
 	return ApiIssuePostCommentReactionRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		id:         id,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Reaction
+//  @return Reaction
 func (a *IssueAPIService) IssuePostCommentReactionExecute(r ApiIssuePostCommentReactionRequest) (*Reaction, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Reaction
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Reaction
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssuePostCommentReaction")
@@ -11795,8 +11756,8 @@ func (a *IssueAPIService) IssuePostCommentReactionExecute(r ApiIssuePostCommentR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -11806,8 +11767,8 @@ func (a *IssueAPIService) IssuePostCommentReactionExecute(r ApiIssuePostCommentR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -11825,12 +11786,12 @@ func (a *IssueAPIService) IssuePostCommentReactionExecute(r ApiIssuePostCommentR
 }
 
 type ApiIssuePostIssueReactionRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	content    *EditReactionOption
+	owner string
+	repo string
+	index int64
+	content *EditReactionOption
 }
 
 func (r ApiIssuePostIssueReactionRequest) Content(content EditReactionOption) ApiIssuePostIssueReactionRequest {
@@ -11845,31 +11806,30 @@ func (r ApiIssuePostIssueReactionRequest) Execute() (*Reaction, *http.Response, 
 /*
 IssuePostIssueReaction Add a reaction to an issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssuePostIssueReactionRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssuePostIssueReactionRequest
 */
 func (a *IssueAPIService) IssuePostIssueReaction(ctx context.Context, owner string, repo string, index int64) ApiIssuePostIssueReactionRequest {
 	return ApiIssuePostIssueReactionRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Reaction
+//  @return Reaction
 func (a *IssueAPIService) IssuePostIssueReactionExecute(r ApiIssuePostIssueReactionRequest) (*Reaction, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Reaction
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Reaction
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssuePostIssueReaction")
@@ -12018,8 +11978,8 @@ func (a *IssueAPIService) IssuePostIssueReactionExecute(r ApiIssuePostIssueReact
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -12029,8 +11989,8 @@ func (a *IssueAPIService) IssuePostIssueReactionExecute(r ApiIssuePostIssueReact
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -12048,12 +12008,12 @@ func (a *IssueAPIService) IssuePostIssueReactionExecute(r ApiIssuePostIssueReact
 }
 
 type ApiIssueRemoveIssueBlockingRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      string
-	body       *IssueMeta
+	owner string
+	repo string
+	index string
+	body *IssueMeta
 }
 
 func (r ApiIssueRemoveIssueBlockingRequest) Body(body IssueMeta) ApiIssueRemoveIssueBlockingRequest {
@@ -12068,31 +12028,30 @@ func (r ApiIssueRemoveIssueBlockingRequest) Execute() (*Issue, *http.Response, e
 /*
 IssueRemoveIssueBlocking Unblock the issue given in the body by the issue in path
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueRemoveIssueBlockingRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueRemoveIssueBlockingRequest
 */
 func (a *IssueAPIService) IssueRemoveIssueBlocking(ctx context.Context, owner string, repo string, index string) ApiIssueRemoveIssueBlockingRequest {
 	return ApiIssueRemoveIssueBlockingRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Issue
+//  @return Issue
 func (a *IssueAPIService) IssueRemoveIssueBlockingExecute(r ApiIssueRemoveIssueBlockingRequest) (*Issue, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Issue
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Issue
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueRemoveIssueBlocking")
@@ -12241,8 +12200,8 @@ func (a *IssueAPIService) IssueRemoveIssueBlockingExecute(r ApiIssueRemoveIssueB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -12260,12 +12219,12 @@ func (a *IssueAPIService) IssueRemoveIssueBlockingExecute(r ApiIssueRemoveIssueB
 }
 
 type ApiIssueRemoveIssueDependenciesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      string
-	body       *IssueMeta
+	owner string
+	repo string
+	index string
+	body *IssueMeta
 }
 
 func (r ApiIssueRemoveIssueDependenciesRequest) Body(body IssueMeta) ApiIssueRemoveIssueDependenciesRequest {
@@ -12280,31 +12239,30 @@ func (r ApiIssueRemoveIssueDependenciesRequest) Execute() (*Issue, *http.Respons
 /*
 IssueRemoveIssueDependencies Remove an issue dependency
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueRemoveIssueDependenciesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueRemoveIssueDependenciesRequest
 */
 func (a *IssueAPIService) IssueRemoveIssueDependencies(ctx context.Context, owner string, repo string, index string) ApiIssueRemoveIssueDependenciesRequest {
 	return ApiIssueRemoveIssueDependenciesRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Issue
+//  @return Issue
 func (a *IssueAPIService) IssueRemoveIssueDependenciesExecute(r ApiIssueRemoveIssueDependenciesRequest) (*Issue, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Issue
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Issue
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueRemoveIssueDependencies")
@@ -12453,8 +12411,8 @@ func (a *IssueAPIService) IssueRemoveIssueDependenciesExecute(r ApiIssueRemoveIs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 423 {
@@ -12464,8 +12422,8 @@ func (a *IssueAPIService) IssueRemoveIssueDependenciesExecute(r ApiIssueRemoveIs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -12483,13 +12441,13 @@ func (a *IssueAPIService) IssueRemoveIssueDependenciesExecute(r ApiIssueRemoveIs
 }
 
 type ApiIssueRemoveLabelRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	id         int64
-	body       *DeleteLabelsOption
+	owner string
+	repo string
+	index int64
+	id int64
+	body *DeleteLabelsOption
 }
 
 func (r ApiIssueRemoveLabelRequest) Body(body DeleteLabelsOption) ApiIssueRemoveLabelRequest {
@@ -12504,30 +12462,30 @@ func (r ApiIssueRemoveLabelRequest) Execute() (*http.Response, error) {
 /*
 IssueRemoveLabel Remove a label from an issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@param id id of the label to remove
-	@return ApiIssueRemoveLabelRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @param id id of the label to remove
+ @return ApiIssueRemoveLabelRequest
 */
 func (a *IssueAPIService) IssueRemoveLabel(ctx context.Context, owner string, repo string, index int64, id int64) ApiIssueRemoveLabelRequest {
 	return ApiIssueRemoveLabelRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
-		id:         id,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *IssueAPIService) IssueRemoveLabelExecute(r ApiIssueRemoveLabelRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueRemoveLabel")
@@ -12677,8 +12635,8 @@ func (a *IssueAPIService) IssueRemoveLabelExecute(r ApiIssueRemoveLabelRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -12688,8 +12646,8 @@ func (a *IssueAPIService) IssueRemoveLabelExecute(r ApiIssueRemoveLabelRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -12699,8 +12657,8 @@ func (a *IssueAPIService) IssueRemoveLabelExecute(r ApiIssueRemoveLabelRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -12709,12 +12667,12 @@ func (a *IssueAPIService) IssueRemoveLabelExecute(r ApiIssueRemoveLabelRequest) 
 }
 
 type ApiIssueReplaceLabelsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	body       *IssueLabelsOption
+	owner string
+	repo string
+	index int64
+	body *IssueLabelsOption
 }
 
 func (r ApiIssueReplaceLabelsRequest) Body(body IssueLabelsOption) ApiIssueReplaceLabelsRequest {
@@ -12729,31 +12687,30 @@ func (r ApiIssueReplaceLabelsRequest) Execute() ([]Label, *http.Response, error)
 /*
 IssueReplaceLabels Replace an issue's labels
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueReplaceLabelsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueReplaceLabelsRequest
 */
 func (a *IssueAPIService) IssueReplaceLabels(ctx context.Context, owner string, repo string, index int64) ApiIssueReplaceLabelsRequest {
 	return ApiIssueReplaceLabelsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Label
+//  @return []Label
 func (a *IssueAPIService) IssueReplaceLabelsExecute(r ApiIssueReplaceLabelsRequest) ([]Label, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Label
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Label
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueReplaceLabels")
@@ -12902,8 +12859,8 @@ func (a *IssueAPIService) IssueReplaceLabelsExecute(r ApiIssueReplaceLabelsReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -12913,8 +12870,8 @@ func (a *IssueAPIService) IssueReplaceLabelsExecute(r ApiIssueReplaceLabelsReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -12932,11 +12889,11 @@ func (a *IssueAPIService) IssueReplaceLabelsExecute(r ApiIssueReplaceLabelsReque
 }
 
 type ApiIssueResetTimeRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
+	owner string
+	repo string
+	index int64
 }
 
 func (r ApiIssueResetTimeRequest) Execute() (*http.Response, error) {
@@ -12946,28 +12903,28 @@ func (r ApiIssueResetTimeRequest) Execute() (*http.Response, error) {
 /*
 IssueResetTime Reset a tracked time of an issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue to add tracked time to
-	@return ApiIssueResetTimeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue to add tracked time to
+ @return ApiIssueResetTimeRequest
 */
 func (a *IssueAPIService) IssueResetTime(ctx context.Context, owner string, repo string, index int64) ApiIssueResetTimeRequest {
 	return ApiIssueResetTimeRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
 func (a *IssueAPIService) IssueResetTimeExecute(r ApiIssueResetTimeRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueResetTime")
@@ -13114,8 +13071,8 @@ func (a *IssueAPIService) IssueResetTimeExecute(r ApiIssueResetTimeRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -13125,8 +13082,8 @@ func (a *IssueAPIService) IssueResetTimeExecute(r ApiIssueResetTimeRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -13136,8 +13093,8 @@ func (a *IssueAPIService) IssueResetTimeExecute(r ApiIssueResetTimeRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -13146,25 +13103,25 @@ func (a *IssueAPIService) IssueResetTimeExecute(r ApiIssueResetTimeRequest) (*ht
 }
 
 type ApiIssueSearchIssuesRequest struct {
-	ctx             context.Context
-	ApiService      *IssueAPIService
-	state           *string
-	labels          *string
-	milestones      *string
-	q               *string
-	priorityRepoId  *int64
-	type_           *string
-	since           *time.Time
-	before          *time.Time
-	assigned        *bool
-	created         *bool
-	mentioned       *bool
+	ctx context.Context
+	ApiService *IssueAPIService
+	state *string
+	labels *string
+	milestones *string
+	q *string
+	priorityRepoId *int64
+	type_ *string
+	since *time.Time
+	before *time.Time
+	assigned *bool
+	created *bool
+	mentioned *bool
 	reviewRequested *bool
-	reviewed        *bool
-	owner           *string
-	team            *string
-	page            *int32
-	limit           *int32
+	reviewed *bool
+	owner *string
+	team *string
+	page *int32
+	limit *int32
 }
 
 // State of the issue
@@ -13276,25 +13233,24 @@ func (r ApiIssueSearchIssuesRequest) Execute() ([]Issue, *http.Response, error) 
 /*
 IssueSearchIssues Search for issues across the repositories that the user has access to
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiIssueSearchIssuesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiIssueSearchIssuesRequest
 */
 func (a *IssueAPIService) IssueSearchIssues(ctx context.Context) ApiIssueSearchIssuesRequest {
 	return ApiIssueSearchIssuesRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Issue
+//  @return []Issue
 func (a *IssueAPIService) IssueSearchIssuesExecute(r ApiIssueSearchIssuesRequest) ([]Issue, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Issue
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Issue
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueSearchIssues")
@@ -13510,8 +13466,8 @@ func (a *IssueAPIService) IssueSearchIssuesExecute(r ApiIssueSearchIssuesRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -13521,8 +13477,8 @@ func (a *IssueAPIService) IssueSearchIssuesExecute(r ApiIssueSearchIssuesRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -13540,11 +13496,11 @@ func (a *IssueAPIService) IssueSearchIssuesExecute(r ApiIssueSearchIssuesRequest
 }
 
 type ApiIssueStartStopWatchRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
+	owner string
+	repo string
+	index int64
 }
 
 func (r ApiIssueStartStopWatchRequest) Execute() (*http.Response, error) {
@@ -13554,28 +13510,28 @@ func (r ApiIssueStartStopWatchRequest) Execute() (*http.Response, error) {
 /*
 IssueStartStopWatch Start stopwatch on an issue.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue to create the stopwatch on
-	@return ApiIssueStartStopWatchRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue to create the stopwatch on
+ @return ApiIssueStartStopWatchRequest
 */
 func (a *IssueAPIService) IssueStartStopWatch(ctx context.Context, owner string, repo string, index int64) ApiIssueStartStopWatchRequest {
 	return ApiIssueStartStopWatchRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
 func (a *IssueAPIService) IssueStartStopWatchExecute(r ApiIssueStartStopWatchRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueStartStopWatch")
@@ -13722,8 +13678,8 @@ func (a *IssueAPIService) IssueStartStopWatchExecute(r ApiIssueStartStopWatchReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -13733,11 +13689,11 @@ func (a *IssueAPIService) IssueStartStopWatchExecute(r ApiIssueStartStopWatchReq
 }
 
 type ApiIssueStopStopWatchRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
+	owner string
+	repo string
+	index int64
 }
 
 func (r ApiIssueStopStopWatchRequest) Execute() (*http.Response, error) {
@@ -13747,28 +13703,28 @@ func (r ApiIssueStopStopWatchRequest) Execute() (*http.Response, error) {
 /*
 IssueStopStopWatch Stop an issue's existing stopwatch.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue to stop the stopwatch on
-	@return ApiIssueStopStopWatchRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue to stop the stopwatch on
+ @return ApiIssueStopStopWatchRequest
 */
 func (a *IssueAPIService) IssueStopStopWatch(ctx context.Context, owner string, repo string, index int64) ApiIssueStopStopWatchRequest {
 	return ApiIssueStopStopWatchRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
 func (a *IssueAPIService) IssueStopStopWatchExecute(r ApiIssueStopStopWatchRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueStopStopWatch")
@@ -13915,8 +13871,8 @@ func (a *IssueAPIService) IssueStopStopWatchExecute(r ApiIssueStopStopWatchReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
@@ -13926,13 +13882,13 @@ func (a *IssueAPIService) IssueStopStopWatchExecute(r ApiIssueStopStopWatchReque
 }
 
 type ApiIssueSubscriptionsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	page       *int32
-	limit      *int32
+	owner string
+	repo string
+	index int64
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -13954,31 +13910,30 @@ func (r ApiIssueSubscriptionsRequest) Execute() ([]User, *http.Response, error) 
 /*
 IssueSubscriptions Get users who subscribed on an issue.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueSubscriptionsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueSubscriptionsRequest
 */
 func (a *IssueAPIService) IssueSubscriptions(ctx context.Context, owner string, repo string, index int64) ApiIssueSubscriptionsRequest {
 	return ApiIssueSubscriptionsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []User
+//  @return []User
 func (a *IssueAPIService) IssueSubscriptionsExecute(r ApiIssueSubscriptionsRequest) ([]User, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []User
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueSubscriptions")
@@ -14131,8 +14086,8 @@ func (a *IssueAPIService) IssueSubscriptionsExecute(r ApiIssueSubscriptionsReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -14150,16 +14105,16 @@ func (a *IssueAPIService) IssueSubscriptionsExecute(r ApiIssueSubscriptionsReque
 }
 
 type ApiIssueTrackedTimesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	user       *string
-	since      *time.Time
-	before     *time.Time
-	page       *int32
-	limit      *int32
+	owner string
+	repo string
+	index int64
+	user *string
+	since *time.Time
+	before *time.Time
+	page *int32
+	limit *int32
 }
 
 // optional filter by user (available for issue managers)
@@ -14199,31 +14154,30 @@ func (r ApiIssueTrackedTimesRequest) Execute() ([]TrackedTime, *http.Response, e
 /*
 IssueTrackedTimes List an issue's tracked times
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of the issue
-	@return ApiIssueTrackedTimesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of the issue
+ @return ApiIssueTrackedTimesRequest
 */
 func (a *IssueAPIService) IssueTrackedTimes(ctx context.Context, owner string, repo string, index int64) ApiIssueTrackedTimesRequest {
 	return ApiIssueTrackedTimesRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []TrackedTime
+//  @return []TrackedTime
 func (a *IssueAPIService) IssueTrackedTimesExecute(r ApiIssueTrackedTimesRequest) ([]TrackedTime, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []TrackedTime
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []TrackedTime
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.IssueTrackedTimes")
@@ -14385,8 +14339,8 @@ func (a *IssueAPIService) IssueTrackedTimesExecute(r ApiIssueTrackedTimesRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -14404,12 +14358,12 @@ func (a *IssueAPIService) IssueTrackedTimesExecute(r ApiIssueTrackedTimesRequest
 }
 
 type ApiMoveIssuePinRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
-	position   int64
+	owner string
+	repo string
+	index int64
+	position int64
 }
 
 func (r ApiMoveIssuePinRequest) Execute() (*http.Response, error) {
@@ -14419,30 +14373,30 @@ func (r ApiMoveIssuePinRequest) Execute() (*http.Response, error) {
 /*
 MoveIssuePin Moves the Pin to the given Position
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of issue
-	@param position the new position
-	@return ApiMoveIssuePinRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of issue
+ @param position the new position
+ @return ApiMoveIssuePinRequest
 */
 func (a *IssueAPIService) MoveIssuePin(ctx context.Context, owner string, repo string, index int64, position int64) ApiMoveIssuePinRequest {
 	return ApiMoveIssuePinRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
-		position:   position,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
+		position: position,
 	}
 }
 
 // Execute executes the request
 func (a *IssueAPIService) MoveIssuePinExecute(r ApiMoveIssuePinRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPatch
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.MoveIssuePin")
@@ -14590,8 +14544,8 @@ func (a *IssueAPIService) MoveIssuePinExecute(r ApiMoveIssuePinRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -14601,8 +14555,8 @@ func (a *IssueAPIService) MoveIssuePinExecute(r ApiMoveIssuePinRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -14611,11 +14565,11 @@ func (a *IssueAPIService) MoveIssuePinExecute(r ApiMoveIssuePinRequest) (*http.R
 }
 
 type ApiPinIssueRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
+	owner string
+	repo string
+	index int64
 }
 
 func (r ApiPinIssueRequest) Execute() (*http.Response, error) {
@@ -14625,28 +14579,28 @@ func (r ApiPinIssueRequest) Execute() (*http.Response, error) {
 /*
 PinIssue Pin an Issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of issue to pin
-	@return ApiPinIssueRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of issue to pin
+ @return ApiPinIssueRequest
 */
 func (a *IssueAPIService) PinIssue(ctx context.Context, owner string, repo string, index int64) ApiPinIssueRequest {
 	return ApiPinIssueRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
 func (a *IssueAPIService) PinIssueExecute(r ApiPinIssueRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.PinIssue")
@@ -14793,8 +14747,8 @@ func (a *IssueAPIService) PinIssueExecute(r ApiPinIssueRequest) (*http.Response,
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -14804,8 +14758,8 @@ func (a *IssueAPIService) PinIssueExecute(r ApiPinIssueRequest) (*http.Response,
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -14814,11 +14768,11 @@ func (a *IssueAPIService) PinIssueExecute(r ApiPinIssueRequest) (*http.Response,
 }
 
 type ApiUnpinIssueRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *IssueAPIService
-	owner      string
-	repo       string
-	index      int64
+	owner string
+	repo string
+	index int64
 }
 
 func (r ApiUnpinIssueRequest) Execute() (*http.Response, error) {
@@ -14828,28 +14782,28 @@ func (r ApiUnpinIssueRequest) Execute() (*http.Response, error) {
 /*
 UnpinIssue Unpin an Issue
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@param index index of issue to unpin
-	@return ApiUnpinIssueRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @param index index of issue to unpin
+ @return ApiUnpinIssueRequest
 */
 func (a *IssueAPIService) UnpinIssue(ctx context.Context, owner string, repo string, index int64) ApiUnpinIssueRequest {
 	return ApiUnpinIssueRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
-		index:      index,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
+		index: index,
 	}
 }
 
 // Execute executes the request
 func (a *IssueAPIService) UnpinIssueExecute(r ApiUnpinIssueRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IssueAPIService.UnpinIssue")
@@ -14996,8 +14950,8 @@ func (a *IssueAPIService) UnpinIssueExecute(r ApiUnpinIssueRequest) (*http.Respo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -15007,8 +14961,8 @@ func (a *IssueAPIService) UnpinIssueExecute(r ApiUnpinIssueRequest) (*http.Respo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

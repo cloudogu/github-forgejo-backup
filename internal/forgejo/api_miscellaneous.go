@@ -19,13 +19,14 @@ import (
 	"strings"
 )
 
+
 // MiscellaneousAPIService MiscellaneousAPI service
 type MiscellaneousAPIService service
 
 type ApiGetGitignoreTemplateInfoRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MiscellaneousAPIService
-	name       string
+	name string
 }
 
 func (r ApiGetGitignoreTemplateInfoRequest) Execute() (*GitignoreTemplateInfo, *http.Response, error) {
@@ -35,27 +36,26 @@ func (r ApiGetGitignoreTemplateInfoRequest) Execute() (*GitignoreTemplateInfo, *
 /*
 GetGitignoreTemplateInfo Returns information about a gitignore template
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param name name of the template
-	@return ApiGetGitignoreTemplateInfoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param name name of the template
+ @return ApiGetGitignoreTemplateInfoRequest
 */
 func (a *MiscellaneousAPIService) GetGitignoreTemplateInfo(ctx context.Context, name string) ApiGetGitignoreTemplateInfoRequest {
 	return ApiGetGitignoreTemplateInfoRequest{
 		ApiService: a,
-		ctx:        ctx,
-		name:       name,
+		ctx: ctx,
+		name: name,
 	}
 }
 
 // Execute executes the request
-//
-//	@return GitignoreTemplateInfo
+//  @return GitignoreTemplateInfo
 func (a *MiscellaneousAPIService) GetGitignoreTemplateInfoExecute(r ApiGetGitignoreTemplateInfoRequest) (*GitignoreTemplateInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GitignoreTemplateInfo
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GitignoreTemplateInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.GetGitignoreTemplateInfo")
@@ -200,8 +200,8 @@ func (a *MiscellaneousAPIService) GetGitignoreTemplateInfoExecute(r ApiGetGitign
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -219,9 +219,9 @@ func (a *MiscellaneousAPIService) GetGitignoreTemplateInfoExecute(r ApiGetGitign
 }
 
 type ApiGetLabelTemplateInfoRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MiscellaneousAPIService
-	name       string
+	name string
 }
 
 func (r ApiGetLabelTemplateInfoRequest) Execute() ([]LabelTemplate, *http.Response, error) {
@@ -231,27 +231,26 @@ func (r ApiGetLabelTemplateInfoRequest) Execute() ([]LabelTemplate, *http.Respon
 /*
 GetLabelTemplateInfo Returns all labels in a template
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param name name of the template
-	@return ApiGetLabelTemplateInfoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param name name of the template
+ @return ApiGetLabelTemplateInfoRequest
 */
 func (a *MiscellaneousAPIService) GetLabelTemplateInfo(ctx context.Context, name string) ApiGetLabelTemplateInfoRequest {
 	return ApiGetLabelTemplateInfoRequest{
 		ApiService: a,
-		ctx:        ctx,
-		name:       name,
+		ctx: ctx,
+		name: name,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []LabelTemplate
+//  @return []LabelTemplate
 func (a *MiscellaneousAPIService) GetLabelTemplateInfoExecute(r ApiGetLabelTemplateInfoRequest) ([]LabelTemplate, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []LabelTemplate
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []LabelTemplate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.GetLabelTemplateInfo")
@@ -396,8 +395,8 @@ func (a *MiscellaneousAPIService) GetLabelTemplateInfoExecute(r ApiGetLabelTempl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -415,9 +414,9 @@ func (a *MiscellaneousAPIService) GetLabelTemplateInfoExecute(r ApiGetLabelTempl
 }
 
 type ApiGetLicenseTemplateInfoRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MiscellaneousAPIService
-	name       string
+	name string
 }
 
 func (r ApiGetLicenseTemplateInfoRequest) Execute() (*LicenseTemplateInfo, *http.Response, error) {
@@ -427,27 +426,26 @@ func (r ApiGetLicenseTemplateInfoRequest) Execute() (*LicenseTemplateInfo, *http
 /*
 GetLicenseTemplateInfo Returns information about a license template
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param name name of the license
-	@return ApiGetLicenseTemplateInfoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param name name of the license
+ @return ApiGetLicenseTemplateInfoRequest
 */
 func (a *MiscellaneousAPIService) GetLicenseTemplateInfo(ctx context.Context, name string) ApiGetLicenseTemplateInfoRequest {
 	return ApiGetLicenseTemplateInfoRequest{
 		ApiService: a,
-		ctx:        ctx,
-		name:       name,
+		ctx: ctx,
+		name: name,
 	}
 }
 
 // Execute executes the request
-//
-//	@return LicenseTemplateInfo
+//  @return LicenseTemplateInfo
 func (a *MiscellaneousAPIService) GetLicenseTemplateInfoExecute(r ApiGetLicenseTemplateInfoRequest) (*LicenseTemplateInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *LicenseTemplateInfo
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *LicenseTemplateInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.GetLicenseTemplateInfo")
@@ -592,8 +590,8 @@ func (a *MiscellaneousAPIService) GetLicenseTemplateInfoExecute(r ApiGetLicenseT
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -611,7 +609,7 @@ func (a *MiscellaneousAPIService) GetLicenseTemplateInfoExecute(r ApiGetLicenseT
 }
 
 type ApiGetNodeInfoRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MiscellaneousAPIService
 }
 
@@ -622,25 +620,24 @@ func (r ApiGetNodeInfoRequest) Execute() (*NodeInfo, *http.Response, error) {
 /*
 GetNodeInfo Returns the nodeinfo of the Forgejo application
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetNodeInfoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetNodeInfoRequest
 */
 func (a *MiscellaneousAPIService) GetNodeInfo(ctx context.Context) ApiGetNodeInfoRequest {
 	return ApiGetNodeInfoRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return NodeInfo
+//  @return NodeInfo
 func (a *MiscellaneousAPIService) GetNodeInfoExecute(r ApiGetNodeInfoRequest) (*NodeInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *NodeInfo
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *NodeInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.GetNodeInfo")
@@ -793,7 +790,7 @@ func (a *MiscellaneousAPIService) GetNodeInfoExecute(r ApiGetNodeInfoRequest) (*
 }
 
 type ApiGetSSHSigningKeyRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MiscellaneousAPIService
 }
 
@@ -804,25 +801,24 @@ func (r ApiGetSSHSigningKeyRequest) Execute() (string, *http.Response, error) {
 /*
 GetSSHSigningKey Get default signing-key.ssh
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetSSHSigningKeyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetSSHSigningKeyRequest
 */
 func (a *MiscellaneousAPIService) GetSSHSigningKey(ctx context.Context) ApiGetSSHSigningKeyRequest {
 	return ApiGetSSHSigningKeyRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *MiscellaneousAPIService) GetSSHSigningKeyExecute(r ApiGetSSHSigningKeyRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.GetSSHSigningKey")
@@ -966,8 +962,8 @@ func (a *MiscellaneousAPIService) GetSSHSigningKeyExecute(r ApiGetSSHSigningKeyR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -985,7 +981,7 @@ func (a *MiscellaneousAPIService) GetSSHSigningKeyExecute(r ApiGetSSHSigningKeyR
 }
 
 type ApiGetSigningKeyRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MiscellaneousAPIService
 }
 
@@ -996,25 +992,24 @@ func (r ApiGetSigningKeyRequest) Execute() (string, *http.Response, error) {
 /*
 GetSigningKey Get default signing-key.gpg
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetSigningKeyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetSigningKeyRequest
 */
 func (a *MiscellaneousAPIService) GetSigningKey(ctx context.Context) ApiGetSigningKeyRequest {
 	return ApiGetSigningKeyRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *MiscellaneousAPIService) GetSigningKeyExecute(r ApiGetSigningKeyRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.GetSigningKey")
@@ -1167,7 +1162,7 @@ func (a *MiscellaneousAPIService) GetSigningKeyExecute(r ApiGetSigningKeyRequest
 }
 
 type ApiGetVersionRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MiscellaneousAPIService
 }
 
@@ -1178,25 +1173,24 @@ func (r ApiGetVersionRequest) Execute() (*ServerVersion, *http.Response, error) 
 /*
 GetVersion Returns the version of the running application
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetVersionRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetVersionRequest
 */
 func (a *MiscellaneousAPIService) GetVersion(ctx context.Context) ApiGetVersionRequest {
 	return ApiGetVersionRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ServerVersion
+//  @return ServerVersion
 func (a *MiscellaneousAPIService) GetVersionExecute(r ApiGetVersionRequest) (*ServerVersion, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ServerVersion
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ServerVersion
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.GetVersion")
@@ -1349,7 +1343,7 @@ func (a *MiscellaneousAPIService) GetVersionExecute(r ApiGetVersionRequest) (*Se
 }
 
 type ApiListGitignoresTemplatesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MiscellaneousAPIService
 }
 
@@ -1360,25 +1354,24 @@ func (r ApiListGitignoresTemplatesRequest) Execute() ([]string, *http.Response, 
 /*
 ListGitignoresTemplates Returns a list of all gitignore templates
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListGitignoresTemplatesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListGitignoresTemplatesRequest
 */
 func (a *MiscellaneousAPIService) ListGitignoresTemplates(ctx context.Context) ApiListGitignoresTemplatesRequest {
 	return ApiListGitignoresTemplatesRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []string
+//  @return []string
 func (a *MiscellaneousAPIService) ListGitignoresTemplatesExecute(r ApiListGitignoresTemplatesRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.ListGitignoresTemplates")
@@ -1531,7 +1524,7 @@ func (a *MiscellaneousAPIService) ListGitignoresTemplatesExecute(r ApiListGitign
 }
 
 type ApiListLabelTemplatesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MiscellaneousAPIService
 }
 
@@ -1542,25 +1535,24 @@ func (r ApiListLabelTemplatesRequest) Execute() ([]string, *http.Response, error
 /*
 ListLabelTemplates Returns a list of all label templates
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListLabelTemplatesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListLabelTemplatesRequest
 */
 func (a *MiscellaneousAPIService) ListLabelTemplates(ctx context.Context) ApiListLabelTemplatesRequest {
 	return ApiListLabelTemplatesRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []string
+//  @return []string
 func (a *MiscellaneousAPIService) ListLabelTemplatesExecute(r ApiListLabelTemplatesRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.ListLabelTemplates")
@@ -1713,7 +1705,7 @@ func (a *MiscellaneousAPIService) ListLabelTemplatesExecute(r ApiListLabelTempla
 }
 
 type ApiListLicenseTemplatesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MiscellaneousAPIService
 }
 
@@ -1724,25 +1716,24 @@ func (r ApiListLicenseTemplatesRequest) Execute() ([]LicensesTemplateListEntry, 
 /*
 ListLicenseTemplates Returns a list of all license templates
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListLicenseTemplatesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListLicenseTemplatesRequest
 */
 func (a *MiscellaneousAPIService) ListLicenseTemplates(ctx context.Context) ApiListLicenseTemplatesRequest {
 	return ApiListLicenseTemplatesRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []LicensesTemplateListEntry
+//  @return []LicensesTemplateListEntry
 func (a *MiscellaneousAPIService) ListLicenseTemplatesExecute(r ApiListLicenseTemplatesRequest) ([]LicensesTemplateListEntry, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []LicensesTemplateListEntry
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []LicensesTemplateListEntry
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.ListLicenseTemplates")
@@ -1895,9 +1886,9 @@ func (a *MiscellaneousAPIService) ListLicenseTemplatesExecute(r ApiListLicenseTe
 }
 
 type ApiRenderMarkdownRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MiscellaneousAPIService
-	body       *MarkdownOption
+	body *MarkdownOption
 }
 
 func (r ApiRenderMarkdownRequest) Body(body MarkdownOption) ApiRenderMarkdownRequest {
@@ -1912,25 +1903,24 @@ func (r ApiRenderMarkdownRequest) Execute() (string, *http.Response, error) {
 /*
 RenderMarkdown Render a markdown document as HTML
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRenderMarkdownRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRenderMarkdownRequest
 */
 func (a *MiscellaneousAPIService) RenderMarkdown(ctx context.Context) ApiRenderMarkdownRequest {
 	return ApiRenderMarkdownRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *MiscellaneousAPIService) RenderMarkdownExecute(r ApiRenderMarkdownRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.RenderMarkdown")
@@ -2076,8 +2066,8 @@ func (a *MiscellaneousAPIService) RenderMarkdownExecute(r ApiRenderMarkdownReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2095,9 +2085,9 @@ func (a *MiscellaneousAPIService) RenderMarkdownExecute(r ApiRenderMarkdownReque
 }
 
 type ApiRenderMarkdownRawRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MiscellaneousAPIService
-	body       *string
+	body *string
 }
 
 // Request body to render
@@ -2113,25 +2103,24 @@ func (r ApiRenderMarkdownRawRequest) Execute() (string, *http.Response, error) {
 /*
 RenderMarkdownRaw Render raw markdown as HTML
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRenderMarkdownRawRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRenderMarkdownRawRequest
 */
 func (a *MiscellaneousAPIService) RenderMarkdownRaw(ctx context.Context) ApiRenderMarkdownRawRequest {
 	return ApiRenderMarkdownRawRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *MiscellaneousAPIService) RenderMarkdownRawExecute(r ApiRenderMarkdownRawRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.RenderMarkdownRaw")
@@ -2280,8 +2269,8 @@ func (a *MiscellaneousAPIService) RenderMarkdownRawExecute(r ApiRenderMarkdownRa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2299,9 +2288,9 @@ func (a *MiscellaneousAPIService) RenderMarkdownRawExecute(r ApiRenderMarkdownRa
 }
 
 type ApiRenderMarkupRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MiscellaneousAPIService
-	body       *MarkupOption
+	body *MarkupOption
 }
 
 func (r ApiRenderMarkupRequest) Body(body MarkupOption) ApiRenderMarkupRequest {
@@ -2316,25 +2305,24 @@ func (r ApiRenderMarkupRequest) Execute() (string, *http.Response, error) {
 /*
 RenderMarkup Render a markup document as HTML
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRenderMarkupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRenderMarkupRequest
 */
 func (a *MiscellaneousAPIService) RenderMarkup(ctx context.Context) ApiRenderMarkupRequest {
 	return ApiRenderMarkupRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *MiscellaneousAPIService) RenderMarkupExecute(r ApiRenderMarkupRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.RenderMarkup")
@@ -2480,8 +2468,8 @@ func (a *MiscellaneousAPIService) RenderMarkupExecute(r ApiRenderMarkupRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

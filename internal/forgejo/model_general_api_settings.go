@@ -20,9 +20,9 @@ var _ MappedNullable = &GeneralAPISettings{}
 // GeneralAPISettings GeneralAPISettings contains global api settings exposed by it
 type GeneralAPISettings struct {
 	DefaultGitTreesPerPage *int64 `json:"default_git_trees_per_page,omitempty"`
-	DefaultMaxBlobSize     *int64 `json:"default_max_blob_size,omitempty"`
-	DefaultPagingNum       *int64 `json:"default_paging_num,omitempty"`
-	MaxResponseItems       *int64 `json:"max_response_items,omitempty"`
+	DefaultMaxBlobSize *int64 `json:"default_max_blob_size,omitempty"`
+	DefaultPagingNum *int64 `json:"default_paging_num,omitempty"`
+	MaxResponseItems *int64 `json:"max_response_items,omitempty"`
 }
 
 // NewGeneralAPISettings instantiates a new GeneralAPISettings object
@@ -171,7 +171,7 @@ func (o *GeneralAPISettings) SetMaxResponseItems(v int64) {
 }
 
 func (o GeneralAPISettings) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,3 +230,5 @@ func (v *NullableGeneralAPISettings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

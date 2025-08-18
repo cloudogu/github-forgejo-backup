@@ -11,8 +11,8 @@ API version: 12.0.1+gitea-1.22.0
 package forgejo
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -21,13 +21,13 @@ var _ MappedNullable = &CreateTeamOption{}
 
 // CreateTeamOption CreateTeamOption options for creating a team
 type CreateTeamOption struct {
-	CanCreateOrgRepo        *bool              `json:"can_create_org_repo,omitempty"`
-	Description             *string            `json:"description,omitempty"`
-	IncludesAllRepositories *bool              `json:"includes_all_repositories,omitempty"`
-	Name                    string             `json:"name"`
-	Permission              *string            `json:"permission,omitempty"`
-	Units                   []string           `json:"units,omitempty"`
-	UnitsMap                *map[string]string `json:"units_map,omitempty"`
+	CanCreateOrgRepo *bool `json:"can_create_org_repo,omitempty"`
+	Description *string `json:"description,omitempty"`
+	IncludesAllRepositories *bool `json:"includes_all_repositories,omitempty"`
+	Name string `json:"name"`
+	Permission *string `json:"permission,omitempty"`
+	Units []string `json:"units,omitempty"`
+	UnitsMap *map[string]string `json:"units_map,omitempty"`
 }
 
 type _CreateTeamOption CreateTeamOption
@@ -267,7 +267,7 @@ func (o *CreateTeamOption) SetUnitsMap(v map[string]string) {
 }
 
 func (o CreateTeamOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -311,10 +311,10 @@ func (o *CreateTeamOption) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -370,3 +370,5 @@ func (v *NullableCreateTeamOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

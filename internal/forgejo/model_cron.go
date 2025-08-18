@@ -20,11 +20,11 @@ var _ MappedNullable = &Cron{}
 
 // Cron Cron represents a Cron task
 type Cron struct {
-	ExecTimes *int64     `json:"exec_times,omitempty"`
-	Name      *string    `json:"name,omitempty"`
-	Next      *time.Time `json:"next,omitempty"`
-	Prev      *time.Time `json:"prev,omitempty"`
-	Schedule  *string    `json:"schedule,omitempty"`
+	ExecTimes *int64 `json:"exec_times,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Next *time.Time `json:"next,omitempty"`
+	Prev *time.Time `json:"prev,omitempty"`
+	Schedule *string `json:"schedule,omitempty"`
 }
 
 // NewCron instantiates a new Cron object
@@ -205,7 +205,7 @@ func (o *Cron) SetSchedule(v string) {
 }
 
 func (o Cron) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -267,3 +267,5 @@ func (v *NullableCron) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

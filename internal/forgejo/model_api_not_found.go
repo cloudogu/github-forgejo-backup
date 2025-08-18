@@ -19,9 +19,9 @@ var _ MappedNullable = &APINotFound{}
 
 // APINotFound struct for APINotFound
 type APINotFound struct {
-	Errors  []string `json:"errors,omitempty"`
-	Message *string  `json:"message,omitempty"`
-	Url     *string  `json:"url,omitempty"`
+	Errors []string `json:"errors,omitempty"`
+	Message *string `json:"message,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewAPINotFound instantiates a new APINotFound object
@@ -138,7 +138,7 @@ func (o *APINotFound) SetUrl(v string) {
 }
 
 func (o APINotFound) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableAPINotFound) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

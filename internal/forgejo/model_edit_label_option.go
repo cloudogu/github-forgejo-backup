@@ -19,11 +19,11 @@ var _ MappedNullable = &EditLabelOption{}
 
 // EditLabelOption EditLabelOption options for editing a label
 type EditLabelOption struct {
-	Color       *string `json:"color,omitempty"`
+	Color *string `json:"color,omitempty"`
 	Description *string `json:"description,omitempty"`
-	Exclusive   *bool   `json:"exclusive,omitempty"`
-	IsArchived  *bool   `json:"is_archived,omitempty"`
-	Name        *string `json:"name,omitempty"`
+	Exclusive *bool `json:"exclusive,omitempty"`
+	IsArchived *bool `json:"is_archived,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // NewEditLabelOption instantiates a new EditLabelOption object
@@ -204,7 +204,7 @@ func (o *EditLabelOption) SetName(v string) {
 }
 
 func (o EditLabelOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -266,3 +266,5 @@ func (v *NullableEditLabelOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

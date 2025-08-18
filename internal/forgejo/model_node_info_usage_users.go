@@ -20,8 +20,8 @@ var _ MappedNullable = &NodeInfoUsageUsers{}
 // NodeInfoUsageUsers NodeInfoUsageUsers contains statistics about the users of this server
 type NodeInfoUsageUsers struct {
 	ActiveHalfyear *int64 `json:"activeHalfyear,omitempty"`
-	ActiveMonth    *int64 `json:"activeMonth,omitempty"`
-	Total          *int64 `json:"total,omitempty"`
+	ActiveMonth *int64 `json:"activeMonth,omitempty"`
+	Total *int64 `json:"total,omitempty"`
 }
 
 // NewNodeInfoUsageUsers instantiates a new NodeInfoUsageUsers object
@@ -138,7 +138,7 @@ func (o *NodeInfoUsageUsers) SetTotal(v int64) {
 }
 
 func (o NodeInfoUsageUsers) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableNodeInfoUsageUsers) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,46 +20,46 @@ var _ MappedNullable = &PullRequest{}
 
 // PullRequest PullRequest represents a pull request
 type PullRequest struct {
-	Additions               *int64        `json:"additions,omitempty"`
-	AllowMaintainerEdit     *bool         `json:"allow_maintainer_edit,omitempty"`
-	Assignee                *User         `json:"assignee,omitempty"`
-	Assignees               []User        `json:"assignees,omitempty"`
-	Base                    *PRBranchInfo `json:"base,omitempty"`
-	Body                    *string       `json:"body,omitempty"`
-	ChangedFiles            *int64        `json:"changed_files,omitempty"`
-	ClosedAt                *time.Time    `json:"closed_at,omitempty"`
-	Comments                *int64        `json:"comments,omitempty"`
-	CreatedAt               *time.Time    `json:"created_at,omitempty"`
-	Deletions               *int64        `json:"deletions,omitempty"`
-	DiffUrl                 *string       `json:"diff_url,omitempty"`
-	Draft                   *bool         `json:"draft,omitempty"`
-	DueDate                 *time.Time    `json:"due_date,omitempty"`
-	Flow                    *int64        `json:"flow,omitempty"`
-	Head                    *PRBranchInfo `json:"head,omitempty"`
-	HtmlUrl                 *string       `json:"html_url,omitempty"`
-	Id                      *int64        `json:"id,omitempty"`
-	IsLocked                *bool         `json:"is_locked,omitempty"`
-	Labels                  []Label       `json:"labels,omitempty"`
-	MergeBase               *string       `json:"merge_base,omitempty"`
-	MergeCommitSha          *string       `json:"merge_commit_sha,omitempty"`
-	Mergeable               *bool         `json:"mergeable,omitempty"`
-	Merged                  *bool         `json:"merged,omitempty"`
-	MergedAt                *time.Time    `json:"merged_at,omitempty"`
-	MergedBy                *User         `json:"merged_by,omitempty"`
-	Milestone               *Milestone    `json:"milestone,omitempty"`
-	Number                  *int64        `json:"number,omitempty"`
-	PatchUrl                *string       `json:"patch_url,omitempty"`
-	PinOrder                *int64        `json:"pin_order,omitempty"`
-	RequestedReviewers      []User        `json:"requested_reviewers,omitempty"`
-	RequestedReviewersTeams []Team        `json:"requested_reviewers_teams,omitempty"`
+	Additions *int64 `json:"additions,omitempty"`
+	AllowMaintainerEdit *bool `json:"allow_maintainer_edit,omitempty"`
+	Assignee *User `json:"assignee,omitempty"`
+	Assignees []User `json:"assignees,omitempty"`
+	Base *PRBranchInfo `json:"base,omitempty"`
+	Body *string `json:"body,omitempty"`
+	ChangedFiles *int64 `json:"changed_files,omitempty"`
+	ClosedAt *time.Time `json:"closed_at,omitempty"`
+	Comments *int64 `json:"comments,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	Deletions *int64 `json:"deletions,omitempty"`
+	DiffUrl *string `json:"diff_url,omitempty"`
+	Draft *bool `json:"draft,omitempty"`
+	DueDate *time.Time `json:"due_date,omitempty"`
+	Flow *int64 `json:"flow,omitempty"`
+	Head *PRBranchInfo `json:"head,omitempty"`
+	HtmlUrl *string `json:"html_url,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	IsLocked *bool `json:"is_locked,omitempty"`
+	Labels []Label `json:"labels,omitempty"`
+	MergeBase *string `json:"merge_base,omitempty"`
+	MergeCommitSha *string `json:"merge_commit_sha,omitempty"`
+	Mergeable *bool `json:"mergeable,omitempty"`
+	Merged *bool `json:"merged,omitempty"`
+	MergedAt *time.Time `json:"merged_at,omitempty"`
+	MergedBy *User `json:"merged_by,omitempty"`
+	Milestone *Milestone `json:"milestone,omitempty"`
+	Number *int64 `json:"number,omitempty"`
+	PatchUrl *string `json:"patch_url,omitempty"`
+	PinOrder *int64 `json:"pin_order,omitempty"`
+	RequestedReviewers []User `json:"requested_reviewers,omitempty"`
+	RequestedReviewersTeams []Team `json:"requested_reviewers_teams,omitempty"`
 	// number of review comments made on the diff of a PR review (not including comments on commits or issues in a PR)
 	ReviewComments *int64 `json:"review_comments,omitempty"`
 	// StateType issue state type
-	State     *string    `json:"state,omitempty"`
-	Title     *string    `json:"title,omitempty"`
+	State *string `json:"state,omitempty"`
+	Title *string `json:"title,omitempty"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
-	Url       *string    `json:"url,omitempty"`
-	User      *User      `json:"user,omitempty"`
+	Url *string `json:"url,omitempty"`
+	User *User `json:"user,omitempty"`
 }
 
 // NewPullRequest instantiates a new PullRequest object
@@ -1296,7 +1296,7 @@ func (o *PullRequest) SetUser(v User) {
 }
 
 func (o PullRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1457,3 +1457,5 @@ func (v *NullablePullRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

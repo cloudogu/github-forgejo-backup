@@ -19,7 +19,7 @@ var _ MappedNullable = &NewIssuePinsAllowed{}
 
 // NewIssuePinsAllowed NewIssuePinsAllowed represents an API response that says if new Issue Pins are allowed
 type NewIssuePinsAllowed struct {
-	Issues       *bool `json:"issues,omitempty"`
+	Issues *bool `json:"issues,omitempty"`
 	PullRequests *bool `json:"pull_requests,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *NewIssuePinsAllowed) SetPullRequests(v bool) {
 }
 
 func (o NewIssuePinsAllowed) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableNewIssuePinsAllowed) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

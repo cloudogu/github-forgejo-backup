@@ -19,9 +19,9 @@ var _ MappedNullable = &LicensesTemplateListEntry{}
 
 // LicensesTemplateListEntry LicensesListEntry is used for the API
 type LicensesTemplateListEntry struct {
-	Key  *string `json:"key,omitempty"`
+	Key *string `json:"key,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Url  *string `json:"url,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewLicensesTemplateListEntry instantiates a new LicensesTemplateListEntry object
@@ -138,7 +138,7 @@ func (o *LicensesTemplateListEntry) SetUrl(v string) {
 }
 
 func (o LicensesTemplateListEntry) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableLicensesTemplateListEntry) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

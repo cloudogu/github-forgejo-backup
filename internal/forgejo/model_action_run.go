@@ -47,7 +47,7 @@ type ActionRun struct {
 	// may need approval if it's a fork pull request
 	NeedApproval *bool `json:"need_approval,omitempty"`
 	// the commit/tag/… the action run ran on
-	Prettyref  *string     `json:"prettyref,omitempty"`
+	Prettyref *string `json:"prettyref,omitempty"`
 	Repository *Repository `json:"repository,omitempty"`
 	// when the action run was started
 	Started *time.Time `json:"started,omitempty"`
@@ -59,7 +59,7 @@ type ActionRun struct {
 	Title *string `json:"title,omitempty"`
 	// the trigger event defined in the `on` configuration of the triggered workflow
 	TriggerEvent *string `json:"trigger_event,omitempty"`
-	TriggerUser  *User   `json:"trigger_user,omitempty"`
+	TriggerUser *User `json:"trigger_user,omitempty"`
 	// when the action run was last updated
 	Updated *time.Time `json:"updated,omitempty"`
 	// the name of workflow file
@@ -820,7 +820,7 @@ func (o *ActionRun) SetWorkflowId(v string) {
 }
 
 func (o ActionRun) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -936,3 +936,5 @@ func (v *NullableActionRun) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,19 +20,19 @@ var _ MappedNullable = &GPGKey{}
 
 // GPGKey GPGKey a user GPG key to sign commit and tag in repository
 type GPGKey struct {
-	CanCertify        *bool         `json:"can_certify,omitempty"`
-	CanEncryptComms   *bool         `json:"can_encrypt_comms,omitempty"`
-	CanEncryptStorage *bool         `json:"can_encrypt_storage,omitempty"`
-	CanSign           *bool         `json:"can_sign,omitempty"`
-	CreatedAt         *time.Time    `json:"created_at,omitempty"`
-	Emails            []GPGKeyEmail `json:"emails,omitempty"`
-	ExpiresAt         *time.Time    `json:"expires_at,omitempty"`
-	Id                *int64        `json:"id,omitempty"`
-	KeyId             *string       `json:"key_id,omitempty"`
-	PrimaryKeyId      *string       `json:"primary_key_id,omitempty"`
-	PublicKey         *string       `json:"public_key,omitempty"`
-	Subkeys           []GPGKey      `json:"subkeys,omitempty"`
-	Verified          *bool         `json:"verified,omitempty"`
+	CanCertify *bool `json:"can_certify,omitempty"`
+	CanEncryptComms *bool `json:"can_encrypt_comms,omitempty"`
+	CanEncryptStorage *bool `json:"can_encrypt_storage,omitempty"`
+	CanSign *bool `json:"can_sign,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	Emails []GPGKeyEmail `json:"emails,omitempty"`
+	ExpiresAt *time.Time `json:"expires_at,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	KeyId *string `json:"key_id,omitempty"`
+	PrimaryKeyId *string `json:"primary_key_id,omitempty"`
+	PublicKey *string `json:"public_key,omitempty"`
+	Subkeys []GPGKey `json:"subkeys,omitempty"`
+	Verified *bool `json:"verified,omitempty"`
 }
 
 // NewGPGKey instantiates a new GPGKey object
@@ -469,7 +469,7 @@ func (o *GPGKey) SetVerified(v bool) {
 }
 
 func (o GPGKey) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -555,3 +555,5 @@ func (v *NullableGPGKey) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

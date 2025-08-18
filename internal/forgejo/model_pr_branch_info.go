@@ -19,11 +19,11 @@ var _ MappedNullable = &PRBranchInfo{}
 
 // PRBranchInfo PRBranchInfo information about a branch
 type PRBranchInfo struct {
-	Label  *string     `json:"label,omitempty"`
-	Ref    *string     `json:"ref,omitempty"`
-	Repo   *Repository `json:"repo,omitempty"`
-	RepoId *int64      `json:"repo_id,omitempty"`
-	Sha    *string     `json:"sha,omitempty"`
+	Label *string `json:"label,omitempty"`
+	Ref *string `json:"ref,omitempty"`
+	Repo *Repository `json:"repo,omitempty"`
+	RepoId *int64 `json:"repo_id,omitempty"`
+	Sha *string `json:"sha,omitempty"`
 }
 
 // NewPRBranchInfo instantiates a new PRBranchInfo object
@@ -204,7 +204,7 @@ func (o *PRBranchInfo) SetSha(v string) {
 }
 
 func (o PRBranchInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -266,3 +266,5 @@ func (v *NullablePRBranchInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

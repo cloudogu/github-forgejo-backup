@@ -19,15 +19,15 @@ var _ MappedNullable = &NotificationSubject{}
 
 // NotificationSubject NotificationSubject contains the notification subject (Issue/Pull/Commit)
 type NotificationSubject struct {
-	HtmlUrl              *string `json:"html_url,omitempty"`
+	HtmlUrl *string `json:"html_url,omitempty"`
 	LatestCommentHtmlUrl *string `json:"latest_comment_html_url,omitempty"`
-	LatestCommentUrl     *string `json:"latest_comment_url,omitempty"`
+	LatestCommentUrl *string `json:"latest_comment_url,omitempty"`
 	// StateType issue state type
 	State *string `json:"state,omitempty"`
 	Title *string `json:"title,omitempty"`
 	// NotifySubjectType represent type of notification subject
 	Type *string `json:"type,omitempty"`
-	Url  *string `json:"url,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewNotificationSubject instantiates a new NotificationSubject object
@@ -272,7 +272,7 @@ func (o *NotificationSubject) SetUrl(v string) {
 }
 
 func (o NotificationSubject) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -340,3 +340,5 @@ func (v *NullableNotificationSubject) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

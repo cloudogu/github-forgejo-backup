@@ -20,7 +20,7 @@ var _ MappedNullable = &APIForbiddenError{}
 // APIForbiddenError struct for APIForbiddenError
 type APIForbiddenError struct {
 	Message *string `json:"message,omitempty"`
-	Url     *string `json:"url,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewAPIForbiddenError instantiates a new APIForbiddenError object
@@ -105,7 +105,7 @@ func (o *APIForbiddenError) SetUrl(v string) {
 }
 
 func (o APIForbiddenError) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableAPIForbiddenError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

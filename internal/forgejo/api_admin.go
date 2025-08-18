@@ -19,14 +19,15 @@ import (
 	"strings"
 )
 
+
 // AdminAPIService AdminAPI service
 type AdminAPIService service
 
 type ApiAdminAddRuleToQuotaGroupRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
 	quotagroup string
-	quotarule  string
+	quotarule string
 }
 
 func (r ApiAdminAddRuleToQuotaGroupRequest) Execute() (*http.Response, error) {
@@ -36,26 +37,26 @@ func (r ApiAdminAddRuleToQuotaGroupRequest) Execute() (*http.Response, error) {
 /*
 AdminAddRuleToQuotaGroup Adds a rule to a quota group
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param quotagroup quota group to add a rule to
-	@param quotarule the name of the quota rule to add to the group
-	@return ApiAdminAddRuleToQuotaGroupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param quotagroup quota group to add a rule to
+ @param quotarule the name of the quota rule to add to the group
+ @return ApiAdminAddRuleToQuotaGroupRequest
 */
 func (a *AdminAPIService) AdminAddRuleToQuotaGroup(ctx context.Context, quotagroup string, quotarule string) ApiAdminAddRuleToQuotaGroupRequest {
 	return ApiAdminAddRuleToQuotaGroupRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 		quotagroup: quotagroup,
-		quotarule:  quotarule,
+		quotarule: quotarule,
 	}
 }
 
 // Execute executes the request
 func (a *AdminAPIService) AdminAddRuleToQuotaGroupExecute(r ApiAdminAddRuleToQuotaGroupRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminAddRuleToQuotaGroup")
@@ -201,8 +202,8 @@ func (a *AdminAPIService) AdminAddRuleToQuotaGroupExecute(r ApiAdminAddRuleToQuo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -212,8 +213,8 @@ func (a *AdminAPIService) AdminAddRuleToQuotaGroupExecute(r ApiAdminAddRuleToQuo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -223,8 +224,8 @@ func (a *AdminAPIService) AdminAddRuleToQuotaGroupExecute(r ApiAdminAddRuleToQuo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -234,8 +235,8 @@ func (a *AdminAPIService) AdminAddRuleToQuotaGroupExecute(r ApiAdminAddRuleToQuo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -245,8 +246,8 @@ func (a *AdminAPIService) AdminAddRuleToQuotaGroupExecute(r ApiAdminAddRuleToQuo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -255,10 +256,10 @@ func (a *AdminAPIService) AdminAddRuleToQuotaGroupExecute(r ApiAdminAddRuleToQuo
 }
 
 type ApiAdminAddUserToQuotaGroupRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
 	quotagroup string
-	username   string
+	username string
 }
 
 func (r ApiAdminAddUserToQuotaGroupRequest) Execute() (*http.Response, error) {
@@ -268,26 +269,26 @@ func (r ApiAdminAddUserToQuotaGroupRequest) Execute() (*http.Response, error) {
 /*
 AdminAddUserToQuotaGroup Add a user to a quota group
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param quotagroup quota group to add the user to
-	@param username username of the user to add to the quota group
-	@return ApiAdminAddUserToQuotaGroupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param quotagroup quota group to add the user to
+ @param username username of the user to add to the quota group
+ @return ApiAdminAddUserToQuotaGroupRequest
 */
 func (a *AdminAPIService) AdminAddUserToQuotaGroup(ctx context.Context, quotagroup string, username string) ApiAdminAddUserToQuotaGroupRequest {
 	return ApiAdminAddUserToQuotaGroupRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 		quotagroup: quotagroup,
-		username:   username,
+		username: username,
 	}
 }
 
 // Execute executes the request
 func (a *AdminAPIService) AdminAddUserToQuotaGroupExecute(r ApiAdminAddUserToQuotaGroupRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminAddUserToQuotaGroup")
@@ -433,8 +434,8 @@ func (a *AdminAPIService) AdminAddUserToQuotaGroupExecute(r ApiAdminAddUserToQuo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -444,8 +445,8 @@ func (a *AdminAPIService) AdminAddUserToQuotaGroupExecute(r ApiAdminAddUserToQuo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -455,8 +456,8 @@ func (a *AdminAPIService) AdminAddUserToQuotaGroupExecute(r ApiAdminAddUserToQuo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -466,8 +467,8 @@ func (a *AdminAPIService) AdminAddUserToQuotaGroupExecute(r ApiAdminAddUserToQuo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -477,8 +478,8 @@ func (a *AdminAPIService) AdminAddUserToQuotaGroupExecute(r ApiAdminAddUserToQuo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -487,10 +488,10 @@ func (a *AdminAPIService) AdminAddUserToQuotaGroupExecute(r ApiAdminAddUserToQuo
 }
 
 type ApiAdminAdoptRepositoryRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	owner      string
-	repo       string
+	owner string
+	repo string
 }
 
 func (r ApiAdminAdoptRepositoryRequest) Execute() (*http.Response, error) {
@@ -500,26 +501,26 @@ func (r ApiAdminAdoptRepositoryRequest) Execute() (*http.Response, error) {
 /*
 AdminAdoptRepository Adopt unadopted files as a repository
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@return ApiAdminAdoptRepositoryRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @return ApiAdminAdoptRepositoryRequest
 */
 func (a *AdminAPIService) AdminAdoptRepository(ctx context.Context, owner string, repo string) ApiAdminAdoptRepositoryRequest {
 	return ApiAdminAdoptRepositoryRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
 	}
 }
 
 // Execute executes the request
 func (a *AdminAPIService) AdminAdoptRepositoryExecute(r ApiAdminAdoptRepositoryRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminAdoptRepository")
@@ -665,8 +666,8 @@ func (a *AdminAPIService) AdminAdoptRepositoryExecute(r ApiAdminAdoptRepositoryR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -676,8 +677,8 @@ func (a *AdminAPIService) AdminAdoptRepositoryExecute(r ApiAdminAdoptRepositoryR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -686,9 +687,9 @@ func (a *AdminAPIService) AdminAdoptRepositoryExecute(r ApiAdminAdoptRepositoryR
 }
 
 type ApiAdminCreateHookRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	body       *CreateHookOption
+	body *CreateHookOption
 }
 
 func (r ApiAdminCreateHookRequest) Body(body CreateHookOption) ApiAdminCreateHookRequest {
@@ -703,25 +704,24 @@ func (r ApiAdminCreateHookRequest) Execute() (*Hook, *http.Response, error) {
 /*
 AdminCreateHook Create a hook
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminCreateHookRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAdminCreateHookRequest
 */
 func (a *AdminAPIService) AdminCreateHook(ctx context.Context) ApiAdminCreateHookRequest {
 	return ApiAdminCreateHookRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Hook
+//  @return Hook
 func (a *AdminAPIService) AdminCreateHookExecute(r ApiAdminCreateHookRequest) (*Hook, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Hook
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Hook
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminCreateHook")
@@ -879,9 +879,9 @@ func (a *AdminAPIService) AdminCreateHookExecute(r ApiAdminCreateHookRequest) (*
 }
 
 type ApiAdminCreateOrgRequest struct {
-	ctx          context.Context
-	ApiService   *AdminAPIService
-	username     string
+	ctx context.Context
+	ApiService *AdminAPIService
+	username string
 	organization *CreateOrgOption
 }
 
@@ -897,27 +897,26 @@ func (r ApiAdminCreateOrgRequest) Execute() (*Organization, *http.Response, erro
 /*
 AdminCreateOrg Create an organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param username username of the user that will own the created organization
-	@return ApiAdminCreateOrgRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param username username of the user that will own the created organization
+ @return ApiAdminCreateOrgRequest
 */
 func (a *AdminAPIService) AdminCreateOrg(ctx context.Context, username string) ApiAdminCreateOrgRequest {
 	return ApiAdminCreateOrgRequest{
 		ApiService: a,
-		ctx:        ctx,
-		username:   username,
+		ctx: ctx,
+		username: username,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Organization
+//  @return Organization
 func (a *AdminAPIService) AdminCreateOrgExecute(r ApiAdminCreateOrgRequest) (*Organization, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Organization
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Organization
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminCreateOrg")
@@ -1067,8 +1066,8 @@ func (a *AdminAPIService) AdminCreateOrgExecute(r ApiAdminCreateOrgRequest) (*Or
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -1078,8 +1077,8 @@ func (a *AdminAPIService) AdminCreateOrgExecute(r ApiAdminCreateOrgRequest) (*Or
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1097,10 +1096,10 @@ func (a *AdminAPIService) AdminCreateOrgExecute(r ApiAdminCreateOrgRequest) (*Or
 }
 
 type ApiAdminCreatePublicKeyRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	username   string
-	key        *CreateKeyOption
+	username string
+	key *CreateKeyOption
 }
 
 func (r ApiAdminCreatePublicKeyRequest) Key(key CreateKeyOption) ApiAdminCreatePublicKeyRequest {
@@ -1115,27 +1114,26 @@ func (r ApiAdminCreatePublicKeyRequest) Execute() (*PublicKey, *http.Response, e
 /*
 AdminCreatePublicKey Add a public key on behalf of a user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param username username of the user
-	@return ApiAdminCreatePublicKeyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param username username of the user
+ @return ApiAdminCreatePublicKeyRequest
 */
 func (a *AdminAPIService) AdminCreatePublicKey(ctx context.Context, username string) ApiAdminCreatePublicKeyRequest {
 	return ApiAdminCreatePublicKeyRequest{
 		ApiService: a,
-		ctx:        ctx,
-		username:   username,
+		ctx: ctx,
+		username: username,
 	}
 }
 
 // Execute executes the request
-//
-//	@return PublicKey
+//  @return PublicKey
 func (a *AdminAPIService) AdminCreatePublicKeyExecute(r ApiAdminCreatePublicKeyRequest) (*PublicKey, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PublicKey
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PublicKey
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminCreatePublicKey")
@@ -1282,8 +1280,8 @@ func (a *AdminAPIService) AdminCreatePublicKeyExecute(r ApiAdminCreatePublicKeyR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -1293,8 +1291,8 @@ func (a *AdminAPIService) AdminCreatePublicKeyExecute(r ApiAdminCreatePublicKeyR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1312,9 +1310,9 @@ func (a *AdminAPIService) AdminCreatePublicKeyExecute(r ApiAdminCreatePublicKeyR
 }
 
 type ApiAdminCreateQuotaGroupRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	group      *CreateQuotaGroupOptions
+	group *CreateQuotaGroupOptions
 }
 
 // Definition of the quota group
@@ -1330,25 +1328,24 @@ func (r ApiAdminCreateQuotaGroupRequest) Execute() (*QuotaGroup, *http.Response,
 /*
 AdminCreateQuotaGroup Create a new quota group
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminCreateQuotaGroupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAdminCreateQuotaGroupRequest
 */
 func (a *AdminAPIService) AdminCreateQuotaGroup(ctx context.Context) ApiAdminCreateQuotaGroupRequest {
 	return ApiAdminCreateQuotaGroupRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return QuotaGroup
+//  @return QuotaGroup
 func (a *AdminAPIService) AdminCreateQuotaGroupExecute(r ApiAdminCreateQuotaGroupRequest) (*QuotaGroup, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *QuotaGroup
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *QuotaGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminCreateQuotaGroup")
@@ -1497,8 +1494,8 @@ func (a *AdminAPIService) AdminCreateQuotaGroupExecute(r ApiAdminCreateQuotaGrou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1508,8 +1505,8 @@ func (a *AdminAPIService) AdminCreateQuotaGroupExecute(r ApiAdminCreateQuotaGrou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1519,8 +1516,8 @@ func (a *AdminAPIService) AdminCreateQuotaGroupExecute(r ApiAdminCreateQuotaGrou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -1530,8 +1527,8 @@ func (a *AdminAPIService) AdminCreateQuotaGroupExecute(r ApiAdminCreateQuotaGrou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1549,9 +1546,9 @@ func (a *AdminAPIService) AdminCreateQuotaGroupExecute(r ApiAdminCreateQuotaGrou
 }
 
 type ApiAdminCreateQuotaRuleRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	rule       *CreateQuotaRuleOptions
+	rule *CreateQuotaRuleOptions
 }
 
 // Definition of the quota rule
@@ -1567,25 +1564,24 @@ func (r ApiAdminCreateQuotaRuleRequest) Execute() (*QuotaRuleInfo, *http.Respons
 /*
 AdminCreateQuotaRule Create a new quota rule
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminCreateQuotaRuleRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAdminCreateQuotaRuleRequest
 */
 func (a *AdminAPIService) AdminCreateQuotaRule(ctx context.Context) ApiAdminCreateQuotaRuleRequest {
 	return ApiAdminCreateQuotaRuleRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return QuotaRuleInfo
+//  @return QuotaRuleInfo
 func (a *AdminAPIService) AdminCreateQuotaRuleExecute(r ApiAdminCreateQuotaRuleRequest) (*QuotaRuleInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *QuotaRuleInfo
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *QuotaRuleInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminCreateQuotaRule")
@@ -1734,8 +1730,8 @@ func (a *AdminAPIService) AdminCreateQuotaRuleExecute(r ApiAdminCreateQuotaRuleR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1745,8 +1741,8 @@ func (a *AdminAPIService) AdminCreateQuotaRuleExecute(r ApiAdminCreateQuotaRuleR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1756,8 +1752,8 @@ func (a *AdminAPIService) AdminCreateQuotaRuleExecute(r ApiAdminCreateQuotaRuleR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -1767,8 +1763,8 @@ func (a *AdminAPIService) AdminCreateQuotaRuleExecute(r ApiAdminCreateQuotaRuleR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1786,9 +1782,9 @@ func (a *AdminAPIService) AdminCreateQuotaRuleExecute(r ApiAdminCreateQuotaRuleR
 }
 
 type ApiAdminCreateRepoRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	username   string
+	username string
 	repository *CreateRepoOption
 }
 
@@ -1804,27 +1800,26 @@ func (r ApiAdminCreateRepoRequest) Execute() (*Repository, *http.Response, error
 /*
 AdminCreateRepo Create a repository on behalf of a user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param username username of the user. This user will own the created repository
-	@return ApiAdminCreateRepoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param username username of the user. This user will own the created repository
+ @return ApiAdminCreateRepoRequest
 */
 func (a *AdminAPIService) AdminCreateRepo(ctx context.Context, username string) ApiAdminCreateRepoRequest {
 	return ApiAdminCreateRepoRequest{
 		ApiService: a,
-		ctx:        ctx,
-		username:   username,
+		ctx: ctx,
+		username: username,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Repository
+//  @return Repository
 func (a *AdminAPIService) AdminCreateRepoExecute(r ApiAdminCreateRepoRequest) (*Repository, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Repository
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Repository
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminCreateRepo")
@@ -1974,8 +1969,8 @@ func (a *AdminAPIService) AdminCreateRepoExecute(r ApiAdminCreateRepoRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1985,8 +1980,8 @@ func (a *AdminAPIService) AdminCreateRepoExecute(r ApiAdminCreateRepoRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1996,8 +1991,8 @@ func (a *AdminAPIService) AdminCreateRepoExecute(r ApiAdminCreateRepoRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2007,8 +2002,8 @@ func (a *AdminAPIService) AdminCreateRepoExecute(r ApiAdminCreateRepoRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -2018,8 +2013,8 @@ func (a *AdminAPIService) AdminCreateRepoExecute(r ApiAdminCreateRepoRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2037,9 +2032,9 @@ func (a *AdminAPIService) AdminCreateRepoExecute(r ApiAdminCreateRepoRequest) (*
 }
 
 type ApiAdminCreateUserRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	body       *CreateUserOption
+	body *CreateUserOption
 }
 
 func (r ApiAdminCreateUserRequest) Body(body CreateUserOption) ApiAdminCreateUserRequest {
@@ -2054,25 +2049,24 @@ func (r ApiAdminCreateUserRequest) Execute() (*User, *http.Response, error) {
 /*
 AdminCreateUser Create a user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminCreateUserRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAdminCreateUserRequest
 */
 func (a *AdminAPIService) AdminCreateUser(ctx context.Context) ApiAdminCreateUserRequest {
 	return ApiAdminCreateUserRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return User
+//  @return User
 func (a *AdminAPIService) AdminCreateUserExecute(r ApiAdminCreateUserRequest) (*User, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *User
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminCreateUser")
@@ -2218,8 +2212,8 @@ func (a *AdminAPIService) AdminCreateUserExecute(r ApiAdminCreateUserRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2229,8 +2223,8 @@ func (a *AdminAPIService) AdminCreateUserExecute(r ApiAdminCreateUserRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -2240,8 +2234,8 @@ func (a *AdminAPIService) AdminCreateUserExecute(r ApiAdminCreateUserRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2259,10 +2253,10 @@ func (a *AdminAPIService) AdminCreateUserExecute(r ApiAdminCreateUserRequest) (*
 }
 
 type ApiAdminCronListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	page       *int32
-	limit      *int32
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -2284,25 +2278,24 @@ func (r ApiAdminCronListRequest) Execute() ([]Cron, *http.Response, error) {
 /*
 AdminCronList List cron tasks
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminCronListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAdminCronListRequest
 */
 func (a *AdminAPIService) AdminCronList(ctx context.Context) ApiAdminCronListRequest {
 	return ApiAdminCronListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Cron
+//  @return []Cron
 func (a *AdminAPIService) AdminCronListExecute(r ApiAdminCronListRequest) ([]Cron, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Cron
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Cron
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminCronList")
@@ -2452,8 +2445,8 @@ func (a *AdminAPIService) AdminCronListExecute(r ApiAdminCronListRequest) ([]Cro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2471,9 +2464,9 @@ func (a *AdminAPIService) AdminCronListExecute(r ApiAdminCronListRequest) ([]Cro
 }
 
 type ApiAdminCronRunRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	task       string
+	task string
 }
 
 func (r ApiAdminCronRunRequest) Execute() (*http.Response, error) {
@@ -2483,24 +2476,24 @@ func (r ApiAdminCronRunRequest) Execute() (*http.Response, error) {
 /*
 AdminCronRun Run cron task
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param task task to run
-	@return ApiAdminCronRunRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param task task to run
+ @return ApiAdminCronRunRequest
 */
 func (a *AdminAPIService) AdminCronRun(ctx context.Context, task string) ApiAdminCronRunRequest {
 	return ApiAdminCronRunRequest{
 		ApiService: a,
-		ctx:        ctx,
-		task:       task,
+		ctx: ctx,
+		task: task,
 	}
 }
 
 // Execute executes the request
 func (a *AdminAPIService) AdminCronRunExecute(r ApiAdminCronRunRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminCronRun")
@@ -2645,8 +2638,8 @@ func (a *AdminAPIService) AdminCronRunExecute(r ApiAdminCronRunRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2655,9 +2648,9 @@ func (a *AdminAPIService) AdminCronRunExecute(r ApiAdminCronRunRequest) (*http.R
 }
 
 type ApiAdminDEleteQuotaRuleRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	quotarule  string
+	quotarule string
 }
 
 func (r ApiAdminDEleteQuotaRuleRequest) Execute() (*http.Response, error) {
@@ -2667,24 +2660,24 @@ func (r ApiAdminDEleteQuotaRuleRequest) Execute() (*http.Response, error) {
 /*
 AdminDEleteQuotaRule Deletes a quota rule
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param quotarule quota rule to delete
-	@return ApiAdminDEleteQuotaRuleRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param quotarule quota rule to delete
+ @return ApiAdminDEleteQuotaRuleRequest
 */
 func (a *AdminAPIService) AdminDEleteQuotaRule(ctx context.Context, quotarule string) ApiAdminDEleteQuotaRuleRequest {
 	return ApiAdminDEleteQuotaRuleRequest{
 		ApiService: a,
-		ctx:        ctx,
-		quotarule:  quotarule,
+		ctx: ctx,
+		quotarule: quotarule,
 	}
 }
 
 // Execute executes the request
 func (a *AdminAPIService) AdminDEleteQuotaRuleExecute(r ApiAdminDEleteQuotaRuleRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminDEleteQuotaRule")
@@ -2829,8 +2822,8 @@ func (a *AdminAPIService) AdminDEleteQuotaRuleExecute(r ApiAdminDEleteQuotaRuleR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2840,8 +2833,8 @@ func (a *AdminAPIService) AdminDEleteQuotaRuleExecute(r ApiAdminDEleteQuotaRuleR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2851,8 +2844,8 @@ func (a *AdminAPIService) AdminDEleteQuotaRuleExecute(r ApiAdminDEleteQuotaRuleR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2861,9 +2854,9 @@ func (a *AdminAPIService) AdminDEleteQuotaRuleExecute(r ApiAdminDEleteQuotaRuleR
 }
 
 type ApiAdminDeleteHookRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	id         int64
+	id int64
 }
 
 func (r ApiAdminDeleteHookRequest) Execute() (*http.Response, error) {
@@ -2873,24 +2866,24 @@ func (r ApiAdminDeleteHookRequest) Execute() (*http.Response, error) {
 /*
 AdminDeleteHook Delete a hook
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id id of the hook to delete
-	@return ApiAdminDeleteHookRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of the hook to delete
+ @return ApiAdminDeleteHookRequest
 */
 func (a *AdminAPIService) AdminDeleteHook(ctx context.Context, id int64) ApiAdminDeleteHookRequest {
 	return ApiAdminDeleteHookRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *AdminAPIService) AdminDeleteHookExecute(r ApiAdminDeleteHookRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminDeleteHook")
@@ -3035,7 +3028,7 @@ func (a *AdminAPIService) AdminDeleteHookExecute(r ApiAdminDeleteHookRequest) (*
 }
 
 type ApiAdminDeleteQuotaGroupRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
 	quotagroup string
 }
@@ -3047,14 +3040,14 @@ func (r ApiAdminDeleteQuotaGroupRequest) Execute() (*http.Response, error) {
 /*
 AdminDeleteQuotaGroup Delete a quota group
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param quotagroup quota group to delete
-	@return ApiAdminDeleteQuotaGroupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param quotagroup quota group to delete
+ @return ApiAdminDeleteQuotaGroupRequest
 */
 func (a *AdminAPIService) AdminDeleteQuotaGroup(ctx context.Context, quotagroup string) ApiAdminDeleteQuotaGroupRequest {
 	return ApiAdminDeleteQuotaGroupRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 		quotagroup: quotagroup,
 	}
 }
@@ -3062,9 +3055,9 @@ func (a *AdminAPIService) AdminDeleteQuotaGroup(ctx context.Context, quotagroup 
 // Execute executes the request
 func (a *AdminAPIService) AdminDeleteQuotaGroupExecute(r ApiAdminDeleteQuotaGroupRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminDeleteQuotaGroup")
@@ -3209,8 +3202,8 @@ func (a *AdminAPIService) AdminDeleteQuotaGroupExecute(r ApiAdminDeleteQuotaGrou
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3220,8 +3213,8 @@ func (a *AdminAPIService) AdminDeleteQuotaGroupExecute(r ApiAdminDeleteQuotaGrou
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3231,8 +3224,8 @@ func (a *AdminAPIService) AdminDeleteQuotaGroupExecute(r ApiAdminDeleteQuotaGrou
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3241,10 +3234,10 @@ func (a *AdminAPIService) AdminDeleteQuotaGroupExecute(r ApiAdminDeleteQuotaGrou
 }
 
 type ApiAdminDeleteUnadoptedRepositoryRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	owner      string
-	repo       string
+	owner string
+	repo string
 }
 
 func (r ApiAdminDeleteUnadoptedRepositoryRequest) Execute() (*http.Response, error) {
@@ -3254,26 +3247,26 @@ func (r ApiAdminDeleteUnadoptedRepositoryRequest) Execute() (*http.Response, err
 /*
 AdminDeleteUnadoptedRepository Delete unadopted files
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@return ApiAdminDeleteUnadoptedRepositoryRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @return ApiAdminDeleteUnadoptedRepositoryRequest
 */
 func (a *AdminAPIService) AdminDeleteUnadoptedRepository(ctx context.Context, owner string, repo string) ApiAdminDeleteUnadoptedRepositoryRequest {
 	return ApiAdminDeleteUnadoptedRepositoryRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
 	}
 }
 
 // Execute executes the request
 func (a *AdminAPIService) AdminDeleteUnadoptedRepositoryExecute(r ApiAdminDeleteUnadoptedRepositoryRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminDeleteUnadoptedRepository")
@@ -3419,8 +3412,8 @@ func (a *AdminAPIService) AdminDeleteUnadoptedRepositoryExecute(r ApiAdminDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3429,10 +3422,10 @@ func (a *AdminAPIService) AdminDeleteUnadoptedRepositoryExecute(r ApiAdminDelete
 }
 
 type ApiAdminDeleteUserRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	username   string
-	purge      *bool
+	username string
+	purge *bool
 }
 
 // purge the user from the system completely
@@ -3448,24 +3441,24 @@ func (r ApiAdminDeleteUserRequest) Execute() (*http.Response, error) {
 /*
 AdminDeleteUser Delete a user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param username username of user to delete
-	@return ApiAdminDeleteUserRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param username username of user to delete
+ @return ApiAdminDeleteUserRequest
 */
 func (a *AdminAPIService) AdminDeleteUser(ctx context.Context, username string) ApiAdminDeleteUserRequest {
 	return ApiAdminDeleteUserRequest{
 		ApiService: a,
-		ctx:        ctx,
-		username:   username,
+		ctx: ctx,
+		username: username,
 	}
 }
 
 // Execute executes the request
 func (a *AdminAPIService) AdminDeleteUserExecute(r ApiAdminDeleteUserRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminDeleteUser")
@@ -3613,8 +3606,8 @@ func (a *AdminAPIService) AdminDeleteUserExecute(r ApiAdminDeleteUserRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3624,8 +3617,8 @@ func (a *AdminAPIService) AdminDeleteUserExecute(r ApiAdminDeleteUserRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -3635,8 +3628,8 @@ func (a *AdminAPIService) AdminDeleteUserExecute(r ApiAdminDeleteUserRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3645,10 +3638,10 @@ func (a *AdminAPIService) AdminDeleteUserExecute(r ApiAdminDeleteUserRequest) (*
 }
 
 type ApiAdminDeleteUserPublicKeyRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	username   string
-	id         int64
+	username string
+	id int64
 }
 
 func (r ApiAdminDeleteUserPublicKeyRequest) Execute() (*http.Response, error) {
@@ -3658,26 +3651,26 @@ func (r ApiAdminDeleteUserPublicKeyRequest) Execute() (*http.Response, error) {
 /*
 AdminDeleteUserPublicKey Delete a user's public key
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param username username of user
-	@param id id of the key to delete
-	@return ApiAdminDeleteUserPublicKeyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param username username of user
+ @param id id of the key to delete
+ @return ApiAdminDeleteUserPublicKeyRequest
 */
 func (a *AdminAPIService) AdminDeleteUserPublicKey(ctx context.Context, username string, id int64) ApiAdminDeleteUserPublicKeyRequest {
 	return ApiAdminDeleteUserPublicKeyRequest{
 		ApiService: a,
-		ctx:        ctx,
-		username:   username,
-		id:         id,
+		ctx: ctx,
+		username: username,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *AdminAPIService) AdminDeleteUserPublicKeyExecute(r ApiAdminDeleteUserPublicKeyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminDeleteUserPublicKey")
@@ -3823,8 +3816,8 @@ func (a *AdminAPIService) AdminDeleteUserPublicKeyExecute(r ApiAdminDeleteUserPu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3834,8 +3827,8 @@ func (a *AdminAPIService) AdminDeleteUserPublicKeyExecute(r ApiAdminDeleteUserPu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3844,10 +3837,10 @@ func (a *AdminAPIService) AdminDeleteUserPublicKeyExecute(r ApiAdminDeleteUserPu
 }
 
 type ApiAdminEditHookRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	id         int64
-	body       *EditHookOption
+	id int64
+	body *EditHookOption
 }
 
 func (r ApiAdminEditHookRequest) Body(body EditHookOption) ApiAdminEditHookRequest {
@@ -3862,27 +3855,26 @@ func (r ApiAdminEditHookRequest) Execute() (*Hook, *http.Response, error) {
 /*
 AdminEditHook Update a hook
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id id of the hook to update
-	@return ApiAdminEditHookRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of the hook to update
+ @return ApiAdminEditHookRequest
 */
 func (a *AdminAPIService) AdminEditHook(ctx context.Context, id int64) ApiAdminEditHookRequest {
 	return ApiAdminEditHookRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Hook
+//  @return Hook
 func (a *AdminAPIService) AdminEditHookExecute(r ApiAdminEditHookRequest) (*Hook, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Hook
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Hook
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminEditHook")
@@ -4038,10 +4030,10 @@ func (a *AdminAPIService) AdminEditHookExecute(r ApiAdminEditHookRequest) (*Hook
 }
 
 type ApiAdminEditQuotaRuleRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	quotarule  string
-	rule       *EditQuotaRuleOptions
+	quotarule string
+	rule *EditQuotaRuleOptions
 }
 
 func (r ApiAdminEditQuotaRuleRequest) Rule(rule EditQuotaRuleOptions) ApiAdminEditQuotaRuleRequest {
@@ -4056,27 +4048,26 @@ func (r ApiAdminEditQuotaRuleRequest) Execute() (*QuotaRuleInfo, *http.Response,
 /*
 AdminEditQuotaRule Change an existing quota rule
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param quotarule Quota rule to change
-	@return ApiAdminEditQuotaRuleRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param quotarule Quota rule to change
+ @return ApiAdminEditQuotaRuleRequest
 */
 func (a *AdminAPIService) AdminEditQuotaRule(ctx context.Context, quotarule string) ApiAdminEditQuotaRuleRequest {
 	return ApiAdminEditQuotaRuleRequest{
 		ApiService: a,
-		ctx:        ctx,
-		quotarule:  quotarule,
+		ctx: ctx,
+		quotarule: quotarule,
 	}
 }
 
 // Execute executes the request
-//
-//	@return QuotaRuleInfo
+//  @return QuotaRuleInfo
 func (a *AdminAPIService) AdminEditQuotaRuleExecute(r ApiAdminEditQuotaRuleRequest) (*QuotaRuleInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *QuotaRuleInfo
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *QuotaRuleInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminEditQuotaRule")
@@ -4226,8 +4217,8 @@ func (a *AdminAPIService) AdminEditQuotaRuleExecute(r ApiAdminEditQuotaRuleReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4237,8 +4228,8 @@ func (a *AdminAPIService) AdminEditQuotaRuleExecute(r ApiAdminEditQuotaRuleReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4248,8 +4239,8 @@ func (a *AdminAPIService) AdminEditQuotaRuleExecute(r ApiAdminEditQuotaRuleReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -4259,8 +4250,8 @@ func (a *AdminAPIService) AdminEditQuotaRuleExecute(r ApiAdminEditQuotaRuleReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4278,10 +4269,10 @@ func (a *AdminAPIService) AdminEditQuotaRuleExecute(r ApiAdminEditQuotaRuleReque
 }
 
 type ApiAdminEditUserRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	username   string
-	body       *EditUserOption
+	username string
+	body *EditUserOption
 }
 
 func (r ApiAdminEditUserRequest) Body(body EditUserOption) ApiAdminEditUserRequest {
@@ -4296,27 +4287,26 @@ func (r ApiAdminEditUserRequest) Execute() (*User, *http.Response, error) {
 /*
 AdminEditUser Edit an existing user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param username username of user to edit
-	@return ApiAdminEditUserRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param username username of user to edit
+ @return ApiAdminEditUserRequest
 */
 func (a *AdminAPIService) AdminEditUser(ctx context.Context, username string) ApiAdminEditUserRequest {
 	return ApiAdminEditUserRequest{
 		ApiService: a,
-		ctx:        ctx,
-		username:   username,
+		ctx: ctx,
+		username: username,
 	}
 }
 
 // Execute executes the request
-//
-//	@return User
+//  @return User
 func (a *AdminAPIService) AdminEditUserExecute(r ApiAdminEditUserRequest) (*User, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *User
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminEditUser")
@@ -4463,8 +4453,8 @@ func (a *AdminAPIService) AdminEditUserExecute(r ApiAdminEditUserRequest) (*User
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4474,8 +4464,8 @@ func (a *AdminAPIService) AdminEditUserExecute(r ApiAdminEditUserRequest) (*User
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -4485,8 +4475,8 @@ func (a *AdminAPIService) AdminEditUserExecute(r ApiAdminEditUserRequest) (*User
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4504,10 +4494,10 @@ func (a *AdminAPIService) AdminEditUserExecute(r ApiAdminEditUserRequest) (*User
 }
 
 type ApiAdminGetAllEmailsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	page       *int32
-	limit      *int32
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -4529,25 +4519,24 @@ func (r ApiAdminGetAllEmailsRequest) Execute() ([]Email, *http.Response, error) 
 /*
 AdminGetAllEmails List all emails
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminGetAllEmailsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAdminGetAllEmailsRequest
 */
 func (a *AdminAPIService) AdminGetAllEmails(ctx context.Context) ApiAdminGetAllEmailsRequest {
 	return ApiAdminGetAllEmailsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Email
+//  @return []Email
 func (a *AdminAPIService) AdminGetAllEmailsExecute(r ApiAdminGetAllEmailsRequest) ([]Email, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Email
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Email
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminGetAllEmails")
@@ -4697,8 +4686,8 @@ func (a *AdminAPIService) AdminGetAllEmailsExecute(r ApiAdminGetAllEmailsRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4716,10 +4705,10 @@ func (a *AdminAPIService) AdminGetAllEmailsExecute(r ApiAdminGetAllEmailsRequest
 }
 
 type ApiAdminGetAllOrgsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	page       *int32
-	limit      *int32
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -4741,25 +4730,24 @@ func (r ApiAdminGetAllOrgsRequest) Execute() ([]Organization, *http.Response, er
 /*
 AdminGetAllOrgs List all organizations
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminGetAllOrgsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAdminGetAllOrgsRequest
 */
 func (a *AdminAPIService) AdminGetAllOrgs(ctx context.Context) ApiAdminGetAllOrgsRequest {
 	return ApiAdminGetAllOrgsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Organization
+//  @return []Organization
 func (a *AdminAPIService) AdminGetAllOrgsExecute(r ApiAdminGetAllOrgsRequest) ([]Organization, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Organization
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Organization
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminGetAllOrgs")
@@ -4909,8 +4897,8 @@ func (a *AdminAPIService) AdminGetAllOrgsExecute(r ApiAdminGetAllOrgsRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4928,9 +4916,9 @@ func (a *AdminAPIService) AdminGetAllOrgsExecute(r ApiAdminGetAllOrgsRequest) ([
 }
 
 type ApiAdminGetHookRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	id         int64
+	id int64
 }
 
 func (r ApiAdminGetHookRequest) Execute() (*Hook, *http.Response, error) {
@@ -4940,27 +4928,26 @@ func (r ApiAdminGetHookRequest) Execute() (*Hook, *http.Response, error) {
 /*
 AdminGetHook Get a hook
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id id of the hook to get
-	@return ApiAdminGetHookRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of the hook to get
+ @return ApiAdminGetHookRequest
 */
 func (a *AdminAPIService) AdminGetHook(ctx context.Context, id int64) ApiAdminGetHookRequest {
 	return ApiAdminGetHookRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Hook
+//  @return Hook
 func (a *AdminAPIService) AdminGetHookExecute(r ApiAdminGetHookRequest) (*Hook, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Hook
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Hook
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminGetHook")
@@ -5114,7 +5101,7 @@ func (a *AdminAPIService) AdminGetHookExecute(r ApiAdminGetHookRequest) (*Hook, 
 }
 
 type ApiAdminGetQuotaGroupRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
 	quotagroup string
 }
@@ -5126,27 +5113,26 @@ func (r ApiAdminGetQuotaGroupRequest) Execute() (*QuotaGroup, *http.Response, er
 /*
 AdminGetQuotaGroup Get information about the quota group
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param quotagroup quota group to query
-	@return ApiAdminGetQuotaGroupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param quotagroup quota group to query
+ @return ApiAdminGetQuotaGroupRequest
 */
 func (a *AdminAPIService) AdminGetQuotaGroup(ctx context.Context, quotagroup string) ApiAdminGetQuotaGroupRequest {
 	return ApiAdminGetQuotaGroupRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 		quotagroup: quotagroup,
 	}
 }
 
 // Execute executes the request
-//
-//	@return QuotaGroup
+//  @return QuotaGroup
 func (a *AdminAPIService) AdminGetQuotaGroupExecute(r ApiAdminGetQuotaGroupRequest) (*QuotaGroup, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *QuotaGroup
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *QuotaGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminGetQuotaGroup")
@@ -5291,8 +5277,8 @@ func (a *AdminAPIService) AdminGetQuotaGroupExecute(r ApiAdminGetQuotaGroupReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5302,8 +5288,8 @@ func (a *AdminAPIService) AdminGetQuotaGroupExecute(r ApiAdminGetQuotaGroupReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5313,8 +5299,8 @@ func (a *AdminAPIService) AdminGetQuotaGroupExecute(r ApiAdminGetQuotaGroupReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5332,9 +5318,9 @@ func (a *AdminAPIService) AdminGetQuotaGroupExecute(r ApiAdminGetQuotaGroupReque
 }
 
 type ApiAdminGetQuotaRuleRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	quotarule  string
+	quotarule string
 }
 
 func (r ApiAdminGetQuotaRuleRequest) Execute() (*QuotaRuleInfo, *http.Response, error) {
@@ -5344,27 +5330,26 @@ func (r ApiAdminGetQuotaRuleRequest) Execute() (*QuotaRuleInfo, *http.Response, 
 /*
 AdminGetQuotaRule Get information about a quota rule
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param quotarule quota rule to query
-	@return ApiAdminGetQuotaRuleRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param quotarule quota rule to query
+ @return ApiAdminGetQuotaRuleRequest
 */
 func (a *AdminAPIService) AdminGetQuotaRule(ctx context.Context, quotarule string) ApiAdminGetQuotaRuleRequest {
 	return ApiAdminGetQuotaRuleRequest{
 		ApiService: a,
-		ctx:        ctx,
-		quotarule:  quotarule,
+		ctx: ctx,
+		quotarule: quotarule,
 	}
 }
 
 // Execute executes the request
-//
-//	@return QuotaRuleInfo
+//  @return QuotaRuleInfo
 func (a *AdminAPIService) AdminGetQuotaRuleExecute(r ApiAdminGetQuotaRuleRequest) (*QuotaRuleInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *QuotaRuleInfo
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *QuotaRuleInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminGetQuotaRule")
@@ -5509,8 +5494,8 @@ func (a *AdminAPIService) AdminGetQuotaRuleExecute(r ApiAdminGetQuotaRuleRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5520,8 +5505,8 @@ func (a *AdminAPIService) AdminGetQuotaRuleExecute(r ApiAdminGetQuotaRuleRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5531,8 +5516,8 @@ func (a *AdminAPIService) AdminGetQuotaRuleExecute(r ApiAdminGetQuotaRuleRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5550,7 +5535,7 @@ func (a *AdminAPIService) AdminGetQuotaRuleExecute(r ApiAdminGetQuotaRuleRequest
 }
 
 type ApiAdminGetRunnerRegistrationTokenRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
 }
 
@@ -5561,22 +5546,22 @@ func (r ApiAdminGetRunnerRegistrationTokenRequest) Execute() (*http.Response, er
 /*
 AdminGetRunnerRegistrationToken Get an global actions runner registration token
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminGetRunnerRegistrationTokenRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAdminGetRunnerRegistrationTokenRequest
 */
 func (a *AdminAPIService) AdminGetRunnerRegistrationToken(ctx context.Context) ApiAdminGetRunnerRegistrationTokenRequest {
 	return ApiAdminGetRunnerRegistrationTokenRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AdminAPIService) AdminGetRunnerRegistrationTokenExecute(r ApiAdminGetRunnerRegistrationTokenRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminGetRunnerRegistrationToken")
@@ -5720,9 +5705,9 @@ func (a *AdminAPIService) AdminGetRunnerRegistrationTokenExecute(r ApiAdminGetRu
 }
 
 type ApiAdminGetUserQuotaRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	username   string
+	username string
 }
 
 func (r ApiAdminGetUserQuotaRequest) Execute() (*QuotaInfo, *http.Response, error) {
@@ -5732,27 +5717,26 @@ func (r ApiAdminGetUserQuotaRequest) Execute() (*QuotaInfo, *http.Response, erro
 /*
 AdminGetUserQuota Get the user's quota info
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param username username of user to query
-	@return ApiAdminGetUserQuotaRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param username username of user to query
+ @return ApiAdminGetUserQuotaRequest
 */
 func (a *AdminAPIService) AdminGetUserQuota(ctx context.Context, username string) ApiAdminGetUserQuotaRequest {
 	return ApiAdminGetUserQuotaRequest{
 		ApiService: a,
-		ctx:        ctx,
-		username:   username,
+		ctx: ctx,
+		username: username,
 	}
 }
 
 // Execute executes the request
-//
-//	@return QuotaInfo
+//  @return QuotaInfo
 func (a *AdminAPIService) AdminGetUserQuotaExecute(r ApiAdminGetUserQuotaRequest) (*QuotaInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *QuotaInfo
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *QuotaInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminGetUserQuota")
@@ -5897,8 +5881,8 @@ func (a *AdminAPIService) AdminGetUserQuotaExecute(r ApiAdminGetUserQuotaRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5908,8 +5892,8 @@ func (a *AdminAPIService) AdminGetUserQuotaExecute(r ApiAdminGetUserQuotaRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5919,8 +5903,8 @@ func (a *AdminAPIService) AdminGetUserQuotaExecute(r ApiAdminGetUserQuotaRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -5930,8 +5914,8 @@ func (a *AdminAPIService) AdminGetUserQuotaExecute(r ApiAdminGetUserQuotaRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5949,10 +5933,10 @@ func (a *AdminAPIService) AdminGetUserQuotaExecute(r ApiAdminGetUserQuotaRequest
 }
 
 type ApiAdminListHooksRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	page       *int32
-	limit      *int32
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -5974,25 +5958,24 @@ func (r ApiAdminListHooksRequest) Execute() ([]Hook, *http.Response, error) {
 /*
 AdminListHooks List system's webhooks
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminListHooksRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAdminListHooksRequest
 */
 func (a *AdminAPIService) AdminListHooks(ctx context.Context) ApiAdminListHooksRequest {
 	return ApiAdminListHooksRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Hook
+//  @return []Hook
 func (a *AdminAPIService) AdminListHooksExecute(r ApiAdminListHooksRequest) ([]Hook, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Hook
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Hook
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminListHooks")
@@ -6151,7 +6134,7 @@ func (a *AdminAPIService) AdminListHooksExecute(r ApiAdminListHooksRequest) ([]H
 }
 
 type ApiAdminListQuotaGroupsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
 }
 
@@ -6162,25 +6145,24 @@ func (r ApiAdminListQuotaGroupsRequest) Execute() ([]QuotaGroup, *http.Response,
 /*
 AdminListQuotaGroups List the available quota groups
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminListQuotaGroupsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAdminListQuotaGroupsRequest
 */
 func (a *AdminAPIService) AdminListQuotaGroups(ctx context.Context) ApiAdminListQuotaGroupsRequest {
 	return ApiAdminListQuotaGroupsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []QuotaGroup
+//  @return []QuotaGroup
 func (a *AdminAPIService) AdminListQuotaGroupsExecute(r ApiAdminListQuotaGroupsRequest) ([]QuotaGroup, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []QuotaGroup
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []QuotaGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminListQuotaGroups")
@@ -6324,8 +6306,8 @@ func (a *AdminAPIService) AdminListQuotaGroupsExecute(r ApiAdminListQuotaGroupsR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6343,7 +6325,7 @@ func (a *AdminAPIService) AdminListQuotaGroupsExecute(r ApiAdminListQuotaGroupsR
 }
 
 type ApiAdminListQuotaRulesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
 }
 
@@ -6354,25 +6336,24 @@ func (r ApiAdminListQuotaRulesRequest) Execute() ([]QuotaRuleInfo, *http.Respons
 /*
 AdminListQuotaRules List the available quota rules
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminListQuotaRulesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAdminListQuotaRulesRequest
 */
 func (a *AdminAPIService) AdminListQuotaRules(ctx context.Context) ApiAdminListQuotaRulesRequest {
 	return ApiAdminListQuotaRulesRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []QuotaRuleInfo
+//  @return []QuotaRuleInfo
 func (a *AdminAPIService) AdminListQuotaRulesExecute(r ApiAdminListQuotaRulesRequest) ([]QuotaRuleInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []QuotaRuleInfo
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []QuotaRuleInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminListQuotaRules")
@@ -6516,8 +6497,8 @@ func (a *AdminAPIService) AdminListQuotaRulesExecute(r ApiAdminListQuotaRulesReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6535,7 +6516,7 @@ func (a *AdminAPIService) AdminListQuotaRulesExecute(r ApiAdminListQuotaRulesReq
 }
 
 type ApiAdminListUsersInQuotaGroupRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
 	quotagroup string
 }
@@ -6547,27 +6528,26 @@ func (r ApiAdminListUsersInQuotaGroupRequest) Execute() ([]User, *http.Response,
 /*
 AdminListUsersInQuotaGroup List users in a quota group
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param quotagroup quota group to list members of
-	@return ApiAdminListUsersInQuotaGroupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param quotagroup quota group to list members of
+ @return ApiAdminListUsersInQuotaGroupRequest
 */
 func (a *AdminAPIService) AdminListUsersInQuotaGroup(ctx context.Context, quotagroup string) ApiAdminListUsersInQuotaGroupRequest {
 	return ApiAdminListUsersInQuotaGroupRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 		quotagroup: quotagroup,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []User
+//  @return []User
 func (a *AdminAPIService) AdminListUsersInQuotaGroupExecute(r ApiAdminListUsersInQuotaGroupRequest) ([]User, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []User
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminListUsersInQuotaGroup")
@@ -6712,8 +6692,8 @@ func (a *AdminAPIService) AdminListUsersInQuotaGroupExecute(r ApiAdminListUsersI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -6723,8 +6703,8 @@ func (a *AdminAPIService) AdminListUsersInQuotaGroupExecute(r ApiAdminListUsersI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -6734,8 +6714,8 @@ func (a *AdminAPIService) AdminListUsersInQuotaGroupExecute(r ApiAdminListUsersI
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6753,10 +6733,10 @@ func (a *AdminAPIService) AdminListUsersInQuotaGroupExecute(r ApiAdminListUsersI
 }
 
 type ApiAdminRemoveRuleFromQuotaGroupRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
 	quotagroup string
-	quotarule  string
+	quotarule string
 }
 
 func (r ApiAdminRemoveRuleFromQuotaGroupRequest) Execute() (*http.Response, error) {
@@ -6766,26 +6746,26 @@ func (r ApiAdminRemoveRuleFromQuotaGroupRequest) Execute() (*http.Response, erro
 /*
 AdminRemoveRuleFromQuotaGroup Removes a rule from a quota group
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param quotagroup quota group to remove a rule from
-	@param quotarule the name of the quota rule to remove from the group
-	@return ApiAdminRemoveRuleFromQuotaGroupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param quotagroup quota group to remove a rule from
+ @param quotarule the name of the quota rule to remove from the group
+ @return ApiAdminRemoveRuleFromQuotaGroupRequest
 */
 func (a *AdminAPIService) AdminRemoveRuleFromQuotaGroup(ctx context.Context, quotagroup string, quotarule string) ApiAdminRemoveRuleFromQuotaGroupRequest {
 	return ApiAdminRemoveRuleFromQuotaGroupRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 		quotagroup: quotagroup,
-		quotarule:  quotarule,
+		quotarule: quotarule,
 	}
 }
 
 // Execute executes the request
 func (a *AdminAPIService) AdminRemoveRuleFromQuotaGroupExecute(r ApiAdminRemoveRuleFromQuotaGroupRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminRemoveRuleFromQuotaGroup")
@@ -6931,8 +6911,8 @@ func (a *AdminAPIService) AdminRemoveRuleFromQuotaGroupExecute(r ApiAdminRemoveR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -6942,8 +6922,8 @@ func (a *AdminAPIService) AdminRemoveRuleFromQuotaGroupExecute(r ApiAdminRemoveR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -6953,8 +6933,8 @@ func (a *AdminAPIService) AdminRemoveRuleFromQuotaGroupExecute(r ApiAdminRemoveR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -6963,10 +6943,10 @@ func (a *AdminAPIService) AdminRemoveRuleFromQuotaGroupExecute(r ApiAdminRemoveR
 }
 
 type ApiAdminRemoveUserFromQuotaGroupRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
 	quotagroup string
-	username   string
+	username string
 }
 
 func (r ApiAdminRemoveUserFromQuotaGroupRequest) Execute() (*http.Response, error) {
@@ -6976,26 +6956,26 @@ func (r ApiAdminRemoveUserFromQuotaGroupRequest) Execute() (*http.Response, erro
 /*
 AdminRemoveUserFromQuotaGroup Remove a user from a quota group
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param quotagroup quota group to remove a user from
-	@param username username of the user to remove from the quota group
-	@return ApiAdminRemoveUserFromQuotaGroupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param quotagroup quota group to remove a user from
+ @param username username of the user to remove from the quota group
+ @return ApiAdminRemoveUserFromQuotaGroupRequest
 */
 func (a *AdminAPIService) AdminRemoveUserFromQuotaGroup(ctx context.Context, quotagroup string, username string) ApiAdminRemoveUserFromQuotaGroupRequest {
 	return ApiAdminRemoveUserFromQuotaGroupRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 		quotagroup: quotagroup,
-		username:   username,
+		username: username,
 	}
 }
 
 // Execute executes the request
 func (a *AdminAPIService) AdminRemoveUserFromQuotaGroupExecute(r ApiAdminRemoveUserFromQuotaGroupRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminRemoveUserFromQuotaGroup")
@@ -7141,8 +7121,8 @@ func (a *AdminAPIService) AdminRemoveUserFromQuotaGroupExecute(r ApiAdminRemoveU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -7152,8 +7132,8 @@ func (a *AdminAPIService) AdminRemoveUserFromQuotaGroupExecute(r ApiAdminRemoveU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -7163,8 +7143,8 @@ func (a *AdminAPIService) AdminRemoveUserFromQuotaGroupExecute(r ApiAdminRemoveU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -7173,10 +7153,10 @@ func (a *AdminAPIService) AdminRemoveUserFromQuotaGroupExecute(r ApiAdminRemoveU
 }
 
 type ApiAdminRenameUserRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	username   string
-	body       *RenameUserOption
+	username string
+	body *RenameUserOption
 }
 
 func (r ApiAdminRenameUserRequest) Body(body RenameUserOption) ApiAdminRenameUserRequest {
@@ -7191,24 +7171,24 @@ func (r ApiAdminRenameUserRequest) Execute() (*http.Response, error) {
 /*
 AdminRenameUser Rename a user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param username existing username of user
-	@return ApiAdminRenameUserRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param username existing username of user
+ @return ApiAdminRenameUserRequest
 */
 func (a *AdminAPIService) AdminRenameUser(ctx context.Context, username string) ApiAdminRenameUserRequest {
 	return ApiAdminRenameUserRequest{
 		ApiService: a,
-		ctx:        ctx,
-		username:   username,
+		ctx: ctx,
+		username: username,
 	}
 }
 
 // Execute executes the request
 func (a *AdminAPIService) AdminRenameUserExecute(r ApiAdminRenameUserRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminRenameUser")
@@ -7358,8 +7338,8 @@ func (a *AdminAPIService) AdminRenameUserExecute(r ApiAdminRenameUserRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -7369,8 +7349,8 @@ func (a *AdminAPIService) AdminRenameUserExecute(r ApiAdminRenameUserRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -7379,11 +7359,11 @@ func (a *AdminAPIService) AdminRenameUserExecute(r ApiAdminRenameUserRequest) (*
 }
 
 type ApiAdminSearchEmailsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	q          *string
-	page       *int32
-	limit      *int32
+	q *string
+	page *int32
+	limit *int32
 }
 
 // keyword
@@ -7411,25 +7391,24 @@ func (r ApiAdminSearchEmailsRequest) Execute() ([]Email, *http.Response, error) 
 /*
 AdminSearchEmails Search all emails
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminSearchEmailsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAdminSearchEmailsRequest
 */
 func (a *AdminAPIService) AdminSearchEmails(ctx context.Context) ApiAdminSearchEmailsRequest {
 	return ApiAdminSearchEmailsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Email
+//  @return []Email
 func (a *AdminAPIService) AdminSearchEmailsExecute(r ApiAdminSearchEmailsRequest) ([]Email, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Email
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Email
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminSearchEmails")
@@ -7582,8 +7561,8 @@ func (a *AdminAPIService) AdminSearchEmailsExecute(r ApiAdminSearchEmailsRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -7601,9 +7580,9 @@ func (a *AdminAPIService) AdminSearchEmailsExecute(r ApiAdminSearchEmailsRequest
 }
 
 type ApiAdminSearchRunJobsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	labels     *string
+	labels *string
 }
 
 // a comma separated list of run job labels to search for
@@ -7619,25 +7598,24 @@ func (r ApiAdminSearchRunJobsRequest) Execute() ([]ActionRunJob, *http.Response,
 /*
 AdminSearchRunJobs Search action jobs according filter conditions
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminSearchRunJobsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAdminSearchRunJobsRequest
 */
 func (a *AdminAPIService) AdminSearchRunJobs(ctx context.Context) ApiAdminSearchRunJobsRequest {
 	return ApiAdminSearchRunJobsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []ActionRunJob
+//  @return []ActionRunJob
 func (a *AdminAPIService) AdminSearchRunJobsExecute(r ApiAdminSearchRunJobsRequest) ([]ActionRunJob, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []ActionRunJob
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []ActionRunJob
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminSearchRunJobs")
@@ -7784,8 +7762,8 @@ func (a *AdminAPIService) AdminSearchRunJobsExecute(r ApiAdminSearchRunJobsReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -7803,13 +7781,13 @@ func (a *AdminAPIService) AdminSearchRunJobsExecute(r ApiAdminSearchRunJobsReque
 }
 
 type ApiAdminSearchUsersRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	sourceId   *int64
-	loginName  *string
-	sort       *string
-	page       *int32
-	limit      *int32
+	sourceId *int64
+	loginName *string
+	sort *string
+	page *int32
+	limit *int32
 }
 
 // ID of the user&#39;s login source to search for
@@ -7849,25 +7827,24 @@ func (r ApiAdminSearchUsersRequest) Execute() ([]User, *http.Response, error) {
 /*
 AdminSearchUsers Search users according filter conditions
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminSearchUsersRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAdminSearchUsersRequest
 */
 func (a *AdminAPIService) AdminSearchUsers(ctx context.Context) ApiAdminSearchUsersRequest {
 	return ApiAdminSearchUsersRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []User
+//  @return []User
 func (a *AdminAPIService) AdminSearchUsersExecute(r ApiAdminSearchUsersRequest) ([]User, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []User
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminSearchUsers")
@@ -8026,8 +8003,8 @@ func (a *AdminAPIService) AdminSearchUsersExecute(r ApiAdminSearchUsersRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -8045,10 +8022,10 @@ func (a *AdminAPIService) AdminSearchUsersExecute(r ApiAdminSearchUsersRequest) 
 }
 
 type ApiAdminSetUserQuotaGroupsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	username   string
-	groups     *SetUserQuotaGroupsOptions
+	username string
+	groups *SetUserQuotaGroupsOptions
 }
 
 // list of groups that the user should be a member of
@@ -8064,24 +8041,24 @@ func (r ApiAdminSetUserQuotaGroupsRequest) Execute() (*http.Response, error) {
 /*
 AdminSetUserQuotaGroups Set the user's quota groups to a given list.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param username username of the user to modify the quota groups from
-	@return ApiAdminSetUserQuotaGroupsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param username username of the user to modify the quota groups from
+ @return ApiAdminSetUserQuotaGroupsRequest
 */
 func (a *AdminAPIService) AdminSetUserQuotaGroups(ctx context.Context, username string) ApiAdminSetUserQuotaGroupsRequest {
 	return ApiAdminSetUserQuotaGroupsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		username:   username,
+		ctx: ctx,
+		username: username,
 	}
 }
 
 // Execute executes the request
 func (a *AdminAPIService) AdminSetUserQuotaGroupsExecute(r ApiAdminSetUserQuotaGroupsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminSetUserQuotaGroups")
@@ -8231,8 +8208,8 @@ func (a *AdminAPIService) AdminSetUserQuotaGroupsExecute(r ApiAdminSetUserQuotaG
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -8242,8 +8219,8 @@ func (a *AdminAPIService) AdminSetUserQuotaGroupsExecute(r ApiAdminSetUserQuotaG
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -8253,8 +8230,8 @@ func (a *AdminAPIService) AdminSetUserQuotaGroupsExecute(r ApiAdminSetUserQuotaG
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -8264,8 +8241,8 @@ func (a *AdminAPIService) AdminSetUserQuotaGroupsExecute(r ApiAdminSetUserQuotaG
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -8274,11 +8251,11 @@ func (a *AdminAPIService) AdminSetUserQuotaGroupsExecute(r ApiAdminSetUserQuotaG
 }
 
 type ApiAdminUnadoptedListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AdminAPIService
-	page       *int32
-	limit      *int32
-	pattern    *string
+	page *int32
+	limit *int32
+	pattern *string
 }
 
 // page number of results to return (1-based)
@@ -8306,25 +8283,24 @@ func (r ApiAdminUnadoptedListRequest) Execute() ([]string, *http.Response, error
 /*
 AdminUnadoptedList List unadopted repositories
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAdminUnadoptedListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAdminUnadoptedListRequest
 */
 func (a *AdminAPIService) AdminUnadoptedList(ctx context.Context) ApiAdminUnadoptedListRequest {
 	return ApiAdminUnadoptedListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []string
+//  @return []string
 func (a *AdminAPIService) AdminUnadoptedListExecute(r ApiAdminUnadoptedListRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.AdminUnadoptedList")
@@ -8477,8 +8453,8 @@ func (a *AdminAPIService) AdminUnadoptedListExecute(r ApiAdminUnadoptedListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

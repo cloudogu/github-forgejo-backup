@@ -19,9 +19,9 @@ var _ MappedNullable = &Compare{}
 
 // Compare struct for Compare
 type Compare struct {
-	Commits      []Commit              `json:"commits,omitempty"`
-	Files        []CommitAffectedFiles `json:"files,omitempty"`
-	TotalCommits *int64                `json:"total_commits,omitempty"`
+	Commits []Commit `json:"commits,omitempty"`
+	Files []CommitAffectedFiles `json:"files,omitempty"`
+	TotalCommits *int64 `json:"total_commits,omitempty"`
 }
 
 // NewCompare instantiates a new Compare object
@@ -138,7 +138,7 @@ func (o *Compare) SetTotalCommits(v int64) {
 }
 
 func (o Compare) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableCompare) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

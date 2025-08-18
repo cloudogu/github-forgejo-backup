@@ -20,15 +20,15 @@ var _ MappedNullable = &DeployKey{}
 
 // DeployKey DeployKey a deploy key
 type DeployKey struct {
-	CreatedAt   *time.Time  `json:"created_at,omitempty"`
-	Fingerprint *string     `json:"fingerprint,omitempty"`
-	Id          *int64      `json:"id,omitempty"`
-	Key         *string     `json:"key,omitempty"`
-	KeyId       *int64      `json:"key_id,omitempty"`
-	ReadOnly    *bool       `json:"read_only,omitempty"`
-	Repository  *Repository `json:"repository,omitempty"`
-	Title       *string     `json:"title,omitempty"`
-	Url         *string     `json:"url,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	Fingerprint *string `json:"fingerprint,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	Key *string `json:"key,omitempty"`
+	KeyId *int64 `json:"key_id,omitempty"`
+	ReadOnly *bool `json:"read_only,omitempty"`
+	Repository *Repository `json:"repository,omitempty"`
+	Title *string `json:"title,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewDeployKey instantiates a new DeployKey object
@@ -337,7 +337,7 @@ func (o *DeployKey) SetUrl(v string) {
 }
 
 func (o DeployKey) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -411,3 +411,5 @@ func (v *NullableDeployKey) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

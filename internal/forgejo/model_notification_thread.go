@@ -20,13 +20,13 @@ var _ MappedNullable = &NotificationThread{}
 
 // NotificationThread NotificationThread expose Notification on API
 type NotificationThread struct {
-	Id         *int64               `json:"id,omitempty"`
-	Pinned     *bool                `json:"pinned,omitempty"`
-	Repository *Repository          `json:"repository,omitempty"`
-	Subject    *NotificationSubject `json:"subject,omitempty"`
-	Unread     *bool                `json:"unread,omitempty"`
-	UpdatedAt  *time.Time           `json:"updated_at,omitempty"`
-	Url        *string              `json:"url,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	Pinned *bool `json:"pinned,omitempty"`
+	Repository *Repository `json:"repository,omitempty"`
+	Subject *NotificationSubject `json:"subject,omitempty"`
+	Unread *bool `json:"unread,omitempty"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewNotificationThread instantiates a new NotificationThread object
@@ -271,7 +271,7 @@ func (o *NotificationThread) SetUrl(v string) {
 }
 
 func (o NotificationThread) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -339,3 +339,5 @@ func (v *NullableNotificationThread) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

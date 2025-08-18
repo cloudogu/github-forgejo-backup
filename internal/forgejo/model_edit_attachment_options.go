@@ -21,7 +21,7 @@ var _ MappedNullable = &EditAttachmentOptions{}
 type EditAttachmentOptions struct {
 	// (Can only be set if existing attachment is of external type)
 	BrowserDownloadUrl *string `json:"browser_download_url,omitempty"`
-	Name               *string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // NewEditAttachmentOptions instantiates a new EditAttachmentOptions object
@@ -106,7 +106,7 @@ func (o *EditAttachmentOptions) SetName(v string) {
 }
 
 func (o EditAttachmentOptions) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableEditAttachmentOptions) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -21,7 +21,7 @@ var _ MappedNullable = &QuotaInfo{}
 type QuotaInfo struct {
 	// QuotaGroupList represents a list of quota groups
 	Groups []QuotaGroup `json:"groups,omitempty"`
-	Used   *QuotaUsed   `json:"used,omitempty"`
+	Used *QuotaUsed `json:"used,omitempty"`
 }
 
 // NewQuotaInfo instantiates a new QuotaInfo object
@@ -106,7 +106,7 @@ func (o *QuotaInfo) SetUsed(v QuotaUsed) {
 }
 
 func (o QuotaInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableQuotaInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

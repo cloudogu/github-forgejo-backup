@@ -19,11 +19,11 @@ var _ MappedNullable = &RepoCommit{}
 
 // RepoCommit struct for RepoCommit
 type RepoCommit struct {
-	Author       *CommitUser                `json:"author,omitempty"`
-	Committer    *CommitUser                `json:"committer,omitempty"`
-	Message      *string                    `json:"message,omitempty"`
-	Tree         *CommitMeta                `json:"tree,omitempty"`
-	Url          *string                    `json:"url,omitempty"`
+	Author *CommitUser `json:"author,omitempty"`
+	Committer *CommitUser `json:"committer,omitempty"`
+	Message *string `json:"message,omitempty"`
+	Tree *CommitMeta `json:"tree,omitempty"`
+	Url *string `json:"url,omitempty"`
 	Verification *PayloadCommitVerification `json:"verification,omitempty"`
 }
 
@@ -237,7 +237,7 @@ func (o *RepoCommit) SetVerification(v PayloadCommitVerification) {
 }
 
 func (o RepoCommit) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -302,3 +302,5 @@ func (v *NullableRepoCommit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -19,8 +19,8 @@ var _ MappedNullable = &FileDeleteResponse{}
 
 // FileDeleteResponse FileDeleteResponse contains information about a repo's file that was deleted
 type FileDeleteResponse struct {
-	Commit       *FileCommitResponse        `json:"commit,omitempty"`
-	Content      map[string]interface{}     `json:"content,omitempty"`
+	Commit *FileCommitResponse `json:"commit,omitempty"`
+	Content map[string]interface{} `json:"content,omitempty"`
 	Verification *PayloadCommitVerification `json:"verification,omitempty"`
 }
 
@@ -138,7 +138,7 @@ func (o *FileDeleteResponse) SetVerification(v PayloadCommitVerification) {
 }
 
 func (o FileDeleteResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableFileDeleteResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

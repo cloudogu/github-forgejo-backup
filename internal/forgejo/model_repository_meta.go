@@ -20,9 +20,9 @@ var _ MappedNullable = &RepositoryMeta{}
 // RepositoryMeta RepositoryMeta basic repository information
 type RepositoryMeta struct {
 	FullName *string `json:"full_name,omitempty"`
-	Id       *int64  `json:"id,omitempty"`
-	Name     *string `json:"name,omitempty"`
-	Owner    *string `json:"owner,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Owner *string `json:"owner,omitempty"`
 }
 
 // NewRepositoryMeta instantiates a new RepositoryMeta object
@@ -171,7 +171,7 @@ func (o *RepositoryMeta) SetOwner(v string) {
 }
 
 func (o RepositoryMeta) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,3 +230,5 @@ func (v *NullableRepositoryMeta) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

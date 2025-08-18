@@ -19,11 +19,11 @@ var _ MappedNullable = &PackageFile{}
 
 // PackageFile PackageFile represents a package file
 type PackageFile struct {
-	Size   *int64  `json:"Size,omitempty"`
-	Id     *int64  `json:"id,omitempty"`
-	Md5    *string `json:"md5,omitempty"`
-	Name   *string `json:"name,omitempty"`
-	Sha1   *string `json:"sha1,omitempty"`
+	Size *int64 `json:"Size,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	Md5 *string `json:"md5,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Sha1 *string `json:"sha1,omitempty"`
 	Sha256 *string `json:"sha256,omitempty"`
 	Sha512 *string `json:"sha512,omitempty"`
 }
@@ -270,7 +270,7 @@ func (o *PackageFile) SetSha512(v string) {
 }
 
 func (o PackageFile) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -338,3 +338,5 @@ func (v *NullablePackageFile) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

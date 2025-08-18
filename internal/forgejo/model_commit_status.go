@@ -20,16 +20,16 @@ var _ MappedNullable = &CommitStatus{}
 
 // CommitStatus CommitStatus holds a single status of a single Commit
 type CommitStatus struct {
-	Context     *string    `json:"context,omitempty"`
-	CreatedAt   *time.Time `json:"created_at,omitempty"`
-	Creator     *User      `json:"creator,omitempty"`
-	Description *string    `json:"description,omitempty"`
-	Id          *int64     `json:"id,omitempty"`
+	Context *string `json:"context,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	Creator *User `json:"creator,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	// CommitStatusState holds the state of a CommitStatus It can be \"pending\", \"success\", \"error\" and \"failure\"
-	Status    *string    `json:"status,omitempty"`
-	TargetUrl *string    `json:"target_url,omitempty"`
+	Status *string `json:"status,omitempty"`
+	TargetUrl *string `json:"target_url,omitempty"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
-	Url       *string    `json:"url,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewCommitStatus instantiates a new CommitStatus object
@@ -338,7 +338,7 @@ func (o *CommitStatus) SetUrl(v string) {
 }
 
 func (o CommitStatus) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -412,3 +412,5 @@ func (v *NullableCommitStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

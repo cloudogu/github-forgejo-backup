@@ -19,11 +19,11 @@ var _ MappedNullable = &Email{}
 
 // Email Email an email address belonging to a user
 type Email struct {
-	Email    *string `json:"email,omitempty"`
-	Primary  *bool   `json:"primary,omitempty"`
-	UserId   *int64  `json:"user_id,omitempty"`
+	Email *string `json:"email,omitempty"`
+	Primary *bool `json:"primary,omitempty"`
+	UserId *int64 `json:"user_id,omitempty"`
 	Username *string `json:"username,omitempty"`
-	Verified *bool   `json:"verified,omitempty"`
+	Verified *bool `json:"verified,omitempty"`
 }
 
 // NewEmail instantiates a new Email object
@@ -204,7 +204,7 @@ func (o *Email) SetVerified(v bool) {
 }
 
 func (o Email) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -266,3 +266,5 @@ func (v *NullableEmail) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

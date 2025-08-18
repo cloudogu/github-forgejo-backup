@@ -21,16 +21,16 @@ var _ MappedNullable = &EditIssueOption{}
 // EditIssueOption EditIssueOption options for editing an issue
 type EditIssueOption struct {
 	// deprecated
-	Assignee     *string    `json:"assignee,omitempty"`
-	Assignees    []string   `json:"assignees,omitempty"`
-	Body         *string    `json:"body,omitempty"`
-	DueDate      *time.Time `json:"due_date,omitempty"`
-	Milestone    *int64     `json:"milestone,omitempty"`
-	Ref          *string    `json:"ref,omitempty"`
-	State        *string    `json:"state,omitempty"`
-	Title        *string    `json:"title,omitempty"`
-	UnsetDueDate *bool      `json:"unset_due_date,omitempty"`
-	UpdatedAt    *time.Time `json:"updated_at,omitempty"`
+	Assignee *string `json:"assignee,omitempty"`
+	Assignees []string `json:"assignees,omitempty"`
+	Body *string `json:"body,omitempty"`
+	DueDate *time.Time `json:"due_date,omitempty"`
+	Milestone *int64 `json:"milestone,omitempty"`
+	Ref *string `json:"ref,omitempty"`
+	State *string `json:"state,omitempty"`
+	Title *string `json:"title,omitempty"`
+	UnsetDueDate *bool `json:"unset_due_date,omitempty"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 }
 
 // NewEditIssueOption instantiates a new EditIssueOption object
@@ -371,7 +371,7 @@ func (o *EditIssueOption) SetUpdatedAt(v time.Time) {
 }
 
 func (o EditIssueOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -448,3 +448,5 @@ func (v *NullableEditIssueOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

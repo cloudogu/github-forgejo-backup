@@ -11,8 +11,8 @@ API version: 12.0.1+gitea-1.22.0
 package forgejo
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -23,11 +23,11 @@ var _ MappedNullable = &UpdateFileOptions{}
 type UpdateFileOptions struct {
 	Author *Identity `json:"author,omitempty"`
 	// branch (optional) to base this file from. if not given, the default branch is used
-	Branch    *string   `json:"branch,omitempty"`
+	Branch *string `json:"branch,omitempty"`
 	Committer *Identity `json:"committer,omitempty"`
 	// content must be base64 encoded
-	Content string             `json:"content"`
-	Dates   *CommitDateOptions `json:"dates,omitempty"`
+	Content string `json:"content"`
+	Dates *CommitDateOptions `json:"dates,omitempty"`
 	// from_path (optional) is the path of the original file which will be moved/renamed to the path in the URL
 	FromPath *string `json:"from_path,omitempty"`
 	// message (optional) for the commit of this file. if not supplied, a default message will be used
@@ -366,7 +366,7 @@ func (o *UpdateFileOptions) SetSignoff(v bool) {
 }
 
 func (o UpdateFileOptions) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -418,10 +418,10 @@ func (o *UpdateFileOptions) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -477,3 +477,5 @@ func (v *NullableUpdateFileOptions) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

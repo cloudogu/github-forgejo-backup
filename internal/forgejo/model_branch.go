@@ -19,15 +19,15 @@ var _ MappedNullable = &Branch{}
 
 // Branch Branch represents a repository branch
 type Branch struct {
-	Commit                        *PayloadCommit `json:"commit,omitempty"`
-	EffectiveBranchProtectionName *string        `json:"effective_branch_protection_name,omitempty"`
-	EnableStatusCheck             *bool          `json:"enable_status_check,omitempty"`
-	Name                          *string        `json:"name,omitempty"`
-	Protected                     *bool          `json:"protected,omitempty"`
-	RequiredApprovals             *int64         `json:"required_approvals,omitempty"`
-	StatusCheckContexts           []string       `json:"status_check_contexts,omitempty"`
-	UserCanMerge                  *bool          `json:"user_can_merge,omitempty"`
-	UserCanPush                   *bool          `json:"user_can_push,omitempty"`
+	Commit *PayloadCommit `json:"commit,omitempty"`
+	EffectiveBranchProtectionName *string `json:"effective_branch_protection_name,omitempty"`
+	EnableStatusCheck *bool `json:"enable_status_check,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Protected *bool `json:"protected,omitempty"`
+	RequiredApprovals *int64 `json:"required_approvals,omitempty"`
+	StatusCheckContexts []string `json:"status_check_contexts,omitempty"`
+	UserCanMerge *bool `json:"user_can_merge,omitempty"`
+	UserCanPush *bool `json:"user_can_push,omitempty"`
 }
 
 // NewBranch instantiates a new Branch object
@@ -336,7 +336,7 @@ func (o *Branch) SetUserCanPush(v bool) {
 }
 
 func (o Branch) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -410,3 +410,5 @@ func (v *NullableBranch) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

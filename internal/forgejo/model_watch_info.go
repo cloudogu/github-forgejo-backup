@@ -20,12 +20,12 @@ var _ MappedNullable = &WatchInfo{}
 
 // WatchInfo WatchInfo represents an API watch status of one repository
 type WatchInfo struct {
-	CreatedAt     *time.Time             `json:"created_at,omitempty"`
-	Ignored       *bool                  `json:"ignored,omitempty"`
-	Reason        map[string]interface{} `json:"reason,omitempty"`
-	RepositoryUrl *string                `json:"repository_url,omitempty"`
-	Subscribed    *bool                  `json:"subscribed,omitempty"`
-	Url           *string                `json:"url,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	Ignored *bool `json:"ignored,omitempty"`
+	Reason map[string]interface{} `json:"reason,omitempty"`
+	RepositoryUrl *string `json:"repository_url,omitempty"`
+	Subscribed *bool `json:"subscribed,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewWatchInfo instantiates a new WatchInfo object
@@ -238,7 +238,7 @@ func (o *WatchInfo) SetUrl(v string) {
 }
 
 func (o WatchInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -303,3 +303,5 @@ func (v *NullableWatchInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

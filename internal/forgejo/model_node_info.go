@@ -19,13 +19,13 @@ var _ MappedNullable = &NodeInfo{}
 
 // NodeInfo NodeInfo contains standardized way of exposing metadata about a server running one of the distributed social networks
 type NodeInfo struct {
-	Metadata          map[string]interface{} `json:"metadata,omitempty"`
-	OpenRegistrations *bool                  `json:"openRegistrations,omitempty"`
-	Protocols         []string               `json:"protocols,omitempty"`
-	Services          *NodeInfoServices      `json:"services,omitempty"`
-	Software          *NodeInfoSoftware      `json:"software,omitempty"`
-	Usage             *NodeInfoUsage         `json:"usage,omitempty"`
-	Version           *string                `json:"version,omitempty"`
+	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	OpenRegistrations *bool `json:"openRegistrations,omitempty"`
+	Protocols []string `json:"protocols,omitempty"`
+	Services *NodeInfoServices `json:"services,omitempty"`
+	Software *NodeInfoSoftware `json:"software,omitempty"`
+	Usage *NodeInfoUsage `json:"usage,omitempty"`
+	Version *string `json:"version,omitempty"`
 }
 
 // NewNodeInfo instantiates a new NodeInfo object
@@ -270,7 +270,7 @@ func (o *NodeInfo) SetVersion(v string) {
 }
 
 func (o NodeInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -338,3 +338,5 @@ func (v *NullableNodeInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

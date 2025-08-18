@@ -21,10 +21,10 @@ var _ MappedNullable = &GitEntry{}
 type GitEntry struct {
 	Mode *string `json:"mode,omitempty"`
 	Path *string `json:"path,omitempty"`
-	Sha  *string `json:"sha,omitempty"`
-	Size *int64  `json:"size,omitempty"`
+	Sha *string `json:"sha,omitempty"`
+	Size *int64 `json:"size,omitempty"`
 	Type *string `json:"type,omitempty"`
-	Url  *string `json:"url,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewGitEntry instantiates a new GitEntry object
@@ -237,7 +237,7 @@ func (o *GitEntry) SetUrl(v string) {
 }
 
 func (o GitEntry) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -302,3 +302,5 @@ func (v *NullableGitEntry) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

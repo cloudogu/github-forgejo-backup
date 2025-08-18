@@ -19,11 +19,11 @@ var _ MappedNullable = &PayloadCommitVerification{}
 
 // PayloadCommitVerification PayloadCommitVerification represents the GPG verification of a commit
 type PayloadCommitVerification struct {
-	Payload   *string      `json:"payload,omitempty"`
-	Reason    *string      `json:"reason,omitempty"`
-	Signature *string      `json:"signature,omitempty"`
-	Signer    *PayloadUser `json:"signer,omitempty"`
-	Verified  *bool        `json:"verified,omitempty"`
+	Payload *string `json:"payload,omitempty"`
+	Reason *string `json:"reason,omitempty"`
+	Signature *string `json:"signature,omitempty"`
+	Signer *PayloadUser `json:"signer,omitempty"`
+	Verified *bool `json:"verified,omitempty"`
 }
 
 // NewPayloadCommitVerification instantiates a new PayloadCommitVerification object
@@ -204,7 +204,7 @@ func (o *PayloadCommitVerification) SetVerified(v bool) {
 }
 
 func (o PayloadCommitVerification) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -266,3 +266,5 @@ func (v *NullablePayloadCommitVerification) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -19,10 +19,10 @@ var _ MappedNullable = &WikiPageMetaData{}
 
 // WikiPageMetaData WikiPageMetaData wiki page meta information
 type WikiPageMetaData struct {
-	HtmlUrl    *string     `json:"html_url,omitempty"`
+	HtmlUrl *string `json:"html_url,omitempty"`
 	LastCommit *WikiCommit `json:"last_commit,omitempty"`
-	SubUrl     *string     `json:"sub_url,omitempty"`
-	Title      *string     `json:"title,omitempty"`
+	SubUrl *string `json:"sub_url,omitempty"`
+	Title *string `json:"title,omitempty"`
 }
 
 // NewWikiPageMetaData instantiates a new WikiPageMetaData object
@@ -171,7 +171,7 @@ func (o *WikiPageMetaData) SetTitle(v string) {
 }
 
 func (o WikiPageMetaData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,3 +230,5 @@ func (v *NullableWikiPageMetaData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

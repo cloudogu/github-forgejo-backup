@@ -50,9 +50,9 @@ type EditRepoOption struct {
 	// a short description of the repository.
 	Description *string `json:"description,omitempty"`
 	// enable prune - remove obsolete remote-tracking references when mirroring
-	EnablePrune     *bool            `json:"enable_prune,omitempty"`
+	EnablePrune *bool `json:"enable_prune,omitempty"`
 	ExternalTracker *ExternalTracker `json:"external_tracker,omitempty"`
-	ExternalWiki    *ExternalWiki    `json:"external_wiki,omitempty"`
+	ExternalWiki *ExternalWiki `json:"external_wiki,omitempty"`
 	// set the globally editable state of the wiki
 	GloballyEditableWiki *bool `json:"globally_editable_wiki,omitempty"`
 	// either `true` to enable actions unit, or `false` to disable them.
@@ -70,8 +70,8 @@ type EditRepoOption struct {
 	// either `true` to enable the wiki for this repository or `false` to disable it.
 	HasWiki *bool `json:"has_wiki,omitempty"`
 	// either `true` to ignore whitespace for conflicts, or `false` to not ignore whitespace.
-	IgnoreWhitespaceConflicts *bool            `json:"ignore_whitespace_conflicts,omitempty"`
-	InternalTracker           *InternalTracker `json:"internal_tracker,omitempty"`
+	IgnoreWhitespaceConflicts *bool `json:"ignore_whitespace_conflicts,omitempty"`
+	InternalTracker *InternalTracker `json:"internal_tracker,omitempty"`
 	// set to a string like `8h30m0s` to set the mirror interval time
 	MirrorInterval *string `json:"mirror_interval,omitempty"`
 	// name of the repository
@@ -1192,7 +1192,7 @@ func (o *EditRepoOption) SetWikiBranch(v string) {
 }
 
 func (o EditRepoOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1341,3 +1341,5 @@ func (v *NullableEditRepoOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

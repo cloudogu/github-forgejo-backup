@@ -20,12 +20,12 @@ var _ MappedNullable = &TagProtection{}
 
 // TagProtection TagProtection represents a tag protection
 type TagProtection struct {
-	CreatedAt          *time.Time `json:"created_at,omitempty"`
-	Id                 *int64     `json:"id,omitempty"`
-	NamePattern        *string    `json:"name_pattern,omitempty"`
-	UpdatedAt          *time.Time `json:"updated_at,omitempty"`
-	WhitelistTeams     []string   `json:"whitelist_teams,omitempty"`
-	WhitelistUsernames []string   `json:"whitelist_usernames,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	NamePattern *string `json:"name_pattern,omitempty"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	WhitelistTeams []string `json:"whitelist_teams,omitempty"`
+	WhitelistUsernames []string `json:"whitelist_usernames,omitempty"`
 }
 
 // NewTagProtection instantiates a new TagProtection object
@@ -238,7 +238,7 @@ func (o *TagProtection) SetWhitelistUsernames(v []string) {
 }
 
 func (o TagProtection) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -303,3 +303,5 @@ func (v *NullableTagProtection) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

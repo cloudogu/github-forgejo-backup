@@ -19,9 +19,9 @@ var _ MappedNullable = &CreateOAuth2ApplicationOptions{}
 
 // CreateOAuth2ApplicationOptions CreateOAuth2ApplicationOptions holds options to create an oauth2 application
 type CreateOAuth2ApplicationOptions struct {
-	ConfidentialClient *bool    `json:"confidential_client,omitempty"`
-	Name               *string  `json:"name,omitempty"`
-	RedirectUris       []string `json:"redirect_uris,omitempty"`
+	ConfidentialClient *bool `json:"confidential_client,omitempty"`
+	Name *string `json:"name,omitempty"`
+	RedirectUris []string `json:"redirect_uris,omitempty"`
 }
 
 // NewCreateOAuth2ApplicationOptions instantiates a new CreateOAuth2ApplicationOptions object
@@ -138,7 +138,7 @@ func (o *CreateOAuth2ApplicationOptions) SetRedirectUris(v []string) {
 }
 
 func (o CreateOAuth2ApplicationOptions) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableCreateOAuth2ApplicationOptions) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

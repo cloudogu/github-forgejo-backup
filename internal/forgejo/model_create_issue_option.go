@@ -11,10 +11,10 @@ API version: 12.0.1+gitea-1.22.0
 package forgejo
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CreateIssueOption type satisfies the MappedNullable interface at compile time
@@ -23,17 +23,17 @@ var _ MappedNullable = &CreateIssueOption{}
 // CreateIssueOption CreateIssueOption options to create one issue
 type CreateIssueOption struct {
 	// deprecated
-	Assignee  *string    `json:"assignee,omitempty"`
-	Assignees []string   `json:"assignees,omitempty"`
-	Body      *string    `json:"body,omitempty"`
-	Closed    *bool      `json:"closed,omitempty"`
-	DueDate   *time.Time `json:"due_date,omitempty"`
+	Assignee *string `json:"assignee,omitempty"`
+	Assignees []string `json:"assignees,omitempty"`
+	Body *string `json:"body,omitempty"`
+	Closed *bool `json:"closed,omitempty"`
+	DueDate *time.Time `json:"due_date,omitempty"`
 	// list of label ids
 	Labels []int64 `json:"labels,omitempty"`
 	// milestone id
-	Milestone *int64  `json:"milestone,omitempty"`
-	Ref       *string `json:"ref,omitempty"`
-	Title     string  `json:"title"`
+	Milestone *int64 `json:"milestone,omitempty"`
+	Ref *string `json:"ref,omitempty"`
+	Title string `json:"title"`
 }
 
 type _CreateIssueOption CreateIssueOption
@@ -337,7 +337,7 @@ func (o *CreateIssueOption) SetTitle(v string) {
 }
 
 func (o CreateIssueOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -387,10 +387,10 @@ func (o *CreateIssueOption) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -446,3 +446,5 @@ func (v *NullableCreateIssueOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

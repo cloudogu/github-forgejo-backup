@@ -21,23 +21,23 @@ var _ MappedNullable = &Release{}
 // Release Release represents a repository release
 type Release struct {
 	ArchiveDownloadCount *TagArchiveDownloadCount `json:"archive_download_count,omitempty"`
-	Assets               []Attachment             `json:"assets,omitempty"`
-	Author               *User                    `json:"author,omitempty"`
-	Body                 *string                  `json:"body,omitempty"`
-	CreatedAt            *time.Time               `json:"created_at,omitempty"`
-	Draft                *bool                    `json:"draft,omitempty"`
-	HideArchiveLinks     *bool                    `json:"hide_archive_links,omitempty"`
-	HtmlUrl              *string                  `json:"html_url,omitempty"`
-	Id                   *int64                   `json:"id,omitempty"`
-	Name                 *string                  `json:"name,omitempty"`
-	Prerelease           *bool                    `json:"prerelease,omitempty"`
-	PublishedAt          *time.Time               `json:"published_at,omitempty"`
-	TagName              *string                  `json:"tag_name,omitempty"`
-	TarballUrl           *string                  `json:"tarball_url,omitempty"`
-	TargetCommitish      *string                  `json:"target_commitish,omitempty"`
-	UploadUrl            *string                  `json:"upload_url,omitempty"`
-	Url                  *string                  `json:"url,omitempty"`
-	ZipballUrl           *string                  `json:"zipball_url,omitempty"`
+	Assets []Attachment `json:"assets,omitempty"`
+	Author *User `json:"author,omitempty"`
+	Body *string `json:"body,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	Draft *bool `json:"draft,omitempty"`
+	HideArchiveLinks *bool `json:"hide_archive_links,omitempty"`
+	HtmlUrl *string `json:"html_url,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Prerelease *bool `json:"prerelease,omitempty"`
+	PublishedAt *time.Time `json:"published_at,omitempty"`
+	TagName *string `json:"tag_name,omitempty"`
+	TarballUrl *string `json:"tarball_url,omitempty"`
+	TargetCommitish *string `json:"target_commitish,omitempty"`
+	UploadUrl *string `json:"upload_url,omitempty"`
+	Url *string `json:"url,omitempty"`
+	ZipballUrl *string `json:"zipball_url,omitempty"`
 }
 
 // NewRelease instantiates a new Release object
@@ -634,7 +634,7 @@ func (o *Release) SetZipballUrl(v string) {
 }
 
 func (o Release) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -735,3 +735,5 @@ func (v *NullableRelease) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

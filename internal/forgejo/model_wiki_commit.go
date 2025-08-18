@@ -19,10 +19,10 @@ var _ MappedNullable = &WikiCommit{}
 
 // WikiCommit WikiCommit page commit/revision
 type WikiCommit struct {
-	Author   *CommitUser `json:"author,omitempty"`
+	Author *CommitUser `json:"author,omitempty"`
 	Commiter *CommitUser `json:"commiter,omitempty"`
-	Message  *string     `json:"message,omitempty"`
-	Sha      *string     `json:"sha,omitempty"`
+	Message *string `json:"message,omitempty"`
+	Sha *string `json:"sha,omitempty"`
 }
 
 // NewWikiCommit instantiates a new WikiCommit object
@@ -171,7 +171,7 @@ func (o *WikiCommit) SetSha(v string) {
 }
 
 func (o WikiCommit) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,3 +230,5 @@ func (v *NullableWikiCommit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

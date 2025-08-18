@@ -20,16 +20,16 @@ var _ MappedNullable = &Milestone{}
 
 // Milestone Milestone milestone is a collection of issues on one repository
 type Milestone struct {
-	ClosedAt     *time.Time `json:"closed_at,omitempty"`
-	ClosedIssues *int64     `json:"closed_issues,omitempty"`
-	CreatedAt    *time.Time `json:"created_at,omitempty"`
-	Description  *string    `json:"description,omitempty"`
-	DueOn        *time.Time `json:"due_on,omitempty"`
-	Id           *int64     `json:"id,omitempty"`
-	OpenIssues   *int64     `json:"open_issues,omitempty"`
+	ClosedAt *time.Time `json:"closed_at,omitempty"`
+	ClosedIssues *int64 `json:"closed_issues,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	Description *string `json:"description,omitempty"`
+	DueOn *time.Time `json:"due_on,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	OpenIssues *int64 `json:"open_issues,omitempty"`
 	// StateType issue state type
-	State     *string    `json:"state,omitempty"`
-	Title     *string    `json:"title,omitempty"`
+	State *string `json:"state,omitempty"`
+	Title *string `json:"title,omitempty"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 }
 
@@ -371,7 +371,7 @@ func (o *Milestone) SetUpdatedAt(v time.Time) {
 }
 
 func (o Milestone) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -448,3 +448,5 @@ func (v *NullableMilestone) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

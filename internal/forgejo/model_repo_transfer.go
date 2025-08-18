@@ -19,9 +19,9 @@ var _ MappedNullable = &RepoTransfer{}
 
 // RepoTransfer RepoTransfer represents a pending repo transfer
 type RepoTransfer struct {
-	Doer      *User  `json:"doer,omitempty"`
-	Recipient *User  `json:"recipient,omitempty"`
-	Teams     []Team `json:"teams,omitempty"`
+	Doer *User `json:"doer,omitempty"`
+	Recipient *User `json:"recipient,omitempty"`
+	Teams []Team `json:"teams,omitempty"`
 }
 
 // NewRepoTransfer instantiates a new RepoTransfer object
@@ -138,7 +138,7 @@ func (o *RepoTransfer) SetTeams(v []Team) {
 }
 
 func (o RepoTransfer) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableRepoTransfer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

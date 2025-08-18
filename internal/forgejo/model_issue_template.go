@@ -19,14 +19,14 @@ var _ MappedNullable = &IssueTemplate{}
 
 // IssueTemplate IssueTemplate represents an issue template for a repository
 type IssueTemplate struct {
-	About    *string          `json:"about,omitempty"`
-	Body     []IssueFormField `json:"body,omitempty"`
-	Content  *string          `json:"content,omitempty"`
-	FileName *string          `json:"file_name,omitempty"`
-	Labels   []string         `json:"labels,omitempty"`
-	Name     *string          `json:"name,omitempty"`
-	Ref      *string          `json:"ref,omitempty"`
-	Title    *string          `json:"title,omitempty"`
+	About *string `json:"about,omitempty"`
+	Body []IssueFormField `json:"body,omitempty"`
+	Content *string `json:"content,omitempty"`
+	FileName *string `json:"file_name,omitempty"`
+	Labels []string `json:"labels,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Ref *string `json:"ref,omitempty"`
+	Title *string `json:"title,omitempty"`
 }
 
 // NewIssueTemplate instantiates a new IssueTemplate object
@@ -303,7 +303,7 @@ func (o *IssueTemplate) SetTitle(v string) {
 }
 
 func (o IssueTemplate) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -374,3 +374,5 @@ func (v *NullableIssueTemplate) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

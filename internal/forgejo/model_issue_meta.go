@@ -19,9 +19,9 @@ var _ MappedNullable = &IssueMeta{}
 
 // IssueMeta IssueMeta basic issue information
 type IssueMeta struct {
-	Index *int64  `json:"index,omitempty"`
+	Index *int64 `json:"index,omitempty"`
 	Owner *string `json:"owner,omitempty"`
-	Repo  *string `json:"repo,omitempty"`
+	Repo *string `json:"repo,omitempty"`
 }
 
 // NewIssueMeta instantiates a new IssueMeta object
@@ -138,7 +138,7 @@ func (o *IssueMeta) SetRepo(v string) {
 }
 
 func (o IssueMeta) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableIssueMeta) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

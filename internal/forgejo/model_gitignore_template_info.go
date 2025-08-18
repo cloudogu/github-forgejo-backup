@@ -19,7 +19,7 @@ var _ MappedNullable = &GitignoreTemplateInfo{}
 
 // GitignoreTemplateInfo GitignoreTemplateInfo name and text of a gitignore template
 type GitignoreTemplateInfo struct {
-	Name   *string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Source *string `json:"source,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *GitignoreTemplateInfo) SetSource(v string) {
 }
 
 func (o GitignoreTemplateInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableGitignoreTemplateInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

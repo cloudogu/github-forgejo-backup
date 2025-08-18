@@ -19,15 +19,15 @@ var _ MappedNullable = &ChangedFile{}
 
 // ChangedFile ChangedFile store information about files affected by the pull request
 type ChangedFile struct {
-	Additions        *int64  `json:"additions,omitempty"`
-	Changes          *int64  `json:"changes,omitempty"`
-	ContentsUrl      *string `json:"contents_url,omitempty"`
-	Deletions        *int64  `json:"deletions,omitempty"`
-	Filename         *string `json:"filename,omitempty"`
-	HtmlUrl          *string `json:"html_url,omitempty"`
+	Additions *int64 `json:"additions,omitempty"`
+	Changes *int64 `json:"changes,omitempty"`
+	ContentsUrl *string `json:"contents_url,omitempty"`
+	Deletions *int64 `json:"deletions,omitempty"`
+	Filename *string `json:"filename,omitempty"`
+	HtmlUrl *string `json:"html_url,omitempty"`
 	PreviousFilename *string `json:"previous_filename,omitempty"`
-	RawUrl           *string `json:"raw_url,omitempty"`
-	Status           *string `json:"status,omitempty"`
+	RawUrl *string `json:"raw_url,omitempty"`
+	Status *string `json:"status,omitempty"`
 }
 
 // NewChangedFile instantiates a new ChangedFile object
@@ -336,7 +336,7 @@ func (o *ChangedFile) SetStatus(v string) {
 }
 
 func (o ChangedFile) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -410,3 +410,5 @@ func (v *NullableChangedFile) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

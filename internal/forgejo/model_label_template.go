@@ -19,10 +19,10 @@ var _ MappedNullable = &LabelTemplate{}
 
 // LabelTemplate LabelTemplate info of a Label template
 type LabelTemplate struct {
-	Color       *string `json:"color,omitempty"`
+	Color *string `json:"color,omitempty"`
 	Description *string `json:"description,omitempty"`
-	Exclusive   *bool   `json:"exclusive,omitempty"`
-	Name        *string `json:"name,omitempty"`
+	Exclusive *bool `json:"exclusive,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // NewLabelTemplate instantiates a new LabelTemplate object
@@ -171,7 +171,7 @@ func (o *LabelTemplate) SetName(v string) {
 }
 
 func (o LabelTemplate) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,3 +230,5 @@ func (v *NullableLabelTemplate) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

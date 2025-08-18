@@ -20,15 +20,15 @@ var _ MappedNullable = &Package{}
 
 // Package Package represents a package
 type Package struct {
-	CreatedAt  *time.Time  `json:"created_at,omitempty"`
-	Creator    *User       `json:"creator,omitempty"`
-	HtmlUrl    *string     `json:"html_url,omitempty"`
-	Id         *int64      `json:"id,omitempty"`
-	Name       *string     `json:"name,omitempty"`
-	Owner      *User       `json:"owner,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	Creator *User `json:"creator,omitempty"`
+	HtmlUrl *string `json:"html_url,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Owner *User `json:"owner,omitempty"`
 	Repository *Repository `json:"repository,omitempty"`
-	Type       *string     `json:"type,omitempty"`
-	Version    *string     `json:"version,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Version *string `json:"version,omitempty"`
 }
 
 // NewPackage instantiates a new Package object
@@ -337,7 +337,7 @@ func (o *Package) SetVersion(v string) {
 }
 
 func (o Package) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -411,3 +411,5 @@ func (v *NullablePackage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

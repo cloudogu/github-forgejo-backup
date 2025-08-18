@@ -19,12 +19,12 @@ var _ MappedNullable = &GitTreeResponse{}
 
 // GitTreeResponse GitTreeResponse returns a git tree
 type GitTreeResponse struct {
-	Page       *int64     `json:"page,omitempty"`
-	Sha        *string    `json:"sha,omitempty"`
-	TotalCount *int64     `json:"total_count,omitempty"`
-	Tree       []GitEntry `json:"tree,omitempty"`
-	Truncated  *bool      `json:"truncated,omitempty"`
-	Url        *string    `json:"url,omitempty"`
+	Page *int64 `json:"page,omitempty"`
+	Sha *string `json:"sha,omitempty"`
+	TotalCount *int64 `json:"total_count,omitempty"`
+	Tree []GitEntry `json:"tree,omitempty"`
+	Truncated *bool `json:"truncated,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewGitTreeResponse instantiates a new GitTreeResponse object
@@ -237,7 +237,7 @@ func (o *GitTreeResponse) SetUrl(v string) {
 }
 
 func (o GitTreeResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -302,3 +302,5 @@ func (v *NullableGitTreeResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

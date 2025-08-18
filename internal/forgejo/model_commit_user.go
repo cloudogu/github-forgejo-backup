@@ -19,9 +19,9 @@ var _ MappedNullable = &CommitUser{}
 
 // CommitUser struct for CommitUser
 type CommitUser struct {
-	Date  *string `json:"date,omitempty"`
+	Date *string `json:"date,omitempty"`
 	Email *string `json:"email,omitempty"`
-	Name  *string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // NewCommitUser instantiates a new CommitUser object
@@ -138,7 +138,7 @@ func (o *CommitUser) SetName(v string) {
 }
 
 func (o CommitUser) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableCommitUser) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

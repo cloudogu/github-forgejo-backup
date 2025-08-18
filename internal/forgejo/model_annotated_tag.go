@@ -19,14 +19,14 @@ var _ MappedNullable = &AnnotatedTag{}
 
 // AnnotatedTag AnnotatedTag represents an annotated tag
 type AnnotatedTag struct {
-	ArchiveDownloadCount *TagArchiveDownloadCount   `json:"archive_download_count,omitempty"`
-	Message              *string                    `json:"message,omitempty"`
-	Object               *AnnotatedTagObject        `json:"object,omitempty"`
-	Sha                  *string                    `json:"sha,omitempty"`
-	Tag                  *string                    `json:"tag,omitempty"`
-	Tagger               *CommitUser                `json:"tagger,omitempty"`
-	Url                  *string                    `json:"url,omitempty"`
-	Verification         *PayloadCommitVerification `json:"verification,omitempty"`
+	ArchiveDownloadCount *TagArchiveDownloadCount `json:"archive_download_count,omitempty"`
+	Message *string `json:"message,omitempty"`
+	Object *AnnotatedTagObject `json:"object,omitempty"`
+	Sha *string `json:"sha,omitempty"`
+	Tag *string `json:"tag,omitempty"`
+	Tagger *CommitUser `json:"tagger,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Verification *PayloadCommitVerification `json:"verification,omitempty"`
 }
 
 // NewAnnotatedTag instantiates a new AnnotatedTag object
@@ -303,7 +303,7 @@ func (o *AnnotatedTag) SetVerification(v PayloadCommitVerification) {
 }
 
 func (o AnnotatedTag) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -374,3 +374,5 @@ func (v *NullableAnnotatedTag) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

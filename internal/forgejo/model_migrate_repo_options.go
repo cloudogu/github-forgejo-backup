@@ -11,8 +11,8 @@ API version: 12.0.1+gitea-1.22.0
 package forgejo
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -21,28 +21,28 @@ var _ MappedNullable = &MigrateRepoOptions{}
 
 // MigrateRepoOptions MigrateRepoOptions options for migrating repository's this is used to interact with api v1
 type MigrateRepoOptions struct {
-	AuthPassword   *string `json:"auth_password,omitempty"`
-	AuthToken      *string `json:"auth_token,omitempty"`
-	AuthUsername   *string `json:"auth_username,omitempty"`
-	CloneAddr      string  `json:"clone_addr"`
-	Description    *string `json:"description,omitempty"`
-	Issues         *bool   `json:"issues,omitempty"`
-	Labels         *bool   `json:"labels,omitempty"`
-	Lfs            *bool   `json:"lfs,omitempty"`
-	LfsEndpoint    *string `json:"lfs_endpoint,omitempty"`
-	Milestones     *bool   `json:"milestones,omitempty"`
-	Mirror         *bool   `json:"mirror,omitempty"`
+	AuthPassword *string `json:"auth_password,omitempty"`
+	AuthToken *string `json:"auth_token,omitempty"`
+	AuthUsername *string `json:"auth_username,omitempty"`
+	CloneAddr string `json:"clone_addr"`
+	Description *string `json:"description,omitempty"`
+	Issues *bool `json:"issues,omitempty"`
+	Labels *bool `json:"labels,omitempty"`
+	Lfs *bool `json:"lfs,omitempty"`
+	LfsEndpoint *string `json:"lfs_endpoint,omitempty"`
+	Milestones *bool `json:"milestones,omitempty"`
+	Mirror *bool `json:"mirror,omitempty"`
 	MirrorInterval *string `json:"mirror_interval,omitempty"`
-	Private        *bool   `json:"private,omitempty"`
-	PullRequests   *bool   `json:"pull_requests,omitempty"`
-	Releases       *bool   `json:"releases,omitempty"`
-	RepoName       string  `json:"repo_name"`
+	Private *bool `json:"private,omitempty"`
+	PullRequests *bool `json:"pull_requests,omitempty"`
+	Releases *bool `json:"releases,omitempty"`
+	RepoName string `json:"repo_name"`
 	// Name of User or Organisation who will own Repo after migration
 	RepoOwner *string `json:"repo_owner,omitempty"`
-	Service   *string `json:"service,omitempty"`
+	Service *string `json:"service,omitempty"`
 	// deprecated (only for backwards compatibility)
-	Uid  *int64 `json:"uid,omitempty"`
-	Wiki *bool  `json:"wiki,omitempty"`
+	Uid *int64 `json:"uid,omitempty"`
+	Wiki *bool `json:"wiki,omitempty"`
 }
 
 type _MigrateRepoOptions MigrateRepoOptions
@@ -691,7 +691,7 @@ func (o *MigrateRepoOptions) SetWiki(v bool) {
 }
 
 func (o MigrateRepoOptions) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -773,10 +773,10 @@ func (o *MigrateRepoOptions) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -832,3 +832,5 @@ func (v *NullableMigrateRepoOptions) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

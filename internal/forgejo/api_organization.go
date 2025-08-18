@@ -19,14 +19,15 @@ import (
 	"strings"
 )
 
+
 // OrganizationAPIService OrganizationAPI service
 type OrganizationAPIService service
 
 type ApiCreateOrgRepoRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	body       *CreateRepoOption
+	org string
+	body *CreateRepoOption
 }
 
 func (r ApiCreateOrgRepoRequest) Body(body CreateRepoOption) ApiCreateOrgRepoRequest {
@@ -41,27 +42,26 @@ func (r ApiCreateOrgRepoRequest) Execute() (*Repository, *http.Response, error) 
 /*
 CreateOrgRepo Create a repository in an organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of organization
-	@return ApiCreateOrgRepoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of organization
+ @return ApiCreateOrgRepoRequest
 */
 func (a *OrganizationAPIService) CreateOrgRepo(ctx context.Context, org string) ApiCreateOrgRepoRequest {
 	return ApiCreateOrgRepoRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Repository
+//  @return Repository
 func (a *OrganizationAPIService) CreateOrgRepoExecute(r ApiCreateOrgRepoRequest) (*Repository, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Repository
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Repository
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.CreateOrgRepo")
@@ -208,8 +208,8 @@ func (a *OrganizationAPIService) CreateOrgRepoExecute(r ApiCreateOrgRepoRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -219,8 +219,8 @@ func (a *OrganizationAPIService) CreateOrgRepoExecute(r ApiCreateOrgRepoRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -230,8 +230,8 @@ func (a *OrganizationAPIService) CreateOrgRepoExecute(r ApiCreateOrgRepoRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -249,10 +249,10 @@ func (a *OrganizationAPIService) CreateOrgRepoExecute(r ApiCreateOrgRepoRequest)
 }
 
 type ApiCreateOrgRepoDeprecatedRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	body       *CreateRepoOption
+	org string
+	body *CreateRepoOption
 }
 
 func (r ApiCreateOrgRepoDeprecatedRequest) Body(body CreateRepoOption) ApiCreateOrgRepoDeprecatedRequest {
@@ -267,31 +267,29 @@ func (r ApiCreateOrgRepoDeprecatedRequest) Execute() (*Repository, *http.Respons
 /*
 CreateOrgRepoDeprecated Create a repository in an organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of organization
-	@return ApiCreateOrgRepoDeprecatedRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of organization
+ @return ApiCreateOrgRepoDeprecatedRequest
 
 Deprecated
 */
 func (a *OrganizationAPIService) CreateOrgRepoDeprecated(ctx context.Context, org string) ApiCreateOrgRepoDeprecatedRequest {
 	return ApiCreateOrgRepoDeprecatedRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Repository
-//
+//  @return Repository
 // Deprecated
 func (a *OrganizationAPIService) CreateOrgRepoDeprecatedExecute(r ApiCreateOrgRepoDeprecatedRequest) (*Repository, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Repository
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Repository
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.CreateOrgRepoDeprecated")
@@ -438,8 +436,8 @@ func (a *OrganizationAPIService) CreateOrgRepoDeprecatedExecute(r ApiCreateOrgRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -449,8 +447,8 @@ func (a *OrganizationAPIService) CreateOrgRepoDeprecatedExecute(r ApiCreateOrgRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -460,8 +458,8 @@ func (a *OrganizationAPIService) CreateOrgRepoDeprecatedExecute(r ApiCreateOrgRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -479,11 +477,11 @@ func (a *OrganizationAPIService) CreateOrgRepoDeprecatedExecute(r ApiCreateOrgRe
 }
 
 type ApiCreateOrgVariableRequest struct {
-	ctx          context.Context
-	ApiService   *OrganizationAPIService
-	org          string
+	ctx context.Context
+	ApiService *OrganizationAPIService
+	org string
 	variablename string
-	body         *CreateVariableOption
+	body *CreateVariableOption
 }
 
 func (r ApiCreateOrgVariableRequest) Body(body CreateVariableOption) ApiCreateOrgVariableRequest {
@@ -498,16 +496,16 @@ func (r ApiCreateOrgVariableRequest) Execute() (*http.Response, error) {
 /*
 CreateOrgVariable Create an org-level variable
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@param variablename name of the variable
-	@return ApiCreateOrgVariableRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @param variablename name of the variable
+ @return ApiCreateOrgVariableRequest
 */
 func (a *OrganizationAPIService) CreateOrgVariable(ctx context.Context, org string, variablename string) ApiCreateOrgVariableRequest {
 	return ApiCreateOrgVariableRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		org:          org,
+		ApiService: a,
+		ctx: ctx,
+		org: org,
 		variablename: variablename,
 	}
 }
@@ -515,9 +513,9 @@ func (a *OrganizationAPIService) CreateOrgVariable(ctx context.Context, org stri
 // Execute executes the request
 func (a *OrganizationAPIService) CreateOrgVariableExecute(r ApiCreateOrgVariableRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.CreateOrgVariable")
@@ -665,8 +663,8 @@ func (a *OrganizationAPIService) CreateOrgVariableExecute(r ApiCreateOrgVariable
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -676,8 +674,8 @@ func (a *OrganizationAPIService) CreateOrgVariableExecute(r ApiCreateOrgVariable
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -686,9 +684,9 @@ func (a *OrganizationAPIService) CreateOrgVariableExecute(r ApiCreateOrgVariable
 }
 
 type ApiDeleteOrgSecretRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
+	org string
 	secretname string
 }
 
@@ -699,16 +697,16 @@ func (r ApiDeleteOrgSecretRequest) Execute() (*http.Response, error) {
 /*
 DeleteOrgSecret Delete a secret in an organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of organization
-	@param secretname name of the secret
-	@return ApiDeleteOrgSecretRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of organization
+ @param secretname name of the secret
+ @return ApiDeleteOrgSecretRequest
 */
 func (a *OrganizationAPIService) DeleteOrgSecret(ctx context.Context, org string, secretname string) ApiDeleteOrgSecretRequest {
 	return ApiDeleteOrgSecretRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 		secretname: secretname,
 	}
 }
@@ -716,9 +714,9 @@ func (a *OrganizationAPIService) DeleteOrgSecret(ctx context.Context, org string
 // Execute executes the request
 func (a *OrganizationAPIService) DeleteOrgSecretExecute(r ApiDeleteOrgSecretRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.DeleteOrgSecret")
@@ -864,8 +862,8 @@ func (a *OrganizationAPIService) DeleteOrgSecretExecute(r ApiDeleteOrgSecretRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -875,8 +873,8 @@ func (a *OrganizationAPIService) DeleteOrgSecretExecute(r ApiDeleteOrgSecretRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -885,9 +883,9 @@ func (a *OrganizationAPIService) DeleteOrgSecretExecute(r ApiDeleteOrgSecretRequ
 }
 
 type ApiDeleteOrgVariableRequest struct {
-	ctx          context.Context
-	ApiService   *OrganizationAPIService
-	org          string
+	ctx context.Context
+	ApiService *OrganizationAPIService
+	org string
 	variablename string
 }
 
@@ -898,29 +896,28 @@ func (r ApiDeleteOrgVariableRequest) Execute() (*ActionVariable, *http.Response,
 /*
 DeleteOrgVariable Delete an org-level variable
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@param variablename name of the variable
-	@return ApiDeleteOrgVariableRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @param variablename name of the variable
+ @return ApiDeleteOrgVariableRequest
 */
 func (a *OrganizationAPIService) DeleteOrgVariable(ctx context.Context, org string, variablename string) ApiDeleteOrgVariableRequest {
 	return ApiDeleteOrgVariableRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		org:          org,
+		ApiService: a,
+		ctx: ctx,
+		org: org,
 		variablename: variablename,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ActionVariable
+//  @return ActionVariable
 func (a *OrganizationAPIService) DeleteOrgVariableExecute(r ApiDeleteOrgVariableRequest) (*ActionVariable, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ActionVariable
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ActionVariable
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.DeleteOrgVariable")
@@ -1066,8 +1063,8 @@ func (a *OrganizationAPIService) DeleteOrgVariableExecute(r ApiDeleteOrgVariable
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1077,8 +1074,8 @@ func (a *OrganizationAPIService) DeleteOrgVariableExecute(r ApiDeleteOrgVariable
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1096,9 +1093,9 @@ func (a *OrganizationAPIService) DeleteOrgVariableExecute(r ApiDeleteOrgVariable
 }
 
 type ApiGetOrgVariableRequest struct {
-	ctx          context.Context
-	ApiService   *OrganizationAPIService
-	org          string
+	ctx context.Context
+	ApiService *OrganizationAPIService
+	org string
 	variablename string
 }
 
@@ -1109,29 +1106,28 @@ func (r ApiGetOrgVariableRequest) Execute() (*ActionVariable, *http.Response, er
 /*
 GetOrgVariable Get an org-level variable
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@param variablename name of the variable
-	@return ApiGetOrgVariableRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @param variablename name of the variable
+ @return ApiGetOrgVariableRequest
 */
 func (a *OrganizationAPIService) GetOrgVariable(ctx context.Context, org string, variablename string) ApiGetOrgVariableRequest {
 	return ApiGetOrgVariableRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		org:          org,
+		ApiService: a,
+		ctx: ctx,
+		org: org,
 		variablename: variablename,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ActionVariable
+//  @return ActionVariable
 func (a *OrganizationAPIService) GetOrgVariableExecute(r ApiGetOrgVariableRequest) (*ActionVariable, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ActionVariable
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ActionVariable
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.GetOrgVariable")
@@ -1277,8 +1273,8 @@ func (a *OrganizationAPIService) GetOrgVariableExecute(r ApiGetOrgVariableReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1288,8 +1284,8 @@ func (a *OrganizationAPIService) GetOrgVariableExecute(r ApiGetOrgVariableReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1307,11 +1303,11 @@ func (a *OrganizationAPIService) GetOrgVariableExecute(r ApiGetOrgVariableReques
 }
 
 type ApiGetOrgVariablesListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	page       *int32
-	limit      *int32
+	org string
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -1333,27 +1329,26 @@ func (r ApiGetOrgVariablesListRequest) Execute() ([]ActionVariable, *http.Respon
 /*
 GetOrgVariablesList Get an org-level variables list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiGetOrgVariablesListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiGetOrgVariablesListRequest
 */
 func (a *OrganizationAPIService) GetOrgVariablesList(ctx context.Context, org string) ApiGetOrgVariablesListRequest {
 	return ApiGetOrgVariablesListRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []ActionVariable
+//  @return []ActionVariable
 func (a *OrganizationAPIService) GetOrgVariablesListExecute(r ApiGetOrgVariablesListRequest) ([]ActionVariable, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []ActionVariable
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []ActionVariable
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.GetOrgVariablesList")
@@ -1504,8 +1499,8 @@ func (a *OrganizationAPIService) GetOrgVariablesListExecute(r ApiGetOrgVariables
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1515,8 +1510,8 @@ func (a *OrganizationAPIService) GetOrgVariablesListExecute(r ApiGetOrgVariables
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1534,10 +1529,10 @@ func (a *OrganizationAPIService) GetOrgVariablesListExecute(r ApiGetOrgVariables
 }
 
 type ApiOrgAddTeamMemberRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	id         int64
-	username   string
+	id int64
+	username string
 }
 
 func (r ApiOrgAddTeamMemberRequest) Execute() (*http.Response, error) {
@@ -1547,26 +1542,26 @@ func (r ApiOrgAddTeamMemberRequest) Execute() (*http.Response, error) {
 /*
 OrgAddTeamMember Add a team member
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id id of the team
-	@param username username of the user to add
-	@return ApiOrgAddTeamMemberRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of the team
+ @param username username of the user to add
+ @return ApiOrgAddTeamMemberRequest
 */
 func (a *OrganizationAPIService) OrgAddTeamMember(ctx context.Context, id int64, username string) ApiOrgAddTeamMemberRequest {
 	return ApiOrgAddTeamMemberRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-		username:   username,
+		ctx: ctx,
+		id: id,
+		username: username,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgAddTeamMemberExecute(r ApiOrgAddTeamMemberRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgAddTeamMember")
@@ -1712,8 +1707,8 @@ func (a *OrganizationAPIService) OrgAddTeamMemberExecute(r ApiOrgAddTeamMemberRe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1722,11 +1717,11 @@ func (a *OrganizationAPIService) OrgAddTeamMemberExecute(r ApiOrgAddTeamMemberRe
 }
 
 type ApiOrgAddTeamRepositoryRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	id         int64
-	org        string
-	repo       string
+	id int64
+	org string
+	repo string
 }
 
 func (r ApiOrgAddTeamRepositoryRequest) Execute() (*http.Response, error) {
@@ -1736,28 +1731,28 @@ func (r ApiOrgAddTeamRepositoryRequest) Execute() (*http.Response, error) {
 /*
 OrgAddTeamRepository Add a repository to a team
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id id of the team
-	@param org organization that owns the repo to add
-	@param repo name of the repo to add
-	@return ApiOrgAddTeamRepositoryRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of the team
+ @param org organization that owns the repo to add
+ @param repo name of the repo to add
+ @return ApiOrgAddTeamRepositoryRequest
 */
 func (a *OrganizationAPIService) OrgAddTeamRepository(ctx context.Context, id int64, org string, repo string) ApiOrgAddTeamRepositoryRequest {
 	return ApiOrgAddTeamRepositoryRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-		org:        org,
-		repo:       repo,
+		ctx: ctx,
+		id: id,
+		org: org,
+		repo: repo,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgAddTeamRepositoryExecute(r ApiOrgAddTeamRepositoryRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgAddTeamRepository")
@@ -1904,8 +1899,8 @@ func (a *OrganizationAPIService) OrgAddTeamRepositoryExecute(r ApiOrgAddTeamRepo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1915,8 +1910,8 @@ func (a *OrganizationAPIService) OrgAddTeamRepositoryExecute(r ApiOrgAddTeamRepo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1925,10 +1920,10 @@ func (a *OrganizationAPIService) OrgAddTeamRepositoryExecute(r ApiOrgAddTeamRepo
 }
 
 type ApiOrgBlockUserRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	username   string
+	org string
+	username string
 }
 
 func (r ApiOrgBlockUserRequest) Execute() (*http.Response, error) {
@@ -1938,26 +1933,26 @@ func (r ApiOrgBlockUserRequest) Execute() (*http.Response, error) {
 /*
 OrgBlockUser Blocks a user from the organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the org
-	@param username username of the user
-	@return ApiOrgBlockUserRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the org
+ @param username username of the user
+ @return ApiOrgBlockUserRequest
 */
 func (a *OrganizationAPIService) OrgBlockUser(ctx context.Context, org string, username string) ApiOrgBlockUserRequest {
 	return ApiOrgBlockUserRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
-		username:   username,
+		ctx: ctx,
+		org: org,
+		username: username,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgBlockUserExecute(r ApiOrgBlockUserRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgBlockUser")
@@ -2103,8 +2098,8 @@ func (a *OrganizationAPIService) OrgBlockUserExecute(r ApiOrgBlockUserRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -2114,8 +2109,8 @@ func (a *OrganizationAPIService) OrgBlockUserExecute(r ApiOrgBlockUserRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2124,9 +2119,9 @@ func (a *OrganizationAPIService) OrgBlockUserExecute(r ApiOrgBlockUserRequest) (
 }
 
 type ApiOrgCheckQuotaRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
+	org string
 }
 
 func (r ApiOrgCheckQuotaRequest) Execute() (*http.Response, error) {
@@ -2136,24 +2131,24 @@ func (r ApiOrgCheckQuotaRequest) Execute() (*http.Response, error) {
 /*
 OrgCheckQuota Check if the organization is over quota for a given subject
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgCheckQuotaRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgCheckQuotaRequest
 */
 func (a *OrganizationAPIService) OrgCheckQuota(ctx context.Context, org string) ApiOrgCheckQuotaRequest {
 	return ApiOrgCheckQuotaRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgCheckQuotaExecute(r ApiOrgCheckQuotaRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgCheckQuota")
@@ -2298,8 +2293,8 @@ func (a *OrganizationAPIService) OrgCheckQuotaExecute(r ApiOrgCheckQuotaRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2309,8 +2304,8 @@ func (a *OrganizationAPIService) OrgCheckQuotaExecute(r ApiOrgCheckQuotaRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -2320,8 +2315,8 @@ func (a *OrganizationAPIService) OrgCheckQuotaExecute(r ApiOrgCheckQuotaRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2330,10 +2325,10 @@ func (a *OrganizationAPIService) OrgCheckQuotaExecute(r ApiOrgCheckQuotaRequest)
 }
 
 type ApiOrgConcealMemberRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	username   string
+	org string
+	username string
 }
 
 func (r ApiOrgConcealMemberRequest) Execute() (*http.Response, error) {
@@ -2343,26 +2338,26 @@ func (r ApiOrgConcealMemberRequest) Execute() (*http.Response, error) {
 /*
 OrgConcealMember Conceal a user's membership
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@param username username of the user
-	@return ApiOrgConcealMemberRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @param username username of the user
+ @return ApiOrgConcealMemberRequest
 */
 func (a *OrganizationAPIService) OrgConcealMember(ctx context.Context, org string, username string) ApiOrgConcealMemberRequest {
 	return ApiOrgConcealMemberRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
-		username:   username,
+		ctx: ctx,
+		org: org,
+		username: username,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgConcealMemberExecute(r ApiOrgConcealMemberRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgConcealMember")
@@ -2508,8 +2503,8 @@ func (a *OrganizationAPIService) OrgConcealMemberExecute(r ApiOrgConcealMemberRe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2519,8 +2514,8 @@ func (a *OrganizationAPIService) OrgConcealMemberExecute(r ApiOrgConcealMemberRe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2529,8 +2524,8 @@ func (a *OrganizationAPIService) OrgConcealMemberExecute(r ApiOrgConcealMemberRe
 }
 
 type ApiOrgCreateRequest struct {
-	ctx          context.Context
-	ApiService   *OrganizationAPIService
+	ctx context.Context
+	ApiService *OrganizationAPIService
 	organization *CreateOrgOption
 }
 
@@ -2546,25 +2541,24 @@ func (r ApiOrgCreateRequest) Execute() (*Organization, *http.Response, error) {
 /*
 OrgCreate Create an organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOrgCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOrgCreateRequest
 */
 func (a *OrganizationAPIService) OrgCreate(ctx context.Context) ApiOrgCreateRequest {
 	return ApiOrgCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Organization
+//  @return Organization
 func (a *OrganizationAPIService) OrgCreateExecute(r ApiOrgCreateRequest) (*Organization, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Organization
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Organization
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgCreate")
@@ -2713,8 +2707,8 @@ func (a *OrganizationAPIService) OrgCreateExecute(r ApiOrgCreateRequest) (*Organ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -2724,8 +2718,8 @@ func (a *OrganizationAPIService) OrgCreateExecute(r ApiOrgCreateRequest) (*Organ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2743,10 +2737,10 @@ func (a *OrganizationAPIService) OrgCreateExecute(r ApiOrgCreateRequest) (*Organ
 }
 
 type ApiOrgCreateHookRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	body       *CreateHookOption
+	org string
+	body *CreateHookOption
 }
 
 func (r ApiOrgCreateHookRequest) Body(body CreateHookOption) ApiOrgCreateHookRequest {
@@ -2761,27 +2755,26 @@ func (r ApiOrgCreateHookRequest) Execute() (*Hook, *http.Response, error) {
 /*
 OrgCreateHook Create a hook
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgCreateHookRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgCreateHookRequest
 */
 func (a *OrganizationAPIService) OrgCreateHook(ctx context.Context, org string) ApiOrgCreateHookRequest {
 	return ApiOrgCreateHookRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Hook
+//  @return Hook
 func (a *OrganizationAPIService) OrgCreateHookExecute(r ApiOrgCreateHookRequest) (*Hook, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Hook
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Hook
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgCreateHook")
@@ -2931,8 +2924,8 @@ func (a *OrganizationAPIService) OrgCreateHookExecute(r ApiOrgCreateHookRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2950,10 +2943,10 @@ func (a *OrganizationAPIService) OrgCreateHookExecute(r ApiOrgCreateHookRequest)
 }
 
 type ApiOrgCreateLabelRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	body       *CreateLabelOption
+	org string
+	body *CreateLabelOption
 }
 
 func (r ApiOrgCreateLabelRequest) Body(body CreateLabelOption) ApiOrgCreateLabelRequest {
@@ -2968,27 +2961,26 @@ func (r ApiOrgCreateLabelRequest) Execute() (*Label, *http.Response, error) {
 /*
 OrgCreateLabel Create a label for an organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgCreateLabelRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgCreateLabelRequest
 */
 func (a *OrganizationAPIService) OrgCreateLabel(ctx context.Context, org string) ApiOrgCreateLabelRequest {
 	return ApiOrgCreateLabelRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Label
+//  @return Label
 func (a *OrganizationAPIService) OrgCreateLabelExecute(r ApiOrgCreateLabelRequest) (*Label, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Label
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Label
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgCreateLabel")
@@ -3135,8 +3127,8 @@ func (a *OrganizationAPIService) OrgCreateLabelExecute(r ApiOrgCreateLabelReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -3146,8 +3138,8 @@ func (a *OrganizationAPIService) OrgCreateLabelExecute(r ApiOrgCreateLabelReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3165,10 +3157,10 @@ func (a *OrganizationAPIService) OrgCreateLabelExecute(r ApiOrgCreateLabelReques
 }
 
 type ApiOrgCreateTeamRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	body       *CreateTeamOption
+	org string
+	body *CreateTeamOption
 }
 
 func (r ApiOrgCreateTeamRequest) Body(body CreateTeamOption) ApiOrgCreateTeamRequest {
@@ -3183,27 +3175,26 @@ func (r ApiOrgCreateTeamRequest) Execute() (*Team, *http.Response, error) {
 /*
 OrgCreateTeam Create a team
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgCreateTeamRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgCreateTeamRequest
 */
 func (a *OrganizationAPIService) OrgCreateTeam(ctx context.Context, org string) ApiOrgCreateTeamRequest {
 	return ApiOrgCreateTeamRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Team
+//  @return Team
 func (a *OrganizationAPIService) OrgCreateTeamExecute(r ApiOrgCreateTeamRequest) (*Team, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Team
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Team
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgCreateTeam")
@@ -3350,8 +3341,8 @@ func (a *OrganizationAPIService) OrgCreateTeamExecute(r ApiOrgCreateTeamRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -3361,8 +3352,8 @@ func (a *OrganizationAPIService) OrgCreateTeamExecute(r ApiOrgCreateTeamRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3380,9 +3371,9 @@ func (a *OrganizationAPIService) OrgCreateTeamExecute(r ApiOrgCreateTeamRequest)
 }
 
 type ApiOrgDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
+	org string
 }
 
 func (r ApiOrgDeleteRequest) Execute() (*http.Response, error) {
@@ -3392,24 +3383,24 @@ func (r ApiOrgDeleteRequest) Execute() (*http.Response, error) {
 /*
 OrgDelete Delete an organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org organization that is to be deleted
-	@return ApiOrgDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org organization that is to be deleted
+ @return ApiOrgDeleteRequest
 */
 func (a *OrganizationAPIService) OrgDelete(ctx context.Context, org string) ApiOrgDeleteRequest {
 	return ApiOrgDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgDeleteExecute(r ApiOrgDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgDelete")
@@ -3554,8 +3545,8 @@ func (a *OrganizationAPIService) OrgDeleteExecute(r ApiOrgDeleteRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3564,9 +3555,9 @@ func (a *OrganizationAPIService) OrgDeleteExecute(r ApiOrgDeleteRequest) (*http.
 }
 
 type ApiOrgDeleteAvatarRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
+	org string
 }
 
 func (r ApiOrgDeleteAvatarRequest) Execute() (*http.Response, error) {
@@ -3576,24 +3567,24 @@ func (r ApiOrgDeleteAvatarRequest) Execute() (*http.Response, error) {
 /*
 OrgDeleteAvatar Delete Avatar
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgDeleteAvatarRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgDeleteAvatarRequest
 */
 func (a *OrganizationAPIService) OrgDeleteAvatar(ctx context.Context, org string) ApiOrgDeleteAvatarRequest {
 	return ApiOrgDeleteAvatarRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgDeleteAvatarExecute(r ApiOrgDeleteAvatarRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgDeleteAvatar")
@@ -3738,8 +3729,8 @@ func (a *OrganizationAPIService) OrgDeleteAvatarExecute(r ApiOrgDeleteAvatarRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3748,10 +3739,10 @@ func (a *OrganizationAPIService) OrgDeleteAvatarExecute(r ApiOrgDeleteAvatarRequ
 }
 
 type ApiOrgDeleteHookRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	id         int64
+	org string
+	id int64
 }
 
 func (r ApiOrgDeleteHookRequest) Execute() (*http.Response, error) {
@@ -3761,26 +3752,26 @@ func (r ApiOrgDeleteHookRequest) Execute() (*http.Response, error) {
 /*
 OrgDeleteHook Delete a hook
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@param id id of the hook to delete
-	@return ApiOrgDeleteHookRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @param id id of the hook to delete
+ @return ApiOrgDeleteHookRequest
 */
 func (a *OrganizationAPIService) OrgDeleteHook(ctx context.Context, org string, id int64) ApiOrgDeleteHookRequest {
 	return ApiOrgDeleteHookRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
-		id:         id,
+		ctx: ctx,
+		org: org,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgDeleteHookExecute(r ApiOrgDeleteHookRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgDeleteHook")
@@ -3926,8 +3917,8 @@ func (a *OrganizationAPIService) OrgDeleteHookExecute(r ApiOrgDeleteHookRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3936,10 +3927,10 @@ func (a *OrganizationAPIService) OrgDeleteHookExecute(r ApiOrgDeleteHookRequest)
 }
 
 type ApiOrgDeleteLabelRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	id         int64
+	org string
+	id int64
 }
 
 func (r ApiOrgDeleteLabelRequest) Execute() (*http.Response, error) {
@@ -3949,26 +3940,26 @@ func (r ApiOrgDeleteLabelRequest) Execute() (*http.Response, error) {
 /*
 OrgDeleteLabel Delete a label
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@param id id of the label to delete
-	@return ApiOrgDeleteLabelRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @param id id of the label to delete
+ @return ApiOrgDeleteLabelRequest
 */
 func (a *OrganizationAPIService) OrgDeleteLabel(ctx context.Context, org string, id int64) ApiOrgDeleteLabelRequest {
 	return ApiOrgDeleteLabelRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
-		id:         id,
+		ctx: ctx,
+		org: org,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgDeleteLabelExecute(r ApiOrgDeleteLabelRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgDeleteLabel")
@@ -4114,8 +4105,8 @@ func (a *OrganizationAPIService) OrgDeleteLabelExecute(r ApiOrgDeleteLabelReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4124,10 +4115,10 @@ func (a *OrganizationAPIService) OrgDeleteLabelExecute(r ApiOrgDeleteLabelReques
 }
 
 type ApiOrgDeleteMemberRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	username   string
+	org string
+	username string
 }
 
 func (r ApiOrgDeleteMemberRequest) Execute() (*http.Response, error) {
@@ -4137,26 +4128,26 @@ func (r ApiOrgDeleteMemberRequest) Execute() (*http.Response, error) {
 /*
 OrgDeleteMember Remove a member from an organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@param username username of the user
-	@return ApiOrgDeleteMemberRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @param username username of the user
+ @return ApiOrgDeleteMemberRequest
 */
 func (a *OrganizationAPIService) OrgDeleteMember(ctx context.Context, org string, username string) ApiOrgDeleteMemberRequest {
 	return ApiOrgDeleteMemberRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
-		username:   username,
+		ctx: ctx,
+		org: org,
+		username: username,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgDeleteMemberExecute(r ApiOrgDeleteMemberRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgDeleteMember")
@@ -4302,8 +4293,8 @@ func (a *OrganizationAPIService) OrgDeleteMemberExecute(r ApiOrgDeleteMemberRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4312,9 +4303,9 @@ func (a *OrganizationAPIService) OrgDeleteMemberExecute(r ApiOrgDeleteMemberRequ
 }
 
 type ApiOrgDeleteTeamRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	id         int64
+	id int64
 }
 
 func (r ApiOrgDeleteTeamRequest) Execute() (*http.Response, error) {
@@ -4324,24 +4315,24 @@ func (r ApiOrgDeleteTeamRequest) Execute() (*http.Response, error) {
 /*
 OrgDeleteTeam Delete a team
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id id of the team to delete
-	@return ApiOrgDeleteTeamRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of the team to delete
+ @return ApiOrgDeleteTeamRequest
 */
 func (a *OrganizationAPIService) OrgDeleteTeam(ctx context.Context, id int64) ApiOrgDeleteTeamRequest {
 	return ApiOrgDeleteTeamRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgDeleteTeamExecute(r ApiOrgDeleteTeamRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgDeleteTeam")
@@ -4486,8 +4477,8 @@ func (a *OrganizationAPIService) OrgDeleteTeamExecute(r ApiOrgDeleteTeamRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4496,10 +4487,10 @@ func (a *OrganizationAPIService) OrgDeleteTeamExecute(r ApiOrgDeleteTeamRequest)
 }
 
 type ApiOrgEditRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	body       *EditOrgOption
+	org string
+	body *EditOrgOption
 }
 
 func (r ApiOrgEditRequest) Body(body EditOrgOption) ApiOrgEditRequest {
@@ -4514,27 +4505,26 @@ func (r ApiOrgEditRequest) Execute() (*Organization, *http.Response, error) {
 /*
 OrgEdit Edit an organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization to edit
-	@return ApiOrgEditRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization to edit
+ @return ApiOrgEditRequest
 */
 func (a *OrganizationAPIService) OrgEdit(ctx context.Context, org string) ApiOrgEditRequest {
 	return ApiOrgEditRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Organization
+//  @return Organization
 func (a *OrganizationAPIService) OrgEditExecute(r ApiOrgEditRequest) (*Organization, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Organization
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Organization
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgEdit")
@@ -4684,8 +4674,8 @@ func (a *OrganizationAPIService) OrgEditExecute(r ApiOrgEditRequest) (*Organizat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -4695,8 +4685,8 @@ func (a *OrganizationAPIService) OrgEditExecute(r ApiOrgEditRequest) (*Organizat
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4714,11 +4704,11 @@ func (a *OrganizationAPIService) OrgEditExecute(r ApiOrgEditRequest) (*Organizat
 }
 
 type ApiOrgEditHookRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	id         int64
-	body       *EditHookOption
+	org string
+	id int64
+	body *EditHookOption
 }
 
 func (r ApiOrgEditHookRequest) Body(body EditHookOption) ApiOrgEditHookRequest {
@@ -4733,29 +4723,28 @@ func (r ApiOrgEditHookRequest) Execute() (*Hook, *http.Response, error) {
 /*
 OrgEditHook Update a hook
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@param id id of the hook to update
-	@return ApiOrgEditHookRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @param id id of the hook to update
+ @return ApiOrgEditHookRequest
 */
 func (a *OrganizationAPIService) OrgEditHook(ctx context.Context, org string, id int64) ApiOrgEditHookRequest {
 	return ApiOrgEditHookRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
-		id:         id,
+		ctx: ctx,
+		org: org,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Hook
+//  @return Hook
 func (a *OrganizationAPIService) OrgEditHookExecute(r ApiOrgEditHookRequest) (*Hook, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Hook
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Hook
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgEditHook")
@@ -4903,8 +4892,8 @@ func (a *OrganizationAPIService) OrgEditHookExecute(r ApiOrgEditHookRequest) (*H
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4922,11 +4911,11 @@ func (a *OrganizationAPIService) OrgEditHookExecute(r ApiOrgEditHookRequest) (*H
 }
 
 type ApiOrgEditLabelRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	id         int64
-	body       *EditLabelOption
+	org string
+	id int64
+	body *EditLabelOption
 }
 
 func (r ApiOrgEditLabelRequest) Body(body EditLabelOption) ApiOrgEditLabelRequest {
@@ -4941,29 +4930,28 @@ func (r ApiOrgEditLabelRequest) Execute() (*Label, *http.Response, error) {
 /*
 OrgEditLabel Update a label
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@param id id of the label to edit
-	@return ApiOrgEditLabelRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @param id id of the label to edit
+ @return ApiOrgEditLabelRequest
 */
 func (a *OrganizationAPIService) OrgEditLabel(ctx context.Context, org string, id int64) ApiOrgEditLabelRequest {
 	return ApiOrgEditLabelRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
-		id:         id,
+		ctx: ctx,
+		org: org,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Label
+//  @return Label
 func (a *OrganizationAPIService) OrgEditLabelExecute(r ApiOrgEditLabelRequest) (*Label, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Label
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Label
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgEditLabel")
@@ -5111,8 +5099,8 @@ func (a *OrganizationAPIService) OrgEditLabelExecute(r ApiOrgEditLabelRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -5122,8 +5110,8 @@ func (a *OrganizationAPIService) OrgEditLabelExecute(r ApiOrgEditLabelRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5141,10 +5129,10 @@ func (a *OrganizationAPIService) OrgEditLabelExecute(r ApiOrgEditLabelRequest) (
 }
 
 type ApiOrgEditTeamRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	id         int32
-	body       *EditTeamOption
+	id int32
+	body *EditTeamOption
 }
 
 func (r ApiOrgEditTeamRequest) Body(body EditTeamOption) ApiOrgEditTeamRequest {
@@ -5159,27 +5147,26 @@ func (r ApiOrgEditTeamRequest) Execute() (*Team, *http.Response, error) {
 /*
 OrgEditTeam Edit a team
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id id of the team to edit
-	@return ApiOrgEditTeamRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of the team to edit
+ @return ApiOrgEditTeamRequest
 */
 func (a *OrganizationAPIService) OrgEditTeam(ctx context.Context, id int32) ApiOrgEditTeamRequest {
 	return ApiOrgEditTeamRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Team
+//  @return Team
 func (a *OrganizationAPIService) OrgEditTeamExecute(r ApiOrgEditTeamRequest) (*Team, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Team
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Team
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgEditTeam")
@@ -5326,8 +5313,8 @@ func (a *OrganizationAPIService) OrgEditTeamExecute(r ApiOrgEditTeamRequest) (*T
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5345,9 +5332,9 @@ func (a *OrganizationAPIService) OrgEditTeamExecute(r ApiOrgEditTeamRequest) (*T
 }
 
 type ApiOrgGetRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
+	org string
 }
 
 func (r ApiOrgGetRequest) Execute() (*Organization, *http.Response, error) {
@@ -5357,27 +5344,26 @@ func (r ApiOrgGetRequest) Execute() (*Organization, *http.Response, error) {
 /*
 OrgGet Get an organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization to get
-	@return ApiOrgGetRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization to get
+ @return ApiOrgGetRequest
 */
 func (a *OrganizationAPIService) OrgGet(ctx context.Context, org string) ApiOrgGetRequest {
 	return ApiOrgGetRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Organization
+//  @return Organization
 func (a *OrganizationAPIService) OrgGetExecute(r ApiOrgGetRequest) (*Organization, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Organization
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Organization
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgGet")
@@ -5522,8 +5508,8 @@ func (a *OrganizationAPIService) OrgGetExecute(r ApiOrgGetRequest) (*Organizatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5541,10 +5527,10 @@ func (a *OrganizationAPIService) OrgGetExecute(r ApiOrgGetRequest) (*Organizatio
 }
 
 type ApiOrgGetAllRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	page       *int32
-	limit      *int32
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -5566,25 +5552,24 @@ func (r ApiOrgGetAllRequest) Execute() ([]Organization, *http.Response, error) {
 /*
 OrgGetAll Get list of organizations
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOrgGetAllRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOrgGetAllRequest
 */
 func (a *OrganizationAPIService) OrgGetAll(ctx context.Context) ApiOrgGetAllRequest {
 	return ApiOrgGetAllRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Organization
+//  @return []Organization
 func (a *OrganizationAPIService) OrgGetAllExecute(r ApiOrgGetAllRequest) ([]Organization, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Organization
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Organization
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgGetAll")
@@ -5743,10 +5728,10 @@ func (a *OrganizationAPIService) OrgGetAllExecute(r ApiOrgGetAllRequest) ([]Orga
 }
 
 type ApiOrgGetHookRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	id         int64
+	org string
+	id int64
 }
 
 func (r ApiOrgGetHookRequest) Execute() (*Hook, *http.Response, error) {
@@ -5756,29 +5741,28 @@ func (r ApiOrgGetHookRequest) Execute() (*Hook, *http.Response, error) {
 /*
 OrgGetHook Get a hook
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@param id id of the hook to get
-	@return ApiOrgGetHookRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @param id id of the hook to get
+ @return ApiOrgGetHookRequest
 */
 func (a *OrganizationAPIService) OrgGetHook(ctx context.Context, org string, id int64) ApiOrgGetHookRequest {
 	return ApiOrgGetHookRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
-		id:         id,
+		ctx: ctx,
+		org: org,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Hook
+//  @return Hook
 func (a *OrganizationAPIService) OrgGetHookExecute(r ApiOrgGetHookRequest) (*Hook, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Hook
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Hook
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgGetHook")
@@ -5924,8 +5908,8 @@ func (a *OrganizationAPIService) OrgGetHookExecute(r ApiOrgGetHookRequest) (*Hoo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5943,10 +5927,10 @@ func (a *OrganizationAPIService) OrgGetHookExecute(r ApiOrgGetHookRequest) (*Hoo
 }
 
 type ApiOrgGetLabelRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	id         int64
+	org string
+	id int64
 }
 
 func (r ApiOrgGetLabelRequest) Execute() (*Label, *http.Response, error) {
@@ -5956,29 +5940,28 @@ func (r ApiOrgGetLabelRequest) Execute() (*Label, *http.Response, error) {
 /*
 OrgGetLabel Get a single label
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@param id id of the label to get
-	@return ApiOrgGetLabelRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @param id id of the label to get
+ @return ApiOrgGetLabelRequest
 */
 func (a *OrganizationAPIService) OrgGetLabel(ctx context.Context, org string, id int64) ApiOrgGetLabelRequest {
 	return ApiOrgGetLabelRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
-		id:         id,
+		ctx: ctx,
+		org: org,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Label
+//  @return Label
 func (a *OrganizationAPIService) OrgGetLabelExecute(r ApiOrgGetLabelRequest) (*Label, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Label
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Label
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgGetLabel")
@@ -6124,8 +6107,8 @@ func (a *OrganizationAPIService) OrgGetLabelExecute(r ApiOrgGetLabelRequest) (*L
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6143,9 +6126,9 @@ func (a *OrganizationAPIService) OrgGetLabelExecute(r ApiOrgGetLabelRequest) (*L
 }
 
 type ApiOrgGetQuotaRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
+	org string
 }
 
 func (r ApiOrgGetQuotaRequest) Execute() (*QuotaInfo, *http.Response, error) {
@@ -6155,27 +6138,26 @@ func (r ApiOrgGetQuotaRequest) Execute() (*QuotaInfo, *http.Response, error) {
 /*
 OrgGetQuota Get quota information for an organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgGetQuotaRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgGetQuotaRequest
 */
 func (a *OrganizationAPIService) OrgGetQuota(ctx context.Context, org string) ApiOrgGetQuotaRequest {
 	return ApiOrgGetQuotaRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return QuotaInfo
+//  @return QuotaInfo
 func (a *OrganizationAPIService) OrgGetQuotaExecute(r ApiOrgGetQuotaRequest) (*QuotaInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *QuotaInfo
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *QuotaInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgGetQuota")
@@ -6320,8 +6302,8 @@ func (a *OrganizationAPIService) OrgGetQuotaExecute(r ApiOrgGetQuotaRequest) (*Q
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -6331,8 +6313,8 @@ func (a *OrganizationAPIService) OrgGetQuotaExecute(r ApiOrgGetQuotaRequest) (*Q
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6350,9 +6332,9 @@ func (a *OrganizationAPIService) OrgGetQuotaExecute(r ApiOrgGetQuotaRequest) (*Q
 }
 
 type ApiOrgGetRunnerRegistrationTokenRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
+	org string
 }
 
 func (r ApiOrgGetRunnerRegistrationTokenRequest) Execute() (*http.Response, error) {
@@ -6362,24 +6344,24 @@ func (r ApiOrgGetRunnerRegistrationTokenRequest) Execute() (*http.Response, erro
 /*
 OrgGetRunnerRegistrationToken Get an organization's actions runner registration token
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgGetRunnerRegistrationTokenRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgGetRunnerRegistrationTokenRequest
 */
 func (a *OrganizationAPIService) OrgGetRunnerRegistrationToken(ctx context.Context, org string) ApiOrgGetRunnerRegistrationTokenRequest {
 	return ApiOrgGetRunnerRegistrationTokenRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgGetRunnerRegistrationTokenExecute(r ApiOrgGetRunnerRegistrationTokenRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgGetRunnerRegistrationToken")
@@ -6524,9 +6506,9 @@ func (a *OrganizationAPIService) OrgGetRunnerRegistrationTokenExecute(r ApiOrgGe
 }
 
 type ApiOrgGetTeamRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	id         int64
+	id int64
 }
 
 func (r ApiOrgGetTeamRequest) Execute() (*Team, *http.Response, error) {
@@ -6536,27 +6518,26 @@ func (r ApiOrgGetTeamRequest) Execute() (*Team, *http.Response, error) {
 /*
 OrgGetTeam Get a team
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id id of the team to get
-	@return ApiOrgGetTeamRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of the team to get
+ @return ApiOrgGetTeamRequest
 */
 func (a *OrganizationAPIService) OrgGetTeam(ctx context.Context, id int64) ApiOrgGetTeamRequest {
 	return ApiOrgGetTeamRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Team
+//  @return Team
 func (a *OrganizationAPIService) OrgGetTeamExecute(r ApiOrgGetTeamRequest) (*Team, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Team
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Team
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgGetTeam")
@@ -6701,8 +6682,8 @@ func (a *OrganizationAPIService) OrgGetTeamExecute(r ApiOrgGetTeamRequest) (*Tea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6720,10 +6701,10 @@ func (a *OrganizationAPIService) OrgGetTeamExecute(r ApiOrgGetTeamRequest) (*Tea
 }
 
 type ApiOrgGetUserPermissionsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	username   string
-	org        string
+	username string
+	org string
 }
 
 func (r ApiOrgGetUserPermissionsRequest) Execute() (*OrganizationPermissions, *http.Response, error) {
@@ -6733,29 +6714,28 @@ func (r ApiOrgGetUserPermissionsRequest) Execute() (*OrganizationPermissions, *h
 /*
 OrgGetUserPermissions Get user permissions in organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param username username of user
-	@param org name of the organization
-	@return ApiOrgGetUserPermissionsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param username username of user
+ @param org name of the organization
+ @return ApiOrgGetUserPermissionsRequest
 */
 func (a *OrganizationAPIService) OrgGetUserPermissions(ctx context.Context, username string, org string) ApiOrgGetUserPermissionsRequest {
 	return ApiOrgGetUserPermissionsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		username:   username,
-		org:        org,
+		ctx: ctx,
+		username: username,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return OrganizationPermissions
+//  @return OrganizationPermissions
 func (a *OrganizationAPIService) OrgGetUserPermissionsExecute(r ApiOrgGetUserPermissionsRequest) (*OrganizationPermissions, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *OrganizationPermissions
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *OrganizationPermissions
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgGetUserPermissions")
@@ -6901,8 +6881,8 @@ func (a *OrganizationAPIService) OrgGetUserPermissionsExecute(r ApiOrgGetUserPer
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -6912,8 +6892,8 @@ func (a *OrganizationAPIService) OrgGetUserPermissionsExecute(r ApiOrgGetUserPer
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6931,10 +6911,10 @@ func (a *OrganizationAPIService) OrgGetUserPermissionsExecute(r ApiOrgGetUserPer
 }
 
 type ApiOrgIsMemberRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	username   string
+	org string
+	username string
 }
 
 func (r ApiOrgIsMemberRequest) Execute() (*http.Response, error) {
@@ -6944,26 +6924,26 @@ func (r ApiOrgIsMemberRequest) Execute() (*http.Response, error) {
 /*
 OrgIsMember Check if a user is a member of an organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@param username username of the user
-	@return ApiOrgIsMemberRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @param username username of the user
+ @return ApiOrgIsMemberRequest
 */
 func (a *OrganizationAPIService) OrgIsMember(ctx context.Context, org string, username string) ApiOrgIsMemberRequest {
 	return ApiOrgIsMemberRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
-		username:   username,
+		ctx: ctx,
+		org: org,
+		username: username,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgIsMemberExecute(r ApiOrgIsMemberRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgIsMember")
@@ -7109,10 +7089,10 @@ func (a *OrganizationAPIService) OrgIsMemberExecute(r ApiOrgIsMemberRequest) (*h
 }
 
 type ApiOrgIsPublicMemberRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	username   string
+	org string
+	username string
 }
 
 func (r ApiOrgIsPublicMemberRequest) Execute() (*http.Response, error) {
@@ -7122,26 +7102,26 @@ func (r ApiOrgIsPublicMemberRequest) Execute() (*http.Response, error) {
 /*
 OrgIsPublicMember Check if a user is a public member of an organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@param username username of the user
-	@return ApiOrgIsPublicMemberRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @param username username of the user
+ @return ApiOrgIsPublicMemberRequest
 */
 func (a *OrganizationAPIService) OrgIsPublicMember(ctx context.Context, org string, username string) ApiOrgIsPublicMemberRequest {
 	return ApiOrgIsPublicMemberRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
-		username:   username,
+		ctx: ctx,
+		org: org,
+		username: username,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgIsPublicMemberExecute(r ApiOrgIsPublicMemberRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgIsPublicMember")
@@ -7287,11 +7267,11 @@ func (a *OrganizationAPIService) OrgIsPublicMemberExecute(r ApiOrgIsPublicMember
 }
 
 type ApiOrgListActionsSecretsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	page       *int32
-	limit      *int32
+	org string
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -7313,27 +7293,26 @@ func (r ApiOrgListActionsSecretsRequest) Execute() ([]Secret, *http.Response, er
 /*
 OrgListActionsSecrets List an organization's actions secrets
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgListActionsSecretsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgListActionsSecretsRequest
 */
 func (a *OrganizationAPIService) OrgListActionsSecrets(ctx context.Context, org string) ApiOrgListActionsSecretsRequest {
 	return ApiOrgListActionsSecretsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Secret
+//  @return []Secret
 func (a *OrganizationAPIService) OrgListActionsSecretsExecute(r ApiOrgListActionsSecretsRequest) ([]Secret, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Secret
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Secret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListActionsSecrets")
@@ -7484,8 +7463,8 @@ func (a *OrganizationAPIService) OrgListActionsSecretsExecute(r ApiOrgListAction
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -7503,12 +7482,12 @@ func (a *OrganizationAPIService) OrgListActionsSecretsExecute(r ApiOrgListAction
 }
 
 type ApiOrgListActivityFeedsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	date       *string
-	page       *int32
-	limit      *int32
+	org string
+	date *string
+	page *int32
+	limit *int32
 }
 
 // the date of the activities to be found
@@ -7536,27 +7515,26 @@ func (r ApiOrgListActivityFeedsRequest) Execute() ([]Activity, *http.Response, e
 /*
 OrgListActivityFeeds List an organization's activity feeds
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the org
-	@return ApiOrgListActivityFeedsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the org
+ @return ApiOrgListActivityFeedsRequest
 */
 func (a *OrganizationAPIService) OrgListActivityFeeds(ctx context.Context, org string) ApiOrgListActivityFeedsRequest {
 	return ApiOrgListActivityFeedsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Activity
+//  @return []Activity
 func (a *OrganizationAPIService) OrgListActivityFeedsExecute(r ApiOrgListActivityFeedsRequest) ([]Activity, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Activity
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Activity
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListActivityFeeds")
@@ -7710,8 +7688,8 @@ func (a *OrganizationAPIService) OrgListActivityFeedsExecute(r ApiOrgListActivit
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -7729,11 +7707,11 @@ func (a *OrganizationAPIService) OrgListActivityFeedsExecute(r ApiOrgListActivit
 }
 
 type ApiOrgListBlockedUsersRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	page       *int32
-	limit      *int32
+	org string
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -7755,27 +7733,26 @@ func (r ApiOrgListBlockedUsersRequest) Execute() ([]BlockedUser, *http.Response,
 /*
 OrgListBlockedUsers List the organization's blocked users
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the org
-	@return ApiOrgListBlockedUsersRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the org
+ @return ApiOrgListBlockedUsersRequest
 */
 func (a *OrganizationAPIService) OrgListBlockedUsers(ctx context.Context, org string) ApiOrgListBlockedUsersRequest {
 	return ApiOrgListBlockedUsersRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []BlockedUser
+//  @return []BlockedUser
 func (a *OrganizationAPIService) OrgListBlockedUsersExecute(r ApiOrgListBlockedUsersRequest) ([]BlockedUser, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []BlockedUser
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []BlockedUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListBlockedUsers")
@@ -7935,10 +7912,10 @@ func (a *OrganizationAPIService) OrgListBlockedUsersExecute(r ApiOrgListBlockedU
 }
 
 type ApiOrgListCurrentUserOrgsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	page       *int32
-	limit      *int32
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -7960,25 +7937,24 @@ func (r ApiOrgListCurrentUserOrgsRequest) Execute() ([]Organization, *http.Respo
 /*
 OrgListCurrentUserOrgs List the current user's organizations
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOrgListCurrentUserOrgsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOrgListCurrentUserOrgsRequest
 */
 func (a *OrganizationAPIService) OrgListCurrentUserOrgs(ctx context.Context) ApiOrgListCurrentUserOrgsRequest {
 	return ApiOrgListCurrentUserOrgsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Organization
+//  @return []Organization
 func (a *OrganizationAPIService) OrgListCurrentUserOrgsExecute(r ApiOrgListCurrentUserOrgsRequest) ([]Organization, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Organization
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Organization
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListCurrentUserOrgs")
@@ -8128,8 +8104,8 @@ func (a *OrganizationAPIService) OrgListCurrentUserOrgsExecute(r ApiOrgListCurre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -8139,8 +8115,8 @@ func (a *OrganizationAPIService) OrgListCurrentUserOrgsExecute(r ApiOrgListCurre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -8150,8 +8126,8 @@ func (a *OrganizationAPIService) OrgListCurrentUserOrgsExecute(r ApiOrgListCurre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -8169,11 +8145,11 @@ func (a *OrganizationAPIService) OrgListCurrentUserOrgsExecute(r ApiOrgListCurre
 }
 
 type ApiOrgListHooksRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	page       *int32
-	limit      *int32
+	org string
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -8195,27 +8171,26 @@ func (r ApiOrgListHooksRequest) Execute() ([]Hook, *http.Response, error) {
 /*
 OrgListHooks List an organization's webhooks
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgListHooksRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgListHooksRequest
 */
 func (a *OrganizationAPIService) OrgListHooks(ctx context.Context, org string) ApiOrgListHooksRequest {
 	return ApiOrgListHooksRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Hook
+//  @return []Hook
 func (a *OrganizationAPIService) OrgListHooksExecute(r ApiOrgListHooksRequest) ([]Hook, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Hook
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Hook
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListHooks")
@@ -8366,8 +8341,8 @@ func (a *OrganizationAPIService) OrgListHooksExecute(r ApiOrgListHooksRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -8385,11 +8360,11 @@ func (a *OrganizationAPIService) OrgListHooksExecute(r ApiOrgListHooksRequest) (
 }
 
 type ApiOrgListLabelsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	page       *int32
-	limit      *int32
+	org string
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -8411,27 +8386,26 @@ func (r ApiOrgListLabelsRequest) Execute() ([]Label, *http.Response, error) {
 /*
 OrgListLabels List an organization's labels
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgListLabelsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgListLabelsRequest
 */
 func (a *OrganizationAPIService) OrgListLabels(ctx context.Context, org string) ApiOrgListLabelsRequest {
 	return ApiOrgListLabelsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Label
+//  @return []Label
 func (a *OrganizationAPIService) OrgListLabelsExecute(r ApiOrgListLabelsRequest) ([]Label, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Label
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Label
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListLabels")
@@ -8582,8 +8556,8 @@ func (a *OrganizationAPIService) OrgListLabelsExecute(r ApiOrgListLabelsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -8601,11 +8575,11 @@ func (a *OrganizationAPIService) OrgListLabelsExecute(r ApiOrgListLabelsRequest)
 }
 
 type ApiOrgListMembersRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	page       *int32
-	limit      *int32
+	org string
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -8627,27 +8601,26 @@ func (r ApiOrgListMembersRequest) Execute() ([]User, *http.Response, error) {
 /*
 OrgListMembers List an organization's members
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgListMembersRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgListMembersRequest
 */
 func (a *OrganizationAPIService) OrgListMembers(ctx context.Context, org string) ApiOrgListMembersRequest {
 	return ApiOrgListMembersRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []User
+//  @return []User
 func (a *OrganizationAPIService) OrgListMembersExecute(r ApiOrgListMembersRequest) ([]User, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []User
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListMembers")
@@ -8798,8 +8771,8 @@ func (a *OrganizationAPIService) OrgListMembersExecute(r ApiOrgListMembersReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -8817,11 +8790,11 @@ func (a *OrganizationAPIService) OrgListMembersExecute(r ApiOrgListMembersReques
 }
 
 type ApiOrgListPublicMembersRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	page       *int32
-	limit      *int32
+	org string
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -8843,27 +8816,26 @@ func (r ApiOrgListPublicMembersRequest) Execute() ([]User, *http.Response, error
 /*
 OrgListPublicMembers List an organization's public members
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgListPublicMembersRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgListPublicMembersRequest
 */
 func (a *OrganizationAPIService) OrgListPublicMembers(ctx context.Context, org string) ApiOrgListPublicMembersRequest {
 	return ApiOrgListPublicMembersRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []User
+//  @return []User
 func (a *OrganizationAPIService) OrgListPublicMembersExecute(r ApiOrgListPublicMembersRequest) ([]User, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []User
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListPublicMembers")
@@ -9014,8 +8986,8 @@ func (a *OrganizationAPIService) OrgListPublicMembersExecute(r ApiOrgListPublicM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -9033,11 +9005,11 @@ func (a *OrganizationAPIService) OrgListPublicMembersExecute(r ApiOrgListPublicM
 }
 
 type ApiOrgListQuotaArtifactsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	page       *int32
-	limit      *int32
+	org string
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -9059,27 +9031,26 @@ func (r ApiOrgListQuotaArtifactsRequest) Execute() ([]QuotaUsedArtifact, *http.R
 /*
 OrgListQuotaArtifacts List the artifacts affecting the organization's quota
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgListQuotaArtifactsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgListQuotaArtifactsRequest
 */
 func (a *OrganizationAPIService) OrgListQuotaArtifacts(ctx context.Context, org string) ApiOrgListQuotaArtifactsRequest {
 	return ApiOrgListQuotaArtifactsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []QuotaUsedArtifact
+//  @return []QuotaUsedArtifact
 func (a *OrganizationAPIService) OrgListQuotaArtifactsExecute(r ApiOrgListQuotaArtifactsRequest) ([]QuotaUsedArtifact, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []QuotaUsedArtifact
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []QuotaUsedArtifact
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListQuotaArtifacts")
@@ -9230,8 +9201,8 @@ func (a *OrganizationAPIService) OrgListQuotaArtifactsExecute(r ApiOrgListQuotaA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -9241,8 +9212,8 @@ func (a *OrganizationAPIService) OrgListQuotaArtifactsExecute(r ApiOrgListQuotaA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -9260,11 +9231,11 @@ func (a *OrganizationAPIService) OrgListQuotaArtifactsExecute(r ApiOrgListQuotaA
 }
 
 type ApiOrgListQuotaAttachmentsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	page       *int32
-	limit      *int32
+	org string
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -9286,27 +9257,26 @@ func (r ApiOrgListQuotaAttachmentsRequest) Execute() ([]QuotaUsedAttachment, *ht
 /*
 OrgListQuotaAttachments List the attachments affecting the organization's quota
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgListQuotaAttachmentsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgListQuotaAttachmentsRequest
 */
 func (a *OrganizationAPIService) OrgListQuotaAttachments(ctx context.Context, org string) ApiOrgListQuotaAttachmentsRequest {
 	return ApiOrgListQuotaAttachmentsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []QuotaUsedAttachment
+//  @return []QuotaUsedAttachment
 func (a *OrganizationAPIService) OrgListQuotaAttachmentsExecute(r ApiOrgListQuotaAttachmentsRequest) ([]QuotaUsedAttachment, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []QuotaUsedAttachment
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []QuotaUsedAttachment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListQuotaAttachments")
@@ -9457,8 +9427,8 @@ func (a *OrganizationAPIService) OrgListQuotaAttachmentsExecute(r ApiOrgListQuot
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -9468,8 +9438,8 @@ func (a *OrganizationAPIService) OrgListQuotaAttachmentsExecute(r ApiOrgListQuot
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -9487,11 +9457,11 @@ func (a *OrganizationAPIService) OrgListQuotaAttachmentsExecute(r ApiOrgListQuot
 }
 
 type ApiOrgListQuotaPackagesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	page       *int32
-	limit      *int32
+	org string
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -9513,27 +9483,26 @@ func (r ApiOrgListQuotaPackagesRequest) Execute() ([]QuotaUsedPackage, *http.Res
 /*
 OrgListQuotaPackages List the packages affecting the organization's quota
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgListQuotaPackagesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgListQuotaPackagesRequest
 */
 func (a *OrganizationAPIService) OrgListQuotaPackages(ctx context.Context, org string) ApiOrgListQuotaPackagesRequest {
 	return ApiOrgListQuotaPackagesRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []QuotaUsedPackage
+//  @return []QuotaUsedPackage
 func (a *OrganizationAPIService) OrgListQuotaPackagesExecute(r ApiOrgListQuotaPackagesRequest) ([]QuotaUsedPackage, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []QuotaUsedPackage
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []QuotaUsedPackage
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListQuotaPackages")
@@ -9684,8 +9653,8 @@ func (a *OrganizationAPIService) OrgListQuotaPackagesExecute(r ApiOrgListQuotaPa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -9695,8 +9664,8 @@ func (a *OrganizationAPIService) OrgListQuotaPackagesExecute(r ApiOrgListQuotaPa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -9714,11 +9683,11 @@ func (a *OrganizationAPIService) OrgListQuotaPackagesExecute(r ApiOrgListQuotaPa
 }
 
 type ApiOrgListReposRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	page       *int32
-	limit      *int32
+	org string
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -9740,27 +9709,26 @@ func (r ApiOrgListReposRequest) Execute() ([]Repository, *http.Response, error) 
 /*
 OrgListRepos List an organization's repos
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgListReposRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgListReposRequest
 */
 func (a *OrganizationAPIService) OrgListRepos(ctx context.Context, org string) ApiOrgListReposRequest {
 	return ApiOrgListReposRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Repository
+//  @return []Repository
 func (a *OrganizationAPIService) OrgListReposExecute(r ApiOrgListReposRequest) ([]Repository, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Repository
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Repository
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListRepos")
@@ -9911,8 +9879,8 @@ func (a *OrganizationAPIService) OrgListReposExecute(r ApiOrgListReposRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -9930,12 +9898,12 @@ func (a *OrganizationAPIService) OrgListReposExecute(r ApiOrgListReposRequest) (
 }
 
 type ApiOrgListTeamActivityFeedsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	id         int64
-	date       *string
-	page       *int32
-	limit      *int32
+	id int64
+	date *string
+	page *int32
+	limit *int32
 }
 
 // the date of the activities to be found
@@ -9963,27 +9931,26 @@ func (r ApiOrgListTeamActivityFeedsRequest) Execute() ([]Activity, *http.Respons
 /*
 OrgListTeamActivityFeeds List a team's activity feeds
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id id of the team
-	@return ApiOrgListTeamActivityFeedsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of the team
+ @return ApiOrgListTeamActivityFeedsRequest
 */
 func (a *OrganizationAPIService) OrgListTeamActivityFeeds(ctx context.Context, id int64) ApiOrgListTeamActivityFeedsRequest {
 	return ApiOrgListTeamActivityFeedsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Activity
+//  @return []Activity
 func (a *OrganizationAPIService) OrgListTeamActivityFeedsExecute(r ApiOrgListTeamActivityFeedsRequest) ([]Activity, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Activity
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Activity
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListTeamActivityFeeds")
@@ -10137,8 +10104,8 @@ func (a *OrganizationAPIService) OrgListTeamActivityFeedsExecute(r ApiOrgListTea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -10156,10 +10123,10 @@ func (a *OrganizationAPIService) OrgListTeamActivityFeedsExecute(r ApiOrgListTea
 }
 
 type ApiOrgListTeamMemberRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	id         int64
-	username   string
+	id int64
+	username string
 }
 
 func (r ApiOrgListTeamMemberRequest) Execute() (*User, *http.Response, error) {
@@ -10169,29 +10136,28 @@ func (r ApiOrgListTeamMemberRequest) Execute() (*User, *http.Response, error) {
 /*
 OrgListTeamMember List a particular member of team
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id id of the team
-	@param username username of the member to list
-	@return ApiOrgListTeamMemberRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of the team
+ @param username username of the member to list
+ @return ApiOrgListTeamMemberRequest
 */
 func (a *OrganizationAPIService) OrgListTeamMember(ctx context.Context, id int64, username string) ApiOrgListTeamMemberRequest {
 	return ApiOrgListTeamMemberRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-		username:   username,
+		ctx: ctx,
+		id: id,
+		username: username,
 	}
 }
 
 // Execute executes the request
-//
-//	@return User
+//  @return User
 func (a *OrganizationAPIService) OrgListTeamMemberExecute(r ApiOrgListTeamMemberRequest) (*User, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *User
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListTeamMember")
@@ -10337,8 +10303,8 @@ func (a *OrganizationAPIService) OrgListTeamMemberExecute(r ApiOrgListTeamMember
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -10356,11 +10322,11 @@ func (a *OrganizationAPIService) OrgListTeamMemberExecute(r ApiOrgListTeamMember
 }
 
 type ApiOrgListTeamMembersRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	id         int64
-	page       *int32
-	limit      *int32
+	id int64
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -10382,27 +10348,26 @@ func (r ApiOrgListTeamMembersRequest) Execute() ([]User, *http.Response, error) 
 /*
 OrgListTeamMembers List a team's members
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id id of the team
-	@return ApiOrgListTeamMembersRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of the team
+ @return ApiOrgListTeamMembersRequest
 */
 func (a *OrganizationAPIService) OrgListTeamMembers(ctx context.Context, id int64) ApiOrgListTeamMembersRequest {
 	return ApiOrgListTeamMembersRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []User
+//  @return []User
 func (a *OrganizationAPIService) OrgListTeamMembersExecute(r ApiOrgListTeamMembersRequest) ([]User, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []User
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []User
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListTeamMembers")
@@ -10553,8 +10518,8 @@ func (a *OrganizationAPIService) OrgListTeamMembersExecute(r ApiOrgListTeamMembe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -10572,11 +10537,11 @@ func (a *OrganizationAPIService) OrgListTeamMembersExecute(r ApiOrgListTeamMembe
 }
 
 type ApiOrgListTeamRepoRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	id         int64
-	org        string
-	repo       string
+	id int64
+	org string
+	repo string
 }
 
 func (r ApiOrgListTeamRepoRequest) Execute() (*Repository, *http.Response, error) {
@@ -10586,31 +10551,30 @@ func (r ApiOrgListTeamRepoRequest) Execute() (*Repository, *http.Response, error
 /*
 OrgListTeamRepo List a particular repo of team
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id id of the team
-	@param org organization that owns the repo to list
-	@param repo name of the repo to list
-	@return ApiOrgListTeamRepoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of the team
+ @param org organization that owns the repo to list
+ @param repo name of the repo to list
+ @return ApiOrgListTeamRepoRequest
 */
 func (a *OrganizationAPIService) OrgListTeamRepo(ctx context.Context, id int64, org string, repo string) ApiOrgListTeamRepoRequest {
 	return ApiOrgListTeamRepoRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-		org:        org,
-		repo:       repo,
+		ctx: ctx,
+		id: id,
+		org: org,
+		repo: repo,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Repository
+//  @return Repository
 func (a *OrganizationAPIService) OrgListTeamRepoExecute(r ApiOrgListTeamRepoRequest) (*Repository, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Repository
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Repository
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListTeamRepo")
@@ -10757,8 +10721,8 @@ func (a *OrganizationAPIService) OrgListTeamRepoExecute(r ApiOrgListTeamRepoRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -10776,11 +10740,11 @@ func (a *OrganizationAPIService) OrgListTeamRepoExecute(r ApiOrgListTeamRepoRequ
 }
 
 type ApiOrgListTeamReposRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	id         int64
-	page       *int32
-	limit      *int32
+	id int64
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -10802,27 +10766,26 @@ func (r ApiOrgListTeamReposRequest) Execute() ([]Repository, *http.Response, err
 /*
 OrgListTeamRepos List a team's repos
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id id of the team
-	@return ApiOrgListTeamReposRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of the team
+ @return ApiOrgListTeamReposRequest
 */
 func (a *OrganizationAPIService) OrgListTeamRepos(ctx context.Context, id int64) ApiOrgListTeamReposRequest {
 	return ApiOrgListTeamReposRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Repository
+//  @return []Repository
 func (a *OrganizationAPIService) OrgListTeamReposExecute(r ApiOrgListTeamReposRequest) ([]Repository, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Repository
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Repository
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListTeamRepos")
@@ -10973,8 +10936,8 @@ func (a *OrganizationAPIService) OrgListTeamReposExecute(r ApiOrgListTeamReposRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -10992,11 +10955,11 @@ func (a *OrganizationAPIService) OrgListTeamReposExecute(r ApiOrgListTeamReposRe
 }
 
 type ApiOrgListTeamsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	page       *int32
-	limit      *int32
+	org string
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -11018,27 +10981,26 @@ func (r ApiOrgListTeamsRequest) Execute() ([]Team, *http.Response, error) {
 /*
 OrgListTeams List an organization's teams
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgListTeamsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgListTeamsRequest
 */
 func (a *OrganizationAPIService) OrgListTeams(ctx context.Context, org string) ApiOrgListTeamsRequest {
 	return ApiOrgListTeamsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Team
+//  @return []Team
 func (a *OrganizationAPIService) OrgListTeamsExecute(r ApiOrgListTeamsRequest) ([]Team, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Team
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Team
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListTeams")
@@ -11189,8 +11151,8 @@ func (a *OrganizationAPIService) OrgListTeamsExecute(r ApiOrgListTeamsRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -11208,11 +11170,11 @@ func (a *OrganizationAPIService) OrgListTeamsExecute(r ApiOrgListTeamsRequest) (
 }
 
 type ApiOrgListUserOrgsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	username   string
-	page       *int32
-	limit      *int32
+	username string
+	page *int32
+	limit *int32
 }
 
 // page number of results to return (1-based)
@@ -11234,27 +11196,26 @@ func (r ApiOrgListUserOrgsRequest) Execute() ([]Organization, *http.Response, er
 /*
 OrgListUserOrgs List a user's organizations
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param username username of user
-	@return ApiOrgListUserOrgsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param username username of user
+ @return ApiOrgListUserOrgsRequest
 */
 func (a *OrganizationAPIService) OrgListUserOrgs(ctx context.Context, username string) ApiOrgListUserOrgsRequest {
 	return ApiOrgListUserOrgsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		username:   username,
+		ctx: ctx,
+		username: username,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Organization
+//  @return []Organization
 func (a *OrganizationAPIService) OrgListUserOrgsExecute(r ApiOrgListUserOrgsRequest) ([]Organization, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Organization
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Organization
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgListUserOrgs")
@@ -11405,8 +11366,8 @@ func (a *OrganizationAPIService) OrgListUserOrgsExecute(r ApiOrgListUserOrgsRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -11424,10 +11385,10 @@ func (a *OrganizationAPIService) OrgListUserOrgsExecute(r ApiOrgListUserOrgsRequ
 }
 
 type ApiOrgPublicizeMemberRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	username   string
+	org string
+	username string
 }
 
 func (r ApiOrgPublicizeMemberRequest) Execute() (*http.Response, error) {
@@ -11437,26 +11398,26 @@ func (r ApiOrgPublicizeMemberRequest) Execute() (*http.Response, error) {
 /*
 OrgPublicizeMember Publicize a user's membership
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@param username username of the user
-	@return ApiOrgPublicizeMemberRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @param username username of the user
+ @return ApiOrgPublicizeMemberRequest
 */
 func (a *OrganizationAPIService) OrgPublicizeMember(ctx context.Context, org string, username string) ApiOrgPublicizeMemberRequest {
 	return ApiOrgPublicizeMemberRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
-		username:   username,
+		ctx: ctx,
+		org: org,
+		username: username,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgPublicizeMemberExecute(r ApiOrgPublicizeMemberRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgPublicizeMember")
@@ -11602,8 +11563,8 @@ func (a *OrganizationAPIService) OrgPublicizeMemberExecute(r ApiOrgPublicizeMemb
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -11613,8 +11574,8 @@ func (a *OrganizationAPIService) OrgPublicizeMemberExecute(r ApiOrgPublicizeMemb
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -11623,10 +11584,10 @@ func (a *OrganizationAPIService) OrgPublicizeMemberExecute(r ApiOrgPublicizeMemb
 }
 
 type ApiOrgRemoveTeamMemberRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	id         int64
-	username   string
+	id int64
+	username string
 }
 
 func (r ApiOrgRemoveTeamMemberRequest) Execute() (*http.Response, error) {
@@ -11636,26 +11597,26 @@ func (r ApiOrgRemoveTeamMemberRequest) Execute() (*http.Response, error) {
 /*
 OrgRemoveTeamMember Remove a team member
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id id of the team
-	@param username username of the user to remove
-	@return ApiOrgRemoveTeamMemberRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of the team
+ @param username username of the user to remove
+ @return ApiOrgRemoveTeamMemberRequest
 */
 func (a *OrganizationAPIService) OrgRemoveTeamMember(ctx context.Context, id int64, username string) ApiOrgRemoveTeamMemberRequest {
 	return ApiOrgRemoveTeamMemberRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-		username:   username,
+		ctx: ctx,
+		id: id,
+		username: username,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgRemoveTeamMemberExecute(r ApiOrgRemoveTeamMemberRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgRemoveTeamMember")
@@ -11801,8 +11762,8 @@ func (a *OrganizationAPIService) OrgRemoveTeamMemberExecute(r ApiOrgRemoveTeamMe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -11811,11 +11772,11 @@ func (a *OrganizationAPIService) OrgRemoveTeamMemberExecute(r ApiOrgRemoveTeamMe
 }
 
 type ApiOrgRemoveTeamRepositoryRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	id         int64
-	org        string
-	repo       string
+	id int64
+	org string
+	repo string
 }
 
 func (r ApiOrgRemoveTeamRepositoryRequest) Execute() (*http.Response, error) {
@@ -11827,28 +11788,28 @@ OrgRemoveTeamRepository Remove a repository from a team
 
 This does not delete the repository, it only removes the repository from the team.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id id of the team
-	@param org organization that owns the repo to remove
-	@param repo name of the repo to remove
-	@return ApiOrgRemoveTeamRepositoryRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of the team
+ @param org organization that owns the repo to remove
+ @param repo name of the repo to remove
+ @return ApiOrgRemoveTeamRepositoryRequest
 */
 func (a *OrganizationAPIService) OrgRemoveTeamRepository(ctx context.Context, id int64, org string, repo string) ApiOrgRemoveTeamRepositoryRequest {
 	return ApiOrgRemoveTeamRepositoryRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-		org:        org,
-		repo:       repo,
+		ctx: ctx,
+		id: id,
+		org: org,
+		repo: repo,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgRemoveTeamRepositoryExecute(r ApiOrgRemoveTeamRepositoryRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgRemoveTeamRepository")
@@ -11995,8 +11956,8 @@ func (a *OrganizationAPIService) OrgRemoveTeamRepositoryExecute(r ApiOrgRemoveTe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -12006,8 +11967,8 @@ func (a *OrganizationAPIService) OrgRemoveTeamRepositoryExecute(r ApiOrgRemoveTe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -12016,10 +11977,10 @@ func (a *OrganizationAPIService) OrgRemoveTeamRepositoryExecute(r ApiOrgRemoveTe
 }
 
 type ApiOrgSearchRunJobsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	labels     *string
+	org string
+	labels *string
 }
 
 // a comma separated list of run job labels to search for
@@ -12035,27 +11996,26 @@ func (r ApiOrgSearchRunJobsRequest) Execute() ([]ActionRunJob, *http.Response, e
 /*
 OrgSearchRunJobs Search for organization's action jobs according filter conditions
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgSearchRunJobsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgSearchRunJobsRequest
 */
 func (a *OrganizationAPIService) OrgSearchRunJobs(ctx context.Context, org string) ApiOrgSearchRunJobsRequest {
 	return ApiOrgSearchRunJobsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []ActionRunJob
+//  @return []ActionRunJob
 func (a *OrganizationAPIService) OrgSearchRunJobsExecute(r ApiOrgSearchRunJobsRequest) ([]ActionRunJob, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []ActionRunJob
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []ActionRunJob
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgSearchRunJobs")
@@ -12203,8 +12163,8 @@ func (a *OrganizationAPIService) OrgSearchRunJobsExecute(r ApiOrgSearchRunJobsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -12222,10 +12182,10 @@ func (a *OrganizationAPIService) OrgSearchRunJobsExecute(r ApiOrgSearchRunJobsRe
 }
 
 type ApiOrgUnblockUserRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	username   string
+	org string
+	username string
 }
 
 func (r ApiOrgUnblockUserRequest) Execute() (*http.Response, error) {
@@ -12235,26 +12195,26 @@ func (r ApiOrgUnblockUserRequest) Execute() (*http.Response, error) {
 /*
 OrgUnblockUser Unblock a user from the organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the org
-	@param username username of the user
-	@return ApiOrgUnblockUserRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the org
+ @param username username of the user
+ @return ApiOrgUnblockUserRequest
 */
 func (a *OrganizationAPIService) OrgUnblockUser(ctx context.Context, org string, username string) ApiOrgUnblockUserRequest {
 	return ApiOrgUnblockUserRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
-		username:   username,
+		ctx: ctx,
+		org: org,
+		username: username,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgUnblockUserExecute(r ApiOrgUnblockUserRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgUnblockUser")
@@ -12400,8 +12360,8 @@ func (a *OrganizationAPIService) OrgUnblockUserExecute(r ApiOrgUnblockUserReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -12411,8 +12371,8 @@ func (a *OrganizationAPIService) OrgUnblockUserExecute(r ApiOrgUnblockUserReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -12421,10 +12381,10 @@ func (a *OrganizationAPIService) OrgUnblockUserExecute(r ApiOrgUnblockUserReques
 }
 
 type ApiOrgUpdateAvatarRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	body       *UpdateUserAvatarOption
+	org string
+	body *UpdateUserAvatarOption
 }
 
 func (r ApiOrgUpdateAvatarRequest) Body(body UpdateUserAvatarOption) ApiOrgUpdateAvatarRequest {
@@ -12439,24 +12399,24 @@ func (r ApiOrgUpdateAvatarRequest) Execute() (*http.Response, error) {
 /*
 OrgUpdateAvatar Update Avatar
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiOrgUpdateAvatarRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiOrgUpdateAvatarRequest
 */
 func (a *OrganizationAPIService) OrgUpdateAvatar(ctx context.Context, org string) ApiOrgUpdateAvatarRequest {
 	return ApiOrgUpdateAvatarRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) OrgUpdateAvatarExecute(r ApiOrgUpdateAvatarRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.OrgUpdateAvatar")
@@ -12603,8 +12563,8 @@ func (a *OrganizationAPIService) OrgUpdateAvatarExecute(r ApiOrgUpdateAvatarRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -12613,10 +12573,10 @@ func (a *OrganizationAPIService) OrgUpdateAvatarExecute(r ApiOrgUpdateAvatarRequ
 }
 
 type ApiRenameOrgRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
-	body       *RenameOrgOption
+	org string
+	body *RenameOrgOption
 }
 
 func (r ApiRenameOrgRequest) Body(body RenameOrgOption) ApiRenameOrgRequest {
@@ -12631,24 +12591,24 @@ func (r ApiRenameOrgRequest) Execute() (*http.Response, error) {
 /*
 RenameOrg Rename an organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org existing org name
-	@return ApiRenameOrgRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org existing org name
+ @return ApiRenameOrgRequest
 */
 func (a *OrganizationAPIService) RenameOrg(ctx context.Context, org string) ApiRenameOrgRequest {
 	return ApiRenameOrgRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
 func (a *OrganizationAPIService) RenameOrgExecute(r ApiRenameOrgRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.RenameOrg")
@@ -12798,8 +12758,8 @@ func (a *OrganizationAPIService) RenameOrgExecute(r ApiRenameOrgRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -12809,8 +12769,8 @@ func (a *OrganizationAPIService) RenameOrgExecute(r ApiRenameOrgRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -12819,13 +12779,13 @@ func (a *OrganizationAPIService) RenameOrgExecute(r ApiRenameOrgRequest) (*http.
 }
 
 type ApiTeamSearchRequest struct {
-	ctx         context.Context
-	ApiService  *OrganizationAPIService
-	org         string
-	q           *string
+	ctx context.Context
+	ApiService *OrganizationAPIService
+	org string
+	q *string
 	includeDesc *bool
-	page        *int32
-	limit       *int32
+	page *int32
+	limit *int32
 }
 
 // keywords to search
@@ -12859,27 +12819,26 @@ func (r ApiTeamSearchRequest) Execute() (*TeamSearch200Response, *http.Response,
 /*
 TeamSearch Search for teams within an organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@return ApiTeamSearchRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @return ApiTeamSearchRequest
 */
 func (a *OrganizationAPIService) TeamSearch(ctx context.Context, org string) ApiTeamSearchRequest {
 	return ApiTeamSearchRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 	}
 }
 
 // Execute executes the request
-//
-//	@return TeamSearch200Response
+//  @return TeamSearch200Response
 func (a *OrganizationAPIService) TeamSearchExecute(r ApiTeamSearchRequest) (*TeamSearch200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *TeamSearch200Response
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TeamSearch200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.TeamSearch")
@@ -13036,8 +12995,8 @@ func (a *OrganizationAPIService) TeamSearchExecute(r ApiTeamSearchRequest) (*Tea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -13055,11 +13014,11 @@ func (a *OrganizationAPIService) TeamSearchExecute(r ApiTeamSearchRequest) (*Tea
 }
 
 type ApiUpdateOrgSecretRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OrganizationAPIService
-	org        string
+	org string
 	secretname string
-	body       *CreateOrUpdateSecretOption
+	body *CreateOrUpdateSecretOption
 }
 
 func (r ApiUpdateOrgSecretRequest) Body(body CreateOrUpdateSecretOption) ApiUpdateOrgSecretRequest {
@@ -13074,16 +13033,16 @@ func (r ApiUpdateOrgSecretRequest) Execute() (*http.Response, error) {
 /*
 UpdateOrgSecret Create or Update a secret value in an organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of organization
-	@param secretname name of the secret
-	@return ApiUpdateOrgSecretRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of organization
+ @param secretname name of the secret
+ @return ApiUpdateOrgSecretRequest
 */
 func (a *OrganizationAPIService) UpdateOrgSecret(ctx context.Context, org string, secretname string) ApiUpdateOrgSecretRequest {
 	return ApiUpdateOrgSecretRequest{
 		ApiService: a,
-		ctx:        ctx,
-		org:        org,
+		ctx: ctx,
+		org: org,
 		secretname: secretname,
 	}
 }
@@ -13091,9 +13050,9 @@ func (a *OrganizationAPIService) UpdateOrgSecret(ctx context.Context, org string
 // Execute executes the request
 func (a *OrganizationAPIService) UpdateOrgSecretExecute(r ApiUpdateOrgSecretRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.UpdateOrgSecret")
@@ -13241,8 +13200,8 @@ func (a *OrganizationAPIService) UpdateOrgSecretExecute(r ApiUpdateOrgSecretRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -13252,8 +13211,8 @@ func (a *OrganizationAPIService) UpdateOrgSecretExecute(r ApiUpdateOrgSecretRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -13262,11 +13221,11 @@ func (a *OrganizationAPIService) UpdateOrgSecretExecute(r ApiUpdateOrgSecretRequ
 }
 
 type ApiUpdateOrgVariableRequest struct {
-	ctx          context.Context
-	ApiService   *OrganizationAPIService
-	org          string
+	ctx context.Context
+	ApiService *OrganizationAPIService
+	org string
 	variablename string
-	body         *UpdateVariableOption
+	body *UpdateVariableOption
 }
 
 func (r ApiUpdateOrgVariableRequest) Body(body UpdateVariableOption) ApiUpdateOrgVariableRequest {
@@ -13281,16 +13240,16 @@ func (r ApiUpdateOrgVariableRequest) Execute() (*http.Response, error) {
 /*
 UpdateOrgVariable Update an org-level variable
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param org name of the organization
-	@param variablename name of the variable
-	@return ApiUpdateOrgVariableRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param org name of the organization
+ @param variablename name of the variable
+ @return ApiUpdateOrgVariableRequest
 */
 func (a *OrganizationAPIService) UpdateOrgVariable(ctx context.Context, org string, variablename string) ApiUpdateOrgVariableRequest {
 	return ApiUpdateOrgVariableRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		org:          org,
+		ApiService: a,
+		ctx: ctx,
+		org: org,
 		variablename: variablename,
 	}
 }
@@ -13298,9 +13257,9 @@ func (a *OrganizationAPIService) UpdateOrgVariable(ctx context.Context, org stri
 // Execute executes the request
 func (a *OrganizationAPIService) UpdateOrgVariableExecute(r ApiUpdateOrgVariableRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAPIService.UpdateOrgVariable")
@@ -13448,8 +13407,8 @@ func (a *OrganizationAPIService) UpdateOrgVariableExecute(r ApiUpdateOrgVariable
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -13459,8 +13418,8 @@ func (a *OrganizationAPIService) UpdateOrgVariableExecute(r ApiUpdateOrgVariable
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

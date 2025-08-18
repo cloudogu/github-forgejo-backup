@@ -19,19 +19,19 @@ var _ MappedNullable = &UserSettingsOptions{}
 
 // UserSettingsOptions UserSettingsOptions represents options to change user settings
 type UserSettingsOptions struct {
-	Description         *string `json:"description,omitempty"`
-	DiffViewStyle       *string `json:"diff_view_style,omitempty"`
-	EnableRepoUnitHints *bool   `json:"enable_repo_unit_hints,omitempty"`
-	FullName            *string `json:"full_name,omitempty"`
-	HideActivity        *bool   `json:"hide_activity,omitempty"`
+	Description *string `json:"description,omitempty"`
+	DiffViewStyle *string `json:"diff_view_style,omitempty"`
+	EnableRepoUnitHints *bool `json:"enable_repo_unit_hints,omitempty"`
+	FullName *string `json:"full_name,omitempty"`
+	HideActivity *bool `json:"hide_activity,omitempty"`
 	// Privacy
-	HideEmail    *bool   `json:"hide_email,omitempty"`
-	HidePronouns *bool   `json:"hide_pronouns,omitempty"`
-	Language     *string `json:"language,omitempty"`
-	Location     *string `json:"location,omitempty"`
-	Pronouns     *string `json:"pronouns,omitempty"`
-	Theme        *string `json:"theme,omitempty"`
-	Website      *string `json:"website,omitempty"`
+	HideEmail *bool `json:"hide_email,omitempty"`
+	HidePronouns *bool `json:"hide_pronouns,omitempty"`
+	Language *string `json:"language,omitempty"`
+	Location *string `json:"location,omitempty"`
+	Pronouns *string `json:"pronouns,omitempty"`
+	Theme *string `json:"theme,omitempty"`
+	Website *string `json:"website,omitempty"`
 }
 
 // NewUserSettingsOptions instantiates a new UserSettingsOptions object
@@ -436,7 +436,7 @@ func (o *UserSettingsOptions) SetWebsite(v string) {
 }
 
 func (o UserSettingsOptions) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -519,3 +519,5 @@ func (v *NullableUserSettingsOptions) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

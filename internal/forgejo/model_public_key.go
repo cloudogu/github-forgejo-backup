@@ -20,15 +20,15 @@ var _ MappedNullable = &PublicKey{}
 
 // PublicKey PublicKey publickey is a user key to push code to repository
 type PublicKey struct {
-	CreatedAt   *time.Time `json:"created_at,omitempty"`
-	Fingerprint *string    `json:"fingerprint,omitempty"`
-	Id          *int64     `json:"id,omitempty"`
-	Key         *string    `json:"key,omitempty"`
-	KeyType     *string    `json:"key_type,omitempty"`
-	ReadOnly    *bool      `json:"read_only,omitempty"`
-	Title       *string    `json:"title,omitempty"`
-	Url         *string    `json:"url,omitempty"`
-	User        *User      `json:"user,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	Fingerprint *string `json:"fingerprint,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	Key *string `json:"key,omitempty"`
+	KeyType *string `json:"key_type,omitempty"`
+	ReadOnly *bool `json:"read_only,omitempty"`
+	Title *string `json:"title,omitempty"`
+	Url *string `json:"url,omitempty"`
+	User *User `json:"user,omitempty"`
 }
 
 // NewPublicKey instantiates a new PublicKey object
@@ -337,7 +337,7 @@ func (o *PublicKey) SetUser(v User) {
 }
 
 func (o PublicKey) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -411,3 +411,5 @@ func (v *NullablePublicKey) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

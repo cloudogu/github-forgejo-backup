@@ -11,8 +11,8 @@ API version: 12.0.1+gitea-1.22.0
 package forgejo
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &CreateGPGKeyOption{}
 // CreateGPGKeyOption CreateGPGKeyOption options create user GPG key
 type CreateGPGKeyOption struct {
 	// An armored GPG key to add
-	ArmoredPublicKey string  `json:"armored_public_key"`
+	ArmoredPublicKey string `json:"armored_public_key"`
 	ArmoredSignature *string `json:"armored_signature,omitempty"`
 }
 
@@ -103,7 +103,7 @@ func (o *CreateGPGKeyOption) SetArmoredSignature(v string) {
 }
 
 func (o CreateGPGKeyOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -132,10 +132,10 @@ func (o *CreateGPGKeyOption) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -191,3 +191,5 @@ func (v *NullableCreateGPGKeyOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

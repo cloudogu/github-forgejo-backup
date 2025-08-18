@@ -19,18 +19,18 @@ var _ MappedNullable = &Organization{}
 
 // Organization Organization represents an organization
 type Organization struct {
-	AvatarUrl                 *string `json:"avatar_url,omitempty"`
-	Description               *string `json:"description,omitempty"`
-	Email                     *string `json:"email,omitempty"`
-	FullName                  *string `json:"full_name,omitempty"`
-	Id                        *int64  `json:"id,omitempty"`
-	Location                  *string `json:"location,omitempty"`
-	Name                      *string `json:"name,omitempty"`
-	RepoAdminChangeTeamAccess *bool   `json:"repo_admin_change_team_access,omitempty"`
+	AvatarUrl *string `json:"avatar_url,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Email *string `json:"email,omitempty"`
+	FullName *string `json:"full_name,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	Location *string `json:"location,omitempty"`
+	Name *string `json:"name,omitempty"`
+	RepoAdminChangeTeamAccess *bool `json:"repo_admin_change_team_access,omitempty"`
 	// deprecated
-	Username   *string `json:"username,omitempty"`
+	Username *string `json:"username,omitempty"`
 	Visibility *string `json:"visibility,omitempty"`
-	Website    *string `json:"website,omitempty"`
+	Website *string `json:"website,omitempty"`
 }
 
 // NewOrganization instantiates a new Organization object
@@ -403,7 +403,7 @@ func (o *Organization) SetWebsite(v string) {
 }
 
 func (o Organization) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -483,3 +483,5 @@ func (v *NullableOrganization) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

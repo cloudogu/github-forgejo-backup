@@ -21,7 +21,7 @@ var _ MappedNullable = &CommitStats{}
 type CommitStats struct {
 	Additions *int64 `json:"additions,omitempty"`
 	Deletions *int64 `json:"deletions,omitempty"`
-	Total     *int64 `json:"total,omitempty"`
+	Total *int64 `json:"total,omitempty"`
 }
 
 // NewCommitStats instantiates a new CommitStats object
@@ -138,7 +138,7 @@ func (o *CommitStats) SetTotal(v int64) {
 }
 
 func (o CommitStats) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableCommitStats) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

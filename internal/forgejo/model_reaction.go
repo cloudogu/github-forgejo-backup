@@ -20,9 +20,9 @@ var _ MappedNullable = &Reaction{}
 
 // Reaction Reaction contain one reaction
 type Reaction struct {
-	Content   *string    `json:"content,omitempty"`
+	Content *string `json:"content,omitempty"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
-	User      *User      `json:"user,omitempty"`
+	User *User `json:"user,omitempty"`
 }
 
 // NewReaction instantiates a new Reaction object
@@ -139,7 +139,7 @@ func (o *Reaction) SetUser(v User) {
 }
 
 func (o Reaction) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableReaction) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

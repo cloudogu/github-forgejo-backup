@@ -20,16 +20,16 @@ var _ MappedNullable = &Commit{}
 
 // Commit struct for Commit
 type Commit struct {
-	Author    *User                 `json:"author,omitempty"`
-	Commit    *RepoCommit           `json:"commit,omitempty"`
-	Committer *User                 `json:"committer,omitempty"`
-	Created   *time.Time            `json:"created,omitempty"`
-	Files     []CommitAffectedFiles `json:"files,omitempty"`
-	HtmlUrl   *string               `json:"html_url,omitempty"`
-	Parents   []CommitMeta          `json:"parents,omitempty"`
-	Sha       *string               `json:"sha,omitempty"`
-	Stats     *CommitStats          `json:"stats,omitempty"`
-	Url       *string               `json:"url,omitempty"`
+	Author *User `json:"author,omitempty"`
+	Commit *RepoCommit `json:"commit,omitempty"`
+	Committer *User `json:"committer,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
+	Files []CommitAffectedFiles `json:"files,omitempty"`
+	HtmlUrl *string `json:"html_url,omitempty"`
+	Parents []CommitMeta `json:"parents,omitempty"`
+	Sha *string `json:"sha,omitempty"`
+	Stats *CommitStats `json:"stats,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewCommit instantiates a new Commit object
@@ -370,7 +370,7 @@ func (o *Commit) SetUrl(v string) {
 }
 
 func (o Commit) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -447,3 +447,5 @@ func (v *NullableCommit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

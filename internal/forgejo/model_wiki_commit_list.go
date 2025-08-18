@@ -20,7 +20,7 @@ var _ MappedNullable = &WikiCommitList{}
 // WikiCommitList WikiCommitList commit/revision list
 type WikiCommitList struct {
 	Commits []WikiCommit `json:"commits,omitempty"`
-	Count   *int64       `json:"count,omitempty"`
+	Count *int64 `json:"count,omitempty"`
 }
 
 // NewWikiCommitList instantiates a new WikiCommitList object
@@ -105,7 +105,7 @@ func (o *WikiCommitList) SetCount(v int64) {
 }
 
 func (o WikiCommitList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableWikiCommitList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

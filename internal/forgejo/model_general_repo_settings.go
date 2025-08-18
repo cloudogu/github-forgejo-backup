@@ -19,12 +19,12 @@ var _ MappedNullable = &GeneralRepoSettings{}
 
 // GeneralRepoSettings GeneralRepoSettings contains global repository settings exposed by API
 type GeneralRepoSettings struct {
-	ForksDisabled        *bool `json:"forks_disabled,omitempty"`
-	HttpGitDisabled      *bool `json:"http_git_disabled,omitempty"`
-	LfsDisabled          *bool `json:"lfs_disabled,omitempty"`
-	MigrationsDisabled   *bool `json:"migrations_disabled,omitempty"`
-	MirrorsDisabled      *bool `json:"mirrors_disabled,omitempty"`
-	StarsDisabled        *bool `json:"stars_disabled,omitempty"`
+	ForksDisabled *bool `json:"forks_disabled,omitempty"`
+	HttpGitDisabled *bool `json:"http_git_disabled,omitempty"`
+	LfsDisabled *bool `json:"lfs_disabled,omitempty"`
+	MigrationsDisabled *bool `json:"migrations_disabled,omitempty"`
+	MirrorsDisabled *bool `json:"mirrors_disabled,omitempty"`
+	StarsDisabled *bool `json:"stars_disabled,omitempty"`
 	TimeTrackingDisabled *bool `json:"time_tracking_disabled,omitempty"`
 }
 
@@ -270,7 +270,7 @@ func (o *GeneralRepoSettings) SetTimeTrackingDisabled(v bool) {
 }
 
 func (o GeneralRepoSettings) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -338,3 +338,5 @@ func (v *NullableGeneralRepoSettings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

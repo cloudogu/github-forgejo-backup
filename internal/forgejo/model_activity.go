@@ -20,20 +20,20 @@ var _ MappedNullable = &Activity{}
 
 // Activity struct for Activity
 type Activity struct {
-	ActUser   *User      `json:"act_user,omitempty"`
-	ActUserId *int64     `json:"act_user_id,omitempty"`
-	Comment   *Comment   `json:"comment,omitempty"`
-	CommentId *int64     `json:"comment_id,omitempty"`
-	Content   *string    `json:"content,omitempty"`
-	Created   *time.Time `json:"created,omitempty"`
-	Id        *int64     `json:"id,omitempty"`
-	IsPrivate *bool      `json:"is_private,omitempty"`
+	ActUser *User `json:"act_user,omitempty"`
+	ActUserId *int64 `json:"act_user_id,omitempty"`
+	Comment *Comment `json:"comment,omitempty"`
+	CommentId *int64 `json:"comment_id,omitempty"`
+	Content *string `json:"content,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	IsPrivate *bool `json:"is_private,omitempty"`
 	// the type of action
-	OpType  *string     `json:"op_type,omitempty"`
-	RefName *string     `json:"ref_name,omitempty"`
-	Repo    *Repository `json:"repo,omitempty"`
-	RepoId  *int64      `json:"repo_id,omitempty"`
-	UserId  *int64      `json:"user_id,omitempty"`
+	OpType *string `json:"op_type,omitempty"`
+	RefName *string `json:"ref_name,omitempty"`
+	Repo *Repository `json:"repo,omitempty"`
+	RepoId *int64 `json:"repo_id,omitempty"`
+	UserId *int64 `json:"user_id,omitempty"`
 }
 
 // NewActivity instantiates a new Activity object
@@ -470,7 +470,7 @@ func (o *Activity) SetUserId(v int64) {
 }
 
 func (o Activity) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -556,3 +556,5 @@ func (v *NullableActivity) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

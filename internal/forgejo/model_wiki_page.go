@@ -21,13 +21,13 @@ var _ MappedNullable = &WikiPage{}
 type WikiPage struct {
 	CommitCount *int64 `json:"commit_count,omitempty"`
 	// Page content, base64 encoded
-	ContentBase64 *string     `json:"content_base64,omitempty"`
-	Footer        *string     `json:"footer,omitempty"`
-	HtmlUrl       *string     `json:"html_url,omitempty"`
-	LastCommit    *WikiCommit `json:"last_commit,omitempty"`
-	Sidebar       *string     `json:"sidebar,omitempty"`
-	SubUrl        *string     `json:"sub_url,omitempty"`
-	Title         *string     `json:"title,omitempty"`
+	ContentBase64 *string `json:"content_base64,omitempty"`
+	Footer *string `json:"footer,omitempty"`
+	HtmlUrl *string `json:"html_url,omitempty"`
+	LastCommit *WikiCommit `json:"last_commit,omitempty"`
+	Sidebar *string `json:"sidebar,omitempty"`
+	SubUrl *string `json:"sub_url,omitempty"`
+	Title *string `json:"title,omitempty"`
 }
 
 // NewWikiPage instantiates a new WikiPage object
@@ -304,7 +304,7 @@ func (o *WikiPage) SetTitle(v string) {
 }
 
 func (o WikiPage) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -375,3 +375,5 @@ func (v *NullableWikiPage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

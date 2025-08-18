@@ -19,7 +19,7 @@ var _ MappedNullable = &ListActionRunResponse{}
 
 // ListActionRunResponse ListActionRunResponse return a list of ActionRun
 type ListActionRunResponse struct {
-	TotalCount   *int64      `json:"total_count,omitempty"`
+	TotalCount *int64 `json:"total_count,omitempty"`
 	WorkflowRuns []ActionRun `json:"workflow_runs,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *ListActionRunResponse) SetWorkflowRuns(v []ActionRun) {
 }
 
 func (o ListActionRunResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableListActionRunResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -19,7 +19,7 @@ var _ MappedNullable = &Note{}
 
 // Note Note contains information related to a git note
 type Note struct {
-	Commit  *Commit `json:"commit,omitempty"`
+	Commit *Commit `json:"commit,omitempty"`
 	Message *string `json:"message,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *Note) SetMessage(v string) {
 }
 
 func (o Note) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableNote) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

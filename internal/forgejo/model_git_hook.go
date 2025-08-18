@@ -19,9 +19,9 @@ var _ MappedNullable = &GitHook{}
 
 // GitHook GitHook represents a Git repository hook
 type GitHook struct {
-	Content  *string `json:"content,omitempty"`
-	IsActive *bool   `json:"is_active,omitempty"`
-	Name     *string `json:"name,omitempty"`
+	Content *string `json:"content,omitempty"`
+	IsActive *bool `json:"is_active,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // NewGitHook instantiates a new GitHook object
@@ -138,7 +138,7 @@ func (o *GitHook) SetName(v string) {
 }
 
 func (o GitHook) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableGitHook) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

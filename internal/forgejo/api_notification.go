@@ -16,24 +16,25 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"reflect"
 	"strings"
 	"time"
+	"reflect"
 )
+
 
 // NotificationAPIService NotificationAPI service
 type NotificationAPIService service
 
 type ApiNotifyGetListRequest struct {
-	ctx         context.Context
-	ApiService  *NotificationAPIService
-	all         *bool
+	ctx context.Context
+	ApiService *NotificationAPIService
+	all *bool
 	statusTypes *[]string
 	subjectType *[]string
-	since       *time.Time
-	before      *time.Time
-	page        *int32
-	limit       *int32
+	since *time.Time
+	before *time.Time
+	page *int32
+	limit *int32
 }
 
 // If true, show notifications marked as read. Default value is false
@@ -85,25 +86,24 @@ func (r ApiNotifyGetListRequest) Execute() ([]NotificationThread, *http.Response
 /*
 NotifyGetList List users's notification threads
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiNotifyGetListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiNotifyGetListRequest
 */
 func (a *NotificationAPIService) NotifyGetList(ctx context.Context) ApiNotifyGetListRequest {
 	return ApiNotifyGetListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []NotificationThread
+//  @return []NotificationThread
 func (a *NotificationAPIService) NotifyGetListExecute(r ApiNotifyGetListRequest) ([]NotificationThread, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []NotificationThread
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []NotificationThread
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationAPIService.NotifyGetList")
@@ -293,17 +293,17 @@ func (a *NotificationAPIService) NotifyGetListExecute(r ApiNotifyGetListRequest)
 }
 
 type ApiNotifyGetRepoListRequest struct {
-	ctx         context.Context
-	ApiService  *NotificationAPIService
-	owner       string
-	repo        string
-	all         *bool
+	ctx context.Context
+	ApiService *NotificationAPIService
+	owner string
+	repo string
+	all *bool
 	statusTypes *[]string
 	subjectType *[]string
-	since       *time.Time
-	before      *time.Time
-	page        *int32
-	limit       *int32
+	since *time.Time
+	before *time.Time
+	page *int32
+	limit *int32
 }
 
 // If true, show notifications marked as read. Default value is false
@@ -355,29 +355,28 @@ func (r ApiNotifyGetRepoListRequest) Execute() ([]NotificationThread, *http.Resp
 /*
 NotifyGetRepoList List users's notification threads on a specific repo
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@return ApiNotifyGetRepoListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @return ApiNotifyGetRepoListRequest
 */
 func (a *NotificationAPIService) NotifyGetRepoList(ctx context.Context, owner string, repo string) ApiNotifyGetRepoListRequest {
 	return ApiNotifyGetRepoListRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []NotificationThread
+//  @return []NotificationThread
 func (a *NotificationAPIService) NotifyGetRepoListExecute(r ApiNotifyGetRepoListRequest) ([]NotificationThread, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []NotificationThread
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []NotificationThread
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationAPIService.NotifyGetRepoList")
@@ -569,9 +568,9 @@ func (a *NotificationAPIService) NotifyGetRepoListExecute(r ApiNotifyGetRepoList
 }
 
 type ApiNotifyGetThreadRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *NotificationAPIService
-	id         string
+	id string
 }
 
 func (r ApiNotifyGetThreadRequest) Execute() (*NotificationThread, *http.Response, error) {
@@ -581,27 +580,26 @@ func (r ApiNotifyGetThreadRequest) Execute() (*NotificationThread, *http.Respons
 /*
 NotifyGetThread Get notification thread by ID
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id id of notification thread
-	@return ApiNotifyGetThreadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of notification thread
+ @return ApiNotifyGetThreadRequest
 */
 func (a *NotificationAPIService) NotifyGetThread(ctx context.Context, id string) ApiNotifyGetThreadRequest {
 	return ApiNotifyGetThreadRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return NotificationThread
+//  @return NotificationThread
 func (a *NotificationAPIService) NotifyGetThreadExecute(r ApiNotifyGetThreadRequest) (*NotificationThread, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *NotificationThread
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *NotificationThread
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationAPIService.NotifyGetThread")
@@ -746,8 +744,8 @@ func (a *NotificationAPIService) NotifyGetThreadExecute(r ApiNotifyGetThreadRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -757,8 +755,8 @@ func (a *NotificationAPIService) NotifyGetThreadExecute(r ApiNotifyGetThreadRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -776,7 +774,7 @@ func (a *NotificationAPIService) NotifyGetThreadExecute(r ApiNotifyGetThreadRequ
 }
 
 type ApiNotifyNewAvailableRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *NotificationAPIService
 }
 
@@ -787,25 +785,24 @@ func (r ApiNotifyNewAvailableRequest) Execute() (*NotificationCount, *http.Respo
 /*
 NotifyNewAvailable Check if unread notifications exist
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiNotifyNewAvailableRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiNotifyNewAvailableRequest
 */
 func (a *NotificationAPIService) NotifyNewAvailable(ctx context.Context) ApiNotifyNewAvailableRequest {
 	return ApiNotifyNewAvailableRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return NotificationCount
+//  @return NotificationCount
 func (a *NotificationAPIService) NotifyNewAvailableExecute(r ApiNotifyNewAvailableRequest) (*NotificationCount, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *NotificationCount
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *NotificationCount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationAPIService.NotifyNewAvailable")
@@ -958,12 +955,12 @@ func (a *NotificationAPIService) NotifyNewAvailableExecute(r ApiNotifyNewAvailab
 }
 
 type ApiNotifyReadListRequest struct {
-	ctx         context.Context
-	ApiService  *NotificationAPIService
-	lastReadAt  *time.Time
-	all         *string
+	ctx context.Context
+	ApiService *NotificationAPIService
+	lastReadAt *time.Time
+	all *string
 	statusTypes *[]string
-	toStatus    *string
+	toStatus *string
 }
 
 // Describes the last point that notifications were checked. Anything updated since this time will not be updated.
@@ -997,25 +994,24 @@ func (r ApiNotifyReadListRequest) Execute() ([]NotificationThread, *http.Respons
 /*
 NotifyReadList Mark notification threads as read, pinned or unread
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiNotifyReadListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiNotifyReadListRequest
 */
 func (a *NotificationAPIService) NotifyReadList(ctx context.Context) ApiNotifyReadListRequest {
 	return ApiNotifyReadListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []NotificationThread
+//  @return []NotificationThread
 func (a *NotificationAPIService) NotifyReadListExecute(r ApiNotifyReadListRequest) ([]NotificationThread, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []NotificationThread
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []NotificationThread
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationAPIService.NotifyReadList")
@@ -1188,14 +1184,14 @@ func (a *NotificationAPIService) NotifyReadListExecute(r ApiNotifyReadListReques
 }
 
 type ApiNotifyReadRepoListRequest struct {
-	ctx         context.Context
-	ApiService  *NotificationAPIService
-	owner       string
-	repo        string
-	all         *string
+	ctx context.Context
+	ApiService *NotificationAPIService
+	owner string
+	repo string
+	all *string
 	statusTypes *[]string
-	toStatus    *string
-	lastReadAt  *time.Time
+	toStatus *string
+	lastReadAt *time.Time
 }
 
 // If true, mark all notifications on this repo. Default value is false
@@ -1229,29 +1225,28 @@ func (r ApiNotifyReadRepoListRequest) Execute() ([]NotificationThread, *http.Res
 /*
 NotifyReadRepoList Mark notification threads as read, pinned or unread on a specific repo
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the repo
-	@param repo name of the repo
-	@return ApiNotifyReadRepoListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the repo
+ @param repo name of the repo
+ @return ApiNotifyReadRepoListRequest
 */
 func (a *NotificationAPIService) NotifyReadRepoList(ctx context.Context, owner string, repo string) ApiNotifyReadRepoListRequest {
 	return ApiNotifyReadRepoListRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		repo:       repo,
+		ctx: ctx,
+		owner: owner,
+		repo: repo,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []NotificationThread
+//  @return []NotificationThread
 func (a *NotificationAPIService) NotifyReadRepoListExecute(r ApiNotifyReadRepoListRequest) ([]NotificationThread, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []NotificationThread
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []NotificationThread
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationAPIService.NotifyReadRepoList")
@@ -1426,10 +1421,10 @@ func (a *NotificationAPIService) NotifyReadRepoListExecute(r ApiNotifyReadRepoLi
 }
 
 type ApiNotifyReadThreadRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *NotificationAPIService
-	id         string
-	toStatus   *string
+	id string
+	toStatus *string
 }
 
 // Status to mark notifications as
@@ -1445,27 +1440,26 @@ func (r ApiNotifyReadThreadRequest) Execute() (*NotificationThread, *http.Respon
 /*
 NotifyReadThread Mark notification thread as read by ID
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id id of notification thread
-	@return ApiNotifyReadThreadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of notification thread
+ @return ApiNotifyReadThreadRequest
 */
 func (a *NotificationAPIService) NotifyReadThread(ctx context.Context, id string) ApiNotifyReadThreadRequest {
 	return ApiNotifyReadThreadRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return NotificationThread
+//  @return NotificationThread
 func (a *NotificationAPIService) NotifyReadThreadExecute(r ApiNotifyReadThreadRequest) (*NotificationThread, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPatch
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *NotificationThread
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *NotificationThread
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationAPIService.NotifyReadThread")
@@ -1616,8 +1610,8 @@ func (a *NotificationAPIService) NotifyReadThreadExecute(r ApiNotifyReadThreadRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1627,8 +1621,8 @@ func (a *NotificationAPIService) NotifyReadThreadExecute(r ApiNotifyReadThreadRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

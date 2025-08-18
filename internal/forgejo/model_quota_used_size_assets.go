@@ -20,9 +20,9 @@ var _ MappedNullable = &QuotaUsedSizeAssets{}
 // QuotaUsedSizeAssets QuotaUsedSizeAssets represents the size-based asset usage of a user
 type QuotaUsedSizeAssets struct {
 	// Storage size used for the user's artifacts
-	Artifacts   *int64                          `json:"artifacts,omitempty"`
+	Artifacts *int64 `json:"artifacts,omitempty"`
 	Attachments *QuotaUsedSizeAssetsAttachments `json:"attachments,omitempty"`
-	Packages    *QuotaUsedSizeAssetsPackages    `json:"packages,omitempty"`
+	Packages *QuotaUsedSizeAssetsPackages `json:"packages,omitempty"`
 }
 
 // NewQuotaUsedSizeAssets instantiates a new QuotaUsedSizeAssets object
@@ -139,7 +139,7 @@ func (o *QuotaUsedSizeAssets) SetPackages(v QuotaUsedSizeAssetsPackages) {
 }
 
 func (o QuotaUsedSizeAssets) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableQuotaUsedSizeAssets) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

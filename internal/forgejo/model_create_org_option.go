@@ -11,8 +11,8 @@ API version: 12.0.1+gitea-1.22.0
 package forgejo
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -21,15 +21,15 @@ var _ MappedNullable = &CreateOrgOption{}
 
 // CreateOrgOption CreateOrgOption options for creating an organization
 type CreateOrgOption struct {
-	Description               *string `json:"description,omitempty"`
-	Email                     *string `json:"email,omitempty"`
-	FullName                  *string `json:"full_name,omitempty"`
-	Location                  *string `json:"location,omitempty"`
-	RepoAdminChangeTeamAccess *bool   `json:"repo_admin_change_team_access,omitempty"`
-	Username                  string  `json:"username"`
+	Description *string `json:"description,omitempty"`
+	Email *string `json:"email,omitempty"`
+	FullName *string `json:"full_name,omitempty"`
+	Location *string `json:"location,omitempty"`
+	RepoAdminChangeTeamAccess *bool `json:"repo_admin_change_team_access,omitempty"`
+	Username string `json:"username"`
 	// possible values are `public` (default), `limited` or `private`
 	Visibility *string `json:"visibility,omitempty"`
-	Website    *string `json:"website,omitempty"`
+	Website *string `json:"website,omitempty"`
 }
 
 type _CreateOrgOption CreateOrgOption
@@ -301,7 +301,7 @@ func (o *CreateOrgOption) SetWebsite(v string) {
 }
 
 func (o CreateOrgOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -348,10 +348,10 @@ func (o *CreateOrgOption) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -407,3 +407,5 @@ func (v *NullableCreateOrgOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,14 +20,14 @@ var _ MappedNullable = &Attachment{}
 
 // Attachment Attachment a generic attachment
 type Attachment struct {
-	BrowserDownloadUrl *string    `json:"browser_download_url,omitempty"`
-	CreatedAt          *time.Time `json:"created_at,omitempty"`
-	DownloadCount      *int64     `json:"download_count,omitempty"`
-	Id                 *int64     `json:"id,omitempty"`
-	Name               *string    `json:"name,omitempty"`
-	Size               *int64     `json:"size,omitempty"`
-	Type               *string    `json:"type,omitempty"`
-	Uuid               *string    `json:"uuid,omitempty"`
+	BrowserDownloadUrl *string `json:"browser_download_url,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	DownloadCount *int64 `json:"download_count,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Size *int64 `json:"size,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewAttachment instantiates a new Attachment object
@@ -304,7 +304,7 @@ func (o *Attachment) SetUuid(v string) {
 }
 
 func (o Attachment) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -375,3 +375,5 @@ func (v *NullableAttachment) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

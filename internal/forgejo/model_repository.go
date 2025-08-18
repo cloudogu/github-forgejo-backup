@@ -20,70 +20,70 @@ var _ MappedNullable = &Repository{}
 
 // Repository Repository represents a repository
 type Repository struct {
-	AllowFastForwardOnlyMerge     *bool            `json:"allow_fast_forward_only_merge,omitempty"`
-	AllowMergeCommits             *bool            `json:"allow_merge_commits,omitempty"`
-	AllowRebase                   *bool            `json:"allow_rebase,omitempty"`
-	AllowRebaseExplicit           *bool            `json:"allow_rebase_explicit,omitempty"`
-	AllowRebaseUpdate             *bool            `json:"allow_rebase_update,omitempty"`
-	AllowSquashMerge              *bool            `json:"allow_squash_merge,omitempty"`
-	Archived                      *bool            `json:"archived,omitempty"`
-	ArchivedAt                    *time.Time       `json:"archived_at,omitempty"`
-	AvatarUrl                     *string          `json:"avatar_url,omitempty"`
-	CloneUrl                      *string          `json:"clone_url,omitempty"`
-	CreatedAt                     *time.Time       `json:"created_at,omitempty"`
-	DefaultAllowMaintainerEdit    *bool            `json:"default_allow_maintainer_edit,omitempty"`
-	DefaultBranch                 *string          `json:"default_branch,omitempty"`
-	DefaultDeleteBranchAfterMerge *bool            `json:"default_delete_branch_after_merge,omitempty"`
-	DefaultMergeStyle             *string          `json:"default_merge_style,omitempty"`
-	DefaultUpdateStyle            *string          `json:"default_update_style,omitempty"`
-	Description                   *string          `json:"description,omitempty"`
-	Empty                         *bool            `json:"empty,omitempty"`
-	ExternalTracker               *ExternalTracker `json:"external_tracker,omitempty"`
-	ExternalWiki                  *ExternalWiki    `json:"external_wiki,omitempty"`
-	Fork                          *bool            `json:"fork,omitempty"`
-	ForksCount                    *int64           `json:"forks_count,omitempty"`
-	FullName                      *string          `json:"full_name,omitempty"`
-	GloballyEditableWiki          *bool            `json:"globally_editable_wiki,omitempty"`
-	HasActions                    *bool            `json:"has_actions,omitempty"`
-	HasIssues                     *bool            `json:"has_issues,omitempty"`
-	HasPackages                   *bool            `json:"has_packages,omitempty"`
-	HasProjects                   *bool            `json:"has_projects,omitempty"`
-	HasPullRequests               *bool            `json:"has_pull_requests,omitempty"`
-	HasReleases                   *bool            `json:"has_releases,omitempty"`
-	HasWiki                       *bool            `json:"has_wiki,omitempty"`
-	HtmlUrl                       *string          `json:"html_url,omitempty"`
-	Id                            *int64           `json:"id,omitempty"`
-	IgnoreWhitespaceConflicts     *bool            `json:"ignore_whitespace_conflicts,omitempty"`
-	Internal                      *bool            `json:"internal,omitempty"`
-	InternalTracker               *InternalTracker `json:"internal_tracker,omitempty"`
-	Language                      *string          `json:"language,omitempty"`
-	LanguagesUrl                  *string          `json:"languages_url,omitempty"`
-	Link                          *string          `json:"link,omitempty"`
-	Mirror                        *bool            `json:"mirror,omitempty"`
-	MirrorInterval                *string          `json:"mirror_interval,omitempty"`
-	MirrorUpdated                 *time.Time       `json:"mirror_updated,omitempty"`
-	Name                          *string          `json:"name,omitempty"`
+	AllowFastForwardOnlyMerge *bool `json:"allow_fast_forward_only_merge,omitempty"`
+	AllowMergeCommits *bool `json:"allow_merge_commits,omitempty"`
+	AllowRebase *bool `json:"allow_rebase,omitempty"`
+	AllowRebaseExplicit *bool `json:"allow_rebase_explicit,omitempty"`
+	AllowRebaseUpdate *bool `json:"allow_rebase_update,omitempty"`
+	AllowSquashMerge *bool `json:"allow_squash_merge,omitempty"`
+	Archived *bool `json:"archived,omitempty"`
+	ArchivedAt *time.Time `json:"archived_at,omitempty"`
+	AvatarUrl *string `json:"avatar_url,omitempty"`
+	CloneUrl *string `json:"clone_url,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	DefaultAllowMaintainerEdit *bool `json:"default_allow_maintainer_edit,omitempty"`
+	DefaultBranch *string `json:"default_branch,omitempty"`
+	DefaultDeleteBranchAfterMerge *bool `json:"default_delete_branch_after_merge,omitempty"`
+	DefaultMergeStyle *string `json:"default_merge_style,omitempty"`
+	DefaultUpdateStyle *string `json:"default_update_style,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Empty *bool `json:"empty,omitempty"`
+	ExternalTracker *ExternalTracker `json:"external_tracker,omitempty"`
+	ExternalWiki *ExternalWiki `json:"external_wiki,omitempty"`
+	Fork *bool `json:"fork,omitempty"`
+	ForksCount *int64 `json:"forks_count,omitempty"`
+	FullName *string `json:"full_name,omitempty"`
+	GloballyEditableWiki *bool `json:"globally_editable_wiki,omitempty"`
+	HasActions *bool `json:"has_actions,omitempty"`
+	HasIssues *bool `json:"has_issues,omitempty"`
+	HasPackages *bool `json:"has_packages,omitempty"`
+	HasProjects *bool `json:"has_projects,omitempty"`
+	HasPullRequests *bool `json:"has_pull_requests,omitempty"`
+	HasReleases *bool `json:"has_releases,omitempty"`
+	HasWiki *bool `json:"has_wiki,omitempty"`
+	HtmlUrl *string `json:"html_url,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	IgnoreWhitespaceConflicts *bool `json:"ignore_whitespace_conflicts,omitempty"`
+	Internal *bool `json:"internal,omitempty"`
+	InternalTracker *InternalTracker `json:"internal_tracker,omitempty"`
+	Language *string `json:"language,omitempty"`
+	LanguagesUrl *string `json:"languages_url,omitempty"`
+	Link *string `json:"link,omitempty"`
+	Mirror *bool `json:"mirror,omitempty"`
+	MirrorInterval *string `json:"mirror_interval,omitempty"`
+	MirrorUpdated *time.Time `json:"mirror_updated,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// ObjectFormatName of the underlying git repository
-	ObjectFormatName *string       `json:"object_format_name,omitempty"`
-	OpenIssuesCount  *int64        `json:"open_issues_count,omitempty"`
-	OpenPrCounter    *int64        `json:"open_pr_counter,omitempty"`
-	OriginalUrl      *string       `json:"original_url,omitempty"`
-	Owner            *User         `json:"owner,omitempty"`
-	Parent           *Repository   `json:"parent,omitempty"`
-	Permissions      *Permission   `json:"permissions,omitempty"`
-	Private          *bool         `json:"private,omitempty"`
-	ReleaseCounter   *int64        `json:"release_counter,omitempty"`
-	RepoTransfer     *RepoTransfer `json:"repo_transfer,omitempty"`
-	Size             *int64        `json:"size,omitempty"`
-	SshUrl           *string       `json:"ssh_url,omitempty"`
-	StarsCount       *int64        `json:"stars_count,omitempty"`
-	Template         *bool         `json:"template,omitempty"`
-	Topics           []string      `json:"topics,omitempty"`
-	UpdatedAt        *time.Time    `json:"updated_at,omitempty"`
-	Url              *string       `json:"url,omitempty"`
-	WatchersCount    *int64        `json:"watchers_count,omitempty"`
-	Website          *string       `json:"website,omitempty"`
-	WikiBranch       *string       `json:"wiki_branch,omitempty"`
+	ObjectFormatName *string `json:"object_format_name,omitempty"`
+	OpenIssuesCount *int64 `json:"open_issues_count,omitempty"`
+	OpenPrCounter *int64 `json:"open_pr_counter,omitempty"`
+	OriginalUrl *string `json:"original_url,omitempty"`
+	Owner *User `json:"owner,omitempty"`
+	Parent *Repository `json:"parent,omitempty"`
+	Permissions *Permission `json:"permissions,omitempty"`
+	Private *bool `json:"private,omitempty"`
+	ReleaseCounter *int64 `json:"release_counter,omitempty"`
+	RepoTransfer *RepoTransfer `json:"repo_transfer,omitempty"`
+	Size *int64 `json:"size,omitempty"`
+	SshUrl *string `json:"ssh_url,omitempty"`
+	StarsCount *int64 `json:"stars_count,omitempty"`
+	Template *bool `json:"template,omitempty"`
+	Topics []string `json:"topics,omitempty"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Url *string `json:"url,omitempty"`
+	WatchersCount *int64 `json:"watchers_count,omitempty"`
+	Website *string `json:"website,omitempty"`
+	WikiBranch *string `json:"wiki_branch,omitempty"`
 }
 
 // NewRepository instantiates a new Repository object
@@ -2120,7 +2120,7 @@ func (o *Repository) SetWikiBranch(v string) {
 }
 
 func (o Repository) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -2356,3 +2356,5 @@ func (v *NullableRepository) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

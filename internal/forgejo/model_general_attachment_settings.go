@@ -20,9 +20,9 @@ var _ MappedNullable = &GeneralAttachmentSettings{}
 // GeneralAttachmentSettings GeneralAttachmentSettings contains global Attachment settings exposed by API
 type GeneralAttachmentSettings struct {
 	AllowedTypes *string `json:"allowed_types,omitempty"`
-	Enabled      *bool   `json:"enabled,omitempty"`
-	MaxFiles     *int64  `json:"max_files,omitempty"`
-	MaxSize      *int64  `json:"max_size,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
+	MaxFiles *int64 `json:"max_files,omitempty"`
+	MaxSize *int64 `json:"max_size,omitempty"`
 }
 
 // NewGeneralAttachmentSettings instantiates a new GeneralAttachmentSettings object
@@ -171,7 +171,7 @@ func (o *GeneralAttachmentSettings) SetMaxSize(v int64) {
 }
 
 func (o GeneralAttachmentSettings) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,3 +230,5 @@ func (v *NullableGeneralAttachmentSettings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

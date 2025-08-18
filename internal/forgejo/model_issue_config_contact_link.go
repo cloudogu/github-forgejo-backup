@@ -20,8 +20,8 @@ var _ MappedNullable = &IssueConfigContactLink{}
 // IssueConfigContactLink struct for IssueConfigContactLink
 type IssueConfigContactLink struct {
 	About *string `json:"about,omitempty"`
-	Name  *string `json:"name,omitempty"`
-	Url   *string `json:"url,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewIssueConfigContactLink instantiates a new IssueConfigContactLink object
@@ -138,7 +138,7 @@ func (o *IssueConfigContactLink) SetUrl(v string) {
 }
 
 func (o IssueConfigContactLink) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableIssueConfigContactLink) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

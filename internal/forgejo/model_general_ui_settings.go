@@ -20,8 +20,8 @@ var _ MappedNullable = &GeneralUISettings{}
 // GeneralUISettings GeneralUISettings contains global ui settings exposed by API
 type GeneralUISettings struct {
 	AllowedReactions []string `json:"allowed_reactions,omitempty"`
-	CustomEmojis     []string `json:"custom_emojis,omitempty"`
-	DefaultTheme     *string  `json:"default_theme,omitempty"`
+	CustomEmojis []string `json:"custom_emojis,omitempty"`
+	DefaultTheme *string `json:"default_theme,omitempty"`
 }
 
 // NewGeneralUISettings instantiates a new GeneralUISettings object
@@ -138,7 +138,7 @@ func (o *GeneralUISettings) SetDefaultTheme(v string) {
 }
 
 func (o GeneralUISettings) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableGeneralUISettings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,7 +20,7 @@ var _ MappedNullable = &DismissPullReviewOptions{}
 // DismissPullReviewOptions DismissPullReviewOptions are options to dismiss a pull review
 type DismissPullReviewOptions struct {
 	Message *string `json:"message,omitempty"`
-	Priors  *bool   `json:"priors,omitempty"`
+	Priors *bool `json:"priors,omitempty"`
 }
 
 // NewDismissPullReviewOptions instantiates a new DismissPullReviewOptions object
@@ -105,7 +105,7 @@ func (o *DismissPullReviewOptions) SetPriors(v bool) {
 }
 
 func (o DismissPullReviewOptions) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableDismissPullReviewOptions) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

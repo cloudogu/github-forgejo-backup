@@ -19,15 +19,15 @@ var _ MappedNullable = &Team{}
 
 // Team Team represents a team in an organization
 type Team struct {
-	CanCreateOrgRepo        *bool              `json:"can_create_org_repo,omitempty"`
-	Description             *string            `json:"description,omitempty"`
-	Id                      *int64             `json:"id,omitempty"`
-	IncludesAllRepositories *bool              `json:"includes_all_repositories,omitempty"`
-	Name                    *string            `json:"name,omitempty"`
-	Organization            *Organization      `json:"organization,omitempty"`
-	Permission              *string            `json:"permission,omitempty"`
-	Units                   []string           `json:"units,omitempty"`
-	UnitsMap                *map[string]string `json:"units_map,omitempty"`
+	CanCreateOrgRepo *bool `json:"can_create_org_repo,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	IncludesAllRepositories *bool `json:"includes_all_repositories,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Organization *Organization `json:"organization,omitempty"`
+	Permission *string `json:"permission,omitempty"`
+	Units []string `json:"units,omitempty"`
+	UnitsMap *map[string]string `json:"units_map,omitempty"`
 }
 
 // NewTeam instantiates a new Team object
@@ -336,7 +336,7 @@ func (o *Team) SetUnitsMap(v map[string]string) {
 }
 
 func (o Team) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -410,3 +410,5 @@ func (v *NullableTeam) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -22,25 +22,25 @@ var _ MappedNullable = &ContentsResponse{}
 type ContentsResponse struct {
 	Links *FileLinksResponse `json:"_links,omitempty"`
 	// `content` is populated when `type` is `file`, otherwise null
-	Content     *string `json:"content,omitempty"`
+	Content *string `json:"content,omitempty"`
 	DownloadUrl *string `json:"download_url,omitempty"`
 	// `encoding` is populated when `type` is `file`, otherwise null
-	Encoding       *string    `json:"encoding,omitempty"`
-	GitUrl         *string    `json:"git_url,omitempty"`
-	HtmlUrl        *string    `json:"html_url,omitempty"`
-	LastCommitSha  *string    `json:"last_commit_sha,omitempty"`
+	Encoding *string `json:"encoding,omitempty"`
+	GitUrl *string `json:"git_url,omitempty"`
+	HtmlUrl *string `json:"html_url,omitempty"`
+	LastCommitSha *string `json:"last_commit_sha,omitempty"`
 	LastCommitWhen *time.Time `json:"last_commit_when,omitempty"`
-	Name           *string    `json:"name,omitempty"`
-	Path           *string    `json:"path,omitempty"`
-	Sha            *string    `json:"sha,omitempty"`
-	Size           *int64     `json:"size,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Path *string `json:"path,omitempty"`
+	Sha *string `json:"sha,omitempty"`
+	Size *int64 `json:"size,omitempty"`
 	// `submodule_git_url` is populated when `type` is `submodule`, otherwise null
 	SubmoduleGitUrl *string `json:"submodule_git_url,omitempty"`
 	// `target` is populated when `type` is `symlink`, otherwise null
 	Target *string `json:"target,omitempty"`
 	// `type` will be `file`, `dir`, `symlink`, or `submodule`
 	Type *string `json:"type,omitempty"`
-	Url  *string `json:"url,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewContentsResponse instantiates a new ContentsResponse object
@@ -573,7 +573,7 @@ func (o *ContentsResponse) SetUrl(v string) {
 }
 
 func (o ContentsResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -668,3 +668,5 @@ func (v *NullableContentsResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

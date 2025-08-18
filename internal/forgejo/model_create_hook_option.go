@@ -11,8 +11,8 @@ API version: 12.0.1+gitea-1.22.0
 package forgejo
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -21,13 +21,13 @@ var _ MappedNullable = &CreateHookOption{}
 
 // CreateHookOption CreateHookOption options when create a hook
 type CreateHookOption struct {
-	Active              *bool   `json:"active,omitempty"`
+	Active *bool `json:"active,omitempty"`
 	AuthorizationHeader *string `json:"authorization_header,omitempty"`
-	BranchFilter        *string `json:"branch_filter,omitempty"`
+	BranchFilter *string `json:"branch_filter,omitempty"`
 	// CreateHookOptionConfig has all config options in it required are \"content_type\" and \"url\" Required
 	Config map[string]string `json:"config"`
-	Events []string          `json:"events,omitempty"`
-	Type   string            `json:"type"`
+	Events []string `json:"events,omitempty"`
+	Type string `json:"type"`
 }
 
 type _CreateHookOption CreateHookOption
@@ -232,7 +232,7 @@ func (o *CreateHookOption) SetType(v string) {
 }
 
 func (o CreateHookOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -272,10 +272,10 @@ func (o *CreateHookOption) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -331,3 +331,5 @@ func (v *NullableCreateHookOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

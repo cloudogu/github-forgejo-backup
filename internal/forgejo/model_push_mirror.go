@@ -20,15 +20,15 @@ var _ MappedNullable = &PushMirror{}
 
 // PushMirror PushMirror represents information of a push mirror
 type PushMirror struct {
-	Created       *time.Time `json:"created,omitempty"`
-	Interval      *string    `json:"interval,omitempty"`
-	LastError     *string    `json:"last_error,omitempty"`
-	LastUpdate    *time.Time `json:"last_update,omitempty"`
-	PublicKey     *string    `json:"public_key,omitempty"`
-	RemoteAddress *string    `json:"remote_address,omitempty"`
-	RemoteName    *string    `json:"remote_name,omitempty"`
-	RepoName      *string    `json:"repo_name,omitempty"`
-	SyncOnCommit  *bool      `json:"sync_on_commit,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
+	Interval *string `json:"interval,omitempty"`
+	LastError *string `json:"last_error,omitempty"`
+	LastUpdate *time.Time `json:"last_update,omitempty"`
+	PublicKey *string `json:"public_key,omitempty"`
+	RemoteAddress *string `json:"remote_address,omitempty"`
+	RemoteName *string `json:"remote_name,omitempty"`
+	RepoName *string `json:"repo_name,omitempty"`
+	SyncOnCommit *bool `json:"sync_on_commit,omitempty"`
 }
 
 // NewPushMirror instantiates a new PushMirror object
@@ -337,7 +337,7 @@ func (o *PushMirror) SetSyncOnCommit(v bool) {
 }
 
 func (o PushMirror) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -411,3 +411,5 @@ func (v *NullablePushMirror) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

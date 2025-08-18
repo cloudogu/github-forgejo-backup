@@ -19,25 +19,25 @@ var _ MappedNullable = &EditUserOption{}
 
 // EditUserOption EditUserOption edit user options
 type EditUserOption struct {
-	Active                  *bool   `json:"active,omitempty"`
-	Admin                   *bool   `json:"admin,omitempty"`
-	AllowCreateOrganization *bool   `json:"allow_create_organization,omitempty"`
-	AllowGitHook            *bool   `json:"allow_git_hook,omitempty"`
-	AllowImportLocal        *bool   `json:"allow_import_local,omitempty"`
-	Description             *string `json:"description,omitempty"`
-	Email                   *string `json:"email,omitempty"`
-	FullName                *string `json:"full_name,omitempty"`
-	Location                *string `json:"location,omitempty"`
-	LoginName               *string `json:"login_name,omitempty"`
-	MaxRepoCreation         *int64  `json:"max_repo_creation,omitempty"`
-	MustChangePassword      *bool   `json:"must_change_password,omitempty"`
-	Password                *string `json:"password,omitempty"`
-	ProhibitLogin           *bool   `json:"prohibit_login,omitempty"`
-	Pronouns                *string `json:"pronouns,omitempty"`
-	Restricted              *bool   `json:"restricted,omitempty"`
-	SourceId                *int64  `json:"source_id,omitempty"`
-	Visibility              *string `json:"visibility,omitempty"`
-	Website                 *string `json:"website,omitempty"`
+	Active *bool `json:"active,omitempty"`
+	Admin *bool `json:"admin,omitempty"`
+	AllowCreateOrganization *bool `json:"allow_create_organization,omitempty"`
+	AllowGitHook *bool `json:"allow_git_hook,omitempty"`
+	AllowImportLocal *bool `json:"allow_import_local,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Email *string `json:"email,omitempty"`
+	FullName *string `json:"full_name,omitempty"`
+	Location *string `json:"location,omitempty"`
+	LoginName *string `json:"login_name,omitempty"`
+	MaxRepoCreation *int64 `json:"max_repo_creation,omitempty"`
+	MustChangePassword *bool `json:"must_change_password,omitempty"`
+	Password *string `json:"password,omitempty"`
+	ProhibitLogin *bool `json:"prohibit_login,omitempty"`
+	Pronouns *string `json:"pronouns,omitempty"`
+	Restricted *bool `json:"restricted,omitempty"`
+	SourceId *int64 `json:"source_id,omitempty"`
+	Visibility *string `json:"visibility,omitempty"`
+	Website *string `json:"website,omitempty"`
 }
 
 // NewEditUserOption instantiates a new EditUserOption object
@@ -666,7 +666,7 @@ func (o *EditUserOption) SetWebsite(v string) {
 }
 
 func (o EditUserOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -770,3 +770,5 @@ func (v *NullableEditUserOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

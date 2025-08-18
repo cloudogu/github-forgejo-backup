@@ -20,21 +20,21 @@ var _ MappedNullable = &PullReview{}
 
 // PullReview PullReview represents a pull request review
 type PullReview struct {
-	Body           *string `json:"body,omitempty"`
-	CommentsCount  *int64  `json:"comments_count,omitempty"`
-	CommitId       *string `json:"commit_id,omitempty"`
-	Dismissed      *bool   `json:"dismissed,omitempty"`
-	HtmlUrl        *string `json:"html_url,omitempty"`
-	Id             *int64  `json:"id,omitempty"`
-	Official       *bool   `json:"official,omitempty"`
+	Body *string `json:"body,omitempty"`
+	CommentsCount *int64 `json:"comments_count,omitempty"`
+	CommitId *string `json:"commit_id,omitempty"`
+	Dismissed *bool `json:"dismissed,omitempty"`
+	HtmlUrl *string `json:"html_url,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	Official *bool `json:"official,omitempty"`
 	PullRequestUrl *string `json:"pull_request_url,omitempty"`
-	Stale          *bool   `json:"stale,omitempty"`
+	Stale *bool `json:"stale,omitempty"`
 	// ReviewStateType review state type
-	State       *string    `json:"state,omitempty"`
+	State *string `json:"state,omitempty"`
 	SubmittedAt *time.Time `json:"submitted_at,omitempty"`
-	Team        *Team      `json:"team,omitempty"`
-	UpdatedAt   *time.Time `json:"updated_at,omitempty"`
-	User        *User      `json:"user,omitempty"`
+	Team *Team `json:"team,omitempty"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	User *User `json:"user,omitempty"`
 }
 
 // NewPullReview instantiates a new PullReview object
@@ -503,7 +503,7 @@ func (o *PullReview) SetUser(v User) {
 }
 
 func (o PullReview) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -592,3 +592,5 @@ func (v *NullablePullReview) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

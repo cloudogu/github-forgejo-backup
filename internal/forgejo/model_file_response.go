@@ -19,8 +19,8 @@ var _ MappedNullable = &FileResponse{}
 
 // FileResponse FileResponse contains information about a repo's file
 type FileResponse struct {
-	Commit       *FileCommitResponse        `json:"commit,omitempty"`
-	Content      *ContentsResponse          `json:"content,omitempty"`
+	Commit *FileCommitResponse `json:"commit,omitempty"`
+	Content *ContentsResponse `json:"content,omitempty"`
 	Verification *PayloadCommitVerification `json:"verification,omitempty"`
 }
 
@@ -138,7 +138,7 @@ func (o *FileResponse) SetVerification(v PayloadCommitVerification) {
 }
 
 func (o FileResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableFileResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -11,8 +11,8 @@ API version: 12.0.1+gitea-1.22.0
 package forgejo
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -21,11 +21,11 @@ var _ MappedNullable = &CreateLabelOption{}
 
 // CreateLabelOption CreateLabelOption options for creating a label
 type CreateLabelOption struct {
-	Color       string  `json:"color"`
+	Color string `json:"color"`
 	Description *string `json:"description,omitempty"`
-	Exclusive   *bool   `json:"exclusive,omitempty"`
-	IsArchived  *bool   `json:"is_archived,omitempty"`
-	Name        string  `json:"name"`
+	Exclusive *bool `json:"exclusive,omitempty"`
+	IsArchived *bool `json:"is_archived,omitempty"`
+	Name string `json:"name"`
 }
 
 type _CreateLabelOption CreateLabelOption
@@ -194,7 +194,7 @@ func (o *CreateLabelOption) SetName(v string) {
 }
 
 func (o CreateLabelOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -231,10 +231,10 @@ func (o *CreateLabelOption) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -290,3 +290,5 @@ func (v *NullableCreateLabelOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,19 +20,19 @@ var _ MappedNullable = &ActionTask{}
 
 // ActionTask ActionTask represents a ActionTask
 type ActionTask struct {
-	CreatedAt    *time.Time `json:"created_at,omitempty"`
-	DisplayTitle *string    `json:"display_title,omitempty"`
-	Event        *string    `json:"event,omitempty"`
-	HeadBranch   *string    `json:"head_branch,omitempty"`
-	HeadSha      *string    `json:"head_sha,omitempty"`
-	Id           *int64     `json:"id,omitempty"`
-	Name         *string    `json:"name,omitempty"`
-	RunNumber    *int64     `json:"run_number,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	DisplayTitle *string `json:"display_title,omitempty"`
+	Event *string `json:"event,omitempty"`
+	HeadBranch *string `json:"head_branch,omitempty"`
+	HeadSha *string `json:"head_sha,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	RunNumber *int64 `json:"run_number,omitempty"`
 	RunStartedAt *time.Time `json:"run_started_at,omitempty"`
-	Status       *string    `json:"status,omitempty"`
-	UpdatedAt    *time.Time `json:"updated_at,omitempty"`
-	Url          *string    `json:"url,omitempty"`
-	WorkflowId   *string    `json:"workflow_id,omitempty"`
+	Status *string `json:"status,omitempty"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Url *string `json:"url,omitempty"`
+	WorkflowId *string `json:"workflow_id,omitempty"`
 }
 
 // NewActionTask instantiates a new ActionTask object
@@ -469,7 +469,7 @@ func (o *ActionTask) SetWorkflowId(v string) {
 }
 
 func (o ActionTask) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -555,3 +555,5 @@ func (v *NullableActionTask) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

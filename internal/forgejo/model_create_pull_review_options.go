@@ -19,9 +19,9 @@ var _ MappedNullable = &CreatePullReviewOptions{}
 
 // CreatePullReviewOptions CreatePullReviewOptions are options to create a pull review
 type CreatePullReviewOptions struct {
-	Body     *string                   `json:"body,omitempty"`
+	Body *string `json:"body,omitempty"`
 	Comments []CreatePullReviewComment `json:"comments,omitempty"`
-	CommitId *string                   `json:"commit_id,omitempty"`
+	CommitId *string `json:"commit_id,omitempty"`
 	// ReviewStateType review state type
 	Event *string `json:"event,omitempty"`
 }
@@ -172,7 +172,7 @@ func (o *CreatePullReviewOptions) SetEvent(v string) {
 }
 
 func (o CreatePullReviewOptions) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -231,3 +231,5 @@ func (v *NullableCreatePullReviewOptions) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,15 +20,15 @@ var _ MappedNullable = &CreatePullRequestOption{}
 
 // CreatePullRequestOption CreatePullRequestOption options when creating a pull request
 type CreatePullRequestOption struct {
-	Assignee  *string    `json:"assignee,omitempty"`
-	Assignees []string   `json:"assignees,omitempty"`
-	Base      *string    `json:"base,omitempty"`
-	Body      *string    `json:"body,omitempty"`
-	DueDate   *time.Time `json:"due_date,omitempty"`
-	Head      *string    `json:"head,omitempty"`
-	Labels    []int64    `json:"labels,omitempty"`
-	Milestone *int64     `json:"milestone,omitempty"`
-	Title     *string    `json:"title,omitempty"`
+	Assignee *string `json:"assignee,omitempty"`
+	Assignees []string `json:"assignees,omitempty"`
+	Base *string `json:"base,omitempty"`
+	Body *string `json:"body,omitempty"`
+	DueDate *time.Time `json:"due_date,omitempty"`
+	Head *string `json:"head,omitempty"`
+	Labels []int64 `json:"labels,omitempty"`
+	Milestone *int64 `json:"milestone,omitempty"`
+	Title *string `json:"title,omitempty"`
 }
 
 // NewCreatePullRequestOption instantiates a new CreatePullRequestOption object
@@ -337,7 +337,7 @@ func (o *CreatePullRequestOption) SetTitle(v string) {
 }
 
 func (o CreatePullRequestOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -411,3 +411,5 @@ func (v *NullableCreatePullRequestOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

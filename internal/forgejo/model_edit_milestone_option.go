@@ -20,10 +20,10 @@ var _ MappedNullable = &EditMilestoneOption{}
 
 // EditMilestoneOption EditMilestoneOption options for editing a milestone
 type EditMilestoneOption struct {
-	Description *string    `json:"description,omitempty"`
-	DueOn       *time.Time `json:"due_on,omitempty"`
-	State       *string    `json:"state,omitempty"`
-	Title       *string    `json:"title,omitempty"`
+	Description *string `json:"description,omitempty"`
+	DueOn *time.Time `json:"due_on,omitempty"`
+	State *string `json:"state,omitempty"`
+	Title *string `json:"title,omitempty"`
 }
 
 // NewEditMilestoneOption instantiates a new EditMilestoneOption object
@@ -172,7 +172,7 @@ func (o *EditMilestoneOption) SetTitle(v string) {
 }
 
 func (o EditMilestoneOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -231,3 +231,5 @@ func (v *NullableEditMilestoneOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -19,10 +19,10 @@ var _ MappedNullable = &NodeInfoSoftware{}
 
 // NodeInfoSoftware NodeInfoSoftware contains Metadata about server software in use
 type NodeInfoSoftware struct {
-	Homepage   *string `json:"homepage,omitempty"`
-	Name       *string `json:"name,omitempty"`
+	Homepage *string `json:"homepage,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Repository *string `json:"repository,omitempty"`
-	Version    *string `json:"version,omitempty"`
+	Version *string `json:"version,omitempty"`
 }
 
 // NewNodeInfoSoftware instantiates a new NodeInfoSoftware object
@@ -171,7 +171,7 @@ func (o *NodeInfoSoftware) SetVersion(v string) {
 }
 
 func (o NodeInfoSoftware) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,3 +230,5 @@ func (v *NullableNodeInfoSoftware) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

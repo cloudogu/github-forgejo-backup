@@ -20,37 +20,37 @@ var _ MappedNullable = &TimelineComment{}
 
 // TimelineComment TimelineComment represents a timeline comment (comment of any type) on a commit or issue
 type TimelineComment struct {
-	Assignee       *User      `json:"assignee,omitempty"`
-	AssigneeTeam   *Team      `json:"assignee_team,omitempty"`
-	Body           *string    `json:"body,omitempty"`
-	CreatedAt      *time.Time `json:"created_at,omitempty"`
-	DependentIssue *Issue     `json:"dependent_issue,omitempty"`
-	HtmlUrl        *string    `json:"html_url,omitempty"`
-	Id             *int64     `json:"id,omitempty"`
-	IssueUrl       *string    `json:"issue_url,omitempty"`
-	Label          *Label     `json:"label,omitempty"`
-	Milestone      *Milestone `json:"milestone,omitempty"`
-	NewRef         *string    `json:"new_ref,omitempty"`
-	NewTitle       *string    `json:"new_title,omitempty"`
-	OldMilestone   *Milestone `json:"old_milestone,omitempty"`
-	OldProjectId   *int64     `json:"old_project_id,omitempty"`
-	OldRef         *string    `json:"old_ref,omitempty"`
-	OldTitle       *string    `json:"old_title,omitempty"`
-	ProjectId      *int64     `json:"project_id,omitempty"`
-	PullRequestUrl *string    `json:"pull_request_url,omitempty"`
-	RefAction      *string    `json:"ref_action,omitempty"`
-	RefComment     *Comment   `json:"ref_comment,omitempty"`
+	Assignee *User `json:"assignee,omitempty"`
+	AssigneeTeam *Team `json:"assignee_team,omitempty"`
+	Body *string `json:"body,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	DependentIssue *Issue `json:"dependent_issue,omitempty"`
+	HtmlUrl *string `json:"html_url,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	IssueUrl *string `json:"issue_url,omitempty"`
+	Label *Label `json:"label,omitempty"`
+	Milestone *Milestone `json:"milestone,omitempty"`
+	NewRef *string `json:"new_ref,omitempty"`
+	NewTitle *string `json:"new_title,omitempty"`
+	OldMilestone *Milestone `json:"old_milestone,omitempty"`
+	OldProjectId *int64 `json:"old_project_id,omitempty"`
+	OldRef *string `json:"old_ref,omitempty"`
+	OldTitle *string `json:"old_title,omitempty"`
+	ProjectId *int64 `json:"project_id,omitempty"`
+	PullRequestUrl *string `json:"pull_request_url,omitempty"`
+	RefAction *string `json:"ref_action,omitempty"`
+	RefComment *Comment `json:"ref_comment,omitempty"`
 	// commit SHA where issue/PR was referenced
 	RefCommitSha *string `json:"ref_commit_sha,omitempty"`
-	RefIssue     *Issue  `json:"ref_issue,omitempty"`
+	RefIssue *Issue `json:"ref_issue,omitempty"`
 	// whether the assignees were removed or added
-	RemovedAssignee *bool        `json:"removed_assignee,omitempty"`
-	ResolveDoer     *User        `json:"resolve_doer,omitempty"`
-	ReviewId        *int64       `json:"review_id,omitempty"`
-	TrackedTime     *TrackedTime `json:"tracked_time,omitempty"`
-	Type            *string      `json:"type,omitempty"`
-	UpdatedAt       *time.Time   `json:"updated_at,omitempty"`
-	User            *User        `json:"user,omitempty"`
+	RemovedAssignee *bool `json:"removed_assignee,omitempty"`
+	ResolveDoer *User `json:"resolve_doer,omitempty"`
+	ReviewId *int64 `json:"review_id,omitempty"`
+	TrackedTime *TrackedTime `json:"tracked_time,omitempty"`
+	Type *string `json:"type,omitempty"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	User *User `json:"user,omitempty"`
 }
 
 // NewTimelineComment instantiates a new TimelineComment object
@@ -999,7 +999,7 @@ func (o *TimelineComment) SetUser(v User) {
 }
 
 func (o TimelineComment) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1133,3 +1133,5 @@ func (v *NullableTimelineComment) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

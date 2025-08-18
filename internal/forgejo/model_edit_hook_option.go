@@ -19,11 +19,11 @@ var _ MappedNullable = &EditHookOption{}
 
 // EditHookOption EditHookOption options when modify one hook
 type EditHookOption struct {
-	Active              *bool              `json:"active,omitempty"`
-	AuthorizationHeader *string            `json:"authorization_header,omitempty"`
-	BranchFilter        *string            `json:"branch_filter,omitempty"`
-	Config              *map[string]string `json:"config,omitempty"`
-	Events              []string           `json:"events,omitempty"`
+	Active *bool `json:"active,omitempty"`
+	AuthorizationHeader *string `json:"authorization_header,omitempty"`
+	BranchFilter *string `json:"branch_filter,omitempty"`
+	Config *map[string]string `json:"config,omitempty"`
+	Events []string `json:"events,omitempty"`
 }
 
 // NewEditHookOption instantiates a new EditHookOption object
@@ -204,7 +204,7 @@ func (o *EditHookOption) SetEvents(v []string) {
 }
 
 func (o EditHookOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -266,3 +266,5 @@ func (v *NullableEditHookOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

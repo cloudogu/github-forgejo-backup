@@ -20,21 +20,21 @@ var _ MappedNullable = &PullReviewComment{}
 
 // PullReviewComment PullReviewComment represents a comment on a pull request review
 type PullReviewComment struct {
-	Body                *string    `json:"body,omitempty"`
-	CommitId            *string    `json:"commit_id,omitempty"`
-	CreatedAt           *time.Time `json:"created_at,omitempty"`
-	DiffHunk            *string    `json:"diff_hunk,omitempty"`
-	HtmlUrl             *string    `json:"html_url,omitempty"`
-	Id                  *int64     `json:"id,omitempty"`
-	OriginalCommitId    *string    `json:"original_commit_id,omitempty"`
-	OriginalPosition    *int32     `json:"original_position,omitempty"`
-	Path                *string    `json:"path,omitempty"`
-	Position            *int32     `json:"position,omitempty"`
-	PullRequestReviewId *int64     `json:"pull_request_review_id,omitempty"`
-	PullRequestUrl      *string    `json:"pull_request_url,omitempty"`
-	Resolver            *User      `json:"resolver,omitempty"`
-	UpdatedAt           *time.Time `json:"updated_at,omitempty"`
-	User                *User      `json:"user,omitempty"`
+	Body *string `json:"body,omitempty"`
+	CommitId *string `json:"commit_id,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	DiffHunk *string `json:"diff_hunk,omitempty"`
+	HtmlUrl *string `json:"html_url,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	OriginalCommitId *string `json:"original_commit_id,omitempty"`
+	OriginalPosition *int32 `json:"original_position,omitempty"`
+	Path *string `json:"path,omitempty"`
+	Position *int32 `json:"position,omitempty"`
+	PullRequestReviewId *int64 `json:"pull_request_review_id,omitempty"`
+	PullRequestUrl *string `json:"pull_request_url,omitempty"`
+	Resolver *User `json:"resolver,omitempty"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	User *User `json:"user,omitempty"`
 }
 
 // NewPullReviewComment instantiates a new PullReviewComment object
@@ -535,7 +535,7 @@ func (o *PullReviewComment) SetUser(v User) {
 }
 
 func (o PullReviewComment) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -627,3 +627,5 @@ func (v *NullablePullReviewComment) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

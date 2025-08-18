@@ -20,17 +20,17 @@ var _ MappedNullable = &EditPullRequestOption{}
 
 // EditPullRequestOption EditPullRequestOption options when modify pull request
 type EditPullRequestOption struct {
-	AllowMaintainerEdit *bool      `json:"allow_maintainer_edit,omitempty"`
-	Assignee            *string    `json:"assignee,omitempty"`
-	Assignees           []string   `json:"assignees,omitempty"`
-	Base                *string    `json:"base,omitempty"`
-	Body                *string    `json:"body,omitempty"`
-	DueDate             *time.Time `json:"due_date,omitempty"`
-	Labels              []int64    `json:"labels,omitempty"`
-	Milestone           *int64     `json:"milestone,omitempty"`
-	State               *string    `json:"state,omitempty"`
-	Title               *string    `json:"title,omitempty"`
-	UnsetDueDate        *bool      `json:"unset_due_date,omitempty"`
+	AllowMaintainerEdit *bool `json:"allow_maintainer_edit,omitempty"`
+	Assignee *string `json:"assignee,omitempty"`
+	Assignees []string `json:"assignees,omitempty"`
+	Base *string `json:"base,omitempty"`
+	Body *string `json:"body,omitempty"`
+	DueDate *time.Time `json:"due_date,omitempty"`
+	Labels []int64 `json:"labels,omitempty"`
+	Milestone *int64 `json:"milestone,omitempty"`
+	State *string `json:"state,omitempty"`
+	Title *string `json:"title,omitempty"`
+	UnsetDueDate *bool `json:"unset_due_date,omitempty"`
 }
 
 // NewEditPullRequestOption instantiates a new EditPullRequestOption object
@@ -403,7 +403,7 @@ func (o *EditPullRequestOption) SetUnsetDueDate(v bool) {
 }
 
 func (o EditPullRequestOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -483,3 +483,5 @@ func (v *NullableEditPullRequestOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

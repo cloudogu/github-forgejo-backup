@@ -18,11 +18,12 @@ import (
 	"net/url"
 )
 
+
 // SettingsAPIService SettingsAPI service
 type SettingsAPIService service
 
 type ApiGetGeneralAPISettingsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SettingsAPIService
 }
 
@@ -33,25 +34,24 @@ func (r ApiGetGeneralAPISettingsRequest) Execute() (*GeneralAPISettings, *http.R
 /*
 GetGeneralAPISettings Get instance's global settings for api
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetGeneralAPISettingsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetGeneralAPISettingsRequest
 */
 func (a *SettingsAPIService) GetGeneralAPISettings(ctx context.Context) ApiGetGeneralAPISettingsRequest {
 	return ApiGetGeneralAPISettingsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return GeneralAPISettings
+//  @return GeneralAPISettings
 func (a *SettingsAPIService) GetGeneralAPISettingsExecute(r ApiGetGeneralAPISettingsRequest) (*GeneralAPISettings, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GeneralAPISettings
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GeneralAPISettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SettingsAPIService.GetGeneralAPISettings")
@@ -204,7 +204,7 @@ func (a *SettingsAPIService) GetGeneralAPISettingsExecute(r ApiGetGeneralAPISett
 }
 
 type ApiGetGeneralAttachmentSettingsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SettingsAPIService
 }
 
@@ -215,25 +215,24 @@ func (r ApiGetGeneralAttachmentSettingsRequest) Execute() (*GeneralAttachmentSet
 /*
 GetGeneralAttachmentSettings Get instance's global settings for Attachment
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetGeneralAttachmentSettingsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetGeneralAttachmentSettingsRequest
 */
 func (a *SettingsAPIService) GetGeneralAttachmentSettings(ctx context.Context) ApiGetGeneralAttachmentSettingsRequest {
 	return ApiGetGeneralAttachmentSettingsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return GeneralAttachmentSettings
+//  @return GeneralAttachmentSettings
 func (a *SettingsAPIService) GetGeneralAttachmentSettingsExecute(r ApiGetGeneralAttachmentSettingsRequest) (*GeneralAttachmentSettings, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GeneralAttachmentSettings
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GeneralAttachmentSettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SettingsAPIService.GetGeneralAttachmentSettings")
@@ -386,7 +385,7 @@ func (a *SettingsAPIService) GetGeneralAttachmentSettingsExecute(r ApiGetGeneral
 }
 
 type ApiGetGeneralRepositorySettingsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SettingsAPIService
 }
 
@@ -397,25 +396,24 @@ func (r ApiGetGeneralRepositorySettingsRequest) Execute() (*GeneralRepoSettings,
 /*
 GetGeneralRepositorySettings Get instance's global settings for repositories
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetGeneralRepositorySettingsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetGeneralRepositorySettingsRequest
 */
 func (a *SettingsAPIService) GetGeneralRepositorySettings(ctx context.Context) ApiGetGeneralRepositorySettingsRequest {
 	return ApiGetGeneralRepositorySettingsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return GeneralRepoSettings
+//  @return GeneralRepoSettings
 func (a *SettingsAPIService) GetGeneralRepositorySettingsExecute(r ApiGetGeneralRepositorySettingsRequest) (*GeneralRepoSettings, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GeneralRepoSettings
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GeneralRepoSettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SettingsAPIService.GetGeneralRepositorySettings")
@@ -568,7 +566,7 @@ func (a *SettingsAPIService) GetGeneralRepositorySettingsExecute(r ApiGetGeneral
 }
 
 type ApiGetGeneralUISettingsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SettingsAPIService
 }
 
@@ -579,25 +577,24 @@ func (r ApiGetGeneralUISettingsRequest) Execute() (*GeneralUISettings, *http.Res
 /*
 GetGeneralUISettings Get instance's global settings for ui
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetGeneralUISettingsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetGeneralUISettingsRequest
 */
 func (a *SettingsAPIService) GetGeneralUISettings(ctx context.Context) ApiGetGeneralUISettingsRequest {
 	return ApiGetGeneralUISettingsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return GeneralUISettings
+//  @return GeneralUISettings
 func (a *SettingsAPIService) GetGeneralUISettingsExecute(r ApiGetGeneralUISettingsRequest) (*GeneralUISettings, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GeneralUISettings
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GeneralUISettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SettingsAPIService.GetGeneralUISettings")

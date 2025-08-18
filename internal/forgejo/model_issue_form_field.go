@@ -19,11 +19,11 @@ var _ MappedNullable = &IssueFormField{}
 
 // IssueFormField IssueFormField represents a form field
 type IssueFormField struct {
-	Attributes  map[string]map[string]interface{} `json:"attributes,omitempty"`
-	Id          *string                           `json:"id,omitempty"`
-	Type        *string                           `json:"type,omitempty"`
+	Attributes map[string]map[string]interface{} `json:"attributes,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Type *string `json:"type,omitempty"`
 	Validations map[string]map[string]interface{} `json:"validations,omitempty"`
-	Visible     []string                          `json:"visible,omitempty"`
+	Visible []string `json:"visible,omitempty"`
 }
 
 // NewIssueFormField instantiates a new IssueFormField object
@@ -204,7 +204,7 @@ func (o *IssueFormField) SetVisible(v []string) {
 }
 
 func (o IssueFormField) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -266,3 +266,5 @@ func (v *NullableIssueFormField) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

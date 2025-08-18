@@ -21,8 +21,8 @@ var _ MappedNullable = &CommitMeta{}
 // CommitMeta struct for CommitMeta
 type CommitMeta struct {
 	Created *time.Time `json:"created,omitempty"`
-	Sha     *string    `json:"sha,omitempty"`
-	Url     *string    `json:"url,omitempty"`
+	Sha *string `json:"sha,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewCommitMeta instantiates a new CommitMeta object
@@ -139,7 +139,7 @@ func (o *CommitMeta) SetUrl(v string) {
 }
 
 func (o CommitMeta) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableCommitMeta) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

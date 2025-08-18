@@ -20,32 +20,32 @@ var _ MappedNullable = &Issue{}
 
 // Issue Issue represents an issue in a repository
 type Issue struct {
-	Assets           []Attachment     `json:"assets,omitempty"`
-	Assignee         *User            `json:"assignee,omitempty"`
-	Assignees        []User           `json:"assignees,omitempty"`
-	Body             *string          `json:"body,omitempty"`
-	ClosedAt         *time.Time       `json:"closed_at,omitempty"`
-	Comments         *int64           `json:"comments,omitempty"`
-	CreatedAt        *time.Time       `json:"created_at,omitempty"`
-	DueDate          *time.Time       `json:"due_date,omitempty"`
-	HtmlUrl          *string          `json:"html_url,omitempty"`
-	Id               *int64           `json:"id,omitempty"`
-	IsLocked         *bool            `json:"is_locked,omitempty"`
-	Labels           []Label          `json:"labels,omitempty"`
-	Milestone        *Milestone       `json:"milestone,omitempty"`
-	Number           *int64           `json:"number,omitempty"`
-	OriginalAuthor   *string          `json:"original_author,omitempty"`
-	OriginalAuthorId *int64           `json:"original_author_id,omitempty"`
-	PinOrder         *int64           `json:"pin_order,omitempty"`
-	PullRequest      *PullRequestMeta `json:"pull_request,omitempty"`
-	Ref              *string          `json:"ref,omitempty"`
-	Repository       *RepositoryMeta  `json:"repository,omitempty"`
+	Assets []Attachment `json:"assets,omitempty"`
+	Assignee *User `json:"assignee,omitempty"`
+	Assignees []User `json:"assignees,omitempty"`
+	Body *string `json:"body,omitempty"`
+	ClosedAt *time.Time `json:"closed_at,omitempty"`
+	Comments *int64 `json:"comments,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	DueDate *time.Time `json:"due_date,omitempty"`
+	HtmlUrl *string `json:"html_url,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	IsLocked *bool `json:"is_locked,omitempty"`
+	Labels []Label `json:"labels,omitempty"`
+	Milestone *Milestone `json:"milestone,omitempty"`
+	Number *int64 `json:"number,omitempty"`
+	OriginalAuthor *string `json:"original_author,omitempty"`
+	OriginalAuthorId *int64 `json:"original_author_id,omitempty"`
+	PinOrder *int64 `json:"pin_order,omitempty"`
+	PullRequest *PullRequestMeta `json:"pull_request,omitempty"`
+	Ref *string `json:"ref,omitempty"`
+	Repository *RepositoryMeta `json:"repository,omitempty"`
 	// StateType issue state type
-	State     *string    `json:"state,omitempty"`
-	Title     *string    `json:"title,omitempty"`
+	State *string `json:"state,omitempty"`
+	Title *string `json:"title,omitempty"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
-	Url       *string    `json:"url,omitempty"`
-	User      *User      `json:"user,omitempty"`
+	Url *string `json:"url,omitempty"`
+	User *User `json:"user,omitempty"`
 }
 
 // NewIssue instantiates a new Issue object
@@ -866,7 +866,7 @@ func (o *Issue) SetUser(v User) {
 }
 
 func (o Issue) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -988,3 +988,5 @@ func (v *NullableIssue) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

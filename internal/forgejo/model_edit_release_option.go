@@ -19,13 +19,13 @@ var _ MappedNullable = &EditReleaseOption{}
 
 // EditReleaseOption EditReleaseOption options when editing a release
 type EditReleaseOption struct {
-	Body             *string `json:"body,omitempty"`
-	Draft            *bool   `json:"draft,omitempty"`
-	HideArchiveLinks *bool   `json:"hide_archive_links,omitempty"`
-	Name             *string `json:"name,omitempty"`
-	Prerelease       *bool   `json:"prerelease,omitempty"`
-	TagName          *string `json:"tag_name,omitempty"`
-	TargetCommitish  *string `json:"target_commitish,omitempty"`
+	Body *string `json:"body,omitempty"`
+	Draft *bool `json:"draft,omitempty"`
+	HideArchiveLinks *bool `json:"hide_archive_links,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Prerelease *bool `json:"prerelease,omitempty"`
+	TagName *string `json:"tag_name,omitempty"`
+	TargetCommitish *string `json:"target_commitish,omitempty"`
 }
 
 // NewEditReleaseOption instantiates a new EditReleaseOption object
@@ -270,7 +270,7 @@ func (o *EditReleaseOption) SetTargetCommitish(v string) {
 }
 
 func (o EditReleaseOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -338,3 +338,5 @@ func (v *NullableEditReleaseOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

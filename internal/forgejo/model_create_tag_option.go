@@ -11,8 +11,8 @@ API version: 12.0.1+gitea-1.22.0
 package forgejo
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &CreateTagOption{}
 // CreateTagOption CreateTagOption options when creating a tag
 type CreateTagOption struct {
 	Message *string `json:"message,omitempty"`
-	TagName string  `json:"tag_name"`
-	Target  *string `json:"target,omitempty"`
+	TagName string `json:"tag_name"`
+	Target *string `json:"target,omitempty"`
 }
 
 type _CreateTagOption CreateTagOption
@@ -135,7 +135,7 @@ func (o *CreateTagOption) SetTarget(v string) {
 }
 
 func (o CreateTagOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -167,10 +167,10 @@ func (o *CreateTagOption) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -226,3 +226,5 @@ func (v *NullableCreateTagOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

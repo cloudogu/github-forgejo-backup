@@ -19,14 +19,14 @@ var _ MappedNullable = &EditOrgOption{}
 
 // EditOrgOption EditOrgOption options for editing an organization
 type EditOrgOption struct {
-	Description               *string `json:"description,omitempty"`
-	Email                     *string `json:"email,omitempty"`
-	FullName                  *string `json:"full_name,omitempty"`
-	Location                  *string `json:"location,omitempty"`
-	RepoAdminChangeTeamAccess *bool   `json:"repo_admin_change_team_access,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Email *string `json:"email,omitempty"`
+	FullName *string `json:"full_name,omitempty"`
+	Location *string `json:"location,omitempty"`
+	RepoAdminChangeTeamAccess *bool `json:"repo_admin_change_team_access,omitempty"`
 	// possible values are `public`, `limited` or `private`
 	Visibility *string `json:"visibility,omitempty"`
-	Website    *string `json:"website,omitempty"`
+	Website *string `json:"website,omitempty"`
 }
 
 // NewEditOrgOption instantiates a new EditOrgOption object
@@ -271,7 +271,7 @@ func (o *EditOrgOption) SetWebsite(v string) {
 }
 
 func (o EditOrgOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -339,3 +339,5 @@ func (v *NullableEditOrgOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

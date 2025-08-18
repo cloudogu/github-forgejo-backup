@@ -20,8 +20,8 @@ var _ MappedNullable = &QuotaUsedSize{}
 // QuotaUsedSize QuotaUsedSize represents the size-based quota usage of a user
 type QuotaUsedSize struct {
 	Assets *QuotaUsedSizeAssets `json:"assets,omitempty"`
-	Git    *QuotaUsedSizeGit    `json:"git,omitempty"`
-	Repos  *QuotaUsedSizeRepos  `json:"repos,omitempty"`
+	Git *QuotaUsedSizeGit `json:"git,omitempty"`
+	Repos *QuotaUsedSizeRepos `json:"repos,omitempty"`
 }
 
 // NewQuotaUsedSize instantiates a new QuotaUsedSize object
@@ -138,7 +138,7 @@ func (o *QuotaUsedSize) SetRepos(v QuotaUsedSizeRepos) {
 }
 
 func (o QuotaUsedSize) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableQuotaUsedSize) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

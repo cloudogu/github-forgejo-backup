@@ -20,7 +20,7 @@ var _ MappedNullable = &SearchResults{}
 // SearchResults SearchResults results of a successful search
 type SearchResults struct {
 	Data []Repository `json:"data,omitempty"`
-	Ok   *bool        `json:"ok,omitempty"`
+	Ok *bool `json:"ok,omitempty"`
 }
 
 // NewSearchResults instantiates a new SearchResults object
@@ -105,7 +105,7 @@ func (o *SearchResults) SetOk(v bool) {
 }
 
 func (o SearchResults) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableSearchResults) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -19,12 +19,12 @@ var _ MappedNullable = &CreatePushMirrorOption{}
 
 // CreatePushMirrorOption struct for CreatePushMirrorOption
 type CreatePushMirrorOption struct {
-	Interval       *string `json:"interval,omitempty"`
-	RemoteAddress  *string `json:"remote_address,omitempty"`
+	Interval *string `json:"interval,omitempty"`
+	RemoteAddress *string `json:"remote_address,omitempty"`
 	RemotePassword *string `json:"remote_password,omitempty"`
 	RemoteUsername *string `json:"remote_username,omitempty"`
-	SyncOnCommit   *bool   `json:"sync_on_commit,omitempty"`
-	UseSsh         *bool   `json:"use_ssh,omitempty"`
+	SyncOnCommit *bool `json:"sync_on_commit,omitempty"`
+	UseSsh *bool `json:"use_ssh,omitempty"`
 }
 
 // NewCreatePushMirrorOption instantiates a new CreatePushMirrorOption object
@@ -237,7 +237,7 @@ func (o *CreatePushMirrorOption) SetUseSsh(v bool) {
 }
 
 func (o CreatePushMirrorOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -302,3 +302,5 @@ func (v *NullableCreatePushMirrorOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -19,9 +19,9 @@ var _ MappedNullable = &NodeInfoUsage{}
 
 // NodeInfoUsage NodeInfoUsage contains usage statistics for this server
 type NodeInfoUsage struct {
-	LocalComments *int64              `json:"localComments,omitempty"`
-	LocalPosts    *int64              `json:"localPosts,omitempty"`
-	Users         *NodeInfoUsageUsers `json:"users,omitempty"`
+	LocalComments *int64 `json:"localComments,omitempty"`
+	LocalPosts *int64 `json:"localPosts,omitempty"`
+	Users *NodeInfoUsageUsers `json:"users,omitempty"`
 }
 
 // NewNodeInfoUsage instantiates a new NodeInfoUsage object
@@ -138,7 +138,7 @@ func (o *NodeInfoUsage) SetUsers(v NodeInfoUsageUsers) {
 }
 
 func (o NodeInfoUsage) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableNodeInfoUsage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

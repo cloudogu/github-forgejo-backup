@@ -21,8 +21,8 @@ var _ MappedNullable = &IssueLabelsOption{}
 // IssueLabelsOption IssueLabelsOption a collection of labels
 type IssueLabelsOption struct {
 	// Labels can be a list of integers representing label IDs or a list of strings representing label names
-	Labels    []map[string]interface{} `json:"labels,omitempty"`
-	UpdatedAt *time.Time               `json:"updated_at,omitempty"`
+	Labels []map[string]interface{} `json:"labels,omitempty"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 }
 
 // NewIssueLabelsOption instantiates a new IssueLabelsOption object
@@ -107,7 +107,7 @@ func (o *IssueLabelsOption) SetUpdatedAt(v time.Time) {
 }
 
 func (o IssueLabelsOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableIssueLabelsOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

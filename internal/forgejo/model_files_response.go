@@ -19,8 +19,8 @@ var _ MappedNullable = &FilesResponse{}
 
 // FilesResponse FilesResponse contains information about multiple files from a repo
 type FilesResponse struct {
-	Commit       *FileCommitResponse        `json:"commit,omitempty"`
-	Files        []ContentsResponse         `json:"files,omitempty"`
+	Commit *FileCommitResponse `json:"commit,omitempty"`
+	Files []ContentsResponse `json:"files,omitempty"`
 	Verification *PayloadCommitVerification `json:"verification,omitempty"`
 }
 
@@ -138,7 +138,7 @@ func (o *FilesResponse) SetVerification(v PayloadCommitVerification) {
 }
 
 func (o FilesResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableFilesResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

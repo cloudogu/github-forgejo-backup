@@ -20,7 +20,7 @@ var _ MappedNullable = &BlockedUser{}
 
 // BlockedUser struct for BlockedUser
 type BlockedUser struct {
-	BlockId   *int64     `json:"block_id,omitempty"`
+	BlockId *int64 `json:"block_id,omitempty"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 }
 
@@ -106,7 +106,7 @@ func (o *BlockedUser) SetCreatedAt(v time.Time) {
 }
 
 func (o BlockedUser) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableBlockedUser) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

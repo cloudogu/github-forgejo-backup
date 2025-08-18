@@ -20,17 +20,17 @@ var _ MappedNullable = &Comment{}
 
 // Comment Comment represents a comment on a commit or issue
 type Comment struct {
-	Assets           []Attachment `json:"assets,omitempty"`
-	Body             *string      `json:"body,omitempty"`
-	CreatedAt        *time.Time   `json:"created_at,omitempty"`
-	HtmlUrl          *string      `json:"html_url,omitempty"`
-	Id               *int64       `json:"id,omitempty"`
-	IssueUrl         *string      `json:"issue_url,omitempty"`
-	OriginalAuthor   *string      `json:"original_author,omitempty"`
-	OriginalAuthorId *int64       `json:"original_author_id,omitempty"`
-	PullRequestUrl   *string      `json:"pull_request_url,omitempty"`
-	UpdatedAt        *time.Time   `json:"updated_at,omitempty"`
-	User             *User        `json:"user,omitempty"`
+	Assets []Attachment `json:"assets,omitempty"`
+	Body *string `json:"body,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	HtmlUrl *string `json:"html_url,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	IssueUrl *string `json:"issue_url,omitempty"`
+	OriginalAuthor *string `json:"original_author,omitempty"`
+	OriginalAuthorId *int64 `json:"original_author_id,omitempty"`
+	PullRequestUrl *string `json:"pull_request_url,omitempty"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	User *User `json:"user,omitempty"`
 }
 
 // NewComment instantiates a new Comment object
@@ -403,7 +403,7 @@ func (o *Comment) SetUser(v User) {
 }
 
 func (o Comment) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -483,3 +483,5 @@ func (v *NullableComment) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

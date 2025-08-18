@@ -23,11 +23,11 @@ type User struct {
 	// Is user active
 	Active *bool `json:"active,omitempty"`
 	// URL to the user's avatar
-	AvatarUrl *string    `json:"avatar_url,omitempty"`
-	Created   *time.Time `json:"created,omitempty"`
+	AvatarUrl *string `json:"avatar_url,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
 	// the user's description
 	Description *string `json:"description,omitempty"`
-	Email       *string `json:"email,omitempty"`
+	Email *string `json:"email,omitempty"`
 	// user counts
 	FollowersCount *int64 `json:"followers_count,omitempty"`
 	FollowingCount *int64 `json:"following_count,omitempty"`
@@ -40,7 +40,7 @@ type User struct {
 	// Is the user an administrator
 	IsAdmin *bool `json:"is_admin,omitempty"`
 	// User locale
-	Language  *string    `json:"language,omitempty"`
+	Language *string `json:"language,omitempty"`
 	LastLogin *time.Time `json:"last_login,omitempty"`
 	// the user's location
 	Location *string `json:"location,omitempty"`
@@ -55,7 +55,7 @@ type User struct {
 	// Is user restricted
 	Restricted *bool `json:"restricted,omitempty"`
 	// The ID of the user's Authentication Source
-	SourceId          *int64 `json:"source_id,omitempty"`
+	SourceId *int64 `json:"source_id,omitempty"`
 	StarredReposCount *int64 `json:"starred_repos_count,omitempty"`
 	// User visibility level option: public, limited, private
 	Visibility *string `json:"visibility,omitempty"`
@@ -821,7 +821,7 @@ func (o *User) SetWebsite(v string) {
 }
 
 func (o User) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -937,3 +937,5 @@ func (v *NullableUser) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

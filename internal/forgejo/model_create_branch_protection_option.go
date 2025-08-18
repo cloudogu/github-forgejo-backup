@@ -19,32 +19,32 @@ var _ MappedNullable = &CreateBranchProtectionOption{}
 
 // CreateBranchProtectionOption CreateBranchProtectionOption options for creating a branch protection
 type CreateBranchProtectionOption struct {
-	ApplyToAdmins                 *bool    `json:"apply_to_admins,omitempty"`
-	ApprovalsWhitelistTeams       []string `json:"approvals_whitelist_teams,omitempty"`
-	ApprovalsWhitelistUsername    []string `json:"approvals_whitelist_username,omitempty"`
-	BlockOnOfficialReviewRequests *bool    `json:"block_on_official_review_requests,omitempty"`
-	BlockOnOutdatedBranch         *bool    `json:"block_on_outdated_branch,omitempty"`
-	BlockOnRejectedReviews        *bool    `json:"block_on_rejected_reviews,omitempty"`
+	ApplyToAdmins *bool `json:"apply_to_admins,omitempty"`
+	ApprovalsWhitelistTeams []string `json:"approvals_whitelist_teams,omitempty"`
+	ApprovalsWhitelistUsername []string `json:"approvals_whitelist_username,omitempty"`
+	BlockOnOfficialReviewRequests *bool `json:"block_on_official_review_requests,omitempty"`
+	BlockOnOutdatedBranch *bool `json:"block_on_outdated_branch,omitempty"`
+	BlockOnRejectedReviews *bool `json:"block_on_rejected_reviews,omitempty"`
 	// Deprecated: true
-	BranchName               *string  `json:"branch_name,omitempty"`
-	DismissStaleApprovals    *bool    `json:"dismiss_stale_approvals,omitempty"`
-	EnableApprovalsWhitelist *bool    `json:"enable_approvals_whitelist,omitempty"`
-	EnableMergeWhitelist     *bool    `json:"enable_merge_whitelist,omitempty"`
-	EnablePush               *bool    `json:"enable_push,omitempty"`
-	EnablePushWhitelist      *bool    `json:"enable_push_whitelist,omitempty"`
-	EnableStatusCheck        *bool    `json:"enable_status_check,omitempty"`
-	IgnoreStaleApprovals     *bool    `json:"ignore_stale_approvals,omitempty"`
-	MergeWhitelistTeams      []string `json:"merge_whitelist_teams,omitempty"`
-	MergeWhitelistUsernames  []string `json:"merge_whitelist_usernames,omitempty"`
-	ProtectedFilePatterns    *string  `json:"protected_file_patterns,omitempty"`
-	PushWhitelistDeployKeys  *bool    `json:"push_whitelist_deploy_keys,omitempty"`
-	PushWhitelistTeams       []string `json:"push_whitelist_teams,omitempty"`
-	PushWhitelistUsernames   []string `json:"push_whitelist_usernames,omitempty"`
-	RequireSignedCommits     *bool    `json:"require_signed_commits,omitempty"`
-	RequiredApprovals        *int64   `json:"required_approvals,omitempty"`
-	RuleName                 *string  `json:"rule_name,omitempty"`
-	StatusCheckContexts      []string `json:"status_check_contexts,omitempty"`
-	UnprotectedFilePatterns  *string  `json:"unprotected_file_patterns,omitempty"`
+	BranchName *string `json:"branch_name,omitempty"`
+	DismissStaleApprovals *bool `json:"dismiss_stale_approvals,omitempty"`
+	EnableApprovalsWhitelist *bool `json:"enable_approvals_whitelist,omitempty"`
+	EnableMergeWhitelist *bool `json:"enable_merge_whitelist,omitempty"`
+	EnablePush *bool `json:"enable_push,omitempty"`
+	EnablePushWhitelist *bool `json:"enable_push_whitelist,omitempty"`
+	EnableStatusCheck *bool `json:"enable_status_check,omitempty"`
+	IgnoreStaleApprovals *bool `json:"ignore_stale_approvals,omitempty"`
+	MergeWhitelistTeams []string `json:"merge_whitelist_teams,omitempty"`
+	MergeWhitelistUsernames []string `json:"merge_whitelist_usernames,omitempty"`
+	ProtectedFilePatterns *string `json:"protected_file_patterns,omitempty"`
+	PushWhitelistDeployKeys *bool `json:"push_whitelist_deploy_keys,omitempty"`
+	PushWhitelistTeams []string `json:"push_whitelist_teams,omitempty"`
+	PushWhitelistUsernames []string `json:"push_whitelist_usernames,omitempty"`
+	RequireSignedCommits *bool `json:"require_signed_commits,omitempty"`
+	RequiredApprovals *int64 `json:"required_approvals,omitempty"`
+	RuleName *string `json:"rule_name,omitempty"`
+	StatusCheckContexts []string `json:"status_check_contexts,omitempty"`
+	UnprotectedFilePatterns *string `json:"unprotected_file_patterns,omitempty"`
 }
 
 // NewCreateBranchProtectionOption instantiates a new CreateBranchProtectionOption object
@@ -865,7 +865,7 @@ func (o *CreateBranchProtectionOption) SetUnprotectedFilePatterns(v string) {
 }
 
 func (o CreateBranchProtectionOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -987,3 +987,5 @@ func (v *NullableCreateBranchProtectionOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

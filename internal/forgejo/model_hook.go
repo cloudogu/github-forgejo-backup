@@ -20,19 +20,19 @@ var _ MappedNullable = &Hook{}
 
 // Hook Hook a hook is a web hook when one repository changed
 type Hook struct {
-	Active              *bool   `json:"active,omitempty"`
+	Active *bool `json:"active,omitempty"`
 	AuthorizationHeader *string `json:"authorization_header,omitempty"`
-	BranchFilter        *string `json:"branch_filter,omitempty"`
+	BranchFilter *string `json:"branch_filter,omitempty"`
 	// Deprecated: use Metadata instead
-	Config      *map[string]string     `json:"config,omitempty"`
-	ContentType *string                `json:"content_type,omitempty"`
-	CreatedAt   *time.Time             `json:"created_at,omitempty"`
-	Events      []string               `json:"events,omitempty"`
-	Id          *int64                 `json:"id,omitempty"`
-	Metadata    map[string]interface{} `json:"metadata,omitempty"`
-	Type        *string                `json:"type,omitempty"`
-	UpdatedAt   *time.Time             `json:"updated_at,omitempty"`
-	Url         *string                `json:"url,omitempty"`
+	Config *map[string]string `json:"config,omitempty"`
+	ContentType *string `json:"content_type,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	Events []string `json:"events,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	Type *string `json:"type,omitempty"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewHook instantiates a new Hook object
@@ -437,7 +437,7 @@ func (o *Hook) SetUrl(v string) {
 }
 
 func (o Hook) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -520,3 +520,5 @@ func (v *NullableHook) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

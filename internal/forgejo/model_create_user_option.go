@@ -11,10 +11,10 @@ API version: 12.0.1+gitea-1.22.0
 package forgejo
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CreateUserOption type satisfies the MappedNullable interface at compile time
@@ -23,17 +23,17 @@ var _ MappedNullable = &CreateUserOption{}
 // CreateUserOption CreateUserOption create user options
 type CreateUserOption struct {
 	// For explicitly setting the user creation timestamp. Useful when users are migrated from other systems. When omitted, the user's creation timestamp will be set to \"now\".
-	CreatedAt          *time.Time `json:"created_at,omitempty"`
-	Email              string     `json:"email"`
-	FullName           *string    `json:"full_name,omitempty"`
-	LoginName          *string    `json:"login_name,omitempty"`
-	MustChangePassword *bool      `json:"must_change_password,omitempty"`
-	Password           *string    `json:"password,omitempty"`
-	Restricted         *bool      `json:"restricted,omitempty"`
-	SendNotify         *bool      `json:"send_notify,omitempty"`
-	SourceId           *int64     `json:"source_id,omitempty"`
-	Username           string     `json:"username"`
-	Visibility         *string    `json:"visibility,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	Email string `json:"email"`
+	FullName *string `json:"full_name,omitempty"`
+	LoginName *string `json:"login_name,omitempty"`
+	MustChangePassword *bool `json:"must_change_password,omitempty"`
+	Password *string `json:"password,omitempty"`
+	Restricted *bool `json:"restricted,omitempty"`
+	SendNotify *bool `json:"send_notify,omitempty"`
+	SourceId *int64 `json:"source_id,omitempty"`
+	Username string `json:"username"`
+	Visibility *string `json:"visibility,omitempty"`
 }
 
 type _CreateUserOption CreateUserOption
@@ -394,7 +394,7 @@ func (o *CreateUserOption) SetVisibility(v string) {
 }
 
 func (o CreateUserOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -449,10 +449,10 @@ func (o *CreateUserOption) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -508,3 +508,5 @@ func (v *NullableCreateUserOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

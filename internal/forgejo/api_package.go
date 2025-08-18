@@ -19,16 +19,17 @@ import (
 	"strings"
 )
 
+
 // PackageAPIService PackageAPI service
 type PackageAPIService service
 
 type ApiDeletePackageRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *PackageAPIService
-	owner      string
-	type_      string
-	name       string
-	version    string
+	owner string
+	type_ string
+	name string
+	version string
 }
 
 func (r ApiDeletePackageRequest) Execute() (*http.Response, error) {
@@ -38,30 +39,30 @@ func (r ApiDeletePackageRequest) Execute() (*http.Response, error) {
 /*
 DeletePackage Delete a package
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the package
-	@param type_ type of the package
-	@param name name of the package
-	@param version version of the package
-	@return ApiDeletePackageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the package
+ @param type_ type of the package
+ @param name name of the package
+ @param version version of the package
+ @return ApiDeletePackageRequest
 */
 func (a *PackageAPIService) DeletePackage(ctx context.Context, owner string, type_ string, name string, version string) ApiDeletePackageRequest {
 	return ApiDeletePackageRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		type_:      type_,
-		name:       name,
-		version:    version,
+		ctx: ctx,
+		owner: owner,
+		type_: type_,
+		name: name,
+		version: version,
 	}
 }
 
 // Execute executes the request
 func (a *PackageAPIService) DeletePackageExecute(r ApiDeletePackageRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PackageAPIService.DeletePackage")
@@ -209,8 +210,8 @@ func (a *PackageAPIService) DeletePackageExecute(r ApiDeletePackageRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -219,12 +220,12 @@ func (a *PackageAPIService) DeletePackageExecute(r ApiDeletePackageRequest) (*ht
 }
 
 type ApiGetPackageRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *PackageAPIService
-	owner      string
-	type_      string
-	name       string
-	version    string
+	owner string
+	type_ string
+	name string
+	version string
 }
 
 func (r ApiGetPackageRequest) Execute() (*Package, *http.Response, error) {
@@ -234,33 +235,32 @@ func (r ApiGetPackageRequest) Execute() (*Package, *http.Response, error) {
 /*
 GetPackage Gets a package
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the package
-	@param type_ type of the package
-	@param name name of the package
-	@param version version of the package
-	@return ApiGetPackageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the package
+ @param type_ type of the package
+ @param name name of the package
+ @param version version of the package
+ @return ApiGetPackageRequest
 */
 func (a *PackageAPIService) GetPackage(ctx context.Context, owner string, type_ string, name string, version string) ApiGetPackageRequest {
 	return ApiGetPackageRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		type_:      type_,
-		name:       name,
-		version:    version,
+		ctx: ctx,
+		owner: owner,
+		type_: type_,
+		name: name,
+		version: version,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Package
+//  @return Package
 func (a *PackageAPIService) GetPackageExecute(r ApiGetPackageRequest) (*Package, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Package
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Package
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PackageAPIService.GetPackage")
@@ -408,8 +408,8 @@ func (a *PackageAPIService) GetPackageExecute(r ApiGetPackageRequest) (*Package,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -427,12 +427,12 @@ func (a *PackageAPIService) GetPackageExecute(r ApiGetPackageRequest) (*Package,
 }
 
 type ApiLinkPackageRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *PackageAPIService
-	owner      string
-	type_      string
-	name       string
-	repoName   string
+	owner string
+	type_ string
+	name string
+	repoName string
 }
 
 func (r ApiLinkPackageRequest) Execute() (*http.Response, error) {
@@ -442,30 +442,30 @@ func (r ApiLinkPackageRequest) Execute() (*http.Response, error) {
 /*
 LinkPackage Link a package to a repository
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the package
-	@param type_ type of the package
-	@param name name of the package
-	@param repoName name of the repository to link.
-	@return ApiLinkPackageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the package
+ @param type_ type of the package
+ @param name name of the package
+ @param repoName name of the repository to link.
+ @return ApiLinkPackageRequest
 */
 func (a *PackageAPIService) LinkPackage(ctx context.Context, owner string, type_ string, name string, repoName string) ApiLinkPackageRequest {
 	return ApiLinkPackageRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		type_:      type_,
-		name:       name,
-		repoName:   repoName,
+		ctx: ctx,
+		owner: owner,
+		type_: type_,
+		name: name,
+		repoName: repoName,
 	}
 }
 
 // Execute executes the request
 func (a *PackageAPIService) LinkPackageExecute(r ApiLinkPackageRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PackageAPIService.LinkPackage")
@@ -613,8 +613,8 @@ func (a *PackageAPIService) LinkPackageExecute(r ApiLinkPackageRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -623,12 +623,12 @@ func (a *PackageAPIService) LinkPackageExecute(r ApiLinkPackageRequest) (*http.R
 }
 
 type ApiListPackageFilesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *PackageAPIService
-	owner      string
-	type_      string
-	name       string
-	version    string
+	owner string
+	type_ string
+	name string
+	version string
 }
 
 func (r ApiListPackageFilesRequest) Execute() ([]PackageFile, *http.Response, error) {
@@ -638,33 +638,32 @@ func (r ApiListPackageFilesRequest) Execute() ([]PackageFile, *http.Response, er
 /*
 ListPackageFiles Gets all files of a package
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the package
-	@param type_ type of the package
-	@param name name of the package
-	@param version version of the package
-	@return ApiListPackageFilesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the package
+ @param type_ type of the package
+ @param name name of the package
+ @param version version of the package
+ @return ApiListPackageFilesRequest
 */
 func (a *PackageAPIService) ListPackageFiles(ctx context.Context, owner string, type_ string, name string, version string) ApiListPackageFilesRequest {
 	return ApiListPackageFilesRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		type_:      type_,
-		name:       name,
-		version:    version,
+		ctx: ctx,
+		owner: owner,
+		type_: type_,
+		name: name,
+		version: version,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []PackageFile
+//  @return []PackageFile
 func (a *PackageAPIService) ListPackageFilesExecute(r ApiListPackageFilesRequest) ([]PackageFile, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []PackageFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []PackageFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PackageAPIService.ListPackageFiles")
@@ -812,8 +811,8 @@ func (a *PackageAPIService) ListPackageFilesExecute(r ApiListPackageFilesRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -831,13 +830,13 @@ func (a *PackageAPIService) ListPackageFilesExecute(r ApiListPackageFilesRequest
 }
 
 type ApiListPackagesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *PackageAPIService
-	owner      string
-	page       *int32
-	limit      *int32
-	type_      *string
-	q          *string
+	owner string
+	page *int32
+	limit *int32
+	type_ *string
+	q *string
 }
 
 // page number of results to return (1-based)
@@ -871,27 +870,26 @@ func (r ApiListPackagesRequest) Execute() ([]Package, *http.Response, error) {
 /*
 ListPackages Gets all packages of an owner
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the packages
-	@return ApiListPackagesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the packages
+ @return ApiListPackagesRequest
 */
 func (a *PackageAPIService) ListPackages(ctx context.Context, owner string) ApiListPackagesRequest {
 	return ApiListPackagesRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
+		ctx: ctx,
+		owner: owner,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Package
+//  @return []Package
 func (a *PackageAPIService) ListPackagesExecute(r ApiListPackagesRequest) ([]Package, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Package
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Package
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PackageAPIService.ListPackages")
@@ -1048,8 +1046,8 @@ func (a *PackageAPIService) ListPackagesExecute(r ApiListPackagesRequest) ([]Pac
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1067,11 +1065,11 @@ func (a *PackageAPIService) ListPackagesExecute(r ApiListPackagesRequest) ([]Pac
 }
 
 type ApiUnlinkPackageRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *PackageAPIService
-	owner      string
-	type_      string
-	name       string
+	owner string
+	type_ string
+	name string
 }
 
 func (r ApiUnlinkPackageRequest) Execute() (*http.Response, error) {
@@ -1081,28 +1079,28 @@ func (r ApiUnlinkPackageRequest) Execute() (*http.Response, error) {
 /*
 UnlinkPackage Unlink a package from a repository
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param owner owner of the package
-	@param type_ type of the package
-	@param name name of the package
-	@return ApiUnlinkPackageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param owner owner of the package
+ @param type_ type of the package
+ @param name name of the package
+ @return ApiUnlinkPackageRequest
 */
 func (a *PackageAPIService) UnlinkPackage(ctx context.Context, owner string, type_ string, name string) ApiUnlinkPackageRequest {
 	return ApiUnlinkPackageRequest{
 		ApiService: a,
-		ctx:        ctx,
-		owner:      owner,
-		type_:      type_,
-		name:       name,
+		ctx: ctx,
+		owner: owner,
+		type_: type_,
+		name: name,
 	}
 }
 
 // Execute executes the request
 func (a *PackageAPIService) UnlinkPackageExecute(r ApiUnlinkPackageRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PackageAPIService.UnlinkPackage")
@@ -1249,8 +1247,8 @@ func (a *PackageAPIService) UnlinkPackageExecute(r ApiUnlinkPackageRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

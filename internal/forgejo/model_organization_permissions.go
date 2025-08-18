@@ -20,10 +20,10 @@ var _ MappedNullable = &OrganizationPermissions{}
 // OrganizationPermissions OrganizationPermissions list different users permissions on an organization
 type OrganizationPermissions struct {
 	CanCreateRepository *bool `json:"can_create_repository,omitempty"`
-	CanRead             *bool `json:"can_read,omitempty"`
-	CanWrite            *bool `json:"can_write,omitempty"`
-	IsAdmin             *bool `json:"is_admin,omitempty"`
-	IsOwner             *bool `json:"is_owner,omitempty"`
+	CanRead *bool `json:"can_read,omitempty"`
+	CanWrite *bool `json:"can_write,omitempty"`
+	IsAdmin *bool `json:"is_admin,omitempty"`
+	IsOwner *bool `json:"is_owner,omitempty"`
 }
 
 // NewOrganizationPermissions instantiates a new OrganizationPermissions object
@@ -204,7 +204,7 @@ func (o *OrganizationPermissions) SetIsOwner(v bool) {
 }
 
 func (o OrganizationPermissions) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -266,3 +266,5 @@ func (v *NullableOrganizationPermissions) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

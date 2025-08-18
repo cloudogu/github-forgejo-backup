@@ -20,10 +20,10 @@ var _ MappedNullable = &CreateMilestoneOption{}
 
 // CreateMilestoneOption CreateMilestoneOption options for creating a milestone
 type CreateMilestoneOption struct {
-	Description *string    `json:"description,omitempty"`
-	DueOn       *time.Time `json:"due_on,omitempty"`
-	State       *string    `json:"state,omitempty"`
-	Title       *string    `json:"title,omitempty"`
+	Description *string `json:"description,omitempty"`
+	DueOn *time.Time `json:"due_on,omitempty"`
+	State *string `json:"state,omitempty"`
+	Title *string `json:"title,omitempty"`
 }
 
 // NewCreateMilestoneOption instantiates a new CreateMilestoneOption object
@@ -172,7 +172,7 @@ func (o *CreateMilestoneOption) SetTitle(v string) {
 }
 
 func (o CreateMilestoneOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -231,3 +231,5 @@ func (v *NullableCreateMilestoneOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

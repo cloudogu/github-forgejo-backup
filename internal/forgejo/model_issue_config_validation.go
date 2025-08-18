@@ -20,7 +20,7 @@ var _ MappedNullable = &IssueConfigValidation{}
 // IssueConfigValidation struct for IssueConfigValidation
 type IssueConfigValidation struct {
 	Message *string `json:"message,omitempty"`
-	Valid   *bool   `json:"valid,omitempty"`
+	Valid *bool `json:"valid,omitempty"`
 }
 
 // NewIssueConfigValidation instantiates a new IssueConfigValidation object
@@ -105,7 +105,7 @@ func (o *IssueConfigValidation) SetValid(v bool) {
 }
 
 func (o IssueConfigValidation) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableIssueConfigValidation) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -11,10 +11,10 @@ API version: 12.0.1+gitea-1.22.0
 package forgejo
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the EditIssueCommentOption type satisfies the MappedNullable interface at compile time
@@ -22,7 +22,7 @@ var _ MappedNullable = &EditIssueCommentOption{}
 
 // EditIssueCommentOption EditIssueCommentOption options for editing a comment
 type EditIssueCommentOption struct {
-	Body      string     `json:"body"`
+	Body string `json:"body"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 }
 
@@ -103,7 +103,7 @@ func (o *EditIssueCommentOption) SetUpdatedAt(v time.Time) {
 }
 
 func (o EditIssueCommentOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -132,10 +132,10 @@ func (o *EditIssueCommentOption) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -191,3 +191,5 @@ func (v *NullableEditIssueCommentOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

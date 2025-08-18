@@ -20,7 +20,7 @@ var _ MappedNullable = &APIError{}
 // APIError APIError is an api error with a message
 type APIError struct {
 	Message *string `json:"message,omitempty"`
-	Url     *string `json:"url,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewAPIError instantiates a new APIError object
@@ -105,7 +105,7 @@ func (o *APIError) SetUrl(v string) {
 }
 
 func (o APIError) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableAPIError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

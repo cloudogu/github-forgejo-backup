@@ -11,8 +11,8 @@ API version: 12.0.1+gitea-1.22.0
 package forgejo
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -21,14 +21,14 @@ var _ MappedNullable = &MergePullRequestOption{}
 
 // MergePullRequestOption MergePullRequestForm form for merging Pull Request
 type MergePullRequestOption struct {
-	Do                     string  `json:"Do"`
-	MergeCommitID          *string `json:"MergeCommitID,omitempty"`
-	MergeMessageField      *string `json:"MergeMessageField,omitempty"`
-	MergeTitleField        *string `json:"MergeTitleField,omitempty"`
-	DeleteBranchAfterMerge *bool   `json:"delete_branch_after_merge,omitempty"`
-	ForceMerge             *bool   `json:"force_merge,omitempty"`
-	HeadCommitId           *string `json:"head_commit_id,omitempty"`
-	MergeWhenChecksSucceed *bool   `json:"merge_when_checks_succeed,omitempty"`
+	Do string `json:"Do"`
+	MergeCommitID *string `json:"MergeCommitID,omitempty"`
+	MergeMessageField *string `json:"MergeMessageField,omitempty"`
+	MergeTitleField *string `json:"MergeTitleField,omitempty"`
+	DeleteBranchAfterMerge *bool `json:"delete_branch_after_merge,omitempty"`
+	ForceMerge *bool `json:"force_merge,omitempty"`
+	HeadCommitId *string `json:"head_commit_id,omitempty"`
+	MergeWhenChecksSucceed *bool `json:"merge_when_checks_succeed,omitempty"`
 }
 
 type _MergePullRequestOption MergePullRequestOption
@@ -300,7 +300,7 @@ func (o *MergePullRequestOption) SetMergeWhenChecksSucceed(v bool) {
 }
 
 func (o MergePullRequestOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -347,10 +347,10 @@ func (o *MergePullRequestOption) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -406,3 +406,5 @@ func (v *NullableMergePullRequestOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

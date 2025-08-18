@@ -21,14 +21,14 @@ var _ MappedNullable = &TrackedTime{}
 // TrackedTime TrackedTime worked time for an issue / pr
 type TrackedTime struct {
 	Created *time.Time `json:"created,omitempty"`
-	Id      *int64     `json:"id,omitempty"`
-	Issue   *Issue     `json:"issue,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	Issue *Issue `json:"issue,omitempty"`
 	// deprecated (only for backwards compatibility)
 	IssueId *int64 `json:"issue_id,omitempty"`
 	// Time in seconds
 	Time *int64 `json:"time,omitempty"`
 	// deprecated (only for backwards compatibility)
-	UserId   *int64  `json:"user_id,omitempty"`
+	UserId *int64 `json:"user_id,omitempty"`
 	UserName *string `json:"user_name,omitempty"`
 }
 
@@ -274,7 +274,7 @@ func (o *TrackedTime) SetUserName(v string) {
 }
 
 func (o TrackedTime) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -342,3 +342,5 @@ func (v *NullableTrackedTime) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

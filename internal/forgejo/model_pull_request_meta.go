@@ -20,9 +20,9 @@ var _ MappedNullable = &PullRequestMeta{}
 
 // PullRequestMeta PullRequestMeta PR info if an issue is a PR
 type PullRequestMeta struct {
-	Draft    *bool      `json:"draft,omitempty"`
-	HtmlUrl  *string    `json:"html_url,omitempty"`
-	Merged   *bool      `json:"merged,omitempty"`
+	Draft *bool `json:"draft,omitempty"`
+	HtmlUrl *string `json:"html_url,omitempty"`
+	Merged *bool `json:"merged,omitempty"`
 	MergedAt *time.Time `json:"merged_at,omitempty"`
 }
 
@@ -172,7 +172,7 @@ func (o *PullRequestMeta) SetMergedAt(v time.Time) {
 }
 
 func (o PullRequestMeta) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -231,3 +231,5 @@ func (v *NullablePullRequestMeta) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

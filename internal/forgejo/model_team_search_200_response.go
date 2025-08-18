@@ -20,7 +20,7 @@ var _ MappedNullable = &TeamSearch200Response{}
 // TeamSearch200Response struct for TeamSearch200Response
 type TeamSearch200Response struct {
 	Data []Team `json:"data,omitempty"`
-	Ok   *bool  `json:"ok,omitempty"`
+	Ok *bool `json:"ok,omitempty"`
 }
 
 // NewTeamSearch200Response instantiates a new TeamSearch200Response object
@@ -105,7 +105,7 @@ func (o *TeamSearch200Response) SetOk(v bool) {
 }
 
 func (o TeamSearch200Response) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableTeamSearch200Response) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -19,14 +19,14 @@ var _ MappedNullable = &CombinedStatus{}
 
 // CombinedStatus CombinedStatus holds the combined state of several statuses for a single commit
 type CombinedStatus struct {
-	CommitUrl  *string     `json:"commit_url,omitempty"`
+	CommitUrl *string `json:"commit_url,omitempty"`
 	Repository *Repository `json:"repository,omitempty"`
-	Sha        *string     `json:"sha,omitempty"`
+	Sha *string `json:"sha,omitempty"`
 	// CommitStatusState holds the state of a CommitStatus It can be \"pending\", \"success\", \"error\" and \"failure\"
-	State      *string        `json:"state,omitempty"`
-	Statuses   []CommitStatus `json:"statuses,omitempty"`
-	TotalCount *int64         `json:"total_count,omitempty"`
-	Url        *string        `json:"url,omitempty"`
+	State *string `json:"state,omitempty"`
+	Statuses []CommitStatus `json:"statuses,omitempty"`
+	TotalCount *int64 `json:"total_count,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewCombinedStatus instantiates a new CombinedStatus object
@@ -271,7 +271,7 @@ func (o *CombinedStatus) SetUrl(v string) {
 }
 
 func (o CombinedStatus) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -339,3 +339,5 @@ func (v *NullableCombinedStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

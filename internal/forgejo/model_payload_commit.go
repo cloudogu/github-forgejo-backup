@@ -20,16 +20,16 @@ var _ MappedNullable = &PayloadCommit{}
 
 // PayloadCommit PayloadCommit represents a commit
 type PayloadCommit struct {
-	Added     []string     `json:"added,omitempty"`
-	Author    *PayloadUser `json:"author,omitempty"`
+	Added []string `json:"added,omitempty"`
+	Author *PayloadUser `json:"author,omitempty"`
 	Committer *PayloadUser `json:"committer,omitempty"`
 	// sha1 hash of the commit
-	Id           *string                    `json:"id,omitempty"`
-	Message      *string                    `json:"message,omitempty"`
-	Modified     []string                   `json:"modified,omitempty"`
-	Removed      []string                   `json:"removed,omitempty"`
-	Timestamp    *time.Time                 `json:"timestamp,omitempty"`
-	Url          *string                    `json:"url,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Message *string `json:"message,omitempty"`
+	Modified []string `json:"modified,omitempty"`
+	Removed []string `json:"removed,omitempty"`
+	Timestamp *time.Time `json:"timestamp,omitempty"`
+	Url *string `json:"url,omitempty"`
 	Verification *PayloadCommitVerification `json:"verification,omitempty"`
 }
 
@@ -371,7 +371,7 @@ func (o *PayloadCommit) SetVerification(v PayloadCommitVerification) {
 }
 
 func (o PayloadCommit) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -448,3 +448,5 @@ func (v *NullablePayloadCommit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

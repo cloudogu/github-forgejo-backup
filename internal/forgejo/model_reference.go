@@ -20,8 +20,8 @@ var _ MappedNullable = &Reference{}
 // Reference struct for Reference
 type Reference struct {
 	Object *GitObject `json:"object,omitempty"`
-	Ref    *string    `json:"ref,omitempty"`
-	Url    *string    `json:"url,omitempty"`
+	Ref *string `json:"ref,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewReference instantiates a new Reference object
@@ -138,7 +138,7 @@ func (o *Reference) SetUrl(v string) {
 }
 
 func (o Reference) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableReference) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

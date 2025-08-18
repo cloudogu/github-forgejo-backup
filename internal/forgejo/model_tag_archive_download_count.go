@@ -20,7 +20,7 @@ var _ MappedNullable = &TagArchiveDownloadCount{}
 // TagArchiveDownloadCount TagArchiveDownloadCount counts how many times a archive was downloaded
 type TagArchiveDownloadCount struct {
 	TarGz *int64 `json:"tar_gz,omitempty"`
-	Zip   *int64 `json:"zip,omitempty"`
+	Zip *int64 `json:"zip,omitempty"`
 }
 
 // NewTagArchiveDownloadCount instantiates a new TagArchiveDownloadCount object
@@ -105,7 +105,7 @@ func (o *TagArchiveDownloadCount) SetZip(v int64) {
 }
 
 func (o TagArchiveDownloadCount) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableTagArchiveDownloadCount) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

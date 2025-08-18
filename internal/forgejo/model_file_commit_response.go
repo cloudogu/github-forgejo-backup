@@ -20,15 +20,15 @@ var _ MappedNullable = &FileCommitResponse{}
 
 // FileCommitResponse struct for FileCommitResponse
 type FileCommitResponse struct {
-	Author    *CommitUser  `json:"author,omitempty"`
-	Committer *CommitUser  `json:"committer,omitempty"`
-	Created   *time.Time   `json:"created,omitempty"`
-	HtmlUrl   *string      `json:"html_url,omitempty"`
-	Message   *string      `json:"message,omitempty"`
-	Parents   []CommitMeta `json:"parents,omitempty"`
-	Sha       *string      `json:"sha,omitempty"`
-	Tree      *CommitMeta  `json:"tree,omitempty"`
-	Url       *string      `json:"url,omitempty"`
+	Author *CommitUser `json:"author,omitempty"`
+	Committer *CommitUser `json:"committer,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
+	HtmlUrl *string `json:"html_url,omitempty"`
+	Message *string `json:"message,omitempty"`
+	Parents []CommitMeta `json:"parents,omitempty"`
+	Sha *string `json:"sha,omitempty"`
+	Tree *CommitMeta `json:"tree,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewFileCommitResponse instantiates a new FileCommitResponse object
@@ -337,7 +337,7 @@ func (o *FileCommitResponse) SetUrl(v string) {
 }
 
 func (o FileCommitResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -411,3 +411,5 @@ func (v *NullableFileCommitResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

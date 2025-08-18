@@ -19,7 +19,7 @@ var _ MappedNullable = &PullReviewRequestOptions{}
 
 // PullReviewRequestOptions PullReviewRequestOptions are options to add or remove pull review requests
 type PullReviewRequestOptions struct {
-	Reviewers     []string `json:"reviewers,omitempty"`
+	Reviewers []string `json:"reviewers,omitempty"`
 	TeamReviewers []string `json:"team_reviewers,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *PullReviewRequestOptions) SetTeamReviewers(v []string) {
 }
 
 func (o PullReviewRequestOptions) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullablePullReviewRequestOptions) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

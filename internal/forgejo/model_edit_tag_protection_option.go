@@ -19,8 +19,8 @@ var _ MappedNullable = &EditTagProtectionOption{}
 
 // EditTagProtectionOption EditTagProtectionOption options for editing a tag protection
 type EditTagProtectionOption struct {
-	NamePattern        *string  `json:"name_pattern,omitempty"`
-	WhitelistTeams     []string `json:"whitelist_teams,omitempty"`
+	NamePattern *string `json:"name_pattern,omitempty"`
+	WhitelistTeams []string `json:"whitelist_teams,omitempty"`
 	WhitelistUsernames []string `json:"whitelist_usernames,omitempty"`
 }
 
@@ -138,7 +138,7 @@ func (o *EditTagProtectionOption) SetWhitelistUsernames(v []string) {
 }
 
 func (o EditTagProtectionOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableEditTagProtectionOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

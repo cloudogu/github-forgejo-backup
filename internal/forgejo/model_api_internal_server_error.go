@@ -20,7 +20,7 @@ var _ MappedNullable = &APIInternalServerError{}
 // APIInternalServerError struct for APIInternalServerError
 type APIInternalServerError struct {
 	Message *string `json:"message,omitempty"`
-	Url     *string `json:"url,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewAPIInternalServerError instantiates a new APIInternalServerError object
@@ -105,7 +105,7 @@ func (o *APIInternalServerError) SetUrl(v string) {
 }
 
 func (o APIInternalServerError) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableAPIInternalServerError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

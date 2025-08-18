@@ -19,11 +19,11 @@ var _ MappedNullable = &AccessToken{}
 
 // AccessToken struct for AccessToken
 type AccessToken struct {
-	Id             *int64   `json:"id,omitempty"`
-	Name           *string  `json:"name,omitempty"`
-	Scopes         []string `json:"scopes,omitempty"`
-	Sha1           *string  `json:"sha1,omitempty"`
-	TokenLastEight *string  `json:"token_last_eight,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Scopes []string `json:"scopes,omitempty"`
+	Sha1 *string `json:"sha1,omitempty"`
+	TokenLastEight *string `json:"token_last_eight,omitempty"`
 }
 
 // NewAccessToken instantiates a new AccessToken object
@@ -204,7 +204,7 @@ func (o *AccessToken) SetTokenLastEight(v string) {
 }
 
 func (o AccessToken) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -266,3 +266,5 @@ func (v *NullableAccessToken) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
