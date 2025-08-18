@@ -1,43 +1,52 @@
 package main
 
 import (
+	"codeberg.org/mvdkleijn/forgejo-sdk/forgejo/v2"
 	"context"
 	"fmt"
-	"github-forgejo-backup/internal/forgejo"
-	"log"
+	"github.com/google/go-github/v74/github"
 	"os"
 	"time"
 )
-
-type Repository struct {
-	Name        string `json:"name"`
-	FullName    string `json:"full_name"`
-	Description string `json:"description"`
-	HtmlUrl     string `json:"html_url"`
-	Language    string `json:"language"`
-}
 
 func main() {
 
 	err := config.Load()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error loading config: %v\n", err)
+		logs.Error("failed loading config", "error", err)
 		os.Exit(1)
 	}
 
-	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
+	githubClient := github.NewClient(nil)
+
+	ctx, cancel := context.WithTimeout(context.TODO(), time.Minute*1)
 	defer cancel()
 
-	fgClient, err := forgejo.NewClient(config.ForgejoBaseUrl)
+	repos, _, err := githubClient.Repositories.ListByOrg(ctx, "cloudogu", &github.RepositoryListByOrgOptions{Sort: "full_name"})
 	if err != nil {
-		log.Fatalln(err.Error())
+		logs.Error("failed listing repos", "error", err)
+		os.Exit(1)
 	}
 
-	apiSettings, err := fgClient.GetAPISettings(ctx)
-	if err != nil {
-		log.Fatalln(err.Error())
+	for _, repo := range repos {
+		fmt.Printf("%s\t%s\n", repo.GetName(), repo.GetCloneURL())
 	}
 
-	log.Println(apiSettings)
+	forgejoClient, err := forgejo.NewClient("https://forgejo.cloudogu.com/",
+		forgejo.SetToken(config.ForgejoToken),
+		forgejo.SetUserAgent("github-forgejo-backup/0.1.0"),
+	)
+	if err != nil {
+		logs.Error("failed creating forgejo client", "error", err)
+		os.Exit(1)
+	}
+
+	organisation, _, err := forgejoClient.GetOrg("cloudogu")
+	if err != nil {
+		logs.Error("failed fetching organisation", "error", err)
+		os.Exit(1)
+	}
+
+	fmt.Printf("%s\n", organisation.UserName)
 
 }
