@@ -9,10 +9,12 @@ import (
 import "github.com/goccy/go-yaml"
 
 type Config struct {
-	GithubOrga   string `yaml:"github_orga"`
-	GithubToken  string `yaml:"github_token"`
-	ForgejoOrga  string `yaml:"forgejo_orga"`
-	ForgejoToken string `yaml:"forgejo_token"`
+	GithubBaseUrl  string `yaml:"github_base_url"`
+	GithubOrga     string `yaml:"github_orga"`
+	GithubToken    string `yaml:"github_token"`
+	ForgejoBaseUrl string `yaml:"forgejo_base_url"`
+	ForgejoOrga    string `yaml:"forgejo_orga"`
+	ForgejoToken   string `yaml:"forgejo_token"`
 }
 
 var config Config
