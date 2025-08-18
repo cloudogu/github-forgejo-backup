@@ -6,8 +6,9 @@ set -o pipefail
 
 cd "$(dirname "$(realpath "$0")")/.."
 
-GEN_IMAGE='openapitools/openapi-generator-cli:v7.14.0'
 SPEC_URL='https://forgejo.cloudogu.com/swagger.v1.json'
+GEN_IMAGE='openapitools/openapi-generator-cli:v7.14.0'
+
 PKG_NAME='forgejo'
 PKG_PATH="internal/${PKG_NAME}"
 
@@ -26,3 +27,9 @@ docker run --rm \
     --package-name "${PKG_NAME}" \
     --additional-properties=packageName=${PKG_NAME},isGoSubmodule=true,packageVersion=0.1.0,withGoCodegenComment=true,enumClassPrefix=true \
     --global-property=apis,models,modelDocs=false,apiDocs=false,apiTests=false,modelTests=false
+
+git add internal/forgejo/
+git commit \
+    -m "Updated Forgejo API Client" \
+    -m "From Spec: ${SPEC_URL}" \
+    -m "With Tool: ${GEN_IMAGE}"
