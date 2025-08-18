@@ -37,59 +37,59 @@ func (c *Client) applyDefaultHeaders(req *http.Request) {
 	}
 }
 
-func (c *Client) GetAPISettings(ctx context.Context) (data *ApiSettings, err error) {
+func (c *Client) GetAPISettings(ctx context.Context) (data ApiSettings, err error) {
 
 	u, err := url.JoinPath(c.baseUrl.String(), "settings", "api")
 	if err != nil {
-		return nil, fmt.Errorf("failed building api url: %w", err)
+		return data, fmt.Errorf("failed building api url: %w", err)
 	}
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, u, nil)
 	if err != nil {
-		return nil, fmt.Errorf("new request: %w", err)
+		return data, fmt.Errorf("new request: %w", err)
 	}
 
 	c.applyDefaultHeaders(req)
 
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
-		return nil, fmt.Errorf("http do: %w", err)
+		return data, fmt.Errorf("http do: %w", err)
 	}
 	defer resp.Body.Close()
 
 	switch resp.StatusCode {
 	case http.StatusOK:
 
-		err = json.NewDecoder(resp.Body).Decode(data)
+		err = json.NewDecoder(resp.Body).Decode(&data)
 		if err != nil {
-			return nil, fmt.Errorf("decode json: %w", err)
+			return data, fmt.Errorf("decode json: %w", err)
 		} else {
 			return data, nil
 		}
 
 	default:
-		return nil, fmt.Errorf("unexpected status: %s", resp.Status)
+		return data, fmt.Errorf("unexpected status: %s", resp.Status)
 	}
 
 }
 
-func (c *Client) GetRepo(ctx context.Context, owner string, repo string) (data *Repo, err error) {
+func (c *Client) GetRepo(ctx context.Context, owner string, repo string) (data Repo, err error) {
 
 	u, err := url.JoinPath(c.baseUrl.String(), "repos", owner, repo)
 	if err != nil {
-		return nil, fmt.Errorf("failed building api url: %w", err)
+		return data, fmt.Errorf("failed building api url: %w", err)
 	}
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, u, nil)
 	if err != nil {
-		return nil, fmt.Errorf("new request: %w", err)
+		return data, fmt.Errorf("new request: %w", err)
 	}
 
 	c.applyDefaultHeaders(req)
 
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
-		return nil, fmt.Errorf("http do: %w", err)
+		return data, fmt.Errorf("http do: %w", err)
 	}
 	defer resp.Body.Close()
 
@@ -98,7 +98,7 @@ func (c *Client) GetRepo(ctx context.Context, owner string, repo string) (data *
 
 		err = json.NewDecoder(resp.Body).Decode(data)
 		if err != nil {
-			return nil, fmt.Errorf("decode json: %w", err)
+			return data, fmt.Errorf("decode json: %w", err)
 		} else {
 			return data, nil
 		}
@@ -108,40 +108,40 @@ func (c *Client) GetRepo(ctx context.Context, owner string, repo string) (data *
 		var apiError *ApiError
 		err = json.NewDecoder(resp.Body).Decode(apiError)
 		if err != nil {
-			return nil, fmt.Errorf("decode json: %w", err)
+			return data, fmt.Errorf("decode json: %w", err)
 		} else {
 			return data, fmt.Errorf("repo not found: %s", apiError)
 		}
 
 	default:
-		return nil, fmt.Errorf("unexpected status: %s", resp.Status)
+		return data, fmt.Errorf("unexpected status: %s", resp.Status)
 	}
 
 }
 
-func (c *Client) MigrateRepo(ctx context.Context, opts MigrateRepoOptions) (data *Repo, err error) {
+func (c *Client) MigrateRepo(ctx context.Context, opts MigrateRepoOptions) (data Repo, err error) {
 
 	u, err := url.JoinPath(c.baseUrl.String(), "migrate")
 	if err != nil {
-		return nil, fmt.Errorf("failed building api url: %w", err)
+		return data, fmt.Errorf("failed building api url: %w", err)
 	}
 
 	var buf bytes.Buffer
 	err = json.NewEncoder(&buf).Encode(opts)
 	if err != nil {
-		return nil, fmt.Errorf("failed parsing options: %w", err)
+		return data, fmt.Errorf("failed parsing options: %w", err)
 	}
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodPost, u, &buf)
 	if err != nil {
-		return nil, fmt.Errorf("new request: %w", err)
+		return data, fmt.Errorf("new request: %w", err)
 	}
 
 	c.applyDefaultHeaders(req)
 
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
-		return nil, fmt.Errorf("http do: %w", err)
+		return data, fmt.Errorf("http do: %w", err)
 	}
 	defer resp.Body.Close()
 
@@ -150,7 +150,7 @@ func (c *Client) MigrateRepo(ctx context.Context, opts MigrateRepoOptions) (data
 
 		err = json.NewDecoder(resp.Body).Decode(data)
 		if err != nil {
-			return nil, fmt.Errorf("decode json: %w", err)
+			return data, fmt.Errorf("decode json: %w", err)
 		} else {
 			return data, nil
 		}
@@ -160,7 +160,7 @@ func (c *Client) MigrateRepo(ctx context.Context, opts MigrateRepoOptions) (data
 		var apiError *ApiError
 		err = json.NewDecoder(resp.Body).Decode(apiError)
 		if err != nil {
-			return nil, fmt.Errorf("decode json: %w", err)
+			return data, fmt.Errorf("decode json: %w", err)
 		} else {
 			return data, fmt.Errorf("action forbidden: %s", apiError)
 		}
@@ -178,13 +178,13 @@ func (c *Client) MigrateRepo(ctx context.Context, opts MigrateRepoOptions) (data
 		var apiError *ApiError
 		err = json.NewDecoder(resp.Body).Decode(apiError)
 		if err != nil {
-			return nil, fmt.Errorf("decode json: %w", err)
+			return data, fmt.Errorf("decode json: %w", err)
 		} else {
 			return data, fmt.Errorf("repo not found: %s", apiError)
 		}
 
 	default:
-		return nil, fmt.Errorf("unexpected status: %s", resp.Status)
+		return data, fmt.Errorf("unexpected status: %s", resp.Status)
 	}
 
 }
