@@ -52,8 +52,10 @@ func main() {
 		Visibility: forgejo.VisibleTypeLimited,
 	})
 	if err != nil {
-		logs.Error("failed creating forgejo orga", "error", err)
-		os.Exit(1)
+		if err.Error() != fmt.Sprintf("user already exists [name: %s]", config.ForgejoOrga) {
+			logs.Error("failed creating forgejo orga", "error", err)
+			os.Exit(1)
+		}
 	}
 
 	// fetch all forgejo repos
