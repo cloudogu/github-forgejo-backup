@@ -46,9 +46,8 @@ func main() {
 	}
 
 	// create forgejo orga when missing
-	_, _, err = forgejoClient.CreateOrg(forgejo.CreateOrgOption{
+	orga, _, err := forgejoClient.CreateOrg(forgejo.CreateOrgOption{
 		Name:       config.ForgejoOrga,
-		FullName:   config.ForgejoOrga,
 		Visibility: forgejo.VisibleTypeLimited,
 	})
 	if err != nil {
@@ -56,6 +55,8 @@ func main() {
 			logs.Error("failed creating forgejo orga", "error", err)
 			os.Exit(1)
 		}
+	} else {
+		logs.Info("created orga", "name", orga.UserName)
 	}
 
 	// fetch all forgejo repos
@@ -160,7 +161,7 @@ func CreateMirror(client *forgejo.Client, githubRepo *github.Repository) {
 		Issues:         true,
 		PullRequests:   true,
 		Releases:       true,
-		MirrorInterval: "24h",
+		MirrorInterval: "1h",
 	})
 	if err != nil {
 		logs.Error("failed creating repo mirror", "error", err)
