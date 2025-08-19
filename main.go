@@ -4,6 +4,7 @@ import (
 	"codeberg.org/mvdkleijn/forgejo-sdk/forgejo/v2"
 	"context"
 	"fmt"
+	"github.com/cloudogu/github-forgejo-backup/internal/disk"
 	"github.com/google/go-github/v74/github"
 	"os"
 	"time"
@@ -21,7 +22,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	// fetch a list of all github repos in the github "cloudogu" orga
+	// fetch all github repos in the "cloudogu" orga
 
 	githubClient := github.NewClient(
 		githubpagination.NewClient(nil,
@@ -31,12 +32,7 @@ func main() {
 
 	githubRepos := ListAllGithubRepos(githubClient)
 
-	fmt.Println("\n### github repos")
-	for _, repo := range githubRepos {
-		fmt.Printf("%s\t%s\n", repo.GetName(), repo.GetCloneURL())
-	}
-
-	// fetch a list of all forgejo repos in the forgejo "cloudogu" orga
+	// fetch all forgejo repos in the "cloudogu" orga
 
 	forgejoClient, err := forgejo.NewClient(config.ForgejoBaseUrl,
 		forgejo.SetToken(config.ForgejoToken),
@@ -55,11 +51,6 @@ func main() {
 
 	forgejoRepos := ListAllForgejoRepos(forgejoClient, apiSettings)
 
-	fmt.Println("\n### forgejo repos")
-	for _, repo := range forgejoRepos {
-		fmt.Printf("%s\t%s\n", repo.Name, repo.CloneURL)
-	}
-
 	// check for and create missing mirrors
 
 	for _, githubRepo := range githubRepos {
@@ -71,7 +62,20 @@ func main() {
 			}
 		}
 		if !found {
-			fmt.Printf("missing: %s\n", githubRepo.GetName())
+			fmt.Printf("missing mirror: %s\n", githubRepo.GetName())
+
+			diskUsage, err := disk.UsageOf("/")
+			if err != nil {
+				logs.Error("failed reading disk stats", "error", err)
+				os.Exit(1)
+			}
+
+			fmt.Printf("disk usage: %.2f%%\n", diskUsage.UtilizationPct)
+			if diskUsage.UtilizationPct >= 90 {
+				logs.Error("free space is < 10%", "used %", diskUsage.UtilizationPct)
+				os.Exit(1)
+			}
+
 			CreateMirror(forgejoClient, githubRepo)
 		}
 	}
