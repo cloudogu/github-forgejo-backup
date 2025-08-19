@@ -60,7 +60,21 @@ func main() {
 		fmt.Printf("%s\t%s\n", repo.Name, repo.CloneURL)
 	}
 
-	// TODO: create a new mirror in forgejo in the forgejo "cloudogu" orga for all github repos in the github "cloudogu" orga missing in the forgejo "cloudogu" orga
+	// check for and create missing mirrors
+
+	for _, githubRepo := range githubRepos {
+		found := false
+		for _, forgejoRepo := range forgejoRepos {
+			if forgejoRepo.Name == githubRepo.GetName() {
+				found = true
+				break
+			}
+		}
+		if !found {
+			fmt.Printf("missing: %s\n", githubRepo.GetName())
+			CreateMirror(githubRepo)
+		}
+	}
 
 }
 
@@ -114,4 +128,8 @@ func ListAllForgejoRepos(client *forgejo.Client, apiSettings *forgejo.GlobalAPIS
 	}
 
 	return repos
+}
+
+func CreateMirror(*github.Repository) {
+	// TODO: create a new mirror of this github repo in the forgejo orga
 }
