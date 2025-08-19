@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/cloudogu/github-forgejo-backup/internal/disk"
 	"github.com/google/go-github/v74/github"
+	"github.com/robfig/cron/v3"
 	"os"
 	"time"
 )
@@ -21,6 +22,29 @@ func main() {
 		logs.Error("failed loading config", "error", err)
 		os.Exit(1)
 	}
+
+	location, err := time.LoadLocation(config.TimeZone)
+	if err != nil {
+		logs.Error("unable to load timezone", "error", err)
+		os.Exit(1)
+	}
+
+	sched := cron.New(
+		cron.WithLocation(location),
+		cron.WithLogger(cronLogger{}),
+	)
+
+	_, err = sched.AddFunc(config.CronSpec, doRun)
+	if err != nil {
+		logs.Error(err.Error())
+		os.Exit(1)
+	}
+
+	sched.Run()
+
+}
+
+func doRun() {
 
 	githubClient := github.NewClient(
 		githubpagination.NewClient(nil,
