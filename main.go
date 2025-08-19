@@ -72,7 +72,7 @@ func main() {
 			}
 		}
 		if !found {
-			fmt.Printf("missing mirror: %s\n", githubRepo.GetName())
+			fmt.Printf("\nmissing mirror: %s\n", githubRepo.GetName())
 
 			diskUsage, err := disk.UsageOf("/")
 			if err != nil {

@@ -16,6 +16,8 @@ type Usage struct {
 
 func UsageOf(path string) (Usage, error) {
 
+	unix.Sync()
+
 	var st unix.Statfs_t
 	if err := unix.Statfs(path, &st); err != nil {
 		return Usage{}, fmt.Errorf("statfs %q: %w", path, err)
