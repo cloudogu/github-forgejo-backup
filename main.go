@@ -9,6 +9,10 @@ import (
 	"time"
 )
 
+import "github.com/gofri/go-github-pagination/githubpagination"
+
+const ua = "github-forgejo-backup/0.1.0"
+
 func main() {
 
 	err := config.Load()
@@ -19,24 +23,15 @@ func main() {
 
 	// fetch a list of all github repos in the github "cloudogu" orga
 
-	githubClient := github.NewClient(nil)
+	githubClient := github.NewClient(
+		githubpagination.NewClient(nil,
+			githubpagination.WithPerPage(100)),
+	).WithAuthToken(config.GithubToken)
+	githubClient.UserAgent = ua
 
-	ctx, cancel := context.WithTimeout(context.TODO(), time.Minute*1)
-	defer cancel()
+	githubRepos := ListAllGithubRepos(githubClient)
 
-	var githubRepos []*github.Repository
-	{
-		githubReposPage, _, err := githubClient.Repositories.ListByOrg(ctx, "cloudogu",
-			&github.RepositoryListByOrgOptions{Sort: "full_name"})
-		if err != nil {
-			logs.Error("failed listing repos", "error", err)
-			os.Exit(1)
-		}
-		githubRepos = append(githubRepos, githubReposPage...)
-		// TODO: fetch more pages
-	}
-
-	fmt.Println("### github repos")
+	fmt.Println("\n### github repos")
 	for _, repo := range githubRepos {
 		fmt.Printf("%s\t%s\n", repo.GetName(), repo.GetCloneURL())
 	}
@@ -45,7 +40,7 @@ func main() {
 
 	forgejoClient, err := forgejo.NewClient(config.ForgejoBaseUrl,
 		forgejo.SetToken(config.ForgejoToken),
-		forgejo.SetUserAgent("github-forgejo-backup/0.1.0"),
+		forgejo.SetUserAgent(ua),
 	)
 	if err != nil {
 		logs.Error("failed creating forgejo client", "error", err)
@@ -58,34 +53,65 @@ func main() {
 		os.Exit(1)
 	}
 
-	forgejoOrganisation, _, err := forgejoClient.GetOrg("cloudogu")
-	if err != nil {
-		logs.Error("failed fetching organisation", "error", err)
-		os.Exit(1)
-	}
+	forgejoRepos := ListAllForgejoRepos(forgejoClient, apiSettings)
 
-	var forgejoRepos []*forgejo.Repository
-	{
-		forgejoReposPage, _, err := forgejoClient.ListOrgRepos(forgejoOrganisation.UserName,
-			forgejo.ListOrgReposOptions{
-				ListOptions: forgejo.ListOptions{
-					Page:     0,
-					PageSize: apiSettings.MaxResponseItems,
-				},
-			})
-		if err != nil {
-			logs.Error("failed fetching forgejo repos", "error", err)
-			os.Exit(1)
-		}
-		forgejoRepos = append(forgejoRepos, forgejoReposPage...)
-		// TODO: fetch more pages
-	}
-
-	fmt.Println("### forgejo repos")
+	fmt.Println("\n### forgejo repos")
 	for _, repo := range forgejoRepos {
 		fmt.Printf("%s\t%s\n", repo.Name, repo.CloneURL)
 	}
 
 	// TODO: create a new mirror in forgejo in the forgejo "cloudogu" orga for all github repos in the github "cloudogu" orga missing in the forgejo "cloudogu" orga
 
+}
+
+func ListAllGithubRepos(client *github.Client) (repos []*github.Repository) {
+
+	ctx, cancel := context.WithTimeout(context.TODO(), time.Minute*1)
+
+	pageRepos, _, err := client.Repositories.ListByOrg(
+		ctx,
+		"cloudogu",
+		&github.RepositoryListByOrgOptions{Sort: "full_name"})
+
+	cancel()
+
+	if err != nil {
+		logs.Error("failed fetching github repos", "error", err)
+		os.Exit(1)
+	}
+
+	repos = append(repos, pageRepos...)
+
+	return repos
+}
+
+func ListAllForgejoRepos(client *forgejo.Client, apiSettings *forgejo.GlobalAPISettings) (repos []*forgejo.Repository) {
+
+	page := 1
+	for {
+
+		pageRepos, responseInfos, err := client.ListOrgRepos(
+			config.ForgejoOrga,
+			forgejo.ListOrgReposOptions{
+				ListOptions: forgejo.ListOptions{
+					Page:     page,
+					PageSize: apiSettings.MaxResponseItems,
+				},
+			})
+
+		if err != nil {
+			logs.Error("failed fetching forgejo repos", "error", err)
+			os.Exit(1)
+		}
+
+		repos = append(repos, pageRepos...)
+
+		if page >= responseInfos.NextPage || len(pageRepos) == 0 {
+			break
+		}
+
+		page = page + 1
+	}
+
+	return repos
 }

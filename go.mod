@@ -5,6 +5,7 @@ go 1.24
 require (
 	codeberg.org/mvdkleijn/forgejo-sdk/forgejo/v2 v2.2.0
 	github.com/goccy/go-yaml v1.18.0
+	github.com/gofri/go-github-pagination v1.0.1
 	github.com/google/go-github/v74 v74.0.0
 )
 
