@@ -72,7 +72,7 @@ func main() {
 		}
 		if !found {
 			fmt.Printf("missing: %s\n", githubRepo.GetName())
-			CreateMirror(githubRepo)
+			CreateMirror(forgejoClient, githubRepo)
 		}
 	}
 
@@ -130,6 +130,29 @@ func ListAllForgejoRepos(client *forgejo.Client, apiSettings *forgejo.GlobalAPIS
 	return repos
 }
 
-func CreateMirror(*github.Repository) {
-	// TODO: create a new mirror of this github repo in the forgejo orga
+func CreateMirror(client *forgejo.Client, githubRepo *github.Repository) {
+
+	forgejoRepo, _, err := client.MigrateRepo(forgejo.MigrateRepoOption{
+		RepoName:       githubRepo.GetName(),
+		RepoOwner:      config.ForgejoOrga,
+		CloneAddr:      githubRepo.GetCloneURL(),
+		Service:        forgejo.GitServiceGithub,
+		AuthToken:      config.GithubToken,
+		Mirror:         true,
+		Private:        true,
+		Wiki:           true,
+		Milestones:     true,
+		Labels:         true,
+		Issues:         true,
+		PullRequests:   true,
+		Releases:       true,
+		MirrorInterval: "24h",
+	})
+	if err != nil {
+		logs.Error("failed creating repo mirror", "error", err)
+		os.Exit(1)
+	}
+
+	fmt.Printf("created mirror: %s\n", forgejoRepo.Name)
+
 }
