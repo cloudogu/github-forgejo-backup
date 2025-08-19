@@ -17,20 +17,31 @@ func main() {
 		os.Exit(1)
 	}
 
+	// fetch a list of all github repos in the github "cloudogu" orga
+
 	githubClient := github.NewClient(nil)
 
 	ctx, cancel := context.WithTimeout(context.TODO(), time.Minute*1)
 	defer cancel()
 
-	repos, _, err := githubClient.Repositories.ListByOrg(ctx, "cloudogu", &github.RepositoryListByOrgOptions{Sort: "full_name"})
-	if err != nil {
-		logs.Error("failed listing repos", "error", err)
-		os.Exit(1)
+	var githubRepos []*github.Repository
+	{
+		githubReposPage, _, err := githubClient.Repositories.ListByOrg(ctx, "cloudogu",
+			&github.RepositoryListByOrgOptions{Sort: "full_name"})
+		if err != nil {
+			logs.Error("failed listing repos", "error", err)
+			os.Exit(1)
+		}
+		githubRepos = append(githubRepos, githubReposPage...)
+		// TODO: fetch more pages
 	}
 
-	for _, repo := range repos {
+	fmt.Println("### github repos")
+	for _, repo := range githubRepos {
 		fmt.Printf("%s\t%s\n", repo.GetName(), repo.GetCloneURL())
 	}
+
+	// fetch a list of all forgejo repos in the forgejo "cloudogu" orga
 
 	forgejoClient, err := forgejo.NewClient(config.ForgejoBaseUrl,
 		forgejo.SetToken(config.ForgejoToken),
@@ -41,12 +52,40 @@ func main() {
 		os.Exit(1)
 	}
 
-	organisation, _, err := forgejoClient.GetOrg("cloudogu")
+	apiSettings, _, err := forgejoClient.GetGlobalAPISettings()
+	if err != nil {
+		logs.Error("failed fetching api settings", "error", err)
+		os.Exit(1)
+	}
+
+	forgejoOrganisation, _, err := forgejoClient.GetOrg("cloudogu")
 	if err != nil {
 		logs.Error("failed fetching organisation", "error", err)
 		os.Exit(1)
 	}
 
-	fmt.Printf("%s\n", organisation.UserName)
+	var forgejoRepos []*forgejo.Repository
+	{
+		forgejoReposPage, _, err := forgejoClient.ListOrgRepos(forgejoOrganisation.UserName,
+			forgejo.ListOrgReposOptions{
+				ListOptions: forgejo.ListOptions{
+					Page:     0,
+					PageSize: apiSettings.MaxResponseItems,
+				},
+			})
+		if err != nil {
+			logs.Error("failed fetching forgejo repos", "error", err)
+			os.Exit(1)
+		}
+		forgejoRepos = append(forgejoRepos, forgejoReposPage...)
+		// TODO: fetch more pages
+	}
+
+	fmt.Println("### forgejo repos")
+	for _, repo := range forgejoRepos {
+		fmt.Printf("%s\t%s\n", repo.Name, repo.CloneURL)
+	}
+
+	// TODO: create a new mirror in forgejo in the forgejo "cloudogu" orga for all github repos in the github "cloudogu" orga missing in the forgejo "cloudogu" orga
 
 }
