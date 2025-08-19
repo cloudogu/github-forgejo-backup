@@ -22,8 +22,6 @@ func main() {
 		os.Exit(1)
 	}
 
-	// fetch all github repos in the "cloudogu" orga
-
 	githubClient := github.NewClient(
 		githubpagination.NewClient(nil,
 			githubpagination.WithPerPage(100)),
@@ -31,8 +29,6 @@ func main() {
 	githubClient.UserAgent = ua
 
 	githubRepos := ListAllGithubRepos(githubClient)
-
-	// fetch all forgejo repos in the "cloudogu" orga
 
 	forgejoClient, err := forgejo.NewClient(config.ForgejoBaseUrl,
 		forgejo.SetToken(config.ForgejoToken),
@@ -49,6 +45,18 @@ func main() {
 		os.Exit(1)
 	}
 
+	// create forgejo orga when missing
+	_, _, err = forgejoClient.CreateOrg(forgejo.CreateOrgOption{
+		Name:       config.ForgejoOrga,
+		FullName:   config.ForgejoOrga,
+		Visibility: forgejo.VisibleTypeLimited,
+	})
+	if err != nil {
+		logs.Error("failed creating forgejo orga", "error", err)
+		os.Exit(1)
+	}
+
+	// fetch all forgejo repos
 	forgejoRepos := ListAllForgejoRepos(forgejoClient, apiSettings)
 
 	// check for and create missing mirrors

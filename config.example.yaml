@@ -3,7 +3,7 @@
   "github_orga": "cloudogu",
   "github_token": "SECRET",
   "forgejo_base_url": "https://forgejo.cloudogu.com/",
-  "forgejo_orga": "cloudogu",
+  "forgejo_orga": "mirrors",
   # curl -H "Content-Type: application/json" \
   # -d '{"name":"test","scopes":["read:user","read:organization","write:issue","write:repository"]}' \
   # -u 'sos-admin:SECRET' https://forgejo.cloudogu.com/api/v1/users/sos-admin/tokens
