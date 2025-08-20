@@ -10,6 +10,7 @@ import (
 	"github.com/google/go-github/v74/github"
 	"github.com/robfig/cron/v3"
 	"time"
+	_ "time/tzdata"
 )
 
 var ua = "github-forgejo-backup"
