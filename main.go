@@ -5,9 +5,10 @@ import (
 	"context"
 	"fmt"
 	"github.com/cloudogu/github-forgejo-backup/internal/disk"
+	"github.com/cloudogu/github-forgejo-backup/internal/logs"
 	"github.com/google/go-github/v74/github"
 	"github.com/robfig/cron/v3"
-	"os"
+	"log/slog"
 	"time"
 )
 
@@ -19,25 +20,22 @@ func main() {
 
 	err := config.Load()
 	if err != nil {
-		logs.Error("failed loading config", "error", err)
-		os.Exit(1)
+		logs.Fatal("failed loading config", "error", err)
 	}
 
 	location, err := time.LoadLocation(config.TimeZone)
 	if err != nil {
-		logs.Error("unable to load timezone", "error", err)
-		os.Exit(1)
+		logs.Fatal("unable to load timezone", "error", err)
 	}
 
 	sched := cron.New(
 		cron.WithLocation(location),
-		cron.WithLogger(cronLogger{}),
+		cron.WithLogger(logs.CronLogger{}),
 	)
 
 	_, err = sched.AddFunc(config.CronSpec, doRun)
 	if err != nil {
-		logs.Error(err.Error())
-		os.Exit(1)
+		logs.Fatal(err.Error())
 	}
 
 	sched.Run()
@@ -59,14 +57,12 @@ func doRun() {
 		forgejo.SetUserAgent(ua),
 	)
 	if err != nil {
-		logs.Error("failed creating forgejo client", "error", err)
-		os.Exit(1)
+		logs.Fatal("failed creating forgejo client", "error", err)
 	}
 
 	apiSettings, _, err := forgejoClient.GetGlobalAPISettings()
 	if err != nil {
-		logs.Error("failed fetching api settings", "error", err)
-		os.Exit(1)
+		logs.Fatal("failed fetching api settings", "error", err)
 	}
 
 	// create forgejo orga when missing
@@ -76,8 +72,7 @@ func doRun() {
 	})
 	if err != nil {
 		if err.Error() != fmt.Sprintf("user already exists [name: %s]", config.ForgejoOrga) {
-			logs.Error("failed creating forgejo orga", "error", err)
-			os.Exit(1)
+			logs.Fatal("failed creating forgejo orga", "error", err)
 		}
 	} else {
 		logs.Info("created orga", "name", orga.UserName)
@@ -97,18 +92,17 @@ func doRun() {
 			}
 		}
 		if !found {
-			fmt.Printf("\nmissing mirror: %s\n", githubRepo.GetName())
+			slog.Info("missing mirror", "name", githubRepo.GetName())
 
 			diskUsage, err := disk.UsageOf("/")
 			if err != nil {
-				logs.Error("failed reading disk stats", "error", err)
-				os.Exit(1)
+				logs.Fatal("failed reading disk stats", "error", err)
 			}
 
-			fmt.Printf("disk usage: %.2f%%\n", diskUsage.UtilizationPct)
+			slog.Info("disk usage", "used", fmt.Sprintf("%.2f%%", diskUsage.UtilizationPct))
+
 			if diskUsage.UtilizationPct >= 90 {
-				logs.Error("free space is < 10%", "used %", diskUsage.UtilizationPct)
-				os.Exit(1)
+				logs.Fatal("free space is < 10%", "used %", diskUsage.UtilizationPct)
 			}
 
 			CreateMirror(forgejoClient, githubRepo)
@@ -129,8 +123,7 @@ func ListAllGithubRepos(client *github.Client) (repos []*github.Repository) {
 	cancel()
 
 	if err != nil {
-		logs.Error("failed fetching github repos", "error", err)
-		os.Exit(1)
+		logs.Fatal("failed fetching github repos", "error", err)
 	}
 
 	repos = append(repos, pageRepos...)
@@ -153,8 +146,7 @@ func ListAllForgejoRepos(client *forgejo.Client, apiSettings *forgejo.GlobalAPIS
 			})
 
 		if err != nil {
-			logs.Error("failed fetching forgejo repos", "error", err)
-			os.Exit(1)
+			logs.Fatal("failed fetching forgejo repos", "error", err)
 		}
 
 		repos = append(repos, pageRepos...)
@@ -188,10 +180,9 @@ func CreateMirror(client *forgejo.Client, githubRepo *github.Repository) {
 		MirrorInterval: "1h",
 	})
 	if err != nil {
-		logs.Error("failed creating repo mirror", "error", err)
-		os.Exit(1)
+		logs.Fatal("failed creating repo mirror", "error", err)
 	}
 
-	fmt.Printf("created mirror: %s\n", forgejoRepo.Name)
+	slog.Info("created mirror", "name", forgejoRepo.Name)
 
 }
