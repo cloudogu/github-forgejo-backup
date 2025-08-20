@@ -9,13 +9,15 @@ import (
 	"github.com/gofri/go-github-pagination/githubpagination"
 	"github.com/google/go-github/v74/github"
 	"github.com/robfig/cron/v3"
-	"log/slog"
 	"time"
 )
 
-const ua = "github-forgejo-backup/0.1.0"
+var GitTag = "unknown"
+var ua = fmt.Sprintf("github-forgejo-backup/%v", GitTag)
 
 func main() {
+
+	logs.Info("starting", "version", GitTag)
 
 	err := config.Load()
 	if err != nil {
@@ -91,14 +93,14 @@ func doRun() {
 			}
 		}
 		if !found {
-			slog.Info("missing mirror", "name", githubRepo.GetName())
+			logs.Info("missing mirror", "name", githubRepo.GetName())
 
 			diskUsage, err := disk.UsageOf("/")
 			if err != nil {
 				logs.Fatal("failed reading disk stats", "error", err)
 			}
 
-			slog.Info("disk usage", "used", fmt.Sprintf("%.2f%%", diskUsage.UtilizationPct))
+			logs.Info("disk usage", "used", fmt.Sprintf("%.2f%%", diskUsage.UtilizationPct))
 
 			if diskUsage.UtilizationPct >= 90 {
 				logs.Fatal("free space is < 10%", "used %", diskUsage.UtilizationPct)
@@ -182,6 +184,6 @@ func CreateMirror(client *forgejo.Client, githubRepo *github.Repository) {
 		logs.Fatal("failed creating repo mirror", "error", err)
 	}
 
-	slog.Info("created mirror", "name", forgejoRepo.Name)
+	logs.Info("created mirror", "name", forgejoRepo.Name)
 
 }
