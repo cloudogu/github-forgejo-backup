@@ -2,30 +2,47 @@ package main
 
 import (
 	"fmt"
+	"github.com/cloudogu/github-forgejo-backup/internal/logs"
+	"github.com/goccy/go-yaml"
 	"os"
 	"path/filepath"
 )
 
-import "github.com/goccy/go-yaml"
-
 type Config struct {
 	GithubBaseUrl  string `yaml:"github_base_url"`
 	GithubOrga     string `yaml:"github_orga"`
-	GithubToken    string `yaml:"github_token"`
 	ForgejoBaseUrl string `yaml:"forgejo_base_url"`
 	ForgejoOrga    string `yaml:"forgejo_orga"`
-	ForgejoToken   string `yaml:"forgejo_token"`
 	CronSpec       string `yaml:"cron-spec"`
 	TimeZone       string `yaml:"time-zone"`
 }
 
+type Tokens struct {
+	Github  string `yaml:"github"`
+	Forgejo string `yaml:"forgejo"`
+}
+
 var config Config
+var tokens Tokens
 
 func (c Config) Load() error {
 
+	if err := loadConfig(); err != nil {
+		return err
+	}
+
+	if err := loadTokens(); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func loadConfig() error {
+
 	path, err := filepath.Abs("config.yaml")
 	if err != nil {
-		return fmt.Errorf("failed resolving config path: %v\n", err.Error())
+		return fmt.Errorf("failed resolving config file path: %v\n", err.Error())
 	}
 
 	logs.Info("loading config", "path", path)
@@ -41,5 +58,26 @@ func (c Config) Load() error {
 	}
 
 	return nil
+}
 
+func loadTokens() error {
+
+	path, err := filepath.Abs("tokens.yaml")
+	if err != nil {
+		return fmt.Errorf("failed resolving tokens file path: %v\n", err.Error())
+	}
+
+	logs.Info("loading tokens", "path", path)
+
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return fmt.Errorf("failed reading tokens file: %v\n", err.Error())
+	}
+
+	err = yaml.Unmarshal(data, &tokens)
+	if err != nil {
+		return fmt.Errorf("failed unmarshalling tokens data: %v\n", err.Error())
+	}
+
+	return nil
 }

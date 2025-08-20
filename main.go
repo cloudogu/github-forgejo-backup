@@ -6,13 +6,12 @@ import (
 	"fmt"
 	"github.com/cloudogu/github-forgejo-backup/internal/disk"
 	"github.com/cloudogu/github-forgejo-backup/internal/logs"
+	"github.com/gofri/go-github-pagination/githubpagination"
 	"github.com/google/go-github/v74/github"
 	"github.com/robfig/cron/v3"
 	"log/slog"
 	"time"
 )
-
-import "github.com/gofri/go-github-pagination/githubpagination"
 
 const ua = "github-forgejo-backup/0.1.0"
 
@@ -47,13 +46,13 @@ func doRun() {
 	githubClient := github.NewClient(
 		githubpagination.NewClient(nil,
 			githubpagination.WithPerPage(100)),
-	).WithAuthToken(config.GithubToken)
+	).WithAuthToken(tokens.Github)
 	githubClient.UserAgent = ua
 
 	githubRepos := ListAllGithubRepos(githubClient)
 
 	forgejoClient, err := forgejo.NewClient(config.ForgejoBaseUrl,
-		forgejo.SetToken(config.ForgejoToken),
+		forgejo.SetToken(tokens.Forgejo),
 		forgejo.SetUserAgent(ua),
 	)
 	if err != nil {
@@ -168,7 +167,7 @@ func CreateMirror(client *forgejo.Client, githubRepo *github.Repository) {
 		RepoOwner:      config.ForgejoOrga,
 		CloneAddr:      githubRepo.GetCloneURL(),
 		Service:        forgejo.GitServiceGithub,
-		AuthToken:      config.GithubToken,
+		AuthToken:      tokens.Github,
 		Mirror:         true,
 		Private:        true,
 		Wiki:           true,
