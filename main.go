@@ -108,6 +108,8 @@ func doRun() {
 		}
 	}
 
+	logs.Info("done")
+
 }
 
 func ListAllGithubRepos(client *github.Client) (repos []*github.Repository) {
