@@ -12,12 +12,9 @@ import (
 	"time"
 )
 
-var GitTag = "unknown"
-var ua = fmt.Sprintf("github-forgejo-backup/%v", GitTag)
+var ua = "github-forgejo-backup"
 
 func main() {
-
-	logs.Info("starting", "version", GitTag)
 
 	err := config.Load()
 	if err != nil {
