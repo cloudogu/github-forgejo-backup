@@ -13,6 +13,7 @@ type Config struct {
 	GithubOrga     string `yaml:"github_orga"`
 	ForgejoBaseUrl string `yaml:"forgejo_base_url"`
 	ForgejoOrga    string `yaml:"forgejo_orga"`
+	WebhoolUrl     string `yaml:"webhook_url"`
 	CronSpec       string `yaml:"cron-spec"`
 	TimeZone       string `yaml:"time-zone"`
 }

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"codeberg.org/mvdkleijn/forgejo-sdk/forgejo/v2"
 	"context"
 	"fmt"
@@ -9,6 +10,7 @@ import (
 	"github.com/gofri/go-github-pagination/githubpagination"
 	"github.com/google/go-github/v74/github"
 	"github.com/robfig/cron/v3"
+	"net/http"
 	"time"
 	_ "time/tzdata"
 )
@@ -181,9 +183,23 @@ func CreateMirror(client *forgejo.Client, githubRepo *github.Repository) {
 		MirrorInterval: "1h",
 	})
 	if err != nil {
+		if forgejoRepo == nil {
+			go sendWebhook(fmt.Sprintf("failed creating repo mirror: %s", err.Error()))
+		} else {
+			go sendWebhook(fmt.Sprintf("failed creating repo mirror: %s\n%s\n%s", err.Error(), forgejoRepo.OriginalURL, forgejoRepo.CloneURL))
+		}
 		logs.Fatal("failed creating repo mirror", "error", err)
 	}
 
-	logs.Info("created mirror", "name", forgejoRepo.Name)
+	go sendWebhook(fmt.Sprintf("created new repo mirror:\n%s\n%s", forgejoRepo.OriginalURL, forgejoRepo.CloneURL))
+	logs.Info("created new repo mirror", "name", forgejoRepo.Name)
 
+}
+
+func sendWebhook(text string) {
+	resp, err := http.Post(config.WebhoolUrl, "application/json", bytes.NewBuffer([]byte(fmt.Sprintf("{\"text\": \"%s\"}", text))))
+	if err != nil {
+		logs.Info("failed sending webhook", "error", err)
+	}
+	defer resp.Body.Close()
 }
