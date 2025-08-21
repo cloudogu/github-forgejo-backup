@@ -103,7 +103,8 @@ func doRun() {
 			logs.Info("disk usage", "used", fmt.Sprintf("%.2f%%", diskUsage.UtilizationPct))
 
 			if diskUsage.UtilizationPct >= 90 {
-				logs.Fatal("free space is < 10%", "used %", diskUsage.UtilizationPct)
+				go sendWebhook(fmt.Sprintf("free disk space is < 10%%!!! used space: %v%%", diskUsage.UtilizationPct))
+				logs.Fatal("free disk space is < 10%", "used %", diskUsage.UtilizationPct)
 			}
 
 			CreateMirror(forgejoClient, githubRepo)
