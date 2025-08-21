@@ -187,12 +187,12 @@ func CreateMirror(client *forgejo.Client, githubRepo *github.Repository) {
 		if forgejoRepo == nil {
 			go sendWebhook(fmt.Sprintf("failed creating repo mirror: %s", err.Error()))
 		} else {
-			go sendWebhook(fmt.Sprintf("failed creating repo mirror: %s\n%s\n%s", err.Error(), forgejoRepo.OriginalURL, forgejoRepo.CloneURL))
+			go sendWebhook(fmt.Sprintf("failed creating repo mirror: %s\n%s", err.Error(), forgejoRepo.CloneURL))
 		}
 		logs.Fatal("failed creating repo mirror", "error", err)
 	}
 
-	go sendWebhook(fmt.Sprintf("created new repo mirror:\n%s\n%s", forgejoRepo.OriginalURL, forgejoRepo.CloneURL))
+	go sendWebhook(fmt.Sprintf("created new repo mirror:\n%s", forgejoRepo.CloneURL))
 	logs.Info("created new repo mirror", "name", forgejoRepo.Name)
 
 }
