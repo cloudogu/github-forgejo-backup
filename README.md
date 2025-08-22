@@ -1,5 +1,7 @@
 # github-forgejo-backup
 
+Create Forgejo mirrors for all repos in your GitHub org.
+
 ## Tokens
 
 Generate the Forgejo token with the following command:
