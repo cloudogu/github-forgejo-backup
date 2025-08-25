@@ -9,5 +9,6 @@ RUN GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build \
 
 FROM scratch
 WORKDIR /work
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /work/github-forgejo-backup /usr/local/bin/github-forgejo-backup
 CMD [ "github-forgejo-backup" ]
