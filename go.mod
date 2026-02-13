@@ -1,14 +1,14 @@
 module github.com/cloudogu/github-forgejo-backup
 
-go 1.24
+go 1.26.0
 
 require (
 	codeberg.org/mvdkleijn/forgejo-sdk/forgejo/v2 v2.2.0
-	github.com/goccy/go-yaml v1.18.0
+	github.com/goccy/go-yaml v1.19.2
 	github.com/gofri/go-github-pagination v1.0.1
 	github.com/google/go-github/v74 v74.0.0
 	github.com/robfig/cron/v3 v3.0.1
-	golang.org/x/sys v0.35.0
+	golang.org/x/sys v0.41.0
 )
 
 require (
